@@ -22,6 +22,7 @@
     [backBtn setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
     
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:backBtn]];
+    [self.navigationItem setRightBarButtonItem:nil];
 
     [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Location"]];
     CLLocationCoordinate2D location;

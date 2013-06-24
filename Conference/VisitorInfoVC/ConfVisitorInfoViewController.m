@@ -40,14 +40,25 @@
 
 - (IBAction)abtSharjahBtnAction:(id)sender {
     
+    ConfWebViewController *confWebView = [[ConfWebViewController alloc]initWithNibName:@"ConfWebViewController" bundle:nil];
+    [confWebView setSelectedIndex:[sender tag]];
+    [self.navigationController pushFadeViewController:confWebView];
+    
+    
 }
 
 - (IBAction)travelBtnAction:(id)sender {
     
+    ConfWebViewController *confWebView = [[ConfWebViewController alloc]initWithNibName:@"ConfWebViewController" bundle:nil];
+    [confWebView setSelectedIndex:[sender tag]];
+    [self.navigationController pushFadeViewController:confWebView];
 }
 
 - (IBAction)hotelBtnAction:(id)sender {
     
+    ConfWebViewController *confWebView = [[ConfWebViewController alloc]initWithNibName:@"ConfWebViewController" bundle:nil];
+    [confWebView setSelectedIndex:[sender tag]];
+    [self.navigationController pushFadeViewController:confWebView];
     
 }
 

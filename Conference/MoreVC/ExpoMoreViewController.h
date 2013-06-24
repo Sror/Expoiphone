@@ -25,6 +25,7 @@
 - (IBAction)visitorInfoBtnAction:(id)sender;
 - (IBAction)socialMediaBtnAction:(id)sender;
 - (IBAction)staffLoginBtnAction:(id)sender;
+- (IBAction)subFormBtnAction:(id)sender;
 
 - (IBAction)homeBtnAction:(id)sender;
 

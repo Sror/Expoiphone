@@ -39,12 +39,13 @@
     
     [self.view addSubview:ApplicationDelegate.HUD];
     [ApplicationDelegate.HUD setLabelText:@"Loading"];
-
+    
+    
 }
-
 -(void)viewWillAppear:(BOOL)animated{
     
     [self.navigationController setToolbarHidden:YES animated:NO];
+    [self.navigationItem setRightBarButtonItem:nil];
     
     if ([ApplicationDelegate.appEventArray count]== 0) {
         

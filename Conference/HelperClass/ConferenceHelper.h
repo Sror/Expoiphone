@@ -22,6 +22,9 @@
 -(void)WriteFromthePlistFile:(NSMutableDictionary*)data toFile:(NSString *)fileName;
 -(NSMutableDictionary *)ReadFromthePlistFile:(NSString *)fileName;
 
+-(NSMutableArray *)ReadArrayFromthePlistFile:(NSString *)fileName;
+-(void)WriteArrayTothePlistFile:(NSMutableArray *)data toFile:(NSString *)fileName;
+
 -(Events *)getEventsObjectFromDictionary:(NSMutableDictionary *)dic;
 
 

@@ -38,8 +38,78 @@
     [backBtn setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
     
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:backBtn]];
+    UIButton *favBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25,35, 35)];
+    [favBtn addTarget:self action:@selector(favBtnTouched) forControlEvents:UIControlEventTouchUpInside];
+    [favBtn setImage:[UIImage imageNamed:@"fav.png"] forState:UIControlStateNormal];
+    UIBarButtonItem *btnAbt = [[UIBarButtonItem alloc] initWithCustomView:favBtn];
     
-  }
+    UIBarButtonItem *fixed1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    fixed1.width = 40.0f;
+    
+    [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:fixed1,btnAbt, nil]];
+    
+}
+
+-(void)favBtnTouched{
+    
+    
+    NSMutableArray *favArray=[[NSMutableArray alloc] init];
+    favArray  = [[ConferenceHelper SharedHelper] ReadArrayFromthePlistFile:@"favList.plist"];
+    
+    
+    if ([favArray count]>=10) {
+        UIAlertView *myAlert =[[UIAlertView alloc]initWithTitle:Nil message:@"Max: Favorite Count Reached" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [myAlert show];
+    }
+    else{
+        
+        BOOL addbool=YES;
+        
+        for (NSString *eventId in favArray) {
+            
+            NSLog(@"event is is %@",eventId);
+            
+           // NSLog(@"prop id is %@ and to be added is %@",propertyId, prop.PropertyId);
+            
+            if ([eventDetail.event_id isEqualToString:eventId]) {
+                
+                addbool=NO;
+                break;
+                
+            }
+            
+        }
+        
+        if (addbool) {
+            
+            NSLog(@"the event id value%@",eventDetail.event_id);
+            
+            
+            [favArray addObject:eventDetail.event_id];
+            
+            
+            [[ConferenceHelper SharedHelper] WriteArrayTothePlistFile:favArray toFile:@"favList.plist"];
+            
+            UIAlertView *myAlert =[[UIAlertView alloc]initWithTitle:Nil message:@"Property added to favourite" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [myAlert show];
+            
+        }
+        
+        else
+        {
+            UIAlertView *myAlert =[[UIAlertView alloc]initWithTitle:Nil message:@"Property already in favourite list" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [myAlert show];
+            
+        }
+        
+        
+        
+    }
+
+    
+    
+}
+
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

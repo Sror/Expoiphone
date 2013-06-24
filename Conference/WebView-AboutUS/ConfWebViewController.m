@@ -62,6 +62,19 @@
             [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Press Release"]];
             titleWeb = @"press_release";
             break;
+        case ABOUTSHARJAHVIEW:
+            [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"About Sharjah"]];
+            titleWeb = @"about_sharjah";
+            break;
+        case TRAVELVIEW:
+            [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Travel & Visa Info"]];
+            titleWeb = @"travel_visa";
+            break;
+        case HOTELVIEW:
+            [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Hotels & Shopping"]];
+            titleWeb = @"hotels_shopping";
+            break;
+            
             
         default:
             break;

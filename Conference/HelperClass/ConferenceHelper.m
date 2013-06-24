@@ -121,5 +121,19 @@
     
     
 }
+-(NSMutableArray *)ReadArrayFromthePlistFile:(NSString *)fileName
+{
+    NSString *path=[self copyFileToDocumentDirectory:fileName];
+    NSMutableArray *dic=[[NSMutableArray alloc] initWithContentsOfFile:path];
+    return dic;
+}
+
+-(void)WriteArrayTothePlistFile:(NSMutableArray *)data toFile:(NSString *)fileName;
+{
+    NSString *path=[self copyFileToDocumentDirectory:fileName];
+    [data writeToFile:path atomically:YES];
+    
+    
+}
 
 @end
