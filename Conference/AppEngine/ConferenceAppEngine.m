@@ -219,12 +219,16 @@
 
 
 
--(MKNetworkOperation *)loadWebViewStringforTitle:(NSString *)title{
+-(MKNetworkOperation *)loadWebViewStringforTitle:(NSString *)title forEvent:(NSString *)eventId{
 
     
     NSMutableDictionary *dic=[[NSMutableDictionary alloc] init];
     [dic setValue:@"getHTML" forKey:@"action"];
     [dic setValue:title forKey:@"title"];
+    /*
+    if (![[ConferenceHelper SharedHelper]isEmptyString:eventId]) {
+        [dic setValue:eventId forKey:@"id"];
+    }*/
     
     MKNetworkOperation *op = [self operationWithPath:WEBVIEWURL params:dic
                                           httpMethod:@"POST"];

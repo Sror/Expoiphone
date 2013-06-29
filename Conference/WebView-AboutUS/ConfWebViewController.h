@@ -16,6 +16,7 @@
 }
 
 @property (strong, nonatomic) IBOutlet UIWebView *InfoWebView;
+@property (nonatomic, retain) NSString *eventId;
 
 @property(nonatomic) int selectedIndex;
 

@@ -10,8 +10,17 @@
 #import "ConfMainViewController.h"
 #import "ConferenceAppDelegate.h"
 
-@interface StaffLoginViewController : UIViewController
+@interface StaffLoginViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
+    
+    
+    NSIndexPath   *checkedCell;
+    
+    
+}
 
+@property (nonatomic) int btnType;
+
+@property (nonatomic, retain)NSString *eventId;
 - (IBAction)eventVisitorBtnAction:(id)sender;
 - (IBAction)exhibitorBtnAction:(id)sender;
 

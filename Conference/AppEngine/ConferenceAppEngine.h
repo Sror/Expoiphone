@@ -51,7 +51,6 @@ typedef void (^LoginResponseBlock)(NSMutableDictionary *loginResponseDic);
 -(void)videoGalleryList :(NSString *)video  onCompletion:(VideoGalleryResponseBlock) events onError:(MKNKErrorBlock) errorBlock;
 -(void)loginAction:(NSString *)loginuserName withPassword:(NSString*)loginuserPassword onCompletion:(LoginResponseBlock)events onError:(MKNKErrorBlock) errorBlock;
 
--(MKNetworkOperation *)loadWebViewStringforTitle:(NSString *)title;
-
+-(MKNetworkOperation *)loadWebViewStringforTitle:(NSString *)title forEvent:(NSString *)eventId;
 
 @end

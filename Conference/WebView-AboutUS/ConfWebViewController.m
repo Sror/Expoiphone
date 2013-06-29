@@ -15,7 +15,7 @@
 @implementation ConfWebViewController
 
 @synthesize selectedIndex;
-@synthesize webViewOperation;
+@synthesize webViewOperation,eventId;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -74,6 +74,14 @@
             [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Hotels & Shopping"]];
             titleWeb = @"hotels_shopping";
             break;
+        case VISITORSURVEY:
+            [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"EVent Visitor Survey"]];
+            titleWeb = @"survey_form";
+            break;
+        case EXHIBITORSURVEY:
+            [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Exhibitor Survey"]];
+            titleWeb = @"exhibitor_form";
+            break;
             
             
         default:
@@ -85,7 +93,7 @@
     [ApplicationDelegate.HUD show:YES];
     [self.navigationController.navigationBar setUserInteractionEnabled:NO];
     
-    MKNetworkOperation *op = [ApplicationDelegate.appEngine loadWebViewStringforTitle:titleWeb];
+    MKNetworkOperation *op = [ApplicationDelegate.appEngine loadWebViewStringforTitle:titleWeb forEvent:self.eventId];
     
     
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {

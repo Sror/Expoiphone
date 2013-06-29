@@ -121,6 +121,7 @@
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     Events *event=[eventsList objectAtIndex:indexPath.row];
+    NSLog(@"event is %@",event.name);
     [cell.textLabel setFont:[UIFont fontWithName:@"PlutoLight" size:16.0]];
     [cell setPropertyToCell:event];
     return cell;
