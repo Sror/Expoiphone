@@ -164,6 +164,8 @@
 		FB456EC1176E0F4900E5C080 /* home-tt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB456EBB176E0F4900E5C080 /* home-tt@2x.png */; };
 		FB456EC2176E0F4900E5C080 /* toolbar_bg-tt.png in Resources */ = {isa = PBXBuildFile; fileRef = FB456EBC176E0F4900E5C080 /* toolbar_bg-tt.png */; };
 		FB456EC3176E0F4900E5C080 /* toolbar_bg-tt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB456EBD176E0F4900E5C080 /* toolbar_bg-tt@2x.png */; };
+		FB815669177EDC9100CB888D /* ExpoSocialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB815667177EDC9100CB888D /* ExpoSocialViewController.m */; };
+		FB81566A177EDC9100CB888D /* ExpoSocialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB815668177EDC9100CB888D /* ExpoSocialViewController.xib */; };
 		FB8E07D61768E4DD0001697C /* FGalleryPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8E07D11768E4DD0001697C /* FGalleryPhoto.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FB8E07D71768E4DD0001697C /* FGalleryPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8E07D31768E4DD0001697C /* FGalleryPhotoView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FB8E07D81768E4DD0001697C /* FGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8E07D51768E4DD0001697C /* FGalleryViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -384,6 +386,9 @@
 		FB456EBB176E0F4900E5C080 /* home-tt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "home-tt@2x.png"; path = "Conference/Images/YetAnotherToolBar/home-tt@2x.png"; sourceTree = "<group>"; };
 		FB456EBC176E0F4900E5C080 /* toolbar_bg-tt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "toolbar_bg-tt.png"; path = "Conference/Images/YetAnotherToolBar/toolbar_bg-tt.png"; sourceTree = "<group>"; };
 		FB456EBD176E0F4900E5C080 /* toolbar_bg-tt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "toolbar_bg-tt@2x.png"; path = "Conference/Images/YetAnotherToolBar/toolbar_bg-tt@2x.png"; sourceTree = "<group>"; };
+		FB815666177EDC9100CB888D /* ExpoSocialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpoSocialViewController.h; path = Conference/SocialVC/ExpoSocialViewController.h; sourceTree = "<group>"; };
+		FB815667177EDC9100CB888D /* ExpoSocialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExpoSocialViewController.m; path = Conference/SocialVC/ExpoSocialViewController.m; sourceTree = "<group>"; };
+		FB815668177EDC9100CB888D /* ExpoSocialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExpoSocialViewController.xib; path = Conference/SocialVC/ExpoSocialViewController.xib; sourceTree = "<group>"; };
 		FB8E07D01768E4DD0001697C /* FGalleryPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FGalleryPhoto.h; path = Conference/GalleryView/FGalleryPhoto.h; sourceTree = "<group>"; };
 		FB8E07D11768E4DD0001697C /* FGalleryPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FGalleryPhoto.m; path = Conference/GalleryView/FGalleryPhoto.m; sourceTree = "<group>"; };
 		FB8E07D21768E4DD0001697C /* FGalleryPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FGalleryPhotoView.h; path = Conference/GalleryView/FGalleryPhotoView.h; sourceTree = "<group>"; };
@@ -756,6 +761,16 @@
 			name = YetAnotherToolBar;
 			sourceTree = "<group>";
 		};
+		FB81566C177EDF2B00CB888D /* SocialView */ = {
+			isa = PBXGroup;
+			children = (
+				FB815666177EDC9100CB888D /* ExpoSocialViewController.h */,
+				FB815667177EDC9100CB888D /* ExpoSocialViewController.m */,
+				FB815668177EDC9100CB888D /* ExpoSocialViewController.xib */,
+			);
+			name = SocialView;
+			sourceTree = "<group>";
+		};
 		FB8E07DA1768E4DF0001697C /* FGalleryView */ = {
 			isa = PBXGroup;
 			children = (
@@ -880,6 +895,7 @@
 		FBD87942175E659B00261201 = {
 			isa = PBXGroup;
 			children = (
+				FB81566C177EDF2B00CB888D /* SocialView */,
 				FB2029371778B70D00D4D44C /* favList.plist */,
 				FBE50298177616F900FD5E54 /* ActionSheetComponent */,
 				FBE502741775EF3500FD5E54 /* KeyboardComponent */,
@@ -1237,6 +1253,7 @@
 				FB20294E1778D0DF00D4D44C /* regform@2x.png in Resources */,
 				FB20294F1778D0DF00D4D44C /* share-more.png in Resources */,
 				FB2029501778D0DF00D4D44C /* share-more@2x.png in Resources */,
+				FB81566A177EDC9100CB888D /* ExpoSocialViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1287,6 +1304,7 @@
 				FBE502721775EF3100FD5E54 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				FBE50296177616F600FD5E54 /* AbstractActionSheetPicker.m in Sources */,
 				FBE50297177616F600FD5E54 /* ActionSheetStringPicker.m in Sources */,
+				FB815669177EDC9100CB888D /* ExpoSocialViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

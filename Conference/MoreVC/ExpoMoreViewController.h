@@ -11,6 +11,7 @@
 #import "ConfMainViewController.h"
 #import "MediaCornerViewController.h"
 #import "ConfVisitorInfoViewController.h"
+#import "ExpoSocialViewController.h"
 
 @interface ExpoMoreViewController : UIViewController{
     

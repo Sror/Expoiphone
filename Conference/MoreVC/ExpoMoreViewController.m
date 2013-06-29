@@ -62,6 +62,9 @@
 
 - (IBAction)socialMediaBtnAction:(id)sender {
     
+    ExpoSocialViewController* socView = [[ExpoSocialViewController alloc]initWithNibName:@"ExpoSocialViewController" bundle:nil];
+    [self.navigationController pushFadeViewController:socView];
+    
     
 }
 
