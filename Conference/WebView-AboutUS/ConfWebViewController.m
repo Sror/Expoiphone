@@ -75,7 +75,7 @@
             titleWeb = @"hotels_shopping";
             break;
         case VISITORSURVEY:
-            [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"EVent Visitor Survey"]];
+            [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Event Visitor Survey"]];
             titleWeb = @"survey_form";
             break;
         case EXHIBITORSURVEY:

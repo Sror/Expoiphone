@@ -46,11 +46,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.bounceView removeFromSuperview];
+}
 
 
 - (IBAction)eventVisitorBtnAction:(id)sender {
     
     [self setEventId:@""];
+    checkedCell = nil;
     [self setBtnType:1];
     if (ApplicationDelegate.appEventArray.count!=0) {
         [self.view addSubviewWithBounce:self.bounceView];
@@ -65,6 +70,7 @@
 - (IBAction)exhibitorBtnAction:(id)sender {
  
     [self setEventId:@""];
+    checkedCell = nil;
     [self setBtnType:2];
     if (ApplicationDelegate.appEventArray.count!=0) {
         [self.view addSubviewWithBounce:self.bounceView];
