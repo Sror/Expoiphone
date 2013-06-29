@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB01B798177F688C005AABDB /* UIView+bounce.m in Sources */ = {isa = PBXBuildFile; fileRef = FB01B797177F688C005AABDB /* UIView+bounce.m */; };
 		FB13E9A31776E4C2002AFA79 /* RegView.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB13E9A21776E4C2002AFA79 /* RegView.plist */; };
 		FB16E591176CE8C200AD7DFA /* ConfMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB16E58F176CE8C100AD7DFA /* ConfMainViewController.m */; };
 		FB16E592176CE8C200AD7DFA /* ConfMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB16E590176CE8C100AD7DFA /* ConfMainViewController.xib */; };
@@ -164,6 +165,8 @@
 		FB456EC1176E0F4900E5C080 /* home-tt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB456EBB176E0F4900E5C080 /* home-tt@2x.png */; };
 		FB456EC2176E0F4900E5C080 /* toolbar_bg-tt.png in Resources */ = {isa = PBXBuildFile; fileRef = FB456EBC176E0F4900E5C080 /* toolbar_bg-tt.png */; };
 		FB456EC3176E0F4900E5C080 /* toolbar_bg-tt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB456EBD176E0F4900E5C080 /* toolbar_bg-tt@2x.png */; };
+		FB56C2E5177F3AB0000633F6 /* ConfSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB56C2E3177F3AB0000633F6 /* ConfSignInViewController.m */; };
+		FB56C2E6177F3AB0000633F6 /* ConfSignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB56C2E4177F3AB0000633F6 /* ConfSignInViewController.xib */; };
 		FB815669177EDC9100CB888D /* ExpoSocialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB815667177EDC9100CB888D /* ExpoSocialViewController.m */; };
 		FB81566A177EDC9100CB888D /* ExpoSocialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB815668177EDC9100CB888D /* ExpoSocialViewController.xib */; };
 		FB8E07D61768E4DD0001697C /* FGalleryPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8E07D11768E4DD0001697C /* FGalleryPhoto.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -215,6 +218,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FB01B796177F688C005AABDB /* UIView+bounce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+bounce.h"; path = "Conference/StaffLoginVC/UIView+bounce.h"; sourceTree = "<group>"; };
+		FB01B797177F688C005AABDB /* UIView+bounce.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+bounce.m"; path = "Conference/StaffLoginVC/UIView+bounce.m"; sourceTree = "<group>"; };
 		FB13E9A21776E4C2002AFA79 /* RegView.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = RegView.plist; path = Conference/RegVC/RegView.plist; sourceTree = "<group>"; };
 		FB16E58E176CE8C100AD7DFA /* ConfMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfMainViewController.h; path = Conference/MainViewController/ConfMainViewController.h; sourceTree = "<group>"; };
 		FB16E58F176CE8C100AD7DFA /* ConfMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfMainViewController.m; path = Conference/MainViewController/ConfMainViewController.m; sourceTree = "<group>"; };
@@ -386,6 +391,9 @@
 		FB456EBB176E0F4900E5C080 /* home-tt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "home-tt@2x.png"; path = "Conference/Images/YetAnotherToolBar/home-tt@2x.png"; sourceTree = "<group>"; };
 		FB456EBC176E0F4900E5C080 /* toolbar_bg-tt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "toolbar_bg-tt.png"; path = "Conference/Images/YetAnotherToolBar/toolbar_bg-tt.png"; sourceTree = "<group>"; };
 		FB456EBD176E0F4900E5C080 /* toolbar_bg-tt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "toolbar_bg-tt@2x.png"; path = "Conference/Images/YetAnotherToolBar/toolbar_bg-tt@2x.png"; sourceTree = "<group>"; };
+		FB56C2E2177F3AAE000633F6 /* ConfSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfSignInViewController.h; path = Conference/SignInVC/ConfSignInViewController.h; sourceTree = "<group>"; };
+		FB56C2E3177F3AB0000633F6 /* ConfSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfSignInViewController.m; path = Conference/SignInVC/ConfSignInViewController.m; sourceTree = "<group>"; };
+		FB56C2E4177F3AB0000633F6 /* ConfSignInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConfSignInViewController.xib; path = Conference/SignInVC/ConfSignInViewController.xib; sourceTree = "<group>"; };
 		FB815666177EDC9100CB888D /* ExpoSocialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpoSocialViewController.h; path = Conference/SocialVC/ExpoSocialViewController.h; sourceTree = "<group>"; };
 		FB815667177EDC9100CB888D /* ExpoSocialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExpoSocialViewController.m; path = Conference/SocialVC/ExpoSocialViewController.m; sourceTree = "<group>"; };
 		FB815668177EDC9100CB888D /* ExpoSocialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExpoSocialViewController.xib; path = Conference/SocialVC/ExpoSocialViewController.xib; sourceTree = "<group>"; };
@@ -499,6 +507,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FB01B79E177F7DAD005AABDB /* SignInVC */ = {
+			isa = PBXGroup;
+			children = (
+				FB56C2E2177F3AAE000633F6 /* ConfSignInViewController.h */,
+				FB56C2E3177F3AB0000633F6 /* ConfSignInViewController.m */,
+				FB56C2E4177F3AB0000633F6 /* ConfSignInViewController.xib */,
+			);
+			name = SignInVC;
+			sourceTree = "<group>";
+		};
 		FB252D8C17644F76000F6A0A /* CustomCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -599,6 +617,8 @@
 		FB34E3EE176E5AA80036E396 /* StaffLoginVC */ = {
 			isa = PBXGroup;
 			children = (
+				FB01B796177F688C005AABDB /* UIView+bounce.h */,
+				FB01B797177F688C005AABDB /* UIView+bounce.m */,
 				FB34E3DB176E56D10036E396 /* StaffLoginViewController.h */,
 				FB34E3DC176E56D20036E396 /* StaffLoginViewController.m */,
 				FB34E3DD176E56D20036E396 /* StaffLoginViewController.xib */,
@@ -895,6 +915,7 @@
 		FBD87942175E659B00261201 = {
 			isa = PBXGroup;
 			children = (
+				FB01B79E177F7DAD005AABDB /* SignInVC */,
 				FB81566C177EDF2B00CB888D /* SocialView */,
 				FB2029371778B70D00D4D44C /* favList.plist */,
 				FBE50298177616F900FD5E54 /* ActionSheetComponent */,
@@ -1254,6 +1275,7 @@
 				FB20294F1778D0DF00D4D44C /* share-more.png in Resources */,
 				FB2029501778D0DF00D4D44C /* share-more@2x.png in Resources */,
 				FB81566A177EDC9100CB888D /* ExpoSocialViewController.xib in Resources */,
+				FB56C2E6177F3AB0000633F6 /* ConfSignInViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1305,6 +1327,8 @@
 				FBE50296177616F600FD5E54 /* AbstractActionSheetPicker.m in Sources */,
 				FBE50297177616F600FD5E54 /* ActionSheetStringPicker.m in Sources */,
 				FB815669177EDC9100CB888D /* ExpoSocialViewController.m in Sources */,
+				FB56C2E5177F3AB0000633F6 /* ConfSignInViewController.m in Sources */,
+				FB01B798177F688C005AABDB /* UIView+bounce.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

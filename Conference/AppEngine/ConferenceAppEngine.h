@@ -22,6 +22,9 @@
 #define VIDEOGALLERYURL [NSString stringWithFormat:@"controller/videogallery.php"]
 
 
+#define LOGINURL [NSString stringWithFormat:@"controller/staff.php"]
+
+
 #define WEBVIEWURL [NSString stringWithFormat:@"controller/cms.php"]
 
 
@@ -33,6 +36,8 @@ typedef void (^NewsListResponseBlock)(NSMutableDictionary *newsListDic);
 typedef void (^CurrentEventResponseBlock)(NSMutableArray *CurrentEventArray);
 typedef void (^ImageGalleryResponseBlock)(NSMutableArray *imageGaleryArray);
 typedef void (^VideoGalleryResponseBlock)(NSMutableArray *videoGaleryArray);
+typedef void (^LoginResponseBlock)(NSMutableDictionary *loginResponseDic);
+
 
 -(void)industryCategoryList: (NSString *)industry onCompletion:(industryCategoryResponseBlock) events onError:(MKNKErrorBlock) errorBlock;
 
@@ -44,6 +49,7 @@ typedef void (^VideoGalleryResponseBlock)(NSMutableArray *videoGaleryArray);
 
 -(void)imageGalleryList :(NSString *)image  onCompletion:(ImageGalleryResponseBlock) events onError:(MKNKErrorBlock) errorBlock;
 -(void)videoGalleryList :(NSString *)video  onCompletion:(VideoGalleryResponseBlock) events onError:(MKNKErrorBlock) errorBlock;
+-(void)loginAction:(NSString *)loginuserName withPassword:(NSString*)loginuserPassword onCompletion:(LoginResponseBlock)events onError:(MKNKErrorBlock) errorBlock;
 
 -(MKNetworkOperation *)loadWebViewStringforTitle:(NSString *)title;
 

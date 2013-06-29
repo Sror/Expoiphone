@@ -153,6 +153,47 @@
     
 }
 
+-(void)loginAction:(NSString *)loginuserName withPassword:(NSString*)loginuserPassword onCompletion:(LoginResponseBlock)events onError:(MKNKErrorBlock) errorBlock{
+    
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc] init];
+    [dic setValue:@"loginStaff" forKey:@"action"];
+    [dic setValue:loginuserName forKey:@"username"];
+    [dic setValue:loginuserPassword forKey:@"password"];
+    
+    
+    MKNetworkOperation *op = [self operationWithPath:LOGINURL params:dic
+                                          httpMethod:@"POST"];
+    
+    [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        
+        NSLog(@"Login response str is  %@", completedOperation.responseString);
+        
+        [completedOperation responseJSONWithCompletionHandler:^(id jsonObject) {
+            
+           /* if (jsonObject[@"userId"]) {
+                events(jsonObject[@"userId"]);
+            }
+            
+            else
+            {*/
+                
+                //events(jsonObject[@"result"]);
+           // }
+            
+            
+            events(jsonObject);
+        }];
+        
+    } errorHandler:^(MKNetworkOperation *errorOp, NSError* error) {
+        
+        errorBlock(error);
+    }];
+    
+    [self enqueueOperation:op];
+    
+    
+}
+
 -(void)videoGalleryList :(NSString *)video  onCompletion:(VideoGalleryResponseBlock) events onError:(MKNKErrorBlock) errorBlock{
     
     NSMutableDictionary *dic=[[NSMutableDictionary alloc] init];
@@ -175,6 +216,7 @@
     
     [self enqueueOperation:op];
 }
+
 
 
 -(MKNetworkOperation *)loadWebViewStringforTitle:(NSString *)title{

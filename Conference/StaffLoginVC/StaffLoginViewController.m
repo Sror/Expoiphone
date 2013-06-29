@@ -7,6 +7,7 @@
 //
 
 #import "StaffLoginViewController.h"
+#import "UIView+bounce.h"
 
 @interface StaffLoginViewController ()
 
@@ -30,7 +31,13 @@
     
     [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Staff Login"]];
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
+    
+    
+    
+    [self.bounceView setFrame:CGRectMake(22, 25, self.bounceView.frame.size.width, self.bounceView.frame.size.height)];
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -38,4 +45,29 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
+- (IBAction)eventVisitorBtnAction:(id)sender {
+    
+    
+    [self.view addSubviewWithBounce:self.bounceView];
+}
+
+- (IBAction)exhibitorBtnAction:(id)sender {
+    
+}
+
+- (IBAction)homeBtnAction:(id)sender {
+    
+    
+    ConfMainViewController *confView = [[ConfMainViewController alloc]initWithNibName:@"ConfMainViewController" bundle:nil];
+    [self.navigationController popToViewController:confView animated:YES];
+}
+- (IBAction)closeBtnAction:(id)sender {
+    
+    [self.bounceView removeSubview:self.bounceView];
+}
+
+- (IBAction)goBtnAction:(id)sender {
+}
 @end

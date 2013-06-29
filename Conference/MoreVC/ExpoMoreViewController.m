@@ -70,7 +70,8 @@
 
 - (IBAction)staffLoginBtnAction:(id)sender {
     
-    
+    ConfSignInViewController *signIvew = [[ConfSignInViewController alloc]initWithNibName:@"ConfSignInViewController" bundle:nil];
+    [self.navigationController pushFadeViewController:signIvew];
 }
 
 - (IBAction)subFormBtnAction:(id)sender {
