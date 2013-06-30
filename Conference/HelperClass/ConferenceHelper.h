@@ -17,6 +17,7 @@
 +(ConferenceHelper *)SharedHelper;
 
 -(BOOL)isEmptyString:(NSString *)string;
+-(NSString *)datefromString:(NSString *)dateString;
 
 - (NSString *)copyFileToDocumentDirectory:(NSString *)fileName;
 -(void)WriteFromthePlistFile:(NSMutableDictionary*)data toFile:(NSString *)fileName;

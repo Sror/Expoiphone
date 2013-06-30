@@ -7,6 +7,7 @@
 //
 
 #import "ConfMainViewController.h"
+#import "EventsDetailViewController.h"
 
 @interface ConfMainViewController ()
 
@@ -16,12 +17,16 @@
 
 @synthesize scrollView;
 @synthesize latestNewsTableView,latestNewsList;
+@synthesize currentEventArr;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
+        
+        currentEventArr = [[NSMutableArray alloc]init];
 
             }
     return self;
@@ -106,26 +111,81 @@
     [self.view addSubview:ApplicationDelegate.HUD];
     [ApplicationDelegate.HUD setLabelText:@"Loading"];
     
-    NSArray *arr = [[NSArray alloc]initWithObjects:@"add1.png",@"add1.png",@"add1.png",@"add1.png", nil];
+        
     
-    NSInteger viewcount= 4; // Setting count for scrollview elements..
+}
+
+
+
+-(void)arrangeHorizontalScrollView{
+    
+    
+ //   NSArray *arr = [[NSArray alloc]initWithObjects:@"add1.png",@"add1.png",@"add1.png",@"add1.png",@"add1.png",@"add1.png", nil];
+    
+   /// NSInteger viewcount= 4; // Setting count for scrollview elements..
     
     
     pageControlBeingUsed = NO;
     
-    for (int i = 0; i <viewcount; i++)
+    //int viewco = 4;
+    
+    for (int i = 0; i <self.currentEventArr.count; i++)
     {
         CGFloat y = i * scrollView.frame.size.width;
         UIView *contentView = [[UIView alloc]initWithFrame:CGRectMake(y, 0,scrollView.frame.size.width, scrollView.frame.size.height)];
-        UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(40, 20,contentView.frame.size.width-80, contentView.frame.size.height - 40)];
-        imgView.backgroundColor = [UIColor clearColor];
         contentView.backgroundColor = [UIColor clearColor];
-        imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[arr objectAtIndex:i]]];
+        
+
+        Events *event = [self.currentEventArr objectAtIndex:i];
+        
+        NSLog(@"dic is %@",event.event_id);
+       
+        UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(22, 11,contentView.frame.size.width-40, contentView.frame.size.height - 23)];
+        imgView.backgroundColor = [UIColor clearColor];
+        [imgView setContentMode:UIViewContentModeScaleAspectFit];
+        
+     
+        imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"events_bg.png"]];
         [contentView addSubview:imgView];
+        
+        UIImageView *imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(41,29,78,56)];
+        
+        NSLog(@"url is %@",event.logo);
+       /* [imgView2 setImageFromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",event.logo]]];*/
+        [imgView2 setImage:[UIImage imageNamed:@"add1.png"]];
+        [contentView addSubview:imgView2];
+        
+        UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(132, 20, 170, 25)];
+        [titleLabel setBackgroundColor:[UIColor clearColor]];
+        [titleLabel setFont:[UIFont boldSystemFontOfSize:14.0f]];
+        [titleLabel setTextColor:[UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1]];
+        [titleLabel setNumberOfLines:0];
+        [titleLabel setText:event.name];
+        [contentView addSubview:titleLabel];
+        
+        UILabel *dateLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 44, 150, 15)];
+        [dateLabel setFont:[UIFont boldSystemFontOfSize:10.0f]];
+        [dateLabel setBackgroundColor:[UIColor clearColor]];
+        [dateLabel setTextColor:[UIColor lightGrayColor]];
+        [dateLabel setText:[NSString stringWithFormat:@"%@-%@",[[ConferenceHelper SharedHelper] datefromString:event.start_date],[[ConferenceHelper SharedHelper] datefromString:event.end_date]]];
+        [contentView addSubview:dateLabel];
+        
+        UILabel *cateLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 58, 150, 30)];
+        [cateLabel setFont:[UIFont boldSystemFontOfSize:11.0f]];
+        [cateLabel setBackgroundColor:[UIColor clearColor]];
+        [cateLabel setTextColor:[UIColor blackColor]];
+        [cateLabel setText:event.industry_category];
+        [cateLabel setNumberOfLines:0];
+        [contentView addSubview:cateLabel];
+        
+        UIImageView *imgView3 = [[UIImageView alloc] initWithFrame:CGRectMake(280,55,16,25)];
+        [imgView3 setImage:[UIImage imageNamed:@"detdiscl-hom.png"]];
+        [contentView addSubview:imgView3];
+        
         
         
         UIButton *myBtn =[UIButton buttonWithType:UIButtonTypeCustom];
-        [myBtn setFrame:CGRectMake(40, 20,contentView.frame.size.width-80, contentView.frame.size.height - 40)];
+        [myBtn setFrame:CGRectMake(22, 11,imgView.frame.size.width, imgView.frame.size.height)];
         myBtn.tag = i;
         [myBtn setBackgroundColor:[UIColor clearColor]];
         [myBtn addTarget:self action:@selector(butonaction:) forControlEvents:UIControlEventTouchUpInside];
@@ -135,28 +195,45 @@
         [scrollView addSubview:contentView];
         
     }
-    scrollView.contentSize = CGSizeMake(scrollView.frame.size.width *viewcount, scrollView.frame.size.height);
+//    scrollView.contentSize = CGSizeMake(scrollView.frame.size.width *self.currentEventArr.count, scrollView.frame.size.height);
+//    self.pageControl.currentPage = 0;
+//	self.pageControl.numberOfPages = self.currentEventArr.count;
+    
+    scrollView.contentSize = CGSizeMake(scrollView.frame.size.width *self.currentEventArr.count, scrollView.frame.size.height);
     self.pageControl.currentPage = 0;
-	self.pageControl.numberOfPages = viewcount;
+	self.pageControl.numberOfPages = self.currentEventArr.count;
     
-    
+
     
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setToolbarHidden:NO animated:NO];
+    //[self arrangeHorizontalScrollView];
+    
+    NSLog(@"date is %@",[[ConferenceHelper SharedHelper]datefromString:@"2013-07-02"]);
+    
+    
     
     
    // [[UIToolbar appearance] setBackgroundImage:[UIImage imageNamed:@"toolbar_bg.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
     
-    //[ApplicationDelegate.HUD show:YES];
+    [ApplicationDelegate.HUD show:YES];
     
     [ApplicationDelegate.appEngine currentEventList:@"" onCompletion:^(NSMutableArray *CurrentEventArray) {
+        
+        NSLog(@"Curent event aay contis %d",CurrentEventArray.count);
+        [self.currentEventArr removeAllObjects];
         for (NSMutableDictionary *dic in CurrentEventArray) {
-            NSLog(@"the CurrentEventArray dic=%@",dic);
+            [self.currentEventArr addObject:[[ConferenceHelper SharedHelper] getEventsObjectFromDictionary:dic]];
         }
-        [self getAllNewsListFromServer];
+        NSLog(@"Current event array count is %d",currentEventArr.count);
+        [ApplicationDelegate.appCurrentEventArray removeAllObjects];
+        [ApplicationDelegate.appCurrentEventArray addObjectsFromArray:self.currentEventArr];
+        [ApplicationDelegate.HUD hide:YES];
+        [self arrangeHorizontalScrollView];
+        //[self getAllNewsListFromServer];
         
     } onError:^(NSError *error) {
         [ApplicationDelegate.HUD hide:YES];
@@ -286,6 +363,12 @@
 -(void)butonaction:(UIButton *)sender{
     
     NSLog( @" %i button clicked", sender.tag);
+    
+    EventsDetailViewController *listDetail = [[EventsDetailViewController alloc]initWithNibName:@"EventsDetailViewController" bundle:nil];
+    listDetail.eventDetail = [currentEventArr objectAtIndex:sender.tag];
+    [self.navigationController pushViewController:listDetail animated:YES];
+    
+    
 }
 
 

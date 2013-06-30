@@ -14,6 +14,11 @@
 #import "ExpoContactsViewController.h"
 #import "ExpoMoreViewController.h"
 
+#import "MKNetworkOperation.h"
+#import "MKNetworkKit.h"
+#import "UIImageView+MKNetworkKitAdditions.h"
+
+
 @interface ConfMainViewController : UIViewController<UIScrollViewDelegate>{
     
     BOOL pageControlBeingUsed;
@@ -25,6 +30,10 @@
 @property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (strong, nonatomic) IBOutlet UITableView *latestNewsTableView;
 @property (nonatomic, retain) NSMutableArray *latestNewsList;
+
+
+
+@property (nonatomic, retain) NSMutableArray *currentEventArr;
 
 
 

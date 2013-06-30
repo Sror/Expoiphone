@@ -19,7 +19,11 @@
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UIWebView *webviewForForms;
 
+@property (nonatomic, retain) NSURL *filePathUrl;
+
 @property (nonatomic) int webViewType;
+
+@property (nonatomic) BOOL forPdfView;
 
 @property (nonatomic, strong) NSString* loadingImageURLString;
 @property (nonatomic, strong) MKNetworkOperation* imageLoadingOperation;

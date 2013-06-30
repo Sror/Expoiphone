@@ -15,6 +15,7 @@
 @implementation ExpoLocationViewController
 
 @synthesize viewType,titleStr,webViewType,eventID;
+@synthesize forPdfView,filePathUrl;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -113,17 +114,28 @@
                 */
             }
                 break;
+            case EVENTREGISTRATION:
+            {
+                [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Event Registration"]];
+                
+                
+            }
+                break;
             
             default:
                 break;
         }
         
-
+        if (forPdfView) {
+            NSURLRequest *request = [NSURLRequest requestWithURL:filePathUrl];
+            [self.webviewForForms loadRequest:request];
+        }
+        else{
         
         [self.webviewForForms loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:DYNAMICWEBVIEWURL(eventID, titleStr)]]];
 
         NSLog(@"url is %@",DYNAMICWEBVIEWURL(eventID, titleStr));
-        
+        }
     }
 
     

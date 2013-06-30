@@ -40,6 +40,8 @@
 
     
     self.mcScrollView.contentSize = CGSizeMake(320, 568);
+    
+    [self.videoGalleryView setFrame:CGRectMake(22, 25, self.videoGalleryView.frame.size.width, self.videoGalleryView.frame.size.height)];
 
 }
 
@@ -47,6 +49,18 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)videoGalleryCloseBtnAction:(id)sender {
+    
+    
+    [self.view removeSubview:self.videoGalleryView];
+}
+
+- (IBAction)playVideoBtnAction:(id)sender {
+    
+    
+    
 }
 
 - (IBAction)homeBtnAction:(id)sender {
@@ -78,12 +92,15 @@
        NSLog(@"videoGaleryArray.count is %i",videoGaleryArray.count);
        [videosList removeAllObjects];
        [videosList addObjectsFromArray:videoGaleryArray];
+       [self.view addSubviewWithBounce:self.videoGalleryView];
 
    } onError:^(NSError *error) {
        [ApplicationDelegate.HUD hide:YES];
        [self.navigationController.navigationBar setUserInteractionEnabled:YES];
        [UIAlertView showWithError:error];
    }];
+    
+    
 }
 
 - (IBAction)imageGalleryBtnAction:(id)sender {
@@ -147,6 +164,68 @@
     NSString *caption;
     caption = [[imagesList objectAtIndex:index]valueForKey:@"title"];
 	return caption;
+}
+
+
+#pragma mark - TableView Delegate Methods
+
+
+-  (NSInteger)tableView:(UITableView *)tableView
+  numberOfRowsInSection:(NSInteger)section
+{
+    return [videosList count];
+}
+
+-(UITableViewCell *)tableView:(UITableView *)
+tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *MyIdentifer = @"MyIdentifier";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifer];
+    
+    if(cell == nil) {
+        cell = [[UITableViewCell alloc] initWithFrame:CGRectZero
+                                      reuseIdentifier:MyIdentifer];
+    }
+    
+    if ([checkedCell isEqual:indexPath])
+        
+    {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        
+        
+    } else
+    {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    
+    [cell.textLabel setFont:[UIFont fontWithName:@"Helvetica" size:13.0]];
+    
+    NSMutableDictionary *dic = [videosList objectAtIndex:indexPath.row];
+    
+    [cell.textLabel setText:[dic objectForKey:@"title"]];
+   // Events *event=[[ApplicationDelegate appEventArray] objectAtIndex:indexPath.row];
+    //[cell setText:event.name];
+    return cell;
+}
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    NSString *cellText = cell.textLabel.text;
+    checkedCell = indexPath;
+    [tableView reloadData];
+   /* Events *event=[[ApplicationDelegate appEventArray] objectAtIndex:indexPath.row];
+    [self setEventId:event.event_id];
+    NSLog(@"cell text is%@ and id is %@",cellText,eventId);*/
+    
+    NSMutableDictionary *dic = [videosList objectAtIndex:indexPath.row];
+    
+    NSLog(@"cell text is%@ and url  is %@",cellText,[dic objectForKey:@"youtube_link"]);
+    
+   // [cell.textLabel setText:[dic objectForKey:@"title"]];
+    
 }
 
 @end

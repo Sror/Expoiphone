@@ -95,6 +95,21 @@
     
 }
 
+#pragma mark -date methods
+
+-(NSString *)datefromString:(NSString *)dateString{
+
+    NSString *dateStr;
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    NSDate *date = [dateFormat dateFromString:dateString];
+
+    [dateFormat setDateFormat:@"dd LLLL yyyy"];
+    dateStr = [dateFormat stringFromDate:[date dateByAddingTimeInterval:[[NSTimeZone defaultTimeZone] secondsFromGMT]]];
+    NSLog(@"Retiurned date  is %@",dateStr);
+    return dateStr;
+    
+}
 
 #pragma mark - Plist saving/retrieve methods
 

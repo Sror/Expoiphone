@@ -33,9 +33,12 @@
 
 #define EVENTVISITOR 100
 #define EXHIBITORSURVEY 101
+#define EVENTREGISTRATION 102
 
 
 //http://conferenceapp.crisiltech.com/dynamic_form_view.html?id=25&form_type=survey_form
+
+
 
 
 #define DYNAMICWEBVIEWURL(__ID__,__FormType__) [NSString stringWithFormat:@"http://conferenceapp.crisiltech.com/dynamic_form_view.html?id=%@&form_type=%@",__ID__,__FormType__]

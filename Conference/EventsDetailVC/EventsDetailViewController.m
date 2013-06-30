@@ -16,7 +16,7 @@
 @implementation EventsDetailViewController
 
 @synthesize eventDetail;
-@synthesize fromFavList;
+@synthesize fromFavList,networkGallery;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -51,6 +51,11 @@
     if (fromFavList) {
         [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:fixed1,btnAbt, nil]];
     }
+    
+    [self.view addSubview:ApplicationDelegate.HUD];
+    ApplicationDelegate.HUD.labelText = @"Downloading";
+    
+    [self.videoGalleryView setFrame:CGRectMake(22, 25, self.videoGalleryView.frame.size.width, self.videoGalleryView.frame.size.height)];
     
 
 }
@@ -157,25 +162,115 @@
 
 - (IBAction)imageGalleryBtnAction:(id)sender {
     
+    NSLog(@"image count is %d", eventDetail.imageGallery.count);
+    
+    
+    if (eventDetail.imageGallery.count >0) {
+        networkGallery = [[FGalleryViewController alloc] initWithPhotoSource:self];
+        [self.navigationController pushViewController:networkGallery animated:YES];
+    }else{
+        UIAlertView *al =[[UIAlertView alloc]initWithTitle:@"Sorry" message:@"No image gallery available" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [al show];
+    }
+
+    
 }
 
 - (IBAction)videoGalleryBtnAction:(id)sender {
     
+    if (eventDetail.videoGalleryArray.count>0) {
+        [self.view addSubviewWithBounce:self.videoGalleryView];
+    }else{
+        UIAlertView *al =[[UIAlertView alloc]initWithTitle:@"Sorry" message:@"No Videos available" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [al show];
+    }
+    
 }
 
 - (IBAction)exhibitorBtnAction:(id)sender {
+    
+    
 
 }
 
 - (IBAction)registrationBtnAction:(id)sender {
     
+    
+     ExpoLocationViewController *loc = [[ExpoLocationViewController alloc]initWithNibName:@"ExpoLocationViewController" bundle:nil];
+    [loc setViewType:WEBVIEW];
+    [loc setWebViewType:EVENTREGISTRATION];
+    [loc setTitleStr:@"event_registration"];
+    [loc setEventID:eventDetail.event_id];
+    [self.navigationController pushFadeViewController:loc];
+    
+    
 }
 
 - (IBAction)HomeToolBarBtnAction:(id)sender {
     
+    ConfMainViewController *confView = [[ConfMainViewController alloc]initWithNibName:@"ConfMainViewController" bundle:nil];
+    [self.navigationController pushFadeViewController:confView];
+
+    
+    
 }
 
 - (IBAction)galleryToolBarBtnAction:(id)sender {
+    
+    
+     ExpoLocationViewController * amPdfVieww = [[ExpoLocationViewController alloc]initWithNibName:@"ExpoLocationViewController" bundle:nil];
+    
+    if ([eventDetail.brochure rangeOfString:@".pdf"].location == NSNotFound) {
+        UIAlertView *myAlert =[[UIAlertView alloc]initWithTitle:@"Sorry" message:@"No Brochures Found" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [myAlert show];
+    } else {
+        //[self.extrasView setHidden:YES];
+        NSError *error;
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:@"Pdf"];
+        
+        if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath]){
+            
+            [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:&error];
+        }
+        NSString *pdfFilePath = [dataPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.pdf",eventDetail.event_id]];
+        NSLog(@"Dta path is %@", pdfFilePath);
+        if (![[NSFileManager defaultManager] fileExistsAtPath:pdfFilePath]){
+   
+            [ApplicationDelegate.HUD show:YES];
+            [self.navigationController.navigationBar setUserInteractionEnabled:NO];
+            
+            self.downloadOperation=   [ApplicationDelegate.appEngine downloadBrochure:eventDetail.brochure toFile:pdfFilePath];
+            
+            [self.downloadOperation onDownloadProgressChanged:^(double progress) {
+                DLog(@"%.2f", progress*100.0);
+            }];
+            
+           // __weak EventsDetailViewController *self_ = self;
+            [self.downloadOperation addCompletionHandler:^(MKNetworkOperation* completedRequest) {
+                DLog(@"%@", completedRequest);
+                [ApplicationDelegate.HUD hide:YES];
+                [self.navigationController.navigationBar setUserInteractionEnabled:YES];
+                [amPdfVieww setForPdfView:YES];
+                [amPdfVieww setFilePathUrl:[NSURL fileURLWithPath:pdfFilePath]];
+                [self.navigationController pushFadeViewController:amPdfVieww];
+            }errorHandler:^(MKNetworkOperation *errorOp, NSError* error)
+             {
+                 [ApplicationDelegate.HUD hide:YES];
+                 [self.navigationController.navigationBar setUserInteractionEnabled:YES];
+                 [UIAlertView showWithError:error];
+             }];
+        }
+        else{
+            
+            ExpoLocationViewController * amPdfVieww = [[ExpoLocationViewController alloc]initWithNibName:@"ExpoLocationViewController" bundle:nil];
+            [amPdfVieww setForPdfView:YES];
+            [amPdfVieww setFilePathUrl:[NSURL fileURLWithPath:pdfFilePath]];
+            [self.navigationController pushFadeViewController:amPdfVieww];
+        }
+        
+    }
     
 }
 
@@ -413,5 +508,102 @@ case 3:
 }
 
 
+#pragma mark - FGalleryViewControllerDelegate Methods
+
+
+- (int)numberOfPhotosForPhotoGallery:(FGalleryViewController *)gallery
+{
+    
+    return [eventDetail.imageGallery count];
+    
+}
+
+
+- (FGalleryPhotoSourceType)photoGallery:(FGalleryViewController *)gallery sourceTypeForPhotoAtIndex:(NSUInteger)index
+{
+    return FGalleryPhotoSourceTypeNetwork;
+}
+
+- (NSString*)photoGallery:(FGalleryViewController *)gallery urlForPhotoSize:(FGalleryPhotoSize)size atIndex:(NSUInteger)index {
+    
+    NSMutableDictionary *dic;
+    dic = [eventDetail.imageGallery objectAtIndex:index] ;
+    return [dic valueForKey:@"location"];
+}
+
+/*- (NSString*)photoGallery:(FGalleryViewController *)gallery captionForPhotoAtIndex:(NSUInteger)index
+{
+    NSString *caption;
+    caption = [[imagesList objectAtIndex:index]valueForKey:@"title"];
+	return caption;
+}*/
+
+
+- (IBAction)closeVideosBtnAction:(id)sender {
+}
+
+- (IBAction)playVideoBtnAction:(id)sender {
+}
+
+#pragma mark - TableView Delegate Methods
+
+
+-  (NSInteger)tableView:(UITableView *)tableView
+  numberOfRowsInSection:(NSInteger)section
+{
+    return [eventDetail.videoGalleryArray count];
+}
+
+-(UITableViewCell *)tableView:(UITableView *)
+tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *MyIdentifer = @"MyIdentifier";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifer];
+    
+    if(cell == nil) {
+        cell = [[UITableViewCell alloc] initWithFrame:CGRectZero
+                                      reuseIdentifier:MyIdentifer];
+    }
+    
+    if ([checkedCell isEqual:indexPath])
+        
+    {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        
+        
+    } else
+    {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    
+    [cell.textLabel setFont:[UIFont fontWithName:@"Helvetica" size:13.0]];
+    
+    NSMutableDictionary *dic = [eventDetail.videoGalleryArray objectAtIndex:indexPath.row];
+    
+    [cell.textLabel setText:[dic objectForKey:@"title"]];
+    // Events *event=[[ApplicationDelegate appEventArray] objectAtIndex:indexPath.row];
+    //[cell setText:event.name];
+    return cell;
+}
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    NSString *cellText = cell.textLabel.text;
+    checkedCell = indexPath;
+    [tableView reloadData];
+    /* Events *event=[[ApplicationDelegate appEventArray] objectAtIndex:indexPath.row];
+     [self setEventId:event.event_id];
+     NSLog(@"cell text is%@ and id is %@",cellText,eventId);*/
+    
+    NSMutableDictionary *dic = [eventDetail.videoGalleryArray objectAtIndex:indexPath.row];
+    
+    NSLog(@"cell text is%@ and url  is %@",cellText,[dic objectForKey:@"youtube_link"]);
+    
+    // [cell.textLabel setText:[dic objectForKey:@"title"]];
+    
+}
 
 @end

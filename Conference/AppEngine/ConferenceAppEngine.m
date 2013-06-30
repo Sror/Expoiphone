@@ -112,7 +112,7 @@
     
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         
-        //NSLog(@"ompletedOperation.responseString %@", completedOperation.responseString);
+        NSLog(@"currentEventList.responseString %@", completedOperation.responseString);
         
         [completedOperation responseJSONWithCompletionHandler:^(id jsonObject) {
             
@@ -274,6 +274,22 @@
     
     
     
+}
+
+-(MKNetworkOperation *)downloadBrochure:(NSString *)remoteUrl toFile:(NSString *)filePath
+{
+    MKNetworkOperation *op = [self operationWithURLString:remoteUrl
+                                                   params:nil
+                                               httpMethod:@"GET"];
+    
+    [op addDownloadStream:[NSOutputStream outputStreamToFileAtPath:filePath
+                                                            append:YES]];
+    
+    [self enqueueOperation:op];
+    
+    [op setFreezable:YES];
+    
+    return op;
 }
 
 

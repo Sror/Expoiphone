@@ -53,5 +53,7 @@ typedef void (^favResponceBlock)(NSMutableArray *favEventArray);
 
 -(void)favList :(NSString *)propertType  onCompletion:(favResponceBlock)events onError:(MKNKErrorBlock) errorBlock;
 
+
+-(MKNetworkOperation *)downloadBrochure:(NSString *)remoteUrl toFile:(NSString *)filePath;
 -(MKNetworkOperation *)loadWebViewStringforTitle:(NSString *)title;
 @end

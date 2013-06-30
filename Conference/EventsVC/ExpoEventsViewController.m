@@ -62,11 +62,10 @@
                 
                 [eventsList addObject:[[ConferenceHelper SharedHelper] getEventsObjectFromDictionary:dic]];
                 NSLog(@"Dic is %@", dic);
-                
-                [ApplicationDelegate.appEventArray removeAllObjects];
-                [ApplicationDelegate.appEventArray addObjectsFromArray:eventsList];
-                
+  
             }
+            [ApplicationDelegate.appEventArray removeAllObjects];
+            [ApplicationDelegate.appEventArray addObjectsFromArray:eventsList];
             [self.eventsListTableView reloadData];
             
         } onError:^(NSError *error) {
