@@ -18,6 +18,8 @@
 @property(nonatomic, retain) Events *eventDetail;
 
 
+@property (nonatomic) BOOL fromFavList;
+
 @property (strong, nonatomic) IBOutlet UIImageView *eventLogoImageView;
 @property (strong, nonatomic) IBOutlet UILabel *eventNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;

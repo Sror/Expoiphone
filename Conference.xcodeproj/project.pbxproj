@@ -167,6 +167,10 @@
 		FB456EC3176E0F4900E5C080 /* toolbar_bg-tt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB456EBD176E0F4900E5C080 /* toolbar_bg-tt@2x.png */; };
 		FB56C2E5177F3AB0000633F6 /* ConfSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB56C2E3177F3AB0000633F6 /* ConfSignInViewController.m */; };
 		FB56C2E6177F3AB0000633F6 /* ConfSignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB56C2E4177F3AB0000633F6 /* ConfSignInViewController.xib */; };
+		FB58009E178023BD00DCE638 /* desc-news.png in Resources */ = {isa = PBXBuildFile; fileRef = FB58009A178023BD00DCE638 /* desc-news.png */; };
+		FB58009F178023BD00DCE638 /* desc-news@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB58009B178023BD00DCE638 /* desc-news@2x.png */; };
+		FB5800A0178023BD00DCE638 /* image-news.png in Resources */ = {isa = PBXBuildFile; fileRef = FB58009C178023BD00DCE638 /* image-news.png */; };
+		FB5800A1178023BD00DCE638 /* image-news@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB58009D178023BD00DCE638 /* image-news@2x.png */; };
 		FB815669177EDC9100CB888D /* ExpoSocialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB815667177EDC9100CB888D /* ExpoSocialViewController.m */; };
 		FB81566A177EDC9100CB888D /* ExpoSocialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB815668177EDC9100CB888D /* ExpoSocialViewController.xib */; };
 		FB8E07D61768E4DD0001697C /* FGalleryPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8E07D11768E4DD0001697C /* FGalleryPhoto.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -394,6 +398,10 @@
 		FB56C2E2177F3AAE000633F6 /* ConfSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfSignInViewController.h; path = Conference/SignInVC/ConfSignInViewController.h; sourceTree = "<group>"; };
 		FB56C2E3177F3AB0000633F6 /* ConfSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfSignInViewController.m; path = Conference/SignInVC/ConfSignInViewController.m; sourceTree = "<group>"; };
 		FB56C2E4177F3AB0000633F6 /* ConfSignInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConfSignInViewController.xib; path = Conference/SignInVC/ConfSignInViewController.xib; sourceTree = "<group>"; };
+		FB58009A178023BD00DCE638 /* desc-news.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "desc-news.png"; path = "Conference/Images/New/desc-news.png"; sourceTree = "<group>"; };
+		FB58009B178023BD00DCE638 /* desc-news@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "desc-news@2x.png"; path = "Conference/Images/New/desc-news@2x.png"; sourceTree = "<group>"; };
+		FB58009C178023BD00DCE638 /* image-news.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "image-news.png"; path = "Conference/Images/New/image-news.png"; sourceTree = "<group>"; };
+		FB58009D178023BD00DCE638 /* image-news@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "image-news@2x.png"; path = "Conference/Images/New/image-news@2x.png"; sourceTree = "<group>"; };
 		FB815666177EDC9100CB888D /* ExpoSocialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpoSocialViewController.h; path = Conference/SocialVC/ExpoSocialViewController.h; sourceTree = "<group>"; };
 		FB815667177EDC9100CB888D /* ExpoSocialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExpoSocialViewController.m; path = Conference/SocialVC/ExpoSocialViewController.m; sourceTree = "<group>"; };
 		FB815668177EDC9100CB888D /* ExpoSocialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExpoSocialViewController.xib; path = Conference/SocialVC/ExpoSocialViewController.xib; sourceTree = "<group>"; };
@@ -669,6 +677,10 @@
 		FB34E3F3176E5AFB0036E396 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				FB58009A178023BD00DCE638 /* desc-news.png */,
+				FB58009B178023BD00DCE638 /* desc-news@2x.png */,
+				FB58009C178023BD00DCE638 /* image-news.png */,
+				FB58009D178023BD00DCE638 /* image-news@2x.png */,
 				FB2029271778B4A700D4D44C /* fav.png */,
 				FB2029281778B4A700D4D44C /* fav@2x.png */,
 				FB2029221778A41D00D4D44C /* toolbar_bg-6.png */,
@@ -1276,6 +1288,10 @@
 				FB2029501778D0DF00D4D44C /* share-more@2x.png in Resources */,
 				FB81566A177EDC9100CB888D /* ExpoSocialViewController.xib in Resources */,
 				FB56C2E6177F3AB0000633F6 /* ConfSignInViewController.xib in Resources */,
+				FB58009E178023BD00DCE638 /* desc-news.png in Resources */,
+				FB58009F178023BD00DCE638 /* desc-news@2x.png in Resources */,
+				FB5800A0178023BD00DCE638 /* image-news.png in Resources */,
+				FB5800A1178023BD00DCE638 /* image-news@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,6 +15,7 @@
 @implementation EventsDetailViewController
 
 @synthesize eventDetail;
+@synthesize fromFavList;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -46,8 +47,11 @@
     UIBarButtonItem *fixed1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     fixed1.width = 40.0f;
     
-    [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:fixed1,btnAbt, nil]];
+    if (fromFavList) {
+        [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:fixed1,btnAbt, nil]];
+    }
     
+
 }
 
 -(void)favBtnTouched{

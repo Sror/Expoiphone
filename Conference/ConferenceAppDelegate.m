@@ -15,7 +15,7 @@
 @implementation ConferenceAppDelegate
 
 @synthesize appEngine,navController,appHelper,HUD;
-@synthesize appdelegateSession,appEventArray,appImageGalleryArray;
+@synthesize appdelegateSession,appEventArray,appImageGalleryArray,appFavEventArray;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -49,6 +49,7 @@
     
     
     self.appEventArray = [[NSMutableArray alloc]init];
+    self.appFavEventArray = [[NSMutableArray alloc]init];
     self.appImageGalleryArray = [[NSMutableArray alloc]init];
     
         self.postParams =

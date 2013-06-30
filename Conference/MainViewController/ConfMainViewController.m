@@ -55,27 +55,27 @@
     [eventsBtn setImage:[UIImage imageNamed:@"events-tb.png"] forState:UIControlStateNormal];
     UIBarButtonItem *btnEvents = [[UIBarButtonItem alloc] initWithCustomView:eventsBtn];
     
-    UIBarButtonItem *fixed2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+   /* UIBarButtonItem *fixed2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     
-    fixed2.width = 20.0f;
+    fixed2.width = 20.0f;*/
     
     UIButton *favBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25,35, 35)];
     [favBtn addTarget:self action:@selector(btnFavTouched) forControlEvents:UIControlEventTouchUpInside];
     [favBtn setImage:[UIImage imageNamed:@"fav-tb.png"] forState:UIControlStateNormal];
     UIBarButtonItem *btnFav = [[UIBarButtonItem alloc] initWithCustomView:favBtn];
     
-    UIBarButtonItem *fixed3 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+   /* UIBarButtonItem *fixed3 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     
-    fixed3.width = 20.0f;
+    fixed3.width = 20.0f;*/
     
     UIButton *contactBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25,35, 35)];
     [contactBtn addTarget:self action:@selector(btnContactTouched) forControlEvents:UIControlEventTouchUpInside];
     [contactBtn setImage:[UIImage imageNamed:@"call-tb.png"] forState:UIControlStateNormal];
     UIBarButtonItem *btnContact = [[UIBarButtonItem alloc] initWithCustomView:contactBtn];
     
-    UIBarButtonItem *fixed4 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+   /* UIBarButtonItem *fixed4 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     
-    fixed4.width = 20.0f;
+    fixed4.width = 20.0f;*/
     
     UIButton *moreBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25,35, 35)];
     [moreBtn addTarget:self action:@selector(btnMoreTouched) forControlEvents:UIControlEventTouchUpInside];
@@ -83,7 +83,7 @@
     UIBarButtonItem *btnMore = [[UIBarButtonItem alloc] initWithCustomView:moreBtn];
     
     
-    self.toolbarItems = [NSArray arrayWithObjects:btnAbt,fixed1, btnEvents,fixed2, btnFav,fixed3, btnContact,fixed4,btnMore, nil];
+    self.toolbarItems = [NSArray arrayWithObjects:btnAbt,fixed1, btnEvents,fixed1, btnFav,fixed1, btnContact,fixed1,btnMore, nil];
 
 }
 - (void)viewDidLoad
@@ -152,7 +152,7 @@
     
     //[ApplicationDelegate.HUD show:YES];
     
-   /* [ApplicationDelegate.appEngine currentEventList:@"" onCompletion:^(NSMutableArray *CurrentEventArray) {
+    [ApplicationDelegate.appEngine currentEventList:@"" onCompletion:^(NSMutableArray *CurrentEventArray) {
         for (NSMutableDictionary *dic in CurrentEventArray) {
             NSLog(@"the CurrentEventArray dic=%@",dic);
         }
@@ -161,7 +161,7 @@
     } onError:^(NSError *error) {
         [ApplicationDelegate.HUD hide:YES];
         [UIAlertView showWithError:error];
-    }];*/
+    }];
     
 //    [self getAllNewsListFromServer];
     

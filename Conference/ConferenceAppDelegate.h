@@ -50,6 +50,7 @@ extern NSString *const FBSessionStateChangedNotification;
 
 
 @property (nonatomic, retain) NSMutableArray *appEventArray;
+@property (nonatomic, retain) NSMutableArray *appFavEventArray;
 @property (nonatomic, retain) NSMutableArray *appImageGalleryArray;
 
 

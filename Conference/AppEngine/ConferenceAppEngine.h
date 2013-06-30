@@ -20,8 +20,7 @@
 #define CURRENTEVENTSURL [NSString stringWithFormat:@"controller/event.php"]
 #define IMAGEGALLERYURL [NSString stringWithFormat:@"controller/imagegallery.php"]
 #define VIDEOGALLERYURL [NSString stringWithFormat:@"controller/videogallery.php"]
-
-
+#define FAVEVENTSURL [NSString stringWithFormat:@"controller/event.php"]
 #define LOGINURL [NSString stringWithFormat:@"controller/staff.php"]
 
 
@@ -37,6 +36,7 @@ typedef void (^CurrentEventResponseBlock)(NSMutableArray *CurrentEventArray);
 typedef void (^ImageGalleryResponseBlock)(NSMutableArray *imageGaleryArray);
 typedef void (^VideoGalleryResponseBlock)(NSMutableArray *videoGaleryArray);
 typedef void (^LoginResponseBlock)(NSMutableDictionary *loginResponseDic);
+typedef void (^favResponceBlock)(NSMutableArray *favEventArray);
 
 
 -(void)industryCategoryList: (NSString *)industry onCompletion:(industryCategoryResponseBlock) events onError:(MKNKErrorBlock) errorBlock;
@@ -51,6 +51,7 @@ typedef void (^LoginResponseBlock)(NSMutableDictionary *loginResponseDic);
 -(void)videoGalleryList :(NSString *)video  onCompletion:(VideoGalleryResponseBlock) events onError:(MKNKErrorBlock) errorBlock;
 -(void)loginAction:(NSString *)loginuserName withPassword:(NSString*)loginuserPassword onCompletion:(LoginResponseBlock)events onError:(MKNKErrorBlock) errorBlock;
 
--(MKNetworkOperation *)loadWebViewStringforTitle:(NSString *)title forEvent:(NSString *)eventId;
+-(void)favList :(NSString *)propertType  onCompletion:(favResponceBlock)events onError:(MKNKErrorBlock) errorBlock;
 
+-(MKNetworkOperation *)loadWebViewStringforTitle:(NSString *)title;
 @end

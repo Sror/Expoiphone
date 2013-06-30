@@ -39,6 +39,10 @@
     
     industrialArray =[[NSMutableArray alloc]init];
     
+    
+    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Registration"]];
+    
+    
     [self.view addSubview:ApplicationDelegate.HUD];
     [ApplicationDelegate.HUD setLabelText:@"Loading"];
 

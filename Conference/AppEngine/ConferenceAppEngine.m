@@ -78,7 +78,7 @@
     NSLog(@"News url >>  http://conferenceapp.crisiltech.com/controller/news.php?action=getList");
     
     NSMutableDictionary *dic=[[NSMutableDictionary alloc] init];
-    [dic setValue:@"getlist" forKey:@"action"];
+    [dic setValue:@"getList" forKey:@"action"];
     MKNetworkOperation *op = [self operationWithPath:NEWSLISTURL params:dic
                                           httpMethod:@"POST"];
     
@@ -197,7 +197,7 @@
 -(void)videoGalleryList :(NSString *)video  onCompletion:(VideoGalleryResponseBlock) events onError:(MKNKErrorBlock) errorBlock{
     
     NSMutableDictionary *dic=[[NSMutableDictionary alloc] init];
-    [dic setValue:@"getList" forKey:@"action"];
+    [dic setValue:@"getlist" forKey:@"action"];
     MKNetworkOperation *op = [self operationWithPath:VIDEOGALLERYURL params:dic
                                           httpMethod:@"POST"];
     
@@ -219,22 +219,75 @@
 
 
 
--(MKNetworkOperation *)loadWebViewStringforTitle:(NSString *)title forEvent:(NSString *)eventId{
+-(void)favList :(NSString *)propertType  onCompletion:(favResponceBlock)events onError:(MKNKErrorBlock) errorBlock{
+    
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc] init];
+    [dic setValue:@"getFavouriteList" forKey:@"action"];
+    NSString *string1=@"";
+    NSLog(@"the array=%@",[[ConferenceHelper SharedHelper] ReadArrayFromthePlistFile:@"favList.plist"]);
+    int i=0;
+    for (NSString *string in [[ConferenceHelper SharedHelper] ReadArrayFromthePlistFile:@"favList.plist"]) {
+        
+        
+        NSLog(@"the array value %@",string);
+        i++;
+        
+        if (i==1) {
+            
+            string1=[NSString stringWithFormat:@"%@%@",string1,string];
+        }
+        else
+        {
+            
+            string1=[NSString stringWithFormat:@"%@,%@",string1,string];
+        }
+        
+    }
+    
+    NSLog(@"the string value %@",string1);
+    
+    //string1 = [NSString stringWithFormat:@"41,42,43"];
+    [dic setValue:string1 forKey:@"event_ids"];
+    
+    
+    MKNetworkOperation *op = [self operationWithPath:FAVEVENTSURL params:dic
+                                          httpMethod:@"POST"];
+
+    
+    [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        
+        NSLog(@"%@",completedOperation);
+        [completedOperation responseJSONWithCompletionHandler:^(id jsonObject) {
+            
+            
+            events(jsonObject);
+        }];
+        
+    } errorHandler:^(MKNetworkOperation *errorOp, NSError* error) {
+        
+        errorBlock(error);
+    }];
+    
+    
+    [self enqueueOperation:op];
+    
+    
+    
+    
+}
+
+
+-(MKNetworkOperation *)loadWebViewStringforTitle:(NSString *)title{
 
     
     NSMutableDictionary *dic=[[NSMutableDictionary alloc] init];
     [dic setValue:@"getHTML" forKey:@"action"];
     [dic setValue:title forKey:@"title"];
-    /*
-    if (![[ConferenceHelper SharedHelper]isEmptyString:eventId]) {
-        [dic setValue:eventId forKey:@"id"];
-    }*/
-    
+
     MKNetworkOperation *op = [self operationWithPath:WEBVIEWURL params:dic
                                           httpMethod:@"POST"];
     
     [self enqueueOperation:op];
-    
 
     return op;
 

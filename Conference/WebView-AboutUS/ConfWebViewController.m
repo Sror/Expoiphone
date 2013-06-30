@@ -87,14 +87,11 @@
         default:
             break;
     }
-    
-    
-    
+ 
     [ApplicationDelegate.HUD show:YES];
     [self.navigationController.navigationBar setUserInteractionEnabled:NO];
     
-    MKNetworkOperation *op = [ApplicationDelegate.appEngine loadWebViewStringforTitle:titleWeb forEvent:self.eventId];
-    
+    MKNetworkOperation *op = [ApplicationDelegate.appEngine loadWebViewStringforTitle:titleWeb];
     
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         
@@ -110,6 +107,9 @@
         [UIAlertView showWithError:error];
 
     }];
+    
+    
+    //MKNetworkOperation *op2 =
     
 }
 

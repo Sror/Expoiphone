@@ -11,4 +11,9 @@
 
 @interface ExpoFavoritesViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UITableView *favTableView;
+
+
+@property (nonatomic, retain) NSMutableArray *favEventsArray;
+
 @end
