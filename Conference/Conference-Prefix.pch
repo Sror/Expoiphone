@@ -25,5 +25,17 @@
 #define ABOUTSHARJAHVIEW 15
 #define TRAVELVIEW 16
 #define HOTELVIEW 17
-#define VISITORSURVEY 18
-#define EXHIBITORSURVEY 19
+/*#define VISITORSURVEY 18
+#define EXHIBITORSURVEY 19*/
+
+#define IMGVIEW 50
+#define WEBVIEW 51
+
+#define EVENTVISITOR 100
+#define EXHIBITORSURVEY 101
+
+
+//http://conferenceapp.crisiltech.com/dynamic_form_view.html?id=25&form_type=survey_form
+
+
+#define DYNAMICWEBVIEWURL(__ID__,__FormType__) [NSString stringWithFormat:@"http://conferenceapp.crisiltech.com/dynamic_form_view.html?id=%@&form_type=%@",__ID__,__FormType__]

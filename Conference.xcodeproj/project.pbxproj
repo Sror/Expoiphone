@@ -171,6 +171,8 @@
 		FB58009F178023BD00DCE638 /* desc-news@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB58009B178023BD00DCE638 /* desc-news@2x.png */; };
 		FB5800A0178023BD00DCE638 /* image-news.png in Resources */ = {isa = PBXBuildFile; fileRef = FB58009C178023BD00DCE638 /* image-news.png */; };
 		FB5800A1178023BD00DCE638 /* image-news@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB58009D178023BD00DCE638 /* image-news@2x.png */; };
+		FB5E45EC17804A1900AABCA3 /* ExpoLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5E45EA17804A1900AABCA3 /* ExpoLocationViewController.m */; };
+		FB5E45ED17804A1900AABCA3 /* ExpoLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB5E45EB17804A1900AABCA3 /* ExpoLocationViewController.xib */; };
 		FB815669177EDC9100CB888D /* ExpoSocialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB815667177EDC9100CB888D /* ExpoSocialViewController.m */; };
 		FB81566A177EDC9100CB888D /* ExpoSocialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB815668177EDC9100CB888D /* ExpoSocialViewController.xib */; };
 		FB8E07D61768E4DD0001697C /* FGalleryPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8E07D11768E4DD0001697C /* FGalleryPhoto.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -402,6 +404,9 @@
 		FB58009B178023BD00DCE638 /* desc-news@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "desc-news@2x.png"; path = "Conference/Images/New/desc-news@2x.png"; sourceTree = "<group>"; };
 		FB58009C178023BD00DCE638 /* image-news.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "image-news.png"; path = "Conference/Images/New/image-news.png"; sourceTree = "<group>"; };
 		FB58009D178023BD00DCE638 /* image-news@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "image-news@2x.png"; path = "Conference/Images/New/image-news@2x.png"; sourceTree = "<group>"; };
+		FB5E45E917804A1900AABCA3 /* ExpoLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpoLocationViewController.h; path = "Conference/Loc-WebView/ExpoLocationViewController.h"; sourceTree = "<group>"; };
+		FB5E45EA17804A1900AABCA3 /* ExpoLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExpoLocationViewController.m; path = "Conference/Loc-WebView/ExpoLocationViewController.m"; sourceTree = "<group>"; };
+		FB5E45EB17804A1900AABCA3 /* ExpoLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExpoLocationViewController.xib; path = "Conference/Loc-WebView/ExpoLocationViewController.xib"; sourceTree = "<group>"; };
 		FB815666177EDC9100CB888D /* ExpoSocialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpoSocialViewController.h; path = Conference/SocialVC/ExpoSocialViewController.h; sourceTree = "<group>"; };
 		FB815667177EDC9100CB888D /* ExpoSocialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExpoSocialViewController.m; path = Conference/SocialVC/ExpoSocialViewController.m; sourceTree = "<group>"; };
 		FB815668177EDC9100CB888D /* ExpoSocialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExpoSocialViewController.xib; path = Conference/SocialVC/ExpoSocialViewController.xib; sourceTree = "<group>"; };
@@ -793,6 +798,16 @@
 			name = YetAnotherToolBar;
 			sourceTree = "<group>";
 		};
+		FB5E45EF17804AED00AABCA3 /* Loc-WebView */ = {
+			isa = PBXGroup;
+			children = (
+				FB5E45E917804A1900AABCA3 /* ExpoLocationViewController.h */,
+				FB5E45EA17804A1900AABCA3 /* ExpoLocationViewController.m */,
+				FB5E45EB17804A1900AABCA3 /* ExpoLocationViewController.xib */,
+			);
+			name = "Loc-WebView";
+			sourceTree = "<group>";
+		};
 		FB81566C177EDF2B00CB888D /* SocialView */ = {
 			isa = PBXGroup;
 			children = (
@@ -927,6 +942,7 @@
 		FBD87942175E659B00261201 = {
 			isa = PBXGroup;
 			children = (
+				FB5E45EF17804AED00AABCA3 /* Loc-WebView */,
 				FB01B79E177F7DAD005AABDB /* SignInVC */,
 				FB81566C177EDF2B00CB888D /* SocialView */,
 				FB2029371778B70D00D4D44C /* favList.plist */,
@@ -1292,6 +1308,7 @@
 				FB58009F178023BD00DCE638 /* desc-news@2x.png in Resources */,
 				FB5800A0178023BD00DCE638 /* image-news.png in Resources */,
 				FB5800A1178023BD00DCE638 /* image-news@2x.png in Resources */,
+				FB5E45ED17804A1900AABCA3 /* ExpoLocationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1345,6 +1362,7 @@
 				FB815669177EDC9100CB888D /* ExpoSocialViewController.m in Sources */,
 				FB56C2E5177F3AB0000633F6 /* ConfSignInViewController.m in Sources */,
 				FB01B798177F688C005AABDB /* UIView+bounce.m in Sources */,
+				FB5E45EC17804A1900AABCA3 /* ExpoLocationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

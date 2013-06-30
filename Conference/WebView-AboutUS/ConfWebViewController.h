@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MKNetworkKit.h"
 #import "ConferenceAppDelegate.h"
 
 @interface ConfWebViewController : UIViewController<UIWebViewDelegate>{

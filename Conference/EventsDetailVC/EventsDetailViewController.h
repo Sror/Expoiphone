@@ -10,6 +10,8 @@
 #import "ConferenceAppDelegate.h"
 #import "MKNetworkKit.h"
 #import "MapViewControllerr.h"
+#import "Events.h"
+#import "ConferenceHelper.h"
 
 @interface EventsDetailViewController : UIViewController<UIActionSheetDelegate>
 

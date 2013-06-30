@@ -57,9 +57,9 @@
     events.event_duration=[dic objectForKey:@"event_duration"];
     events.lattitude = [dic objectForKey:@"lattitude"];
     events.longitude=[dic objectForKey:@"longitude"];
-    events.sponsers=[dic objectForKey:@"sponsers"];
-    events.supporters=[dic objectForKey:@"supporters"];
-    events.media_partners = [dic objectForKey:@"media_partners"];
+    events.brochure=[dic objectForKey:@"brochure"];
+   // events.supporters=[dic objectForKey:@"supporters"];
+   // events.media_partners = [dic objectForKey:@"media_partners"];
     events.logo=[dic objectForKey:@"logo"];
     events.website=[dic objectForKey:@"website"];
     events.email=[dic objectForKey:@"email"];
@@ -68,6 +68,27 @@
     events.twitter_link=[dic objectForKey:@"twitter_link"];
     events.linked_in_link=[dic objectForKey:@"linked_in_link"];
     events.instagram_link = [dic objectForKey:@"instagram_link"];
+    
+    [events.imageGallery addObjectsFromArray:[dic objectForKey:@"image_gallery"]];
+    [events.sponsors addObjectsFromArray:[dic objectForKey:@"sponsors"]];
+    [events.exhibitorsArray addObjectsFromArray:[dic objectForKey:@"exhibitors"]];
+    [events.media_partners addObjectsFromArray:[dic objectForKey:@"media_partners"]];
+    [events.supporters addObjectsFromArray:[dic objectForKey:@"supporters"]];
+    [events.locationArray addObjectsFromArray:[dic objectForKey:@"location_map"]];
+    [events.organizers addObjectsFromArray:[dic objectForKey:@"organizers"]];
+    [events.videoGalleryArray addObjectsFromArray:[dic objectForKey:@"video_gallery"]];
+    
+    events.start_date = [dic objectForKey:@"start_date"];
+    events.start_time = [dic objectForKey:@"start_time"];
+    events.end_date = [dic objectForKey:@"end_date"];
+    events.end_time = [dic objectForKey:@"end_time"];
+    
+    /*if ([dic objectForKey:@"YoutubeLink"] == [NSNull null]) {
+        pro.YoutubeLink = nil;
+    }else{
+        pro.YoutubeLink=[dic objectForKey:@"YoutubeLink"];
+    }*/
+    
     
     return events;
     

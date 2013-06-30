@@ -20,9 +20,6 @@
 @property(nonatomic,strong)NSString *event_duration;
 @property(nonatomic,strong)NSString *lattitude;
 @property(nonatomic,strong)NSString *longitude;
-@property(nonatomic,strong)NSString *sponsers;
-@property(nonatomic,strong)NSString *supporters;
-@property(nonatomic,strong)NSString *media_partners;
 @property(nonatomic,strong)NSString *logo;
 @property(nonatomic,strong)NSString *website;
 @property(nonatomic,strong)NSString *email;
@@ -37,5 +34,21 @@
 
 @property(nonatomic,strong)NSString *start_date;
 @property(nonatomic,strong)NSString *start_time;
+
+@property(nonatomic,strong)NSString *brochure;
+
+
+
+@property (nonatomic, retain) NSMutableArray *imageGallery;
+@property (nonatomic, retain) NSMutableArray *sponsors;
+@property (nonatomic, retain) NSMutableArray *supporters;
+@property (nonatomic, retain) NSMutableArray *media_partners;
+@property (nonatomic, retain) NSMutableArray *locationArray;
+@property (nonatomic, retain) NSMutableArray *exhibitorsArray;
+@property (nonatomic, retain) NSMutableArray *organizers;
+@property (nonatomic, retain) NSMutableArray *videoGalleryArray;
+
+
+
 
 @end

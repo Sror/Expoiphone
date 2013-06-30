@@ -7,6 +7,7 @@
 //
 
 #import "EventsDetailViewController.h"
+#import "ExpoLocationViewController.h"
 
 @interface EventsDetailViewController ()
 
@@ -184,7 +185,7 @@
 
 - (IBAction)mapToolBarBtnAction:(id)sender {
     @try {
-        if (eventDetail.lattitude.length!=0 || eventDetail.longitude.length!=0) {
+       /* if (eventDetail.lattitude.length!=0 || eventDetail.longitude.length!=0) {
             MapViewControllerr *mpView = [[MapViewControllerr alloc]initWithNibName:@"MapViewControllerr" bundle:nil];
             mpView.lat = eventDetail.lattitude;
             mpView.lon = eventDetail.longitude;
@@ -200,7 +201,30 @@
                                      otherButtonTitles:nil];
             [alert show];
             
+        }*/
+        
+        if (eventDetail.locationArray.count==0) {
+            UIAlertView *alert;
+            alert = [[UIAlertView alloc] initWithTitle:@"Sorry"
+                                               message:@"Location Unavailable"
+                                              delegate:self cancelButtonTitle:@"Ok"
+                                     otherButtonTitles:nil];
+            [alert show];
         }
+        else{
+            NSMutableDictionary *dic = [eventDetail.locationArray objectAtIndex:0];
+            NSLog(@"loc is %@", [dic objectForKey:@"location"]);
+            
+            ExpoLocationViewController *loc = [[ExpoLocationViewController alloc]initWithNibName:@"ExpoLocationViewController" bundle:nil];
+            [loc setViewType:IMGVIEW];
+            [loc setTitleStr:[dic objectForKey:@"location"]];
+            [self.navigationController pushFadeViewController:loc];
+           // self.navigationController
+            //[self.navigationController]
+          // [self.nav]
+        }
+        
+        
     }
     @catch (NSException *exception) {
         UIAlertView *alert;

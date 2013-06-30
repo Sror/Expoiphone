@@ -74,14 +74,14 @@
             [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Hotels & Shopping"]];
             titleWeb = @"hotels_shopping";
             break;
-        case VISITORSURVEY:
+        /*case VISITORSURVEY:
             [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Event Visitor Survey"]];
             titleWeb = @"survey_form";
             break;
         case EXHIBITORSURVEY:
             [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Exhibitor Survey"]];
             titleWeb = @"exhibitor_form";
-            break;
+            break;*/
             
             
         default:

@@ -8,6 +8,7 @@
 
 #import "StaffLoginViewController.h"
 #import "UIView+bounce.h"
+#import "ExpoLocationViewController.h"
 
 @interface StaffLoginViewController ()
 
@@ -93,9 +94,32 @@
 
 - (IBAction)goBtnAction:(id)sender {
     
-    if (self.eventId) {
+    if (self.eventId) {        
+        
+        NSString *action;
+        ExpoLocationViewController *loc = [[ExpoLocationViewController alloc]initWithNibName:@"ExpoLocationViewController" bundle:nil];
+        
+        switch (self.btnType) {
+            case 1:
+                [loc setWebViewType:EVENTVISITOR];
+                action = @"survey_form";
+                break;
+            case 2:
+                [loc setWebViewType:EXHIBITORSURVEY];
+                action = @"exhibitor_form";
+                break;
+            default:
+                break;
+        }
+        [loc setViewType:WEBVIEW];
+        [loc setTitleStr:action];
+        [loc setEventID:eventId];
+        
+        [self.navigationController pushFadeViewController:loc];
+        
+        
          
-        ConfWebViewController *webView = [[ConfWebViewController alloc]initWithNibName:@"ConfWebViewController" bundle:nil];
+      /*  ConfWebViewController *webView = [[ConfWebViewController alloc]initWithNibName:@"ConfWebViewController" bundle:nil];
         switch (self.btnType) {
             case 1:
                 [webView setSelectedIndex:VISITORSURVEY];
@@ -107,7 +131,7 @@
                 break;
         }
         [webView setEventId:self.eventId];
-        [self.navigationController pushFadeViewController:webView];
+        [self.navigationController pushFadeViewController:webView];*/
     }else{
         
         UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"Events" message:@"Please select an event name" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
