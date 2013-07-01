@@ -8,6 +8,8 @@
 
 #import "EventsDetailViewController.h"
 #import "ExpoLocationViewController.h"
+#import "LBViewController.h"
+#import <EventKit/EventKit.h>
 
 @interface EventsDetailViewController ()
 
@@ -16,7 +18,7 @@
 @implementation EventsDetailViewController
 
 @synthesize eventDetail;
-@synthesize fromFavList,networkGallery;
+@synthesize fromFavList,networkGallery,selectedVideo;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -55,7 +57,7 @@
     [self.view addSubview:ApplicationDelegate.HUD];
     ApplicationDelegate.HUD.labelText = @"Downloading";
     
-    [self.videoGalleryView setFrame:CGRectMake(22, 25, self.videoGalleryView.frame.size.width, self.videoGalleryView.frame.size.height)];
+    [self.videoGalleryView setFrame:CGRectMake(15, 5, self.videoGalleryView.frame.size.width, self.videoGalleryView.frame.size.height)];
     
 
 }
@@ -179,7 +181,11 @@
 - (IBAction)videoGalleryBtnAction:(id)sender {
     
     if (eventDetail.videoGalleryArray.count>0) {
+        [self setBounceInt:10];
         [self.view addSubviewWithBounce:self.videoGalleryView];
+        [self.bounceGoBtn setHidden:NO];
+        [self.bounceViewHeaderLabel setText:@"Please select a Video"];
+        [self.videoGalleryTableView reloadData];
     }else{
         UIAlertView *al =[[UIAlertView alloc]initWithTitle:@"Sorry" message:@"No Videos available" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [al show];
@@ -189,6 +195,16 @@
 
 - (IBAction)exhibitorBtnAction:(id)sender {
     
+    if (eventDetail.exhibitorsArray.count>0) {
+        [self setBounceInt:20];
+        [self.bounceGoBtn setHidden:YES];
+        [self.view addSubviewWithBounce:self.videoGalleryView];
+        [self.bounceViewHeaderLabel setText:@"Exhibitors List"];
+        [self.videoGalleryTableView reloadData];
+    }else{
+        UIAlertView *al =[[UIAlertView alloc]initWithTitle:@"Sorry" message:@"No Exhibitors list available" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [al show];
+    }
     
 
 }
@@ -199,7 +215,7 @@
      ExpoLocationViewController *loc = [[ExpoLocationViewController alloc]initWithNibName:@"ExpoLocationViewController" bundle:nil];
     [loc setViewType:WEBVIEW];
     [loc setWebViewType:EVENTREGISTRATION];
-    [loc setTitleStr:@"event_registration"];
+    [loc setTitleStr:@"media"];
     [loc setEventID:eventDetail.event_id];
     [self.navigationController pushFadeViewController:loc];
     
@@ -276,8 +292,24 @@
 
 - (IBAction)adCalendarToolBarBtnAction:(id)sender {
     
-    
-    
+    EKEventStore *eventSotre = [[EKEventStore alloc] init];
+    EKEvent *event = [EKEvent eventWithEventStore:eventSotre];
+
+    event.title= eventDetail.name;
+    event.startDate =[[ConferenceHelper SharedHelper] dateForEventFromString:eventDetail.start_date];
+    event.endDate=[[ConferenceHelper SharedHelper] dateForEventFromString:eventDetail.end_date];
+
+    [event setCalendar:[eventSotre defaultCalendarForNewEvents]];
+    NSError *err;
+    BOOL isSuceess=[eventSotre saveEvent:event span:EKSpanThisEvent error:&err];
+    if(isSuceess){
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Event" message:@"Event added in calendar" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertview show];
+    }
+    else{
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Event" message:[err description] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertview show];
+    }
 }
 
 - (IBAction)mapToolBarBtnAction:(id)sender {
@@ -626,9 +658,91 @@ case 3:
 
 
 - (IBAction)closeVideosBtnAction:(id)sender {
+    
+    [self.view removeSubview:self.videoGalleryView];
+}
+
+-(BOOL) validateYouTubeUrl: (NSString *) youTubeUrl
+{
+    
+    // NSString *urlRegEx = @"http:\/\/(?:www\.)?youtube.com\/watch\?(?=.*v=\w+)(?:+)?$";
+    
+    NSString *urlRegEx = @"http(s)?://([\\w-]+\\.)+[\\w-]+(/[\\w- ./?%&amp;=]*)?";
+    NSPredicate *urlTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", urlRegEx];
+    NSLog(@"O/P is %i",[urlTest evaluateWithObject:youTubeUrl]);
+    return [urlTest evaluateWithObject:youTubeUrl];
 }
 
 - (IBAction)playVideoBtnAction:(id)sender {
+    
+    
+    NSLog(@" selecte video >>> %@",selectedVideo);
+    
+    
+    NSString *videoID;
+    
+    
+    // youtube.youtubeUrl = [NSString stringWithFormat:@"http://www.youtube.com/watch?v=OUz-5YjXFeg"];
+    
+    
+    if (selectedVideo.length==0) {
+        
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:@"Video Unavailable" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        
+        [alert show];
+    }
+    
+    else if (![self validateYouTubeUrl:selectedVideo])
+    {
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:@"Video Unavailable" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        
+        [alert show];
+    }
+    else{
+        
+        NSArray *videoURLSplit = [selectedVideo componentsSeparatedByString:@"watch?v="];
+        
+        NSLog(@"Count is %d",videoURLSplit.count);
+        if (videoURLSplit.count!=0) {
+            
+            @try {
+                videoID = [[videoURLSplit objectAtIndex:1] substringToIndex:11];
+                NSLog(@" videoID >>> %@",videoID);
+                [ApplicationDelegate.HUD show:YES];
+                [self.navigationController.navigationBar setUserInteractionEnabled:NO];
+                [ApplicationDelegate.appEngine checkYoutubeLink:videoID onCompletion:^(NSMutableArray *youtube) {
+                    NSLog(@"yioutube array is %@", [youtube description]);
+                    [ApplicationDelegate.HUD hide:YES];
+                    [self.navigationController.navigationBar setUserInteractionEnabled:YES];
+                    LBViewController* youtube1=[[LBViewController alloc]initWithNibName:@"LBViewController" bundle:nil];
+                    [youtube1 setYoutubeUrl:selectedVideo];
+                    [self presentModalViewController:youtube1 animated:YES];
+                    
+                } onError:^(NSError *error) {
+                    [ApplicationDelegate.HUD hide:YES];
+                    [self.navigationController.navigationBar setUserInteractionEnabled:YES];
+                    [UIAlertView showWithError:error];
+                }];
+                
+            }
+            @catch (NSException *exception) {
+                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:@"Video Unavailable" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                
+                [alert show];
+            }
+            @finally {
+                
+            }
+            
+        }else{
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:@"Video Unavailable" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            
+            [alert show];
+        }
+        
+        
+    }
+    
 }
 
 #pragma mark - TableView Delegate Methods
@@ -637,7 +751,19 @@ case 3:
 -  (NSInteger)tableView:(UITableView *)tableView
   numberOfRowsInSection:(NSInteger)section
 {
-    return [eventDetail.videoGalleryArray count];
+    switch (self.bounceInt) {
+        case 10:
+            return [eventDetail.videoGalleryArray count];
+            break;
+        case 20:
+            return [eventDetail.exhibitorsArray count];
+            break;
+            
+        //default:
+            //break;
+    }
+return nil;
+
 }
 
 -(UITableViewCell *)tableView:(UITableView *)
@@ -651,22 +777,38 @@ tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
                                       reuseIdentifier:MyIdentifer];
     }
     
-    if ([checkedCell isEqual:indexPath])
-        
-    {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        
-        
-    } else
-    {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }
-    
+       
     [cell.textLabel setFont:[UIFont fontWithName:@"Helvetica" size:13.0]];
     
-    NSMutableDictionary *dic = [eventDetail.videoGalleryArray objectAtIndex:indexPath.row];
+    NSMutableDictionary *dic;
+    switch (self.bounceInt) {
+        case 10:
+            dic = [eventDetail.videoGalleryArray objectAtIndex:indexPath.row];
+            
+            [cell.textLabel setText:[dic objectForKey:@"title"]];
+            if ([checkedCell isEqual:indexPath])
+                
+            {
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                
+                
+            } else
+            {
+                cell.accessoryType = UITableViewCellAccessoryNone;
+            }
+
+            break;
+        case 20:
+            dic = [eventDetail.exhibitorsArray objectAtIndex:indexPath.row];
+            
+            [cell.textLabel setText:[dic objectForKey:@"company_name"]];
+            break;
+            
+        default:
+            break;
+    }
     
-    [cell.textLabel setText:[dic objectForKey:@"title"]];
+   
     // Events *event=[[ApplicationDelegate appEventArray] objectAtIndex:indexPath.row];
     //[cell setText:event.name];
     return cell;
@@ -676,20 +818,16 @@ tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
+    if (self.bounceInt == 10) {
+      
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     NSString *cellText = cell.textLabel.text;
     checkedCell = indexPath;
     [tableView reloadData];
-    /* Events *event=[[ApplicationDelegate appEventArray] objectAtIndex:indexPath.row];
-     [self setEventId:event.event_id];
-     NSLog(@"cell text is%@ and id is %@",cellText,eventId);*/
-    
     NSMutableDictionary *dic = [eventDetail.videoGalleryArray objectAtIndex:indexPath.row];
-    
     NSLog(@"cell text is%@ and url  is %@",cellText,[dic objectForKey:@"youtube_link"]);
-    
-    // [cell.textLabel setText:[dic objectForKey:@"title"]];
-    
+        [self setSelectedVideo:[dic objectForKey:@"youtube_link"]];
+    }
 }
 
 @end

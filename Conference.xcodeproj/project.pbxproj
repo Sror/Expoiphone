@@ -208,6 +208,23 @@
 		FBC3CD921781FB33004DD4C3 /* textboxBg.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC3CD901781FB32004DD4C3 /* textboxBg.png */; };
 		FBC3CD931781FB33004DD4C3 /* textboxBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC3CD911781FB33004DD4C3 /* textboxBg@2x.png */; };
 		FBC3CDA117820CB3004DD4C3 /* logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FBC3CDA017820CB2004DD4C3 /* logo.jpg */; };
+		FBC3CDA617821875004DD4C3 /* dropdownBg.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC3CDA217821867004DD4C3 /* dropdownBg.png */; };
+		FBC3CDA717821875004DD4C3 /* dropdownBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC3CDA317821868004DD4C3 /* dropdownBg@2x.png */; };
+		FBC3CDA817821875004DD4C3 /* exhibitorlist.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC3CDA41782186A004DD4C3 /* exhibitorlist.png */; };
+		FBC3CDA917821875004DD4C3 /* exhibitorlist@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC3CDA51782186B004DD4C3 /* exhibitorlist@2x.png */; };
+		FBC3CDAB17822296004DD4C3 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBC3CDAA17822295004DD4C3 /* EventKit.framework */; };
+		FBC3CDAD178222A0004DD4C3 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBC3CDAC1782229E004DD4C3 /* EventKitUI.framework */; };
+		FBC3CDB417822770004DD4C3 /* bounceBg.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC3CDAE17822768004DD4C3 /* bounceBg.png */; };
+		FBC3CDB517822770004DD4C3 /* close-b.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC3CDAF17822769004DD4C3 /* close-b.png */; };
+		FBC3CDB617822770004DD4C3 /* go.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC3CDB01782276A004DD4C3 /* go.png */; };
+		FBC3CDB717822770004DD4C3 /* bounceBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC3CDB11782276B004DD4C3 /* bounceBg@2x.png */; };
+		FBC3CDB817822770004DD4C3 /* close-b@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC3CDB21782276D004DD4C3 /* close-b@2x.png */; };
+		FBC3CDB917822770004DD4C3 /* go@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC3CDB31782276E004DD4C3 /* go@2x.png */; };
+		FBC3CDC1178230CA004DD4C3 /* LBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC3CDBB178230BF004DD4C3 /* LBViewController.m */; };
+		FBC3CDC2178230CA004DD4C3 /* LBViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBC3CDBC178230C1004DD4C3 /* LBViewController.xib */; };
+		FBC3CDC3178230CA004DD4C3 /* LBYouTubePlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC3CDBE178230C5004DD4C3 /* LBYouTubePlayerController.m */; };
+		FBC3CDC4178230CA004DD4C3 /* LBYouTubePlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC3CDC0178230C8004DD4C3 /* LBYouTubePlayerViewController.m */; };
+		FBC3CDC8178236A7004DD4C3 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC3CDC7178236A7004DD4C3 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FBC9C5C117809B3A00E0782B /* events_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC9C5BD17809B3A00E0782B /* events_bg.png */; };
 		FBC9C5C217809B3A00E0782B /* events_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC9C5BE17809B3A00E0782B /* events_bg@2x.png */; };
 		FBC9C5C317809B3A00E0782B /* detdiscl-hom.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC9C5BF17809B3A00E0782B /* detdiscl-hom.png */; };
@@ -479,6 +496,27 @@
 		FBC3CD901781FB32004DD4C3 /* textboxBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = textboxBg.png; path = Conference/Images/New/textboxBg.png; sourceTree = "<group>"; };
 		FBC3CD911781FB33004DD4C3 /* textboxBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "textboxBg@2x.png"; path = "Conference/Images/New/textboxBg@2x.png"; sourceTree = "<group>"; };
 		FBC3CDA017820CB2004DD4C3 /* logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = logo.jpg; sourceTree = "<group>"; };
+		FBC3CDA217821867004DD4C3 /* dropdownBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dropdownBg.png; path = Conference/Images/dropdownBg.png; sourceTree = "<group>"; };
+		FBC3CDA317821868004DD4C3 /* dropdownBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dropdownBg@2x.png"; path = "Conference/Images/dropdownBg@2x.png"; sourceTree = "<group>"; };
+		FBC3CDA41782186A004DD4C3 /* exhibitorlist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = exhibitorlist.png; path = Conference/Images/exhibitorlist.png; sourceTree = "<group>"; };
+		FBC3CDA51782186B004DD4C3 /* exhibitorlist@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "exhibitorlist@2x.png"; path = "Conference/Images/exhibitorlist@2x.png"; sourceTree = "<group>"; };
+		FBC3CDAA17822295004DD4C3 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		FBC3CDAC1782229E004DD4C3 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
+		FBC3CDAE17822768004DD4C3 /* bounceBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bounceBg.png; path = Conference/Images/bounceBg.png; sourceTree = "<group>"; };
+		FBC3CDAF17822769004DD4C3 /* close-b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "close-b.png"; path = "Conference/Images/close-b.png"; sourceTree = "<group>"; };
+		FBC3CDB01782276A004DD4C3 /* go.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = go.png; path = Conference/Images/go.png; sourceTree = "<group>"; };
+		FBC3CDB11782276B004DD4C3 /* bounceBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bounceBg@2x.png"; path = "Conference/Images/bounceBg@2x.png"; sourceTree = "<group>"; };
+		FBC3CDB21782276D004DD4C3 /* close-b@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "close-b@2x.png"; path = "Conference/Images/close-b@2x.png"; sourceTree = "<group>"; };
+		FBC3CDB31782276E004DD4C3 /* go@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "go@2x.png"; path = "Conference/Images/go@2x.png"; sourceTree = "<group>"; };
+		FBC3CDBA178230BD004DD4C3 /* LBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LBViewController.h; path = Conference/YouTube/LBViewController.h; sourceTree = "<group>"; };
+		FBC3CDBB178230BF004DD4C3 /* LBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LBViewController.m; path = Conference/YouTube/LBViewController.m; sourceTree = "<group>"; };
+		FBC3CDBC178230C1004DD4C3 /* LBViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LBViewController.xib; path = Conference/YouTube/LBViewController.xib; sourceTree = "<group>"; };
+		FBC3CDBD178230C4004DD4C3 /* LBYouTubePlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LBYouTubePlayerController.h; path = Conference/YouTube/LBYouTubePlayerController.h; sourceTree = "<group>"; };
+		FBC3CDBE178230C5004DD4C3 /* LBYouTubePlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LBYouTubePlayerController.m; path = Conference/YouTube/LBYouTubePlayerController.m; sourceTree = "<group>"; };
+		FBC3CDBF178230C7004DD4C3 /* LBYouTubePlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LBYouTubePlayerViewController.h; path = Conference/YouTube/LBYouTubePlayerViewController.h; sourceTree = "<group>"; };
+		FBC3CDC0178230C8004DD4C3 /* LBYouTubePlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LBYouTubePlayerViewController.m; path = Conference/YouTube/LBYouTubePlayerViewController.m; sourceTree = "<group>"; };
+		FBC3CDC6178236A7004DD4C3 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = Conference/YouTube/JSONKit.h; sourceTree = "<group>"; };
+		FBC3CDC7178236A7004DD4C3 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = Conference/YouTube/JSONKit.m; sourceTree = "<group>"; };
 		FBC9C5BD17809B3A00E0782B /* events_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = events_bg.png; path = Conference/Images/New/events_bg.png; sourceTree = "<group>"; };
 		FBC9C5BE17809B3A00E0782B /* events_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "events_bg@2x.png"; path = "Conference/Images/New/events_bg@2x.png"; sourceTree = "<group>"; };
 		FBC9C5BF17809B3A00E0782B /* detdiscl-hom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "detdiscl-hom.png"; path = "Conference/Images/New/detdiscl-hom.png"; sourceTree = "<group>"; };
@@ -554,6 +592,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBC3CDAD178222A0004DD4C3 /* EventKitUI.framework in Frameworks */,
+				FBC3CDAB17822296004DD4C3 /* EventKit.framework in Frameworks */,
 				FB1A091A1761121A00424D7E /* libz.dylib in Frameworks */,
 				FB1A091417610E3200424D7E /* AdSupport.framework in Frameworks */,
 				FB1A091217610E2E00424D7E /* Accounts.framework in Frameworks */,
@@ -616,6 +656,16 @@
 		FB333590176333C100C2DF64 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FBC3CDAE17822768004DD4C3 /* bounceBg.png */,
+				FBC3CDAF17822769004DD4C3 /* close-b.png */,
+				FBC3CDB01782276A004DD4C3 /* go.png */,
+				FBC3CDB11782276B004DD4C3 /* bounceBg@2x.png */,
+				FBC3CDB21782276D004DD4C3 /* close-b@2x.png */,
+				FBC3CDB31782276E004DD4C3 /* go@2x.png */,
+				FBC3CDA217821867004DD4C3 /* dropdownBg.png */,
+				FBC3CDA317821868004DD4C3 /* dropdownBg@2x.png */,
+				FBC3CDA41782186A004DD4C3 /* exhibitorlist.png */,
+				FBC3CDA51782186B004DD4C3 /* exhibitorlist@2x.png */,
 				FBC3CDA017820CB2004DD4C3 /* logo.jpg */,
 				FBC3CD901781FB32004DD4C3 /* textboxBg.png */,
 				FBC3CD911781FB33004DD4C3 /* textboxBg@2x.png */,
@@ -1039,6 +1089,22 @@
 			name = Splash;
 			sourceTree = "<group>";
 		};
+		FBC3CDC51782325F004DD4C3 /* YouTube */ = {
+			isa = PBXGroup;
+			children = (
+				FBC3CDC6178236A7004DD4C3 /* JSONKit.h */,
+				FBC3CDC7178236A7004DD4C3 /* JSONKit.m */,
+				FBC3CDBA178230BD004DD4C3 /* LBViewController.h */,
+				FBC3CDBB178230BF004DD4C3 /* LBViewController.m */,
+				FBC3CDBC178230C1004DD4C3 /* LBViewController.xib */,
+				FBC3CDBD178230C4004DD4C3 /* LBYouTubePlayerController.h */,
+				FBC3CDBE178230C5004DD4C3 /* LBYouTubePlayerController.m */,
+				FBC3CDBF178230C7004DD4C3 /* LBYouTubePlayerViewController.h */,
+				FBC3CDC0178230C8004DD4C3 /* LBYouTubePlayerViewController.m */,
+			);
+			name = YouTube;
+			sourceTree = "<group>";
+		};
 		FBC9C5BC17809ACF00E0782B /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -1063,6 +1129,7 @@
 		FBD87942175E659B00261201 = {
 			isa = PBXGroup;
 			children = (
+				FBC3CDC51782325F004DD4C3 /* YouTube */,
 				FBC3CD831781E422004DD4C3 /* Splash */,
 				FBC3CD821781E3F2004DD4C3 /* NewsDetail */,
 				FBC9C5D51780C71700E0782B /* NewsCell */,
@@ -1100,6 +1167,8 @@
 		FBD87950175E659B00261201 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FBC3CDAC1782229E004DD4C3 /* EventKitUI.framework */,
+				FBC3CDAA17822295004DD4C3 /* EventKit.framework */,
 				FB1A09191761121A00424D7E /* libz.dylib */,
 				FB1A090B17610E1000424D7E /* FacebookSDKResources.bundle */,
 				FB1A091317610E3200424D7E /* AdSupport.framework */,
@@ -1458,6 +1527,17 @@
 				FBC3CD921781FB33004DD4C3 /* textboxBg.png in Resources */,
 				FBC3CD931781FB33004DD4C3 /* textboxBg@2x.png in Resources */,
 				FBC3CDA117820CB3004DD4C3 /* logo.jpg in Resources */,
+				FBC3CDA617821875004DD4C3 /* dropdownBg.png in Resources */,
+				FBC3CDA717821875004DD4C3 /* dropdownBg@2x.png in Resources */,
+				FBC3CDA817821875004DD4C3 /* exhibitorlist.png in Resources */,
+				FBC3CDA917821875004DD4C3 /* exhibitorlist@2x.png in Resources */,
+				FBC3CDB417822770004DD4C3 /* bounceBg.png in Resources */,
+				FBC3CDB517822770004DD4C3 /* close-b.png in Resources */,
+				FBC3CDB617822770004DD4C3 /* go.png in Resources */,
+				FBC3CDB717822770004DD4C3 /* bounceBg@2x.png in Resources */,
+				FBC3CDB817822770004DD4C3 /* close-b@2x.png in Resources */,
+				FBC3CDB917822770004DD4C3 /* go@2x.png in Resources */,
+				FBC3CDC2178230CA004DD4C3 /* LBViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1517,6 +1597,10 @@
 				F753883517816A89003A9D60 /* XOSplashVideoController.m in Sources */,
 				FBC3CD7C1781DDCD004DD4C3 /* News.m in Sources */,
 				FBC3CD801781E06A004DD4C3 /* ExpoNewsDetailViewController.m in Sources */,
+				FBC3CDC1178230CA004DD4C3 /* LBViewController.m in Sources */,
+				FBC3CDC3178230CA004DD4C3 /* LBYouTubePlayerController.m in Sources */,
+				FBC3CDC4178230CA004DD4C3 /* LBYouTubePlayerViewController.m in Sources */,
+				FBC3CDC8178236A7004DD4C3 /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

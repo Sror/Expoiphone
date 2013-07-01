@@ -78,7 +78,7 @@
 								</object>
 								<object class="NSColor" key="IBUINormalTitleColor">
 									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MSAwLjUgMCAwLjczAA</bytes>
+									<bytes key="NSRGB">MC4yMzUyOTQxMTc2IDAuNDUwOTgwMzkyMiAwLjY3MDU4ODIzNTMAA</bytes>
 								</object>
 								<object class="NSColor" key="IBUINormalTitleShadowColor" id="105733058">
 									<int key="NSColorSpace">3</int>
@@ -118,7 +118,7 @@
 								<reference key="IBUIHighlightedTitleColor" ref="58946529"/>
 								<object class="NSColor" key="IBUINormalTitleColor">
 									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MSAwLjUgMCAwLjczAA</bytes>
+									<bytes key="NSRGB">MC4yMzUyOTQxMTc2IDAuNDUwOTgwMzkyMiAwLjY3MDU4ODIzNTMAA</bytes>
 								</object>
 								<reference key="IBUINormalTitleShadowColor" ref="105733058"/>
 								<reference key="IBUINormalImage" ref="96755488"/>
@@ -145,7 +145,7 @@
 								<reference key="IBUIHighlightedTitleColor" ref="58946529"/>
 								<object class="NSColor" key="IBUINormalTitleColor">
 									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MSAwLjUgMCAwLjczAA</bytes>
+									<bytes key="NSRGB">MC4yMzUyOTQxMTc2IDAuNDUwOTgwMzkyMiAwLjY3MDU4ODIzNTMAA</bytes>
 								</object>
 								<reference key="IBUINormalTitleShadowColor" ref="105733058"/>
 								<reference key="IBUINormalImage" ref="96755488"/>
@@ -172,7 +172,7 @@
 								<reference key="IBUIHighlightedTitleColor" ref="58946529"/>
 								<object class="NSColor" key="IBUINormalTitleColor">
 									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MSAwLjUgMCAwLjczAA</bytes>
+									<bytes key="NSRGB">MC4yMzUyOTQxMTc2IDAuNDUwOTgwMzkyMiAwLjY3MDU4ODIzNTMAA</bytes>
 								</object>
 								<reference key="IBUINormalTitleShadowColor" ref="105733058"/>
 								<reference key="IBUINormalImage" ref="96755488"/>
@@ -582,7 +582,7 @@
 				<real value="1" key="8.IBUIButtonInspectorSelectedEdgeInsetMetadataKey"/>
 				<string key="9.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<real value="1" key="9.IBUIButtonInspectorSelectedEdgeInsetMetadataKey"/>
-				<real value="1" key="9.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
+				<real value="0.0" key="9.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>

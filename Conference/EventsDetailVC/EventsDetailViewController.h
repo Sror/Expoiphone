@@ -21,11 +21,13 @@
     NSIndexPath   *checkedCell;
 }
 
-
+@property(nonatomic, retain) NSString* selectedVideo;
 @property(nonatomic, retain) Events *eventDetail;
 @property (strong, nonatomic)  FGalleryViewController *networkGallery;
 
+@property (nonatomic) int bounceInt;
 
+@property (strong, nonatomic) IBOutlet UILabel *bounceViewHeaderLabel;
 
 
 @property (nonatomic) BOOL fromFavList;
@@ -37,6 +39,10 @@
 @property (strong, nonatomic) IBOutlet UILabel *categoryLabel;
 @property (strong, nonatomic) IBOutlet UILabel *locationLabel;
 @property (strong, nonatomic) IBOutlet UITextView *descriptionTxtView;
+@property (strong, nonatomic) IBOutlet UIButton *bounceGoBtn;
+
+
+
 
 @property (strong, nonatomic) IBOutlet UIView *videoGalleryView;
 @property (strong, nonatomic) IBOutlet UITableView *videoGalleryTableView;

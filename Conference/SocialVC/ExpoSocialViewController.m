@@ -44,24 +44,26 @@
 
 - (IBAction)fbBtnAction:(id)sender {
     
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.facebook.com"]]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.facebook.com/ExpoCentreShj"]]];
 }
 
 - (IBAction)youTubeBtnAction:(id)sender {
     
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.facebook.com"]]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.youtube.com/user/TheExpocentresharjah"]]];
     
 }
 
 - (IBAction)instBtnAction:(id)sender {
     
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.facebook.com"]]];
+   // [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.facebook.com"]]];
     
+    UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"Sorry" message:@"Instagram not available" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [al show];
 }
 
 - (IBAction)twitBtnAction:(id)sender {
     
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.facebook.com"]]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://twitter.com/ExpoCentreShj"]]];
     
 }
 

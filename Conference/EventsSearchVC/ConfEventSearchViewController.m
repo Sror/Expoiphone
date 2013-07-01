@@ -45,7 +45,7 @@
     
     
     [self.view addSubview:ApplicationDelegate.HUD];
-    [ApplicationDelegate.HUD setLabelText:@"Loading"];
+    [ApplicationDelegate.HUD setLabelText:@"Searching"];
     
    /* UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 28, 20)];
     self.keywordTxtField.leftView = paddingView;
@@ -276,7 +276,18 @@
 }
 
 - (IBAction)submitBtnAction:(id)sender {
+        
+    [ApplicationDelegate.HUD show:YES];
+    [self performSelector:@selector(stopThari) withObject:nil afterDelay:3.0];
+  
+}
+
+-(void)stopThari{
     
+     [ApplicationDelegate.HUD hide:YES];
+
+    UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"Search Event" message:@"No results found" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [al show];
     
 }
 @end

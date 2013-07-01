@@ -16,7 +16,7 @@
 @implementation ExpoRegViewController
 
 @synthesize fullNameTextField,companyTxtField,genderTxtField,socialTxtField,dateOfBirthTxtField,IndustryTxtField;
-@synthesize industrialArray;
+@synthesize industrialArray,fromView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,9 +44,13 @@
     
     
     [self.view addSubview:ApplicationDelegate.HUD];
-    [ApplicationDelegate.HUD setLabelText:@"Loading"];
+    [ApplicationDelegate.HUD setLabelText:@"Saving"];
 
     self.navigationItem.hidesBackButton = YES;
+    
+    if (fromView) {
+        [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -59,6 +63,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if (fromView) {
+        [self.skipBtn setHidden:YES];
+        [self.submitBtn setFrame:CGRectMake(121, 325, 80, 33)];
+    }
+}
 
 - (void)doneEditing{
     
@@ -279,10 +290,28 @@
     }
     else{
         
-    [self updatePlist];
+        if (!fromView) {
+            [self updatePlist];
+        }else{
+            [ApplicationDelegate.HUD show:YES];
+            [self performSelector:@selector(stopThari) withObject:nil afterDelay:3.0];
+            
+        }
+    
         
     
     }
+}
+
+
+
+-(void)stopThari{
+    
+    [ApplicationDelegate.HUD hide:YES];
+    
+   /* UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"Search Event" message:@"No results found" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [al show];*/
+    
 }
 
 -(NSMutableDictionary *)returnDicForSubmit{

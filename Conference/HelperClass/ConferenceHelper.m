@@ -126,10 +126,22 @@
     return dateStr;
     
 }
--(NSString *)timeFromSrtring:(NSString*)timeString{
+
+-(NSDate *)dateForEventFromString:(NSString *)dateStr{
     
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    NSDate *date = [dateFormat dateFromString:dateStr];
     
+    NSLog(@"returned date for event is %@",[date dateByAddingTimeInterval:[[NSTimeZone defaultTimeZone] secondsFromGMT]]);
+    return [date dateByAddingTimeInterval:[[NSTimeZone defaultTimeZone] secondsFromGMT]];
 }
+
+
+//-(NSString *)timeFromSrtring:(NSString*)timeString{
+//    
+//    return nil;
+//}
 
 #pragma mark - Plist saving/retrieve methods
 

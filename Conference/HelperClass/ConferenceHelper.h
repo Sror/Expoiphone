@@ -19,7 +19,8 @@
 
 -(BOOL)isEmptyString:(NSString *)string;
 -(NSString *)datefromString:(NSString *)dateString;
--(NSString *)timeFromSrtring:(NSString*)timeString;
+-(NSDate *)dateForEventFromString:(NSString *)dateStr;
+//-(NSString *)timeFromSrtring:(NSString*)timeString;
 
 - (NSString *)copyFileToDocumentDirectory:(NSString *)fileName;
 -(void)WriteFromthePlistFile:(NSMutableDictionary*)data toFile:(NSString *)fileName;

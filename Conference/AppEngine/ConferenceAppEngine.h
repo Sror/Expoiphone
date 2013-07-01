@@ -38,6 +38,7 @@ typedef void (^VideoGalleryResponseBlock)(NSMutableArray *videoGaleryArray);
 typedef void (^LoginResponseBlock)(NSMutableDictionary *loginResponseDic);
 typedef void (^favResponceBlock)(NSMutableArray *favEventArray);
 
+typedef void (^checkYouTubeBlock)(NSMutableArray *youtube);
 
 -(void)industryCategoryList: (NSString *)industry onCompletion:(industryCategoryResponseBlock) events onError:(MKNKErrorBlock) errorBlock;
 
@@ -52,6 +53,8 @@ typedef void (^favResponceBlock)(NSMutableArray *favEventArray);
 -(void)loginAction:(NSString *)loginuserName withPassword:(NSString*)loginuserPassword onCompletion:(LoginResponseBlock)events onError:(MKNKErrorBlock) errorBlock;
 
 -(void)favList :(NSString *)propertType  onCompletion:(favResponceBlock)events onError:(MKNKErrorBlock) errorBlock;
+
+-(void)checkYoutubeLink:(NSString*)youtubeId onCompletion:(checkYouTubeBlock) cars onError:(MKNKErrorBlock) errorBlock;
 
 
 -(MKNetworkOperation *)downloadBrochure:(NSString *)remoteUrl toFile:(NSString *)filePath;

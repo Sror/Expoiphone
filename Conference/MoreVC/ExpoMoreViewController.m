@@ -7,12 +7,14 @@
 //
 
 #import "ExpoMoreViewController.h"
+#import "ExpoRegViewController.h"
 
 @interface ExpoMoreViewController ()
 
 @end
 
 @implementation ExpoMoreViewController
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -75,6 +77,11 @@
 }
 
 - (IBAction)subFormBtnAction:(id)sender {
+    
+    ExpoRegViewController *signIvew = [[ExpoRegViewController alloc]initWithNibName:@"ExpoRegViewController" bundle:nil];
+    [signIvew setFromView:YES];
+    [self.navigationController pushFadeViewController:signIvew];
+    
 }
 
 - (IBAction)homeBtnAction:(id)sender {

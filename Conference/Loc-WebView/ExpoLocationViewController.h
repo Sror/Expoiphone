@@ -19,6 +19,8 @@
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UIWebView *webviewForForms;
 
+@property (strong, nonatomic) IBOutlet UISegmentedControl *viewSegmentControl;
+
 @property (nonatomic, retain) NSURL *filePathUrl;
 
 @property (nonatomic) int webViewType;
@@ -27,5 +29,6 @@
 
 @property (nonatomic, strong) NSString* loadingImageURLString;
 @property (nonatomic, strong) MKNetworkOperation* imageLoadingOperation;
+- (IBAction)segmentControlAction:(id)sender;
 
 @end

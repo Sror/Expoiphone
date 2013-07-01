@@ -49,8 +49,8 @@
 
     
     [self.eventNameLabel setText:event.name];
-    [self.categoryLabel setText:event.industry_category];
-    [self.LocationLabel setText:event.location];
+    [self.categoryLabel setText:@"Education Technology & Resources"];
+    [self.LocationLabel setText:@"Sharjah, UAE"];
     //[self.dateLabel setText:event.date];
     [self.timeLabel setText:event.event_timing];
 

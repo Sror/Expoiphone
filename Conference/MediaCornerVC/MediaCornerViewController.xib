@@ -80,7 +80,7 @@
 								</object>
 								<object class="NSColor" key="IBUINormalTitleColor">
 									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MSAwLjUgMCAwLjczAA</bytes>
+									<bytes key="NSRGB">MC4yMzUyOTQxMTc2IDAuNDUwOTgwMzkyMiAwLjY3MDU4ODIzNTMAA</bytes>
 								</object>
 								<object class="NSColor" key="IBUINormalTitleShadowColor" id="937243029">
 									<int key="NSColorSpace">3</int>
@@ -121,7 +121,7 @@
 								<reference key="IBUIHighlightedTitleColor" ref="284416207"/>
 								<object class="NSColor" key="IBUINormalTitleColor">
 									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MSAwLjUgMCAwLjczAA</bytes>
+									<bytes key="NSRGB">MC4yMzUyOTQxMTc2IDAuNDUwOTgwMzkyMiAwLjY3MDU4ODIzNTMAA</bytes>
 								</object>
 								<reference key="IBUINormalTitleShadowColor" ref="937243029"/>
 								<reference key="IBUINormalImage" ref="501062393"/>
@@ -148,7 +148,7 @@
 								<reference key="IBUIHighlightedTitleColor" ref="284416207"/>
 								<object class="NSColor" key="IBUINormalTitleColor">
 									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MSAwLjUgMCAwLjczAA</bytes>
+									<bytes key="NSRGB">MC4yMzUyOTQxMTc2IDAuNDUwOTgwMzkyMiAwLjY3MDU4ODIzNTMAA</bytes>
 								</object>
 								<reference key="IBUINormalTitleShadowColor" ref="937243029"/>
 								<reference key="IBUINormalImage" ref="501062393"/>

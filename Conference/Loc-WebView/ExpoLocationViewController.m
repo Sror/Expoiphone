@@ -67,11 +67,13 @@
             break;
     }*/
 
-    [ApplicationDelegate.HUD show:YES];
+    
     
     if (viewType==IMGVIEW) {
    
+        [ApplicationDelegate.HUD show:YES];
             [self.webviewForForms setHidden:YES];
+        [self.viewSegmentControl setHidden:YES];
             [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Location"]];
             
             self.imageLoadingOperation=[ApplicationDelegate.appEngine imageAtURL:[NSURL URLWithString:titleStr] completionHandler:^(UIImage *fetchedImage, NSURL *url, BOOL isInCache) {
@@ -95,7 +97,8 @@
             case EXHIBITORSURVEY:
             {
                 [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Exhibitor Survey"]];
-                
+                [self.viewSegmentControl setHidden:YES];
+                [self.webviewForForms setFrame:CGRectMake(0, 0, 320, 460)];
                 /*NSString *urlAddress = @"http://www.google.com";
                 NSURL *url = [NSURL URLWithString:urlAddress];
                 NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
@@ -105,6 +108,8 @@
             case EVENTVISITOR:
             {
                 [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Event Visitor Survey"]];
+                [self.viewSegmentControl setHidden:YES];
+                [self.webviewForForms setFrame:CGRectMake(0, 0, 320, 460)];
                 
                 /*NSString *urlAddress = DYNAMICWEBVIEWURL(eventID, titleStr);
                 NSURL *url = [NSURL URLWithString:urlAddress];
@@ -117,6 +122,8 @@
             case EVENTREGISTRATION:
             {
                 [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Event Registration"]];
+                [self.webviewForForms setFrame:CGRectMake(0, 50, 320, 390)];
+                [self.viewSegmentControl setHidden:NO];
                 
                 
             }
@@ -132,9 +139,9 @@
         }
         else{
         
-        [self.webviewForForms loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:DYNAMICWEBVIEWURL(eventID, titleStr)]]];
+        [self.webviewForForms loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:DYNAMICWEBVIEWURL(eventID, titleStr,@"chikku")]]];
 
-        NSLog(@"url is %@",DYNAMICWEBVIEWURL(eventID, titleStr));
+        NSLog(@"url is %@",DYNAMICWEBVIEWURL(eventID, titleStr,@"chikku"));
         }
     }
 
@@ -154,6 +161,7 @@
 
 -(void)webViewDidStartLoad:(UIWebView *)webView {
     NSLog(@"start");
+    [ApplicationDelegate.HUD hide:YES];
 }
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView {
@@ -177,4 +185,24 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)segmentControlAction:(id)sender {
+    
+    switch (self.viewSegmentControl.selectedSegmentIndex) {
+        case 0:
+            NSLog(@"Media");
+            [self.webviewForForms loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:DYNAMICWEBVIEWURL(eventID, @"media",@"chikku")]]];
+            break;
+        case 1:
+            NSLog(@"Visitor");
+            [self.webviewForForms loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:DYNAMICWEBVIEWURL(eventID, @"visitor",@"chikku")]]];
+            break;
+        case 2:
+            NSLog(@"Exhibitor");
+            [self.webviewForForms loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:DYNAMICWEBVIEWURL(eventID, @"event_exihibitor",@"chikku")]]];
+            break;
+            
+        default:
+            break;
+    }
+}
 @end

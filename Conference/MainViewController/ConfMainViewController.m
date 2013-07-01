@@ -197,7 +197,8 @@
         [cateLabel setFont:[UIFont boldSystemFontOfSize:11.0f]];
         [cateLabel setBackgroundColor:[UIColor clearColor]];
         [cateLabel setTextColor:[UIColor blackColor]];
-        [cateLabel setText:event.industry_category];
+        //[cateLabel setText:event.industry_category];
+        [cateLabel setText:@"Education Technology & Resources"];
         [cateLabel setNumberOfLines:0];
         [contentView addSubview:cateLabel];
         

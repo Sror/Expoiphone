@@ -31,6 +31,9 @@
 @property (nonatomic, retain) NSMutableArray *industrialArray;
 
 @property (nonatomic, retain) AbstractActionSheetPicker *actionSheetPicker;
+@property (nonatomic) BOOL fromView;
+@property (strong, nonatomic) IBOutlet UIButton *skipBtn;
+@property (strong, nonatomic) IBOutlet UIButton *submitBtn;
 
 - (IBAction)skipBtnAction:(id)sender;
 - (IBAction)submitBtnAction:(id)sender;

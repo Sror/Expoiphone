@@ -41,4 +41,4 @@
 
 
 
-#define DYNAMICWEBVIEWURL(__ID__,__FormType__) [NSString stringWithFormat:@"http://conferenceapp.crisiltech.com/dynamic_form_view.html?id=%@&form_type=%@",__ID__,__FormType__]
+#define DYNAMICWEBVIEWURL(__ID__,__FormType__,__UserId__) [NSString stringWithFormat:@"http://conferenceapp.crisiltech.com/dynamic_form_view.html?id=%@&form_type=%@&user=%@",__ID__,__FormType__,__UserId__]

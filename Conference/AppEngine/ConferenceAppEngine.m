@@ -272,6 +272,44 @@
     
     [self enqueueOperation:op];
     
+
+}
+
+-(void)checkYoutubeLink:(NSString*)youtubeId onCompletion:(checkYouTubeBlock) cars onError:(MKNKErrorBlock) errorBlock{
+    
+    
+    NSString * url=[[NSString alloc] initWithFormat:@"http://gdata.youtube.com/feeds/api/videos/%@?v=2&alt=json",youtubeId];
+    
+    NSLog(@"url is %@", url);
+    
+    MKNetworkOperation *op =[[MKNetworkOperation alloc] initWithURLString:url params:nil   httpMethod:@"GET"];
+    
+    [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        
+        
+        
+        [completedOperation responseJSONWithCompletionHandler:^(id jsonObject) {
+            
+            cars(jsonObject);
+            
+            // NSLog(@"json output=%@",jsonObject);
+            
+            //  NSLog(@"jsonoutput=%@",jsonObject[@"stations"]);
+        }];
+        
+        
+    } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        
+        
+        NSLog(@"error=%@",[error description]);
+        errorBlock(error);
+        
+    } ];
+    
+    
+    
+    [self enqueueOperation:op];
+    
     
     
     
