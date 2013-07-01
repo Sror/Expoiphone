@@ -20,6 +20,6 @@
 @property (nonatomic, strong) MKNetworkOperation* imageLoadingOperation;
 
 
--(void)setNewsListToCell:(NSMutableDictionary *)newsDic;
+-(void)setNewsListToCell:(News *)newsObj;
 
 @end

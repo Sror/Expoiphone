@@ -263,4 +263,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)homeBtnAction:(id)sender {
+    
+    ConfMainViewController *cfMainView= [[ConfMainViewController alloc]initWithNibName:@"ConfMainViewController" bundle:nil];
+    [self.navigationController pushFadeViewController:cfMainView];
+    
+}
 @end

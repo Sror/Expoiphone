@@ -15,5 +15,6 @@
 
 
 @property (nonatomic, retain) NSMutableArray *favEventsArray;
+- (IBAction)homeBtnAction:(id)sender;
 
 @end

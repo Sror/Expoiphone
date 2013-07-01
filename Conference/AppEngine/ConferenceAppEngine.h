@@ -31,7 +31,7 @@
 
 typedef void (^EventsResponseBlock)(NSMutableArray *eventArray);
 typedef void (^industryCategoryResponseBlock)(NSMutableArray *industryArray);
-typedef void (^NewsListResponseBlock)(NSMutableDictionary *newsListDic);
+typedef void (^NewsListResponseBlock)(NSMutableArray *newsListArray);
 typedef void (^CurrentEventResponseBlock)(NSMutableArray *CurrentEventArray);
 typedef void (^ImageGalleryResponseBlock)(NSMutableArray *imageGaleryArray);
 typedef void (^VideoGalleryResponseBlock)(NSMutableArray *videoGaleryArray);

@@ -129,9 +129,9 @@
     [self.eventNameLabel setText:eventDetail.name];
     [self.categoryLabel setText:eventDetail.industry_category];
     [self.locationLabel setText:eventDetail.location];
-    [self.dateLabel setText:eventDetail.date];
-    [self.timeLabel setText:eventDetail.event_timing];
-    
+    [self.dateLabel setText:[NSString stringWithFormat:@"%@ - %@",[[ConferenceHelper SharedHelper] datefromString:eventDetail.start_date],[[ConferenceHelper SharedHelper] datefromString:eventDetail.end_date]]];
+    [self.timeLabel setText:[NSString stringWithFormat:@"%@ - %@",eventDetail.start_time,eventDetail.end_time]];
+    [self.descriptionTxtView setText:eventDetail.description];
     NSString *iconUrl=eventDetail.logo ;
     
     self.imageLoadingOperation=[ApplicationDelegate.appEngine imageAtURL:[NSURL URLWithString:iconUrl] completionHandler:^(UIImage *fetchedImage, NSURL *url, BOOL isInCache) {
@@ -147,7 +147,7 @@
 
 
 -(void)backBtnAction{
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController fadePopViewController];
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -276,6 +276,8 @@
 
 - (IBAction)adCalendarToolBarBtnAction:(id)sender {
     
+    
+    
 }
 
 - (IBAction)mapToolBarBtnAction:(id)sender {
@@ -314,9 +316,7 @@
             [loc setViewType:IMGVIEW];
             [loc setTitleStr:[dic objectForKey:@"location"]];
             [self.navigationController pushFadeViewController:loc];
-           // self.navigationController
-            //[self.navigationController]
-          // [self.nav]
+        
         }
         
         
@@ -335,9 +335,100 @@
   
 }
 
+- (IBAction)callToolBarBtnAction:(id)sender {
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://+97142689090"]]];
+    
+    
+}
+
 - (IBAction)shareToolBarBtnAction:(id)sender {
     
+    
     UIActionSheet *photoSourcePicker = [[UIActionSheet alloc] initWithTitle:nil
+                                                                   delegate:self cancelButtonTitle:@"Cancel"
+                                                     destructiveButtonTitle:nil
+                                                          otherButtonTitles:@"Facebook",
+                                        @"Twitter",
+                                        nil,
+                                        nil];
+    
+    [photoSourcePicker showInView:self.view];
+    
+    
+    
+}
+
+- (void)actionSheet:(UIActionSheet *)modalView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	switch (buttonIndex)
+	{
+		case 0:
+        {
+            NSLog(@"FB share");
+            
+            if ([[FBSession activeSession] isOpen]) {
+                NSLog(@"Valid session");
+                [ApplicationDelegate publishStory];
+                //  [[FBSession activeSession] closeAndClearTokenInformation];
+            }
+            else{
+                
+                [ApplicationDelegate openSessionWithAllowLoginUI:YES];}
+            
+        }
+            break;
+        case 1:
+        {
+            NSLog(@"Twitt share");
+            
+            if([TWTweetComposeViewController canSendTweet])
+            {
+                TWTweetComposeViewController *tweetSheet = [[TWTweetComposeViewController alloc] init];
+                [tweetSheet setInitialText:@"Expo Centre Sharjah"];
+                // [tweetSheet addImage:[UIImage imageWithContentsOfFile:[thumbPath stringByAppendingPathComponent:[NSString stringWithFormat:@"img.jpg"]]]];
+                
+                [tweetSheet addImage:[UIImage imageNamed:@"logo.jpg"]];
+                //  [self.navController presentModalViewController:tweetSheet animated:YES];
+                //   [self.navigationController]
+                
+                [self presentViewController:tweetSheet animated:YES completion:nil];
+                tweetSheet.completionHandler = ^(TWTweetComposeViewControllerResult result)  {
+                    
+                    [tweetSheet.view removeFromSuperview];
+                    switch (result) {
+                        case TWTweetComposeViewControllerResultCancelled:
+                            //[self.HUD hide:YES];
+                            
+                            NSLog(@"TWTweetComposeViewControllerResultCancelled");
+                            break;
+                        case TWTweetComposeViewControllerResultDone: {
+                            
+                            NSLog(@"TWTweetComposeViewControllerResultDone");
+                            
+                            break;
+                        default:
+                            break;
+                        }
+                    }
+                };
+            }else
+            {
+                // you can show alert here
+                // [self.HUD hide:YES];
+                UIAlertView *twitAlert = [[UIAlertView alloc]initWithTitle:@"SharjahExpoCentre" message:@"Please add one Twitter account to your settings and try again" delegate:self cancelButtonTitle:@"oK" otherButtonTitles:nil, nil];
+                [twitAlert show];
+            }
+        }
+            break;
+        default:
+            break;
+            
+    }
+}
+
+    
+    /*UIActionSheet *photoSourcePicker = [[UIActionSheet alloc] initWithTitle:nil
                                                                    delegate:self cancelButtonTitle:@"Cancel"
                                                      destructiveButtonTitle:nil
                                                           otherButtonTitles:@"Facebook",
@@ -351,12 +442,7 @@
     
 }
 
-- (IBAction)callToolBarBtnAction:(id)sender {
-    
-     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://+97142689090"]]];
-    
-    
-}
+
 - (void)actionSheet:(UIActionSheet *)modalView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
 	switch (buttonIndex)
@@ -506,7 +592,7 @@ case 3:
     }
 }
 }
-
+*/
 
 #pragma mark - FGalleryViewControllerDelegate Methods
 

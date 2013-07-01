@@ -8,6 +8,8 @@
 
 #import "ConfMainViewController.h"
 #import "EventsDetailViewController.h"
+#import "NewsCell.h"
+#import "ExpoNewsDetailViewController.h"
 
 @interface ConfMainViewController ()
 
@@ -27,6 +29,7 @@
         
         
         currentEventArr = [[NSMutableArray alloc]init];
+        latestNewsList = [[NSMutableArray alloc]init];
 
             }
     return self;
@@ -137,7 +140,6 @@
         
 
         Events *event = [self.currentEventArr objectAtIndex:i];
-        
         NSLog(@"dic is %@",event.event_id);
        
         UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(22, 11,contentView.frame.size.width-40, contentView.frame.size.height - 23)];
@@ -151,11 +153,32 @@
         UIImageView *imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(41,29,78,56)];
         
         NSLog(@"url is %@",event.logo);
+        
+        NSString *iconUrl = event.logo;
+        
+        self.imageLoadingOperation=[ApplicationDelegate.appEngine imageAtURL:[NSURL URLWithString:iconUrl] completionHandler:^(UIImage *fetchedImage, NSURL *url, BOOL isInCache) {
+            
+            
+            if([iconUrl isEqualToString:[url absoluteString]]) {
+                
+                [UIView animateWithDuration:isInCache?0.0f:0.4f delay:0 options:UIViewAnimationOptionShowHideTransitionViews animations:^{
+                    imgView2.image = fetchedImage;
+                } completion:nil];
+            }
+            
+            
+        } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+            
+            
+            
+        }];
+
+
        /* [imgView2 setImageFromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",event.logo]]];*/
-        [imgView2 setImage:[UIImage imageNamed:@"add1.png"]];
+       // [imgView2 setImage:[UIImage imageNamed:@"add1.png"]];
         [contentView addSubview:imgView2];
         
-        UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(132, 20, 170, 25)];
+        UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 22, 170, 25)];
         [titleLabel setBackgroundColor:[UIColor clearColor]];
         [titleLabel setFont:[UIFont boldSystemFontOfSize:14.0f]];
         [titleLabel setTextColor:[UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1]];
@@ -170,7 +193,7 @@
         [dateLabel setText:[NSString stringWithFormat:@"%@-%@",[[ConferenceHelper SharedHelper] datefromString:event.start_date],[[ConferenceHelper SharedHelper] datefromString:event.end_date]]];
         [contentView addSubview:dateLabel];
         
-        UILabel *cateLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 58, 150, 30)];
+        UILabel *cateLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 54, 150, 30)];
         [cateLabel setFont:[UIFont boldSystemFontOfSize:11.0f]];
         [cateLabel setBackgroundColor:[UIColor clearColor]];
         [cateLabel setTextColor:[UIColor blackColor]];
@@ -181,7 +204,6 @@
         UIImageView *imgView3 = [[UIImageView alloc] initWithFrame:CGRectMake(280,55,16,25)];
         [imgView3 setImage:[UIImage imageNamed:@"detdiscl-hom.png"]];
         [contentView addSubview:imgView3];
-        
         
         
         UIButton *myBtn =[UIButton buttonWithType:UIButtonTypeCustom];
@@ -212,13 +234,8 @@
     [self.navigationController setToolbarHidden:NO animated:NO];
     //[self arrangeHorizontalScrollView];
     
-    NSLog(@"date is %@",[[ConferenceHelper SharedHelper]datefromString:@"2013-07-02"]);
-    
-    
-    
-    
-   // [[UIToolbar appearance] setBackgroundImage:[UIImage imageNamed:@"toolbar_bg.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
-    
+
+     
     [ApplicationDelegate.HUD show:YES];
     
     [ApplicationDelegate.appEngine currentEventList:@"" onCompletion:^(NSMutableArray *CurrentEventArray) {
@@ -231,9 +248,9 @@
         NSLog(@"Current event array count is %d",currentEventArr.count);
         [ApplicationDelegate.appCurrentEventArray removeAllObjects];
         [ApplicationDelegate.appCurrentEventArray addObjectsFromArray:self.currentEventArr];
-        [ApplicationDelegate.HUD hide:YES];
+       // [ApplicationDelegate.HUD hide:YES];
         [self arrangeHorizontalScrollView];
-        //[self getAllNewsListFromServer];
+        [self getAllNewsListFromServer];
         
     } onError:^(NSError *error) {
         [ApplicationDelegate.HUD hide:YES];
@@ -246,13 +263,30 @@
     
 }
 
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.navigationController setToolbarHidden:YES animated:NO];
+    
+}
+
 -(void)getAllNewsListFromServer{
-    [ApplicationDelegate .appEngine newsList:@"" onCompletion:^(NSMutableDictionary *newsListDIc) {
+    [ApplicationDelegate .appEngine newsList:@"" onCompletion:^(NSMutableArray *newsListArray) {
         
         [ApplicationDelegate.HUD hide:YES];
-        //for (NSMutableDictionary *dic in new) {
-            NSLog(@"the newsListDIc = %@",newsListDIc);
-        //}
+        
+        [[self latestNewsList]removeAllObjects];
+    for (NSMutableDictionary *dic in newsListArray) {
+            NSLog(@"the newsListDIc = %@",dic);
+        
+        [self.latestNewsList addObject:[[ConferenceHelper SharedHelper] getNewsObjectFromDictionary:dic]];
+        }
+        
+        NSLog(@"Current event array count is %d",latestNewsList.count);
+        [ApplicationDelegate.appLatestNewsArray removeAllObjects];
+        [ApplicationDelegate.appLatestNewsArray addObjectsFromArray:self.latestNewsList];
+        [self.latestNewsTableView reloadData];
+
     } onError:^(NSError *error) {
         [ApplicationDelegate.HUD hide:YES];
         [UIAlertView showWithError:error];
@@ -303,7 +337,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 102;
+    return 80;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -312,8 +346,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"EventsCell";
-    EventsCell *cell = (EventsCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"NewsCell";
+    NewsCell *cell = (NewsCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
         NSArray *nibs = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
@@ -321,7 +355,7 @@
         {
             if([currentObject isKindOfClass:[UITableViewCell class]])
             {
-                cell = (EventsCell *)currentObject;
+                cell = (NewsCell *)currentObject;
                 /* CALayer * l = [cell.buildingBgImgView layer];
                  [l setMasksToBounds:YES];
                  [l setCornerRadius:8.0];*/
@@ -331,6 +365,9 @@
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    News *new = [latestNewsList objectAtIndex:indexPath.row];
+    [cell setNewsListToCell:new];
    /* Events *event=[eventsList objectAtIndex:indexPath.row];
     
     //   NSLog(@"Nearby aray in list is %@", [prop.NearBy description]);
@@ -344,10 +381,9 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
-   /* EventsDetailViewController *listDetail = [[EventsDetailViewController alloc]initWithNibName:@"EventsDetailViewController" bundle:nil];
-    listDetail.eventDetail = [eventsList objectAtIndex:indexPath.row];
-    [self.navigationController pushViewController:listDetail animated:YES];*/
-    
+    ExpoNewsDetailViewController *listDetail = [[ExpoNewsDetailViewController alloc]initWithNibName:@"ExpoNewsDetailViewController" bundle:nil];
+    listDetail.newsDetail = [latestNewsList objectAtIndex:indexPath.row];
+    [self.navigationController pushFadeViewController:listDetail];
     
 }
 

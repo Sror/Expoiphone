@@ -51,9 +51,13 @@
     [self.eventNameLabel setText:event.name];
     [self.categoryLabel setText:event.industry_category];
     [self.LocationLabel setText:event.location];
-    [self.dateLabel setText:event.date];
+    //[self.dateLabel setText:event.date];
     [self.timeLabel setText:event.event_timing];
 
+     
+     [self.dateLabel setText:[NSString stringWithFormat:@"%@ - %@",[[ConferenceHelper SharedHelper] datefromString:event.start_date],[[ConferenceHelper SharedHelper] datefromString:event.end_date]]];
+    [self.timeLabel setText:[NSString stringWithFormat:@"%@ - %@",event.start_time,event.end_time]];
+    
     
  /*   [self.propertyIdLabel setText:prop.PropertyId];
     [self.buildingTypeLabel setText:prop.TypeOfProperty];

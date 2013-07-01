@@ -37,4 +37,8 @@
 
 
 
+@property (nonatomic, strong) NSString* loadingImageURLString;
+@property (nonatomic, strong) MKNetworkOperation* imageLoadingOperation;
+
+
 @end

@@ -28,21 +28,23 @@
     // Configure the view for the selected state
 }
 
--(void)setNewsListToCell:(NSMutableDictionary *)newsDic{
+-(void)setNewsListToCell:(News *)newsObj{
     
    // NSMutableDictionary *myDic = [med]
     
    // [self.locationLabel setHidden:YES];
     
-    /*[self.listLabel setFont:[UIFont fontWithName:@"AdelleBasic-Bold" size:16.0]];
+    //[self.listLabel setFont:[UIFont fontWithName:@"AdelleBasic-Bold" size:16.0]];
 
+    
+    NSLog(@"tit %@",newsObj.news_title);
 
     
-    [self.listLabel setText:tips.Title];
+    [self.locationLabel setText:newsObj.news_title];
     
-    NSString *iconUrl=tips.Image;
+    NSString *iconUrl=newsObj.news_image;
     
-    self.imageLoadingOperation=[ApplicationDelegate.amEngine imageAtURL:[NSURL URLWithString:iconUrl] completionHandler:^(UIImage *fetchedImage, NSURL *url, BOOL isInCache) {
+    self.imageLoadingOperation=[ApplicationDelegate.appEngine imageAtURL:[NSURL URLWithString:iconUrl] completionHandler:^(UIImage *fetchedImage, NSURL *url, BOOL isInCache) {
         
         
         if([iconUrl isEqualToString:[url absoluteString]]) {
@@ -55,7 +57,7 @@
         
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
         
-    }];*/
+    }];
     
 
 }

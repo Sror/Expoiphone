@@ -22,10 +22,15 @@
     
 }
 
+
+@property (nonatomic) int textFieldInt;
+
 @property (strong, nonatomic) IBOutlet UITextField *keywordTxtField;
 @property (strong, nonatomic) IBOutlet UITextField *upcomingEventTxtField;
 @property (strong, nonatomic) IBOutlet UITextField *industrialTxtField;
 @property (strong, nonatomic) IBOutlet UITextField *dateTxtField;
+
+@property (strong, nonatomic) IBOutlet UITextField *endDateTxtField;
 
 @property (nonatomic, retain) NSMutableArray *industrialArray;
 @property (nonatomic, retain) NSMutableArray *eventTypeArray;

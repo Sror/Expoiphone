@@ -41,15 +41,17 @@
     dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"dd MMMM YYYY"];
     
-    eventTypeArray = [[NSMutableArray alloc]initWithObjects:@"Upcoming event",@"Sarted Event",@"Test Event",@"End of Event", nil];
+    eventTypeArray = [[NSMutableArray alloc]initWithObjects:@"Upcoming event",@"Current Event", nil];
     
     
     [self.view addSubview:ApplicationDelegate.HUD];
     [ApplicationDelegate.HUD setLabelText:@"Loading"];
     
-    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 28, 20)];
+   /* UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 28, 20)];
     self.keywordTxtField.leftView = paddingView;
-    self.keywordTxtField.leftViewMode = UITextFieldViewModeAlways;
+    self.keywordTxtField.leftViewMode = UITextFieldViewModeAlways;*/
+    
+    [[UIToolbar appearance] setBackgroundImage:[UIImage imageNamed:@"bg.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
 }
 
 
@@ -58,6 +60,10 @@
     
     //[[UIToolbar appearance] setBackgroundImage:[[UIImage alloc] init] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
     
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[UIToolbar appearance] setBackgroundImage:[UIImage imageNamed:@"toolbar_bg.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
 }
 
 -(void)DatePickerView
@@ -106,8 +112,13 @@
 
 -(IBAction)DatePickerDoneClick{
     
-    
-    dateTxtField.text = [dateFormatter stringFromDate:[theDatePicker date]];
+    if ([self textFieldInt]==13) {
+         dateTxtField.text = [dateFormatter stringFromDate:[theDatePicker date]];
+    }
+    else{
+        self.endDateTxtField.text = [dateFormatter stringFromDate:[theDatePicker date]];
+    }
+   
     [pickerViewDate dismissWithClickedButtonIndex:0 animated:YES];
     
 }
@@ -163,6 +174,17 @@
         
     }
     else if (textField.tag == 13){
+        
+        [self setTextFieldInt:13];
+        [self.keywordTxtField resignFirstResponder];
+        
+        [self DatePickerView];
+        
+        return NO;
+    }
+    else if (textField.tag == 14){
+        
+        [self setTextFieldInt:14];
         [self.keywordTxtField resignFirstResponder];
         
         [self DatePickerView];

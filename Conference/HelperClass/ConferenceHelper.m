@@ -68,6 +68,7 @@
     events.twitter_link=[dic objectForKey:@"twitter_link"];
     events.linked_in_link=[dic objectForKey:@"linked_in_link"];
     events.instagram_link = [dic objectForKey:@"instagram_link"];
+    events.description = [dic objectForKey:@"description"];
     
     [events.imageGallery addObjectsFromArray:[dic objectForKey:@"image_gallery"]];
     [events.sponsors addObjectsFromArray:[dic objectForKey:@"sponsors"]];
@@ -95,6 +96,21 @@
     
 }
 
+
+
+-(News *)getNewsObjectFromDictionary:(NSMutableDictionary *)dic;{
+    
+    News *new = [[News alloc]init];
+    
+    [new setNews_id:[dic objectForKey:@"id"]];
+    [new setNews_description:[dic objectForKey:@"description"]];
+    [new setNews_title:[dic objectForKey:@"title"]];
+    [new setNews_image:[dic objectForKey:@"image"]];
+    
+    return new;
+    
+}
+
 #pragma mark -date methods
 
 -(NSString *)datefromString:(NSString *)dateString{
@@ -108,6 +124,10 @@
     dateStr = [dateFormat stringFromDate:[date dateByAddingTimeInterval:[[NSTimeZone defaultTimeZone] secondsFromGMT]]];
     NSLog(@"Retiurned date  is %@",dateStr);
     return dateStr;
+    
+}
+-(NSString *)timeFromSrtring:(NSString*)timeString{
+    
     
 }
 

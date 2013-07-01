@@ -10,7 +10,7 @@
 
 @implementation Events
 
-@synthesize name,event_id,date,location,industry_category,event_timing,event_duration,lattitude,longitude,logo,website,email,shared_link,facebook_link,twitter_link,linked_in_link,instagram_link,end_date,end_time,start_date,start_time,brochure;
+@synthesize name,event_id,date,location,industry_category,event_timing,event_duration,lattitude,longitude,logo,website,email,shared_link,facebook_link,twitter_link,linked_in_link,instagram_link,end_date,end_time,start_date,start_time,brochure,description;
 @synthesize locationArray,media_partners,sponsors,supporters,imageGallery,exhibitorsArray,organizers,videoGalleryArray;
 
 

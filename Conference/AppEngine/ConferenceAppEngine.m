@@ -106,13 +106,14 @@
     NSLog(@"currentEvent url >>  http://conferenceapp.crisiltech.com/controller/event.php?action=getCurrentEvents");
     
     NSMutableDictionary *dic=[[NSMutableDictionary alloc] init];
-    [dic setValue:@"getCurrentEvents" forKey:@"action"];
+   // [dic setValue:@"getCurrentEvents" forKey:@"action"];
+     [dic setValue:@"getlist" forKey:@"action"];
     MKNetworkOperation *op = [self operationWithPath:CURRENTEVENTSURL params:dic
                                           httpMethod:@"POST"];
     
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         
-        NSLog(@"currentEventList.responseString %@", completedOperation.responseString);
+     //   NSLog(@"currentEventList.responseString %@", completedOperation.responseString);
         
         [completedOperation responseJSONWithCompletionHandler:^(id jsonObject) {
             

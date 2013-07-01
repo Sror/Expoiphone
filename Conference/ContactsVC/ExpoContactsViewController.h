@@ -11,7 +11,7 @@
 #import "MapViewControllerr.h"
 
 
-@interface ExpoContactsViewController : UIViewController{
+@interface ExpoContactsViewController : UIViewController<UIActionSheetDelegate>{
     
     
 }

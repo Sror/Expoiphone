@@ -29,6 +29,8 @@
 @property(nonatomic,strong)NSString *linked_in_link;
 @property(nonatomic,strong)NSString *instagram_link;
 
+@property(nonatomic, retain)NSString *description;
+
 @property(nonatomic,strong)NSString *end_date;
 @property(nonatomic,strong)NSString *end_time;
 

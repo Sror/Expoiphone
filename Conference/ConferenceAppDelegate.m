@@ -100,16 +100,17 @@
     self.appFavEventArray = [[NSMutableArray alloc]init];
     self.appImageGalleryArray = [[NSMutableArray alloc]init];
     self.appCurrentEventArray = [[NSMutableArray alloc]init];
+    self.appLatestNewsArray = [[NSMutableArray alloc]init];
     
 
     
         self.postParams =
         [[NSMutableDictionary alloc] initWithObjectsAndKeys:
-         @"https://developers.facebook.com/ios", @"link",
-         @"https://developers.facebook.com/attachment/iossdk_logo.png", @"picture",
-        @"Facebook SDK for iOS", @"name",
-         @"Build great social apps and get more installs.", @"caption",
-         @"The Facebook SDK for iOS makes it easier and faster to develop Facebook integrated iOS apps.", @"description",
+         @"http://www.expo-centre.ae/en/", @"link",
+         @"http://www.expo-centre.ae/en/images/logo.jpg", @"picture",
+        @"iOS App is now available", @"name",
+         @"Expo Centre Sharjah", @"caption",
+         @"Expo Centre Sharjah is the centerpiece of a planned Expo City in the emirate of Sharjah, Strategically located and spread across 128,000 square metres; The centre provides state-of-the-art facilities and professional services to the exhibitions industry,It is the first established trade fair centre in the country and is considered a pioneer in its field.", @"description",
          nil];
     
 }
@@ -347,6 +348,7 @@
                      [self.mAdjustImageView setHidden:NO];
                      [self.cameraBtn setHidden:YES];
                      [self publishPhoto];*/
+                     [self publishStory];
                  }];
                 
             }
@@ -418,8 +420,8 @@
                           [result objectForKey:@"id"]];
          }
          // Show the result in an alert
-         [[[UIAlertView alloc] initWithTitle:@"Result"
-                                     message:alertText
+         [[[UIAlertView alloc] initWithTitle:@"Facebook"
+                                     message:@"Facebook share successfully completed"
                                     delegate:self
                            cancelButtonTitle:@"OK!"
                            otherButtonTitles:nil]

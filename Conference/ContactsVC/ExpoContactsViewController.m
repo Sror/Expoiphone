@@ -7,7 +7,7 @@
 //
 
 #import "ExpoContactsViewController.h"
-
+#import "ExpoLocationViewController.h"
 @interface ExpoContactsViewController ()
 
 @end
@@ -45,6 +45,13 @@
 
 - (IBAction)enquiryBtnAction:(id)sender {
     
+    /*ExpoLocationViewController *loc = [[ExpoLocationViewController alloc]initWithNibName:@"ExpoLocationViewController" bundle:nil];
+    [loc setViewType:WEBVIEW];
+    [loc setWebViewType:EVENTREGISTRATION];
+    [loc setTitleStr:@"event_registration"];
+    //[loc setEventID:eventDetail.event_id];
+    [self.navigationController pushFadeViewController:loc];*/
+    
     
     
 }
@@ -52,16 +59,101 @@
 - (IBAction)shareBtnAction:(id)sender {
     
     
+    UIActionSheet *photoSourcePicker = [[UIActionSheet alloc] initWithTitle:nil
+                                                                   delegate:self cancelButtonTitle:@"Cancel"
+                                                     destructiveButtonTitle:nil
+                                                          otherButtonTitles:@"Facebook",
+                                        @"Twitter",
+                                        nil,
+                                        nil];
     
+    [photoSourcePicker showInView:self.view];
+    
+    
+    
+}
+
+- (void)actionSheet:(UIActionSheet *)modalView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	switch (buttonIndex)
+	{
+		case 0:
+        {
+            NSLog(@"FB share");
+            
+            if ([[FBSession activeSession] isOpen]) {
+                NSLog(@"Valid session");
+                [ApplicationDelegate publishStory];
+                //  [[FBSession activeSession] closeAndClearTokenInformation];
+            }
+            else{
+                
+                [ApplicationDelegate openSessionWithAllowLoginUI:YES];}
+            
+        }
+         break;
+        case 1:
+        {
+         NSLog(@"Twitt share");
+            
+            if([TWTweetComposeViewController canSendTweet])
+            {
+                TWTweetComposeViewController *tweetSheet = [[TWTweetComposeViewController alloc] init];
+                [tweetSheet setInitialText:@"Expo Centre Sharjah"];
+                // [tweetSheet addImage:[UIImage imageWithContentsOfFile:[thumbPath stringByAppendingPathComponent:[NSString stringWithFormat:@"img.jpg"]]]];
+                
+                [tweetSheet addImage:[UIImage imageNamed:@"logo.jpg"]];
+                //  [self.navController presentModalViewController:tweetSheet animated:YES];
+                //   [self.navigationController]
+                
+                [self presentViewController:tweetSheet animated:YES completion:nil];
+                tweetSheet.completionHandler = ^(TWTweetComposeViewControllerResult result)  {
+                    
+                    [tweetSheet.view removeFromSuperview];
+                    switch (result) {
+                        case TWTweetComposeViewControllerResultCancelled:
+                            //[self.HUD hide:YES];
+                            
+                            NSLog(@"TWTweetComposeViewControllerResultCancelled");
+                            break;
+                        case TWTweetComposeViewControllerResultDone: {
+                            
+                            NSLog(@"TWTweetComposeViewControllerResultDone");
+                            
+                            break;
+                        default:
+                            break;
+                        }
+                    }
+                };
+            }else
+            {
+                // you can show alert here
+                // [self.HUD hide:YES];
+                UIAlertView *twitAlert = [[UIAlertView alloc]initWithTitle:@"SharjahExpoCentre" message:@"Please add one Twitter account to your settings and try again" delegate:self cancelButtonTitle:@"oK" otherButtonTitles:nil, nil];
+                [twitAlert show];
+            }
+        }
+            break;
+        default:
+        break;
+            
+    }
 }
 
 - (IBAction)mapBtnAction:(id)sender {
     
     MapViewControllerr *mpView = [[MapViewControllerr alloc] initWithNibName:@"MapViewControllerr" bundle:nil];
+    [mpView setLat:@"25.357522"];
+    [mpView setLon:@"55.391865"];
     [self.navigationController pushFadeViewController:mpView];
 }
 
 - (IBAction)callBtnAction:(id)sender {
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://+97165770000"]]];
+    
+    
 }
 
 @end
