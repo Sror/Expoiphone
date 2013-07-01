@@ -67,7 +67,7 @@
     [super viewWillAppear:animated];
     if (fromView) {
         [self.skipBtn setHidden:YES];
-        [self.submitBtn setFrame:CGRectMake(121, 325, 80, 33)];
+        [self.submitBtn setFrame:CGRectMake(121, 335, 80, 33)];
     }
 }
 
@@ -283,9 +283,17 @@
         [[ConferenceHelper SharedHelper]isEmptyString:self.IndustryTxtField.text]||
         [[ConferenceHelper SharedHelper]isEmptyString:self.socialTxtField.text]) {
         NSLog(@"empty");
-        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Please fill up all fields before you submit" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Skip Registration", nil];
-        alertView.tag = 20;
-        [alertView show];
+        
+        if (!fromView) {
+            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Please fill up all fields before you submit" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Skip Registration", nil];
+            alertView.tag = 20;
+            [alertView show];
+        }else{
+            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Please fill up all fields before you submit" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alertView show];
+        }
+        
+       
         
     }
     else{

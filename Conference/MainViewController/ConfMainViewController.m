@@ -189,11 +189,11 @@
         UILabel *dateLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 44, 150, 15)];
         [dateLabel setFont:[UIFont boldSystemFontOfSize:10.0f]];
         [dateLabel setBackgroundColor:[UIColor clearColor]];
-        [dateLabel setTextColor:[UIColor lightGrayColor]];
+        [dateLabel setTextColor:[UIColor grayColor]];
         [dateLabel setText:[NSString stringWithFormat:@"%@-%@",[[ConferenceHelper SharedHelper] datefromString:event.start_date],[[ConferenceHelper SharedHelper] datefromString:event.end_date]]];
         [contentView addSubview:dateLabel];
         
-        UILabel *cateLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 54, 150, 30)];
+        UILabel *cateLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 56, 150, 30)];
         [cateLabel setFont:[UIFont boldSystemFontOfSize:11.0f]];
         [cateLabel setBackgroundColor:[UIColor clearColor]];
         [cateLabel setTextColor:[UIColor blackColor]];

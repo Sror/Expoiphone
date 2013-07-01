@@ -129,8 +129,10 @@
     [ApplicationDelegate hideTabBar:self.tabBarController];
     
     [self.eventNameLabel setText:eventDetail.name];
-    [self.categoryLabel setText:eventDetail.industry_category];
-    [self.locationLabel setText:eventDetail.location];
+//    [self.categoryLabel setText:eventDetail.industry_category];
+//    [self.locationLabel setText:eventDetail.location];
+    [self.categoryLabel setText:@"Education Technology & Resources"];
+    [self.locationLabel setText:@"Sharjah, UAE"];
     [self.dateLabel setText:[NSString stringWithFormat:@"%@ - %@",[[ConferenceHelper SharedHelper] datefromString:eventDetail.start_date],[[ConferenceHelper SharedHelper] datefromString:eventDetail.end_date]]];
     [self.timeLabel setText:[NSString stringWithFormat:@"%@ - %@",eventDetail.start_time,eventDetail.end_time]];
     [self.descriptionTxtView setText:eventDetail.description];
