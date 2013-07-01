@@ -17,7 +17,7 @@
 
 #import "UINavigationController+Push.h"
 
-
+#import "XOSplashVideoController.h"
 #import "MBProgressHUD.h"
 
 #define ApplicationDelegate ((ConferenceAppDelegate *)[UIApplication sharedApplication].delegate)
@@ -29,7 +29,7 @@ extern NSString *const FBSessionStateChangedNotification;
 
 @class ConferenceViewController;
 
-@interface ConferenceAppDelegate : UIResponder <UIApplicationDelegate,MBProgressHUDDelegate>
+@interface ConferenceAppDelegate : UIResponder <UIApplicationDelegate,MBProgressHUDDelegate,XOSplashVideoDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UINavigationController * navController;

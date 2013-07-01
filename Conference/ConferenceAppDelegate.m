@@ -30,14 +30,62 @@
     
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"titlebar_bg.png"] forBarMetrics:UIBarMetricsDefault];
     
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
     
-    self.window.rootViewController = self.navController;
-    self.HUD = [[MBProgressHUD alloc]initWithView:self.navController.view];
-    HUD.delegate = self;
+    //[self returnNextDay:[NSDate date]];
+    
+    NSString *portraitVideoName = @"expoSplash";
+    NSString *portraitImageName = @"expoSplash.png";
+    
+    
+    NSURL *portraitUrl = [[NSBundle mainBundle] URLForResource:portraitVideoName withExtension:@"mp4"];
+    
+    NSLog(@"the path %@",portraitUrl);
+    
+    XOSplashVideoController *splashVideoController =
+    [[XOSplashVideoController alloc] initWithVideoPortraitUrl:portraitUrl
+                                            portraitImageName:portraitImageName
+                                                 landscapeUrl:nil
+                                           landscapeImageName:nil
+                                                     delegate:self];
+    
+    
+     self.window.rootViewController = splashVideoController;
+    
+//    self.window.rootViewController = self.navController;
+
     
     [self.window makeKeyAndVisible];
     return YES;
 }
+
+-(void)splashVideoLoaded:(XOSplashVideoController *)splashVideo
+{
+    
+    
+    
+    NSLog(@"called");
+    
+    
+}
+-(void)splashVideoComplete:(XOSplashVideoController *)splashVideo
+{
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    
+
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent
+                                                animated:YES];
+    self.HUD = [[MBProgressHUD alloc]initWithView:self.navController.view];
+    HUD.delegate = self;
+    self.window.rootViewController = self.navController;
+    
+
+    //  [self.tabBarController presentModalViewController:splash animated:YES];
+    //
+    //    [self.tabBarController performSelector:@selector(dismissModalViewControllerAnimated:) withObject:nil  afterDelay:1.0];
+    
+}
+
 
 
 -(void)Initializer{
