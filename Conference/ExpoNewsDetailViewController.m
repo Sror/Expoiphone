@@ -32,6 +32,9 @@
     
     [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"News Details"]];
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
+    
+    [self.newsTitleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:15.0]];
+    [self.newsDetailTxtView setFont:[UIFont fontWithName:@"Eagle-Light" size:12.0]];
 }
 
 

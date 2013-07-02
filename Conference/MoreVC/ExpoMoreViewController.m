@@ -37,6 +37,11 @@
     [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"More"]];
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
     
+    [self.mediaBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:19.0]];
+    [self.socialMediaBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:19.0]];
+    [self.subFormBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:19.0]];
+    [self.signInBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:19.0]];
+    [self.visitorBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:19.0]];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController setToolbarHidden:YES animated:NO];

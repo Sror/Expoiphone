@@ -35,6 +35,8 @@
     
     [self.view addSubview:ApplicationDelegate.HUD];
     [ApplicationDelegate.HUD setLabelText:@"Checking"];
+    [self.usernameTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
+    [self.passwordTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
 
 }
 
@@ -53,7 +55,7 @@
 - (IBAction)loginBtnAction:(id)sender {
     
     
-  /*  [self.usernameTxtField resignFirstResponder];
+    [self.usernameTxtField resignFirstResponder];
     [self.passwordTxtField resignFirstResponder];
     
     if ([[ConferenceHelper SharedHelper]isEmptyString:self.usernameTxtField.text] || [[ConferenceHelper SharedHelper]isEmptyString:self.passwordTxtField.text]) {
@@ -78,12 +80,12 @@
                 [alert show];
                 
             }
-            else{*/
+            else{
                 
                 StaffLoginViewController *stafView = [[StaffLoginViewController alloc]initWithNibName:@"StaffLoginViewController" bundle:nil];
                 [self.navigationController pushFadeViewController:stafView];
                 
-           /* }
+            }
             
         } onError:^(NSError *error) {
             
@@ -92,7 +94,7 @@
             [UIAlertView showWithError:error];
 
         }];
-    }*/
+    }
   }
 
 - (IBAction)homeBtnAction:(id)sender {

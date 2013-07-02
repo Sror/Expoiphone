@@ -16,8 +16,14 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *aboutUsScrollView;
 
 
-- (IBAction)buttonClickAction:(id)sender;
+@property (strong, nonatomic) IBOutlet UIButton *historyBtn;
+@property (strong, nonatomic) IBOutlet UIButton *mgmntBtn;
+@property (strong, nonatomic) IBOutlet UIButton *servicesBtn;
+@property (strong, nonatomic) IBOutlet UIButton *faciltiesBtn;
 
+
+
+- (IBAction)buttonClickAction:(id)sender;
 - (IBAction)homeBtnAction:(id)sender;
 
 

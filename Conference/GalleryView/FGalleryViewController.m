@@ -662,6 +662,7 @@
 				
 				_caption.numberOfLines = numLines;
 				_caption.text = caption;
+                [_caption setFont:[UIFont fontWithName:@"Eagle-Light" size:12.0]];
 				
 				NSInteger containerHeight = height+kCaptionPadding*2;
 				_captionContainer.frame = CGRectMake(0, -containerHeight, _container.frame.size.width, containerHeight );

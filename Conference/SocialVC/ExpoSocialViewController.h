@@ -20,6 +20,10 @@
 - (IBAction)youTubeBtnAction:(id)sender;
 - (IBAction)instBtnAction:(id)sender;
 - (IBAction)twitBtnAction:(id)sender;
+@property (strong, nonatomic) IBOutlet UIButton *fbBtn;
+@property (strong, nonatomic) IBOutlet UIButton *ytBtn;
+@property (strong, nonatomic) IBOutlet UIButton *igBtn;
+@property (strong, nonatomic) IBOutlet UIButton *twtBtn;
 
 
 - (IBAction)homeBtnAction:(id)sender;

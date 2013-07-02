@@ -18,6 +18,9 @@
 - (IBAction)travelBtnAction:(id)sender;
 - (IBAction)hotelBtnAction:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UIButton *hotelBtn;
+@property (strong, nonatomic) IBOutlet UIButton *travelBtn;
+@property (strong, nonatomic) IBOutlet UIButton *abtBtn;
 
 - (IBAction)homeBtnAction:(id)sender;
 

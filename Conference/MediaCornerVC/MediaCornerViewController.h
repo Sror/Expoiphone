@@ -28,6 +28,9 @@
 - (IBAction)videoGalleryCloseBtnAction:(id)sender;
 - (IBAction)playVideoBtnAction:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UIButton *pressBtn;
+@property (strong, nonatomic) IBOutlet UIButton *imgGalleryBtn;
+@property (strong, nonatomic) IBOutlet UIButton *videoGalleryBtn;
 
 
 

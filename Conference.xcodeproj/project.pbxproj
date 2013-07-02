@@ -113,6 +113,8 @@
 		FB34E3EB176E59800036E396 /* travel.png in Resources */ = {isa = PBXBuildFile; fileRef = FB34E3E7176E59800036E396 /* travel.png */; };
 		FB34E3EC176E59800036E396 /* travel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB34E3E8176E59800036E396 /* travel@2x.png */; };
 		FB3AA8D71782829C00184566 /* Eagle-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = FB3AA8D61782829C00184566 /* Eagle-Light.otf */; };
+		FB3AA8DF1782964100184566 /* login-si.png in Resources */ = {isa = PBXBuildFile; fileRef = FB3AA8DD1782964100184566 /* login-si.png */; };
+		FB3AA8E01782964100184566 /* login-si@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB3AA8DE1782964100184566 /* login-si@2x.png */; };
 		FB428DF21764CBFA00E7EE14 /* EventsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB428DF01764CBF900E7EE14 /* EventsDetailViewController.m */; };
 		FB428DF31764CBFA00E7EE14 /* EventsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB428DF11764CBF900E7EE14 /* EventsDetailViewController.xib */; };
 		FB428DFF1764D55900E7EE14 /* exhibitorform.png in Resources */ = {isa = PBXBuildFile; fileRef = FB428DF51764D55900E7EE14 /* exhibitorform.png */; };
@@ -391,6 +393,8 @@
 		FB34E3E7176E59800036E396 /* travel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = travel.png; path = Conference/Images/MoreVC/travel.png; sourceTree = "<group>"; };
 		FB34E3E8176E59800036E396 /* travel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "travel@2x.png"; path = "Conference/Images/MoreVC/travel@2x.png"; sourceTree = "<group>"; };
 		FB3AA8D61782829C00184566 /* Eagle-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Eagle-Light.otf"; sourceTree = "<group>"; };
+		FB3AA8DD1782964100184566 /* login-si.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-si.png"; sourceTree = "<group>"; };
+		FB3AA8DE1782964100184566 /* login-si@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-si@2x.png"; sourceTree = "<group>"; };
 		FB428DEF1764CBF900E7EE14 /* EventsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventsDetailViewController.h; path = Conference/EventsDetailVC/EventsDetailViewController.h; sourceTree = "<group>"; };
 		FB428DF01764CBF900E7EE14 /* EventsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventsDetailViewController.m; path = Conference/EventsDetailVC/EventsDetailViewController.m; sourceTree = "<group>"; };
 		FB428DF11764CBF900E7EE14 /* EventsDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EventsDetailViewController.xib; path = Conference/EventsDetailVC/EventsDetailViewController.xib; sourceTree = "<group>"; };
@@ -658,6 +662,8 @@
 		FB333590176333C100C2DF64 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FB3AA8DD1782964100184566 /* login-si.png */,
+				FB3AA8DE1782964100184566 /* login-si@2x.png */,
 				FBC3CDAE17822768004DD4C3 /* bounceBg.png */,
 				FBC3CDAF17822769004DD4C3 /* close-b.png */,
 				FBC3CDB01782276A004DD4C3 /* go.png */,
@@ -1542,6 +1548,8 @@
 				FBC3CDB917822770004DD4C3 /* go@2x.png in Resources */,
 				FBC3CDC2178230CA004DD4C3 /* LBViewController.xib in Resources */,
 				FB3AA8D71782829C00184566 /* Eagle-Light.otf in Resources */,
+				FB3AA8DF1782964100184566 /* login-si.png in Resources */,
+				FB3AA8E01782964100184566 /* login-si@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

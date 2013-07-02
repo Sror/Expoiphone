@@ -114,10 +114,13 @@
     [self.view addSubview:ApplicationDelegate.HUD];
     [ApplicationDelegate.HUD setLabelText:@"Loading"];
     
-        
+    [self applyFonts];
     
 }
 
+-(void)applyFonts{
+    [self.latestNewsHeaderLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:17.0]];
+}
 
 
 -(void)arrangeHorizontalScrollView{
@@ -173,28 +176,28 @@
             
         }];
 
-
-       /* [imgView2 setImageFromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",event.logo]]];*/
-       // [imgView2 setImage:[UIImage imageNamed:@"add1.png"]];
         [contentView addSubview:imgView2];
         
         UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 22, 170, 25)];
         [titleLabel setBackgroundColor:[UIColor clearColor]];
-        [titleLabel setFont:[UIFont boldSystemFontOfSize:14.0f]];
+        //[titleLabel setFont:[UIFont boldSystemFontOfSize:14.0f]];
         [titleLabel setTextColor:[UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1]];
         [titleLabel setNumberOfLines:0];
         [titleLabel setText:event.name];
+        [titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
         [contentView addSubview:titleLabel];
         
         UILabel *dateLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 44, 150, 15)];
-        [dateLabel setFont:[UIFont boldSystemFontOfSize:10.0f]];
+        //[dateLabel setFont:[UIFont boldSystemFontOfSize:10.0f]];
+        [dateLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:10.0]];
         [dateLabel setBackgroundColor:[UIColor clearColor]];
         [dateLabel setTextColor:[UIColor grayColor]];
         [dateLabel setText:[NSString stringWithFormat:@"%@-%@",[[ConferenceHelper SharedHelper] datefromString:event.start_date],[[ConferenceHelper SharedHelper] datefromString:event.end_date]]];
         [contentView addSubview:dateLabel];
         
         UILabel *cateLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 56, 150, 30)];
-        [cateLabel setFont:[UIFont boldSystemFontOfSize:11.0f]];
+        [cateLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:13.0]];
+        //[cateLabel setFont:[UIFont boldSystemFontOfSize:11.0f]];
         [cateLabel setBackgroundColor:[UIColor clearColor]];
         [cateLabel setTextColor:[UIColor blackColor]];
         //[cateLabel setText:event.industry_category];
@@ -238,6 +241,7 @@
 
      
     [ApplicationDelegate.HUD show:YES];
+    [self.navigationController.toolbar setUserInteractionEnabled:NO];
     
     [ApplicationDelegate.appEngine currentEventList:@"" onCompletion:^(NSMutableArray *CurrentEventArray) {
         
@@ -255,6 +259,7 @@
         
     } onError:^(NSError *error) {
         [ApplicationDelegate.HUD hide:YES];
+        [self.navigationController.toolbar setUserInteractionEnabled:YES];
         [UIAlertView showWithError:error];
     }];
     
@@ -275,6 +280,7 @@
     [ApplicationDelegate .appEngine newsList:@"" onCompletion:^(NSMutableArray *newsListArray) {
         
         [ApplicationDelegate.HUD hide:YES];
+        [self.navigationController.toolbar setUserInteractionEnabled:YES];
         
         [[self latestNewsList]removeAllObjects];
     for (NSMutableDictionary *dic in newsListArray) {
@@ -290,6 +296,7 @@
 
     } onError:^(NSError *error) {
         [ApplicationDelegate.HUD hide:YES];
+        [self.navigationController.toolbar setUserInteractionEnabled:YES];
         [UIAlertView showWithError:error];
     }];
 }

@@ -42,6 +42,10 @@
     self.mcScrollView.contentSize = CGSizeMake(320, 568);
     
     [self.videoGalleryView setFrame:CGRectMake(22, 25, self.videoGalleryView.frame.size.width, self.videoGalleryView.frame.size.height)];
+    
+    [self.videoGalleryBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:19.0]];
+    [self.imgGalleryBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:19.0]];
+    [self.pressBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:19.0]];
 
 }
 

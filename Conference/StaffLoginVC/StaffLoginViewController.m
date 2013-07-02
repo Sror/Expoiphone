@@ -37,6 +37,10 @@
     
     
     [self.bounceView setFrame:CGRectMake(22, 25, self.bounceView.frame.size.width, self.bounceView.frame.size.height)];
+    [self.eventBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:16.0]];
+    [self.exBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:16.0]];
+    [self.bounceHeaderLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:17.0]];
+    
 }
 
 
@@ -169,9 +173,10 @@ tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
     
-    [cell.textLabel setFont:[UIFont fontWithName:@"Helvetica" size:13.0]];
+    //[cell.textLabel setFont:[UIFont fontWithName:@"Helvetica" size:13.0]];
     Events *event=[[ApplicationDelegate appEventArray] objectAtIndex:indexPath.row];
-    [cell setText:event.name];
+    [cell.textLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:13.0]];
+    [cell.textLabel setText:event.name];
     return cell;
 }
 

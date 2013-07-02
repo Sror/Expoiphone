@@ -33,6 +33,11 @@
     [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Social Media"]];
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
     
+    [self.fbBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:15.0]];
+    [self.ytBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:15.0]];
+    [self.twtBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:15.0]];
+    [self.igBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:15.0]];
+
     
 }
 

@@ -26,6 +26,12 @@
 
 - (IBAction)homeBtnAction:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UIButton *eventBtn;
+@property (strong, nonatomic) IBOutlet UIButton *exBtn;
+@property (strong, nonatomic) IBOutlet UILabel *bounceHeaderLabel;
+
+
+
 @property (strong, nonatomic) IBOutlet UIView *bounceView;
 @property (strong, nonatomic) IBOutlet UITableView *eventTableView;
 - (IBAction)closeBtnAction:(id)sender;

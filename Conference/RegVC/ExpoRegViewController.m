@@ -51,8 +51,21 @@
     if (fromView) {
         [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
     }
+    [self applyFonts];
 }
-
+-(void)applyFonts{
+    
+    //fullNameTextField,companyTxtField,genderTxtField,socialTxtField,dateOfBirthTxtField,IndustryTxtField;
+    
+    [self.fullNameTextField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
+    [self.companyTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
+    [self.genderTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
+    [self.dateOfBirthTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
+    [self.IndustryTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
+    [self.socialTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
+    
+    
+}
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
    // [self.navigationController.navigationBar setHidden:YES];

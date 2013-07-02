@@ -31,6 +31,11 @@
     // Do any additional setup after loading the view from its nib.
     [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"About Us"]];
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
+    
+    [self.historyBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:19.0]];
+    [self.servicesBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:19.0]];
+    [self.faciltiesBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:19.0]];
+    [self.mgmntBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:19.0]];
 }
 
 -(void)viewWillAppear:(BOOL)animated{

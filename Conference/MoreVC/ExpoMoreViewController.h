@@ -20,6 +20,11 @@
 }
 @property (strong, nonatomic) IBOutlet UIScrollView *moreScrollView;
 
+@property (strong, nonatomic) IBOutlet UIButton *mediaBtn;
+@property (strong, nonatomic) IBOutlet UIButton *visitorBtn;
+@property (strong, nonatomic) IBOutlet UIButton *socialMediaBtn;
+@property (strong, nonatomic) IBOutlet UIButton *signInBtn;
+@property (strong, nonatomic) IBOutlet UIButton *subFormBtn;
 
 
 

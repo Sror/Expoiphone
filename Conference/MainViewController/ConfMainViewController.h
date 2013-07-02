@@ -32,6 +32,7 @@
 @property (nonatomic, retain) NSMutableArray *latestNewsList;
 
 
+@property (strong, nonatomic) IBOutlet UILabel *latestNewsHeaderLabel;
 
 @property (nonatomic, retain) NSMutableArray *currentEventArr;
 

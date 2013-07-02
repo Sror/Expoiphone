@@ -37,6 +37,8 @@
     //[self.listLabel setFont:[UIFont fontWithName:@"AdelleBasic-Bold" size:16.0]];
 
     
+    [self.locationLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
+    
     NSLog(@"tit %@",newsObj.news_title);
 
     
