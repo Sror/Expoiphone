@@ -104,6 +104,16 @@
     
 
     
+    for (NSString* family in [UIFont familyNames])
+    {
+        NSLog(@"UIFont family  %@", family);
+        
+        for (NSString* name in [UIFont fontNamesForFamilyName: family])
+        {
+            NSLog(@"UIFont >>>  %@", name);
+        }
+    }
+    
         self.postParams =
         [[NSMutableDictionary alloc] initWithObjectsAndKeys:
          @"http://www.expo-centre.ae/en/", @"link",
@@ -158,7 +168,7 @@
     if (!titleView) {
         titleView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 250, 44)];
         titleView.backgroundColor = [UIColor clearColor];
-        titleView.font = [UIFont fontWithName:@"Arial-BoldMT" size:20.0];
+        titleView.font = [UIFont fontWithName:@"Eagle-Light" size:20.0];
     }
     titleView.text = title;
     titleView.textColor = [UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1];
