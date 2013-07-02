@@ -47,6 +47,12 @@
     // NSMutableDictionary *dic = [nearListArray objectAtIndex:indexPath.row];
 
 
+    [self.eventNameLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:17.0]];
+    [self.dateLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:11.0]];
+    [self.timeLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
+    [self.categoryLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
+    [self.LocationLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:13.0]];
+    
     
     [self.eventNameLabel setText:event.name];
     [self.categoryLabel setText:@"Education Technology & Resources"];

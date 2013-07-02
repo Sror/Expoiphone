@@ -7,6 +7,7 @@
 //
 
 #import "MediaCornerViewController.h"
+#import "LBViewController.h"
 
 @interface MediaCornerViewController ()
 
@@ -14,7 +15,7 @@
 
 @implementation MediaCornerViewController
 
-@synthesize networkGallery,imagesList,videosList;
+@synthesize networkGallery,imagesList,videosList,selectedVideo;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -46,6 +47,8 @@
     [self.videoGalleryBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:19.0]];
     [self.imgGalleryBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:19.0]];
     [self.pressBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:19.0]];
+    
+    [self.bounceLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:15.0]];
 
 }
 
@@ -61,7 +64,86 @@
     [self.view removeSubview:self.videoGalleryView];
 }
 
+
+-(BOOL) validateYouTubeUrl: (NSString *) youTubeUrl
+{
+    
+    // NSString *urlRegEx = @"http:\/\/(?:www\.)?youtube.com\/watch\?(?=.*v=\w+)(?:+)?$";
+    
+    NSString *urlRegEx = @"http(s)?://([\\w-]+\\.)+[\\w-]+(/[\\w- ./?%&amp;=]*)?";
+    NSPredicate *urlTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", urlRegEx];
+    NSLog(@"O/P is %i",[urlTest evaluateWithObject:youTubeUrl]);
+    return [urlTest evaluateWithObject:youTubeUrl];
+}
 - (IBAction)playVideoBtnAction:(id)sender {
+    
+    
+    NSLog(@" selecte video >>> %@",selectedVideo);
+    
+    
+    NSString *videoID;
+    
+    
+    // youtube.youtubeUrl = [NSString stringWithFormat:@"http://www.youtube.com/watch?v=OUz-5YjXFeg"];
+    
+    
+    if (selectedVideo.length==0) {
+        
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:@"Video Unavailable" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        
+        [alert show];
+    }
+    
+    else if (![self validateYouTubeUrl:selectedVideo])
+    {
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:@"Video Unavailable" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        
+        [alert show];
+    }
+    else{
+        
+        NSArray *videoURLSplit = [selectedVideo componentsSeparatedByString:@"watch?v="];
+        
+        NSLog(@"Count is %d",videoURLSplit.count);
+        if (videoURLSplit.count!=0) {
+            
+            @try {
+                videoID = [[videoURLSplit objectAtIndex:1] substringToIndex:11];
+                NSLog(@" videoID >>> %@",videoID);
+                [ApplicationDelegate.HUD show:YES];
+                [self.navigationController.navigationBar setUserInteractionEnabled:NO];
+                [ApplicationDelegate.appEngine checkYoutubeLink:videoID onCompletion:^(NSMutableArray *youtube) {
+                    NSLog(@"yioutube array is %@", [youtube description]);
+                    [ApplicationDelegate.HUD hide:YES];
+                    [self.navigationController.navigationBar setUserInteractionEnabled:YES];
+                    LBViewController* youtube1=[[LBViewController alloc]initWithNibName:@"LBViewController" bundle:nil];
+                    [youtube1 setYoutubeUrl:selectedVideo];
+                    [self presentModalViewController:youtube1 animated:YES];
+                    
+                } onError:^(NSError *error) {
+                    [ApplicationDelegate.HUD hide:YES];
+                    [self.navigationController.navigationBar setUserInteractionEnabled:YES];
+                    [UIAlertView showWithError:error];
+                }];
+                
+            }
+            @catch (NSException *exception) {
+                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:@"Video Unavailable" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                
+                [alert show];
+            }
+            @finally {
+                
+            }
+            
+        }else{
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:@"Video Unavailable" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            
+            [alert show];
+        }
+        
+        
+    }
     
     
     
@@ -202,7 +284,7 @@ tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
     
-    [cell.textLabel setFont:[UIFont fontWithName:@"Helvetica" size:13.0]];
+    [cell.textLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:13.0]];
     
     NSMutableDictionary *dic = [videosList objectAtIndex:indexPath.row];
     
@@ -225,6 +307,8 @@ tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"cell text is%@ and id is %@",cellText,eventId);*/
     
     NSMutableDictionary *dic = [videosList objectAtIndex:indexPath.row];
+    
+    [self setSelectedVideo:[dic objectForKey:@"youtube_link"]];
     
     NSLog(@"cell text is%@ and url  is %@",cellText,[dic objectForKey:@"youtube_link"]);
     

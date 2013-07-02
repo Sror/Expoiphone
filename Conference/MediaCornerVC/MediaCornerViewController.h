@@ -17,6 +17,8 @@
      NSIndexPath   *checkedCell;
     
 }
+
+@property(nonatomic, retain) NSString* selectedVideo;
 @property (strong, nonatomic) IBOutlet UIScrollView *mcScrollView;
 @property (strong, nonatomic)  FGalleryViewController *networkGallery;
 
@@ -31,6 +33,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *pressBtn;
 @property (strong, nonatomic) IBOutlet UIButton *imgGalleryBtn;
 @property (strong, nonatomic) IBOutlet UIButton *videoGalleryBtn;
+@property (strong, nonatomic) IBOutlet UILabel *bounceLabel;
 
 
 

@@ -59,6 +59,15 @@
     
     [self.videoGalleryView setFrame:CGRectMake(15, 5, self.videoGalleryView.frame.size.width, self.videoGalleryView.frame.size.height)];
     
+    
+    [self.eventNameLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:17.0]];
+    [self.dateLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:11.0]];
+    [self.timeLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:10.0]];
+    [self.categoryLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:13.0]];
+    [self.locationLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:12.0]];
+    [self.descriptionTxtView setFont:[UIFont fontWithName:@"Eagle-Light" size:11.0]];
+    
+    
 
 }
 
