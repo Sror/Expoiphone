@@ -69,7 +69,7 @@
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<double key="IBUITitleEdgeInsets.top">-4</double>
 								<double key="IBUITitleEdgeInsets.bottom">0.0</double>
-								<double key="IBUITitleEdgeInsets.left">-261</double>
+								<double key="IBUITitleEdgeInsets.left">-267</double>
 								<double key="IBUITitleEdgeInsets.right">-25</double>
 								<string key="IBUINormalTitle">Facebook</string>
 								<object class="NSColor" key="IBUIHighlightedTitleColor" id="58946529">
@@ -103,7 +103,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{18, 123}, {284, 109}}</string>
 								<reference key="NSSuperview" ref="696561556"/>
-								<reference key="NSNextKeyView" ref="210856307"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<int key="IBUITag">11</int>
@@ -139,7 +139,7 @@
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<double key="IBUITitleEdgeInsets.top">-4</double>
 								<double key="IBUITitleEdgeInsets.bottom">0.0</double>
-								<double key="IBUITitleEdgeInsets.left">-274</double>
+								<double key="IBUITitleEdgeInsets.left">-255</double>
 								<double key="IBUITitleEdgeInsets.right">-21</double>
 								<string key="IBUINormalTitle">Instagram</string>
 								<reference key="IBUIHighlightedTitleColor" ref="58946529"/>
@@ -157,7 +157,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{18, 367}, {284, 109}}</string>
 								<reference key="NSSuperview" ref="696561556"/>
-								<reference key="NSNextKeyView" ref="125120904"/>
+								<reference key="NSNextKeyView" ref="620187759"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<int key="IBUITag">12</int>
@@ -166,7 +166,7 @@
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<double key="IBUITitleEdgeInsets.top">-4</double>
 								<double key="IBUITitleEdgeInsets.bottom">0.0</double>
-								<double key="IBUITitleEdgeInsets.left">-274</double>
+								<double key="IBUITitleEdgeInsets.left">-291</double>
 								<double key="IBUITitleEdgeInsets.right">-21</double>
 								<string key="IBUINormalTitle">Twitter</string>
 								<reference key="IBUIHighlightedTitleColor" ref="58946529"/>
@@ -224,7 +224,7 @@
 							<object class="IBUIImageView" id="125120904">
 								<reference key="NSNextResponder" ref="696561556"/>
 								<int key="NSvFlags">256</int>
-								<string key="NSFrame">{{271, 401}, {19, 21}}</string>
+								<string key="NSFrame">{{271, 410}, {19, 21}}</string>
 								<reference key="NSSuperview" ref="696561556"/>
 								<reference key="NSNextKeyView" ref="75736481"/>
 								<bool key="IBUIOpaque">NO</bool>
@@ -239,24 +239,32 @@
 								<int key="NSvFlags">256</int>
 								<string key="NSFrame">{{40, 40}, {41, 41}}</string>
 								<reference key="NSSuperview" ref="696561556"/>
+								<reference key="NSNextKeyView" ref="956968726"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClipsSubviews">YES</bool>
+								<int key="IBUIContentMode">4</int>
+								<bool key="IBUIMultipleTouchEnabled">YES</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">fb-sm.png</string>
+								</object>
+							</object>
+							<object class="IBUIImageView" id="956968726">
+								<reference key="NSNextResponder" ref="696561556"/>
+								<int key="NSvFlags">256</int>
+								<string key="NSFrame">{{40, 157}, {41, 41}}</string>
+								<reference key="NSSuperview" ref="696561556"/>
 								<reference key="NSNextKeyView" ref="439008798"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">4</int>
 								<bool key="IBUIMultipleTouchEnabled">YES</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-							</object>
-							<object class="IBUIImageView" id="210856307">
-								<reference key="NSNextResponder" ref="696561556"/>
-								<int key="NSvFlags">256</int>
-								<string key="NSFrame">{{43, 156}, {34, 42}}</string>
-								<reference key="NSSuperview" ref="696561556"/>
-								<reference key="NSNextKeyView" ref="368738792"/>
-								<bool key="IBUIOpaque">NO</bool>
-								<bool key="IBUIClipsSubviews">YES</bool>
-								<int key="IBUIContentMode">4</int>
-								<bool key="IBUIMultipleTouchEnabled">YES</bool>
-								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">youtube-sm.png</string>
+								</object>
 							</object>
 							<object class="IBUIImageView" id="664227474">
 								<reference key="NSNextResponder" ref="696561556"/>
@@ -269,6 +277,26 @@
 								<int key="IBUIContentMode">4</int>
 								<bool key="IBUIMultipleTouchEnabled">YES</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">instagram-sm.png</string>
+								</object>
+							</object>
+							<object class="IBUIImageView" id="620187759">
+								<reference key="NSNextResponder" ref="696561556"/>
+								<int key="NSvFlags">256</int>
+								<string key="NSFrame">{{40, 397}, {41, 47}}</string>
+								<reference key="NSSuperview" ref="696561556"/>
+								<reference key="NSNextKeyView" ref="125120904"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClipsSubviews">YES</bool>
+								<int key="IBUIContentMode">4</int>
+								<bool key="IBUIMultipleTouchEnabled">YES</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">twitter-sm.png</string>
+								</object>
 							</object>
 						</array>
 						<string key="NSFrame">{{0, 9}, {320, 372}}</string>
@@ -308,6 +336,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{130, 14}, {60, 45}}</string>
 								<reference key="NSSuperview" ref="75736481"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -520,9 +549,10 @@
 							<reference ref="439008798"/>
 							<reference ref="1004797069"/>
 							<reference ref="199485199"/>
-							<reference ref="210856307"/>
 							<reference ref="226954725"/>
 							<reference ref="524919029"/>
+							<reference ref="620187759"/>
+							<reference ref="956968726"/>
 						</array>
 						<reference key="parent" ref="191373211"/>
 					</object>
@@ -572,11 +602,6 @@
 						<reference key="parent" ref="696561556"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">6</int>
-						<reference key="object" ref="210856307"/>
-						<reference key="parent" ref="696561556"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">21</int>
 						<reference key="object" ref="524919029"/>
 						<reference key="parent" ref="696561556"/>
@@ -585,6 +610,16 @@
 						<int key="objectID">29</int>
 						<reference key="object" ref="913591333"/>
 						<reference key="parent" ref="191373211"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">34</int>
+						<reference key="object" ref="620187759"/>
+						<reference key="parent" ref="696561556"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">35</int>
+						<reference key="object" ref="956968726"/>
+						<reference key="parent" ref="696561556"/>
 					</object>
 				</array>
 			</object>
@@ -605,9 +640,10 @@
 				<string key="21.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<real value="1" key="21.IBUIButtonInspectorSelectedEdgeInsetMetadataKey"/>
 				<string key="29.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="34.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="35.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="7.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<real value="1" key="7.IBUIButtonInspectorSelectedEdgeInsetMetadataKey"/>
 				<string key="8.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -620,7 +656,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">33</int>
+			<int key="maxID">35</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
@@ -630,9 +666,13 @@
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="app_bg.png">{320, 480}</string>
 			<string key="detdiscl2.png">{19, 21}</string>
+			<string key="fb-sm.png">{40, 41}</string>
 			<string key="home-tt.png">{28, 25}</string>
+			<string key="instagram-sm.png">{40, 41}</string>
 			<string key="list_bg.png">{284, 108}</string>
 			<string key="toolbar_bg-tt.png">{320, 60}</string>
+			<string key="twitter-sm.png">{40, 41}</string>
+			<string key="youtube-sm.png">{40, 41}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">1930</string>
 	</data>

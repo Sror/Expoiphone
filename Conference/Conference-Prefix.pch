@@ -35,6 +35,9 @@
 #define EXHIBITORSURVEY 101
 #define EVENTREGISTRATION 102
 
+#define LocationGallery 30
+#define ImageGallery 31
+
 
 //http://conferenceapp.crisiltech.com/dynamic_form_view.html?id=25&form_type=survey_form
 

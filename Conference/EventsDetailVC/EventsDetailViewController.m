@@ -9,6 +9,7 @@
 #import "EventsDetailViewController.h"
 #import "ExpoLocationViewController.h"
 #import "LBViewController.h"
+#import "ExhibitCell.h"
 #import <EventKit/EventKit.h>
 
 @interface EventsDetailViewController ()
@@ -138,10 +139,10 @@
     [ApplicationDelegate hideTabBar:self.tabBarController];
     
     [self.eventNameLabel setText:eventDetail.name];
-//    [self.categoryLabel setText:eventDetail.industry_category];
-//    [self.locationLabel setText:eventDetail.location];
-    [self.categoryLabel setText:@"Education Technology & Resources"];
-    [self.locationLabel setText:@"Sharjah, UAE"];
+    [self.categoryLabel setText:eventDetail.industry_category];
+    [self.locationLabel setText:eventDetail.location];
+//    [self.categoryLabel setText:@"Education Technology & Resources"];
+//    [self.locationLabel setText:@"Sharjah, UAE"];
     [self.dateLabel setText:[NSString stringWithFormat:@"%@ - %@",[[ConferenceHelper SharedHelper] datefromString:eventDetail.start_date],[[ConferenceHelper SharedHelper] datefromString:eventDetail.end_date]]];
     [self.timeLabel setText:[NSString stringWithFormat:@"%@ - %@",eventDetail.start_time,eventDetail.end_time]];
     [self.descriptionTxtView setText:eventDetail.description];
@@ -177,6 +178,7 @@
     
     NSLog(@"image count is %d", eventDetail.imageGallery.count);
     
+    [self setFGalleryType:ImageGallery];
     
     if (eventDetail.imageGallery.count >0) {
         networkGallery = [[FGalleryViewController alloc] initWithPhotoSource:self];
@@ -324,7 +326,7 @@
 }
 
 - (IBAction)mapToolBarBtnAction:(id)sender {
-    @try {
+    //@try {
        /* if (eventDetail.lattitude.length!=0 || eventDetail.longitude.length!=0) {
             MapViewControllerr *mpView = [[MapViewControllerr alloc]initWithNibName:@"MapViewControllerr" bundle:nil];
             mpView.lat = eventDetail.lattitude;
@@ -343,7 +345,19 @@
             
         }*/
         
-        if (eventDetail.locationArray.count==0) {
+        
+        [self setFGalleryType:LocationGallery];
+    
+    
+    if (eventDetail.locationArray.count >0) {
+        networkGallery = [[FGalleryViewController alloc] initWithPhotoSource:self];
+        [self.navigationController pushViewController:networkGallery animated:YES];
+    }else{
+        UIAlertView *al =[[UIAlertView alloc]initWithTitle:@"Sorry" message:@"No locations available" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [al show];
+    }
+        
+     /*   if (eventDetail.locationArray.count==0) {
             UIAlertView *alert;
             alert = [[UIAlertView alloc] initWithTitle:@"Sorry"
                                                message:@"Location Unavailable"
@@ -374,7 +388,7 @@
     }
     @finally {
         
-    }
+    }*/
   
 }
 
@@ -643,7 +657,18 @@ case 3:
 - (int)numberOfPhotosForPhotoGallery:(FGalleryViewController *)gallery
 {
     
-    return [eventDetail.imageGallery count];
+    switch (self.fGalleryType) {
+        case ImageGallery:
+             return [eventDetail.imageGallery count];
+            break;
+        case LocationGallery:
+            return [eventDetail.locationArray count];
+            break;
+        default:
+            break;
+    }
+    
+    return 1;
     
 }
 
@@ -655,9 +680,24 @@ case 3:
 
 - (NSString*)photoGallery:(FGalleryViewController *)gallery urlForPhotoSize:(FGalleryPhotoSize)size atIndex:(NSUInteger)index {
     
-    NSMutableDictionary *dic;
-    dic = [eventDetail.imageGallery objectAtIndex:index] ;
-    return [dic valueForKey:@"location"];
+    NSMutableDictionary *dic;;
+    switch (self.fGalleryType) {
+        case ImageGallery:
+           
+            dic = [eventDetail.imageGallery objectAtIndex:index] ;
+            return [dic valueForKey:@"location"];
+            break;
+        case LocationGallery:
+            dic = [eventDetail.locationArray objectAtIndex:index] ;
+            return [dic valueForKey:@"location"];
+            break;
+        default:
+            break;
+    }
+    
+    return @"";
+   // return 1;
+   
 }
 
 /*- (NSString*)photoGallery:(FGalleryViewController *)gallery captionForPhotoAtIndex:(NSUInteger)index
@@ -773,56 +813,75 @@ case 3:
         //default:
             //break;
     }
-return nil;
+return 1;
 
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.bounceInt==20) {
+        return 53;
+    }else{
+        return 44;
+    }
 }
 
 -(UITableViewCell *)tableView:(UITableView *)
 tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *MyIdentifer = @"MyIdentifier";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifer];
-    
-    if(cell == nil) {
-        cell = [[UITableViewCell alloc] initWithFrame:CGRectZero
-                                      reuseIdentifier:MyIdentifer];
-    }
-    
-       
-    [cell.textLabel setFont:[UIFont fontWithName:@"Helvetica" size:13.0]];
     
     NSMutableDictionary *dic;
-    switch (self.bounceInt) {
-        case 10:
-            dic = [eventDetail.videoGalleryArray objectAtIndex:indexPath.row];
-            
-            [cell.textLabel setText:[dic objectForKey:@"title"]];
-            if ([checkedCell isEqual:indexPath])
-                
-            {
-                cell.accessoryType = UITableViewCellAccessoryCheckmark;
-                
-                
-            } else
-            {
-                cell.accessoryType = UITableViewCellAccessoryNone;
-            }
-
-            break;
-        case 20:
-            dic = [eventDetail.exhibitorsArray objectAtIndex:indexPath.row];
-            
-            [cell.textLabel setText:[dic objectForKey:@"company_name"]];
-            break;
-            
-        default:
-            break;
-    }
     
-   
-    // Events *event=[[ApplicationDelegate appEventArray] objectAtIndex:indexPath.row];
-    //[cell setText:event.name];
-    return cell;
+    if(self.bounceInt==20)
+    {
+        
+        static NSString *CellIdentifier2 = @"ExhibitCell";
+        ExhibitCell *cell2 = (ExhibitCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier2];
+        
+        if (cell2 == nil) {
+            NSArray *nibs = [[NSBundle mainBundle] loadNibNamed:CellIdentifier2 owner:self options:nil];
+            for(id currentObject in nibs)
+            {
+                if([currentObject isKindOfClass:[UITableViewCell class]])
+                {
+                    cell2 = (ExhibitCell *)currentObject;
+                    
+                    break;
+                }
+            }
+        }
+        dic = [eventDetail.exhibitorsArray objectAtIndex:indexPath.row];
+        [cell2 setListToCell:dic];
+        cell2.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        return  cell2;
+    }else{
+        static NSString *MyIdentifer = @"MyIdentifier";
+        
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifer];
+        
+        if(cell == nil) {
+            cell = [[UITableViewCell alloc] initWithFrame:CGRectZero
+                                          reuseIdentifier:MyIdentifer];
+        }
+        
+        dic = [eventDetail.videoGalleryArray objectAtIndex:indexPath.row];
+        
+        [cell.textLabel setText:[dic objectForKey:@"title"]];
+        if ([checkedCell isEqual:indexPath])
+            
+        {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            
+            
+        } else
+        {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+        
+        return  cell;
+        
+    }
+    return nil;
 }
 
 

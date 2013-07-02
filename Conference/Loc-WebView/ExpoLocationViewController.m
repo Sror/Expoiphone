@@ -190,15 +190,15 @@
     switch (self.viewSegmentControl.selectedSegmentIndex) {
         case 0:
             NSLog(@"Media");
-            [self.webviewForForms loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:DYNAMICWEBVIEWURL(eventID, @"media",@"chikku")]]];
+            [self.webviewForForms loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:DYNAMICWEBVIEWURL(eventID, @"media",@"")]]];
             break;
         case 1:
             NSLog(@"Visitor");
-            [self.webviewForForms loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:DYNAMICWEBVIEWURL(eventID, @"visitor",@"chikku")]]];
+            [self.webviewForForms loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:DYNAMICWEBVIEWURL(eventID, @"visitor",@"")]]];
             break;
         case 2:
             NSLog(@"Exhibitor");
-            [self.webviewForForms loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:DYNAMICWEBVIEWURL(eventID, @"event_exihibitor",@"chikku")]]];
+            [self.webviewForForms loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:DYNAMICWEBVIEWURL(eventID, @"event_exihibitor",@"")]]];
             break;
             
         default:

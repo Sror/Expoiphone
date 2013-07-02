@@ -26,6 +26,7 @@
 @property (strong, nonatomic)  FGalleryViewController *networkGallery;
 
 @property (nonatomic) int bounceInt;
+@property (nonatomic) int fGalleryType;
 
 @property (strong, nonatomic) IBOutlet UILabel *bounceViewHeaderLabel;
 
