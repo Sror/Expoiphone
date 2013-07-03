@@ -14,6 +14,7 @@
 #import "ConferenceHelper.h"
 #import "ConfMainViewController.h"
 #import "FGalleryViewController.h"
+#import "SlideMenuView.h"
 
 @interface EventsDetailViewController : UIViewController<UIActionSheetDelegate,FGalleryViewControllerDelegate>
 {
@@ -29,6 +30,9 @@
 @property (nonatomic) int fGalleryType;
 
 @property (strong, nonatomic) IBOutlet UILabel *bounceViewHeaderLabel;
+@property (strong, nonatomic) IBOutlet UILabel *sponsorHeadLabel;
+@property (strong, nonatomic) IBOutlet UILabel *supporterHeadLabel;
+@property (strong, nonatomic) IBOutlet UILabel *mediaPartnerHeadLabel;
 
 
 @property (nonatomic) BOOL fromFavList;
@@ -41,6 +45,17 @@
 @property (strong, nonatomic) IBOutlet UILabel *locationLabel;
 @property (strong, nonatomic) IBOutlet UITextView *descriptionTxtView;
 @property (strong, nonatomic) IBOutlet UIButton *bounceGoBtn;
+@property (strong, nonatomic) IBOutlet UIScrollView *mainScrollView;
+
+
+@property (retain, nonatomic) IBOutlet SlideMenuView *sponsorsView;
+@property (retain, nonatomic) IBOutlet SlideMenuView *supportersView;
+@property (retain, nonatomic) IBOutlet SlideMenuView *mediapartnersVieew;
+
+
+
+
+
 
 
 

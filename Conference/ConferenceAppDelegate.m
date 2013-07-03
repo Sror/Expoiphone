@@ -104,7 +104,7 @@
     
 
     
-    for (NSString* family in [UIFont familyNames])
+   /* for (NSString* family in [UIFont familyNames])
     {
         NSLog(@"UIFont family  %@", family);
         
@@ -112,7 +112,7 @@
         {
             NSLog(@"UIFont >>>  %@", name);
         }
-    }
+    }*/
     
         self.postParams =
         [[NSMutableDictionary alloc] initWithObjectsAndKeys:
