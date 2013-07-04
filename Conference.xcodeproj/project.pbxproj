@@ -204,6 +204,7 @@
 		FB92E2261783553E00CC3FE3 /* fb-sm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB92E21E1783553E00CC3FE3 /* fb-sm@2x.png */; };
 		FB92E2271783553E00CC3FE3 /* instagram-sm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB92E21F1783553E00CC3FE3 /* instagram-sm@2x.png */; };
 		FB92E2281783553E00CC3FE3 /* youtube-sm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB92E2201783553E00CC3FE3 /* youtube-sm@2x.png */; };
+		FBA6098217848875001A9214 /* SlideMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA6098117848875001A9214 /* SlideMenuView.m */; };
 		FBC3CD711781D46A004DD4C3 /* skip.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC3CD6D1781D46A004DD4C3 /* skip.png */; };
 		FBC3CD721781D46A004DD4C3 /* skip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC3CD6E1781D46A004DD4C3 /* skip@2x.png */; };
 		FBC3CD731781D46A004DD4C3 /* submit.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC3CD6F1781D46A004DD4C3 /* submit.png */; };
@@ -505,6 +506,8 @@
 		FB92E21E1783553E00CC3FE3 /* fb-sm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fb-sm@2x.png"; path = "Conference/Images/New/fb-sm@2x.png"; sourceTree = "<group>"; };
 		FB92E21F1783553E00CC3FE3 /* instagram-sm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "instagram-sm@2x.png"; path = "Conference/Images/New/instagram-sm@2x.png"; sourceTree = "<group>"; };
 		FB92E2201783553E00CC3FE3 /* youtube-sm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "youtube-sm@2x.png"; path = "Conference/Images/New/youtube-sm@2x.png"; sourceTree = "<group>"; };
+		FBA6098017848875001A9214 /* SlideMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlideMenuView.h; path = Conference/SlideMenuView.h; sourceTree = "<group>"; };
+		FBA6098117848875001A9214 /* SlideMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlideMenuView.m; path = Conference/SlideMenuView.m; sourceTree = "<group>"; };
 		FBC3CD6D1781D46A004DD4C3 /* skip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = skip.png; path = Conference/Images/New/skip.png; sourceTree = "<group>"; };
 		FBC3CD6E1781D46A004DD4C3 /* skip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "skip@2x.png"; path = "Conference/Images/New/skip@2x.png"; sourceTree = "<group>"; };
 		FBC3CD6F1781D46A004DD4C3 /* submit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = submit.png; path = Conference/Images/New/submit.png; sourceTree = "<group>"; };
@@ -1126,6 +1129,15 @@
 			name = SM;
 			sourceTree = "<group>";
 		};
+		FBA6098417848878001A9214 /* SlideMenuView */ = {
+			isa = PBXGroup;
+			children = (
+				FBA6098017848875001A9214 /* SlideMenuView.h */,
+				FBA6098117848875001A9214 /* SlideMenuView.m */,
+			);
+			name = SlideMenuView;
+			sourceTree = "<group>";
+		};
 		FBC3CD821781E3F2004DD4C3 /* NewsDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -1187,6 +1199,7 @@
 		FBD87942175E659B00261201 = {
 			isa = PBXGroup;
 			children = (
+				FBA6098417848878001A9214 /* SlideMenuView */,
 				FBC3CDC51782325F004DD4C3 /* YouTube */,
 				FBC3CD831781E422004DD4C3 /* Splash */,
 				FBC3CD821781E3F2004DD4C3 /* NewsDetail */,
@@ -1675,6 +1688,7 @@
 				FBC3CDC4178230CA004DD4C3 /* LBYouTubePlayerViewController.m in Sources */,
 				FBC3CDC8178236A7004DD4C3 /* JSONKit.m in Sources */,
 				FB92E2131783398000CC3FE3 /* ExhibitCell.m in Sources */,
+				FBA6098217848875001A9214 /* SlideMenuView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

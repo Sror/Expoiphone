@@ -51,7 +51,7 @@
     UIBarButtonItem *fixed1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     fixed1.width = 40.0f;
     
-    if (fromFavList) {
+    if (!fromFavList) {
         [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:fixed1,btnAbt, nil]];
     }
     
@@ -68,7 +68,10 @@
     [self.locationLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:12.0]];
     [self.descriptionTxtView setFont:[UIFont fontWithName:@"Eagle-Light" size:11.0]];
     
-    
+    [self.mediaPartnerHeadLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:13.0]];
+    [self.sponsorHeadLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:13.0]];
+    [self.supporterHeadLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:13.0]];
+    self.mainScrollView.contentSize = CGSizeMake(320, 1050);
 
 }
 
@@ -157,8 +160,77 @@
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
     }];
     
+    [self arrangeHorizontaScrollViews];
+    
+    
 }
 
+-(void)arrangeHorizontaScrollViews{
+    
+   NSMutableArray* sponsorArray = [[NSMutableArray alloc] init];
+   NSMutableArray* supporterArray = [[NSMutableArray alloc] init];
+   NSMutableArray* mediaArray = [[NSMutableArray alloc] init];
+    
+    
+    for (NSMutableDictionary *dic in eventDetail.sponsors) {
+        
+        UIImageView *img = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 60)];
+        [img setContentMode:UIViewContentModeScaleAspectFit];
+        NSString *iconUrl=[dic objectForKey:@"location"];
+        
+        self.imageLoadingOperation=[ApplicationDelegate.appEngine imageAtURL:[NSURL URLWithString:iconUrl] completionHandler:^(UIImage *fetchedImage, NSURL *url, BOOL isInCache) {
+            if([iconUrl isEqualToString:[url absoluteString]]) {
+                [UIView animateWithDuration:isInCache?0.0f:0.4f delay:0 options:UIViewAnimationOptionShowHideTransitionViews animations:^{
+                    img.image = fetchedImage;
+                } completion:nil];
+            }
+        } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        }];
+		[sponsorArray addObject:img];
+    }
+    for (NSMutableDictionary *dic in eventDetail.supporters) {
+        
+        UIImageView *img = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 60)];
+        [img setContentMode:UIViewContentModeScaleAspectFit];
+        NSString *iconUrl=[dic objectForKey:@"location"];
+        
+        self.imageLoadingOperation=[ApplicationDelegate.appEngine imageAtURL:[NSURL URLWithString:iconUrl] completionHandler:^(UIImage *fetchedImage, NSURL *url, BOOL isInCache) {
+            if([iconUrl isEqualToString:[url absoluteString]]) {
+                [UIView animateWithDuration:isInCache?0.0f:0.4f delay:0 options:UIViewAnimationOptionShowHideTransitionViews animations:^{
+                    img.image = fetchedImage;
+                } completion:nil];
+            }
+        } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        }];
+		[supporterArray addObject:img];
+    }
+    for (NSMutableDictionary *dic in eventDetail.media_partners) {
+        
+        UIImageView *img = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 60)];
+        [img setContentMode:UIViewContentModeScaleAspectFit];
+        NSString *iconUrl=[dic objectForKey:@"location"];
+        
+        self.imageLoadingOperation=[ApplicationDelegate.appEngine imageAtURL:[NSURL URLWithString:iconUrl] completionHandler:^(UIImage *fetchedImage, NSURL *url, BOOL isInCache) {
+            if([iconUrl isEqualToString:[url absoluteString]]) {
+                [UIView animateWithDuration:isInCache?0.0f:0.4f delay:0 options:UIViewAnimationOptionShowHideTransitionViews animations:^{
+                    img.image = fetchedImage;
+                } completion:nil];
+            }
+        } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        }];
+		[mediaArray addObject:img];
+    }
+    
+    self.sponsorsView = [[SlideMenuView alloc] initWithFrameColorAndButtons:CGRectMake(0.0f, 443.0f, 320, 60.0f) backgroundColor:[UIColor blackColor]  buttons:sponsorArray];
+    [self.mainScrollView addSubview:self.sponsorsView];
+    
+    self.supportersView = [[SlideMenuView alloc] initWithFrameColorAndButtons:CGRectMake(0.0f, 530.0f, 320, 60.0f) backgroundColor:[UIColor blackColor]  buttons:supporterArray];
+    [self.mainScrollView addSubview:self.supportersView];
+    
+    self.mediapartnersVieew = [[SlideMenuView alloc] initWithFrameColorAndButtons:CGRectMake(0.0f, 615.0f, 320, 60.0f) backgroundColor:[UIColor blackColor]  buttons:mediaArray];
+    [self.mainScrollView addSubview:self.mediapartnersVieew];
+    
+}
 
 -(void)backBtnAction{
     [self.navigationController fadePopViewController];

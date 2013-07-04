@@ -111,8 +111,7 @@
     [self.navigationController setToolbarHidden:NO animated:NO];
     
     [self setUpTabBar];
-    [self.view addSubview:ApplicationDelegate.HUD];
-    [ApplicationDelegate.HUD setLabelText:@"Loading"];
+    
     
     [self applyFonts];
     
@@ -238,6 +237,9 @@
     [self.navigationController setToolbarHidden:NO animated:NO];
     //[self arrangeHorizontalScrollView];
     
+    
+    [self.view addSubview:ApplicationDelegate.HUD];
+    [ApplicationDelegate.HUD setLabelText:@"Loading"];
 
      
     [ApplicationDelegate.HUD show:YES];
