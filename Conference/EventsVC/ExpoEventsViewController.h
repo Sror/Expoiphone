@@ -17,6 +17,8 @@
     
 }
 
+@property (strong, nonatomic) IBOutlet UIButton *searchBtn;
+
 
 @property (nonatomic, retain) NSMutableArray *eventsList;
 

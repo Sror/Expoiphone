@@ -52,7 +52,19 @@
 @property (retain, nonatomic) IBOutlet SlideMenuView *supportersView;
 @property (retain, nonatomic) IBOutlet SlideMenuView *mediapartnersVieew;
 
+@property (strong, nonatomic) IBOutlet UIButton *homeBtn;
+@property (strong, nonatomic) IBOutlet UIButton *brochureBtn;
+@property (strong, nonatomic) IBOutlet UIButton *addBtn;
+@property (strong, nonatomic) IBOutlet UIButton *locationBtn;
+@property (strong, nonatomic) IBOutlet UIButton *shareBtn;
+@property (strong, nonatomic) IBOutlet UIButton *callBtn;
 
+@property (strong, nonatomic) IBOutlet UILabel *homLabel;
+@property (strong, nonatomic) IBOutlet UILabel *brochureLabel;
+@property (strong, nonatomic) IBOutlet UILabel *addCalLabel;
+@property (strong, nonatomic) IBOutlet UILabel *mapLabel;
+@property (strong, nonatomic) IBOutlet UILabel *shareLabel;
+@property (strong, nonatomic) IBOutlet UILabel *callLbabel;
 
 
 

@@ -22,7 +22,7 @@
         
         
 		// Set behaviour for the scrollview
-		menuScrollView.backgroundColor = bgColor;
+		menuScrollView.backgroundColor = [UIColor whiteColor];
 		menuScrollView.showsHorizontalScrollIndicator = NO;
 		menuScrollView.showsVerticalScrollIndicator = FALSE;
 		menuScrollView.scrollEnabled = YES;

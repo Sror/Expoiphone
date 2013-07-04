@@ -72,6 +72,15 @@
     [self.sponsorHeadLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:13.0]];
     [self.supporterHeadLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:13.0]];
     self.mainScrollView.contentSize = CGSizeMake(320, 1050);
+    
+    
+    
+    [self.homLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
+    [self.brochureLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
+    [self.addCalLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
+    [self.mapLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
+    [self.callLbabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
+    [self.shareLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
 
 }
 
@@ -176,6 +185,7 @@
         
         UIImageView *img = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 60)];
         [img setContentMode:UIViewContentModeScaleAspectFit];
+        [img setBackgroundColor:[UIColor clearColor]];
         NSString *iconUrl=[dic objectForKey:@"location"];
         
         self.imageLoadingOperation=[ApplicationDelegate.appEngine imageAtURL:[NSURL URLWithString:iconUrl] completionHandler:^(UIImage *fetchedImage, NSURL *url, BOOL isInCache) {
@@ -191,6 +201,7 @@
     for (NSMutableDictionary *dic in eventDetail.supporters) {
         
         UIImageView *img = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 60)];
+        [img setBackgroundColor:[UIColor clearColor]];
         [img setContentMode:UIViewContentModeScaleAspectFit];
         NSString *iconUrl=[dic objectForKey:@"location"];
         
@@ -208,6 +219,7 @@
         
         UIImageView *img = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 60)];
         [img setContentMode:UIViewContentModeScaleAspectFit];
+        [img setBackgroundColor:[UIColor clearColor]];
         NSString *iconUrl=[dic objectForKey:@"location"];
         
         self.imageLoadingOperation=[ApplicationDelegate.appEngine imageAtURL:[NSURL URLWithString:iconUrl] completionHandler:^(UIImage *fetchedImage, NSURL *url, BOOL isInCache) {
@@ -221,13 +233,13 @@
 		[mediaArray addObject:img];
     }
     
-    self.sponsorsView = [[SlideMenuView alloc] initWithFrameColorAndButtons:CGRectMake(0.0f, 443.0f, 320, 60.0f) backgroundColor:[UIColor blackColor]  buttons:sponsorArray];
+    self.sponsorsView = [[SlideMenuView alloc] initWithFrameColorAndButtons:CGRectMake(0.0f, 443.0f, 320, 60.0f) backgroundColor:[UIColor clearColor]  buttons:sponsorArray];
     [self.mainScrollView addSubview:self.sponsorsView];
     
-    self.supportersView = [[SlideMenuView alloc] initWithFrameColorAndButtons:CGRectMake(0.0f, 530.0f, 320, 60.0f) backgroundColor:[UIColor blackColor]  buttons:supporterArray];
+    self.supportersView = [[SlideMenuView alloc] initWithFrameColorAndButtons:CGRectMake(0.0f, 530.0f, 320, 60.0f) backgroundColor:[UIColor clearColor]  buttons:supporterArray];
     [self.mainScrollView addSubview:self.supportersView];
     
-    self.mediapartnersVieew = [[SlideMenuView alloc] initWithFrameColorAndButtons:CGRectMake(0.0f, 615.0f, 320, 60.0f) backgroundColor:[UIColor blackColor]  buttons:mediaArray];
+    self.mediapartnersVieew = [[SlideMenuView alloc] initWithFrameColorAndButtons:CGRectMake(0.0f, 615.0f, 320, 60.0f) backgroundColor:[UIColor clearColor]  buttons:mediaArray];
     [self.mainScrollView addSubview:self.mediapartnersVieew];
     
 }
@@ -972,4 +984,19 @@ tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     }
 }
 
+- (void)viewDidUnload {
+    [self setHomeBtn:nil];
+    [self setBrochureBtn:nil];
+    [self setAddBtn:nil];
+    [self setLocationBtn:nil];
+    [self setShareBtn:nil];
+    [self setCallBtn:nil];
+    [self setHomLabel:nil];
+    [self setBrochureLabel:nil];
+    [self setAddCalLabel:nil];
+    [self setMapLabel:nil];
+    [self setShareLabel:nil];
+    [self setCallLbabel:nil];
+    [super viewDidUnload];
+}
 @end

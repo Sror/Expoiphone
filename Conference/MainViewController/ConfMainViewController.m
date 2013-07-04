@@ -118,7 +118,7 @@
 }
 
 -(void)applyFonts{
-    [self.latestNewsHeaderLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:17.0]];
+    [self.latestNewsHeaderLabel setFont:[UIFont fontWithName:@"Eagle-Bold" size:17.0]];
 }
 
 
@@ -177,34 +177,46 @@
 
         [contentView addSubview:imgView2];
         
-        UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 22, 170, 25)];
+        UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 20, 170, 25)];
         [titleLabel setBackgroundColor:[UIColor clearColor]];
         //[titleLabel setFont:[UIFont boldSystemFontOfSize:14.0f]];
         [titleLabel setTextColor:[UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1]];
         [titleLabel setNumberOfLines:0];
         [titleLabel setText:event.name];
-        [titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
+        [titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:13.0]];
         [contentView addSubview:titleLabel];
         
-        UILabel *dateLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 44, 150, 15)];
-        //[dateLabel setFont:[UIFont boldSystemFontOfSize:10.0f]];
+        UILabel *dateLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 37, 150, 15)];
         [dateLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:10.0]];
         [dateLabel setBackgroundColor:[UIColor clearColor]];
         [dateLabel setTextColor:[UIColor grayColor]];
         [dateLabel setText:[NSString stringWithFormat:@"%@-%@",[[ConferenceHelper SharedHelper] datefromString:event.start_date],[[ConferenceHelper SharedHelper] datefromString:event.end_date]]];
         [contentView addSubview:dateLabel];
         
-        UILabel *cateLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 56, 150, 30)];
-        [cateLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:13.0]];
-        //[cateLabel setFont:[UIFont boldSystemFontOfSize:11.0f]];
+        UILabel *timeLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 47, 150, 15)];
+        [timeLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
+        [timeLabel setBackgroundColor:[UIColor clearColor]];
+        [timeLabel setTextColor:[UIColor grayColor]];
+        [timeLabel setText:[NSString stringWithFormat:@"%@-%@",event.start_time,event.end_time]];
+        [contentView addSubview:timeLabel];
+        
+        UILabel *cateLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 53, 150, 30)];
+        [cateLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:11.0]];
         [cateLabel setBackgroundColor:[UIColor clearColor]];
         [cateLabel setTextColor:[UIColor blackColor]];
         [cateLabel setText:event.industry_category];
-       // [cateLabel setText:@"Education Technology & Resources"];
         [cateLabel setNumberOfLines:0];
         [contentView addSubview:cateLabel];
         
-        UIImageView *imgView3 = [[UIImageView alloc] initWithFrame:CGRectMake(280,55,16,25)];
+        UILabel *locLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 65, 150, 30)];
+        [locLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:11.0]];
+        [locLabel setBackgroundColor:[UIColor clearColor]];
+        [locLabel setTextColor:[UIColor blackColor]];
+        [locLabel setText:event.location];
+        [locLabel setNumberOfLines:0];
+        [contentView addSubview:locLabel];
+        
+        UIImageView *imgView3 = [[UIImageView alloc] initWithFrame:CGRectMake(280,55,16,18)];
         [imgView3 setImage:[UIImage imageNamed:@"detdiscl-hom.png"]];
         [contentView addSubview:imgView3];
         

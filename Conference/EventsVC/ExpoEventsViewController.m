@@ -37,6 +37,9 @@
     
     eventsList = [[NSMutableArray alloc]init];
     
+   // [self.searchBtn.titleLabel setText:@"Search"];
+    [self.searchBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:12.0]];
+    
     [self.view addSubview:ApplicationDelegate.HUD];
     [ApplicationDelegate.HUD setLabelText:@"Loading"];
     
@@ -151,5 +154,9 @@
     ConfEventSearchViewController *eveSearch = [[ConfEventSearchViewController alloc] initWithNibName:@"ConfEventSearchViewController" bundle:nil];
     [self.navigationController pushFadeViewController:eveSearch];
     
+}
+- (void)viewDidUnload {
+    [self setSearchBtn:nil];
+    [super viewDidUnload];
 }
 @end
