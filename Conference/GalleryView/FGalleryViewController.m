@@ -691,7 +691,11 @@
 - (void)updateTitle
 {
     if (!_hideTitle){
-        [self setTitle:[NSString stringWithFormat:@"%i %@ %i", _currentIndex+1, NSLocalizedString(@"of", @"") , [_photoSource numberOfPhotosForPhotoGallery:self]]];
+        //[self setTitle:[NSString stringWithFormat:@"%i %@ %i", _currentIndex+1, NSLocalizedString(@"of", @"") , [_photoSource numberOfPhotosForPhotoGallery:self]]];
+        
+        [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[NSString stringWithFormat:@"%i %@ %i", _currentIndex+1, NSLocalizedString(@"of", @"") , [_photoSource numberOfPhotosForPhotoGallery:self]]]];
+        
+        //;
     }else{
         [self setTitle:@""];
     }

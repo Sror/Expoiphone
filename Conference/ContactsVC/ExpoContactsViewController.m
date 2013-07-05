@@ -32,6 +32,17 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController setToolbarHidden:YES animated:NO];
+    [self applyFonts];
+}
+
+-(void)applyFonts{
+    
+   [self.homeLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
+   [self.enqLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
+   [self.mapLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
+   [self.callLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
+   [self.shareLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
+    
 }
 - (void)didReceiveMemoryWarning
 {
@@ -156,4 +167,12 @@
     
 }
 
+- (void)viewDidUnload {
+    [self setHomeLabel:nil];
+    [self setEnqLabel:nil];
+    [self setShareLabel:nil];
+    [self setMapLabel:nil];
+    [self setCallLabel:nil];
+    [super viewDidUnload];
+}
 @end

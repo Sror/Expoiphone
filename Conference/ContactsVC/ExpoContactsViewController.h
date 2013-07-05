@@ -22,6 +22,11 @@
 - (IBAction)mapBtnAction:(id)sender;
 - (IBAction)callBtnAction:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UILabel *homeLabel;
+@property (strong, nonatomic) IBOutlet UILabel *enqLabel;
+@property (strong, nonatomic) IBOutlet UILabel *shareLabel;
+@property (strong, nonatomic) IBOutlet UILabel *mapLabel;
+@property (strong, nonatomic) IBOutlet UILabel *callLabel;
 
 
 @end
