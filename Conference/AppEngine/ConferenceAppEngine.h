@@ -22,6 +22,7 @@
 #define VIDEOGALLERYURL [NSString stringWithFormat:@"controller/videogallery.php"]
 #define FAVEVENTSURL [NSString stringWithFormat:@"controller/event.php"]
 #define LOGINURL [NSString stringWithFormat:@"controller/staff.php"]
+#define PRESSRELEASEURL [NSString stringWithFormat:@"controller/press_release.php"]
 
 
 #define WEBVIEWURL [NSString stringWithFormat:@"controller/cms.php"]
@@ -37,6 +38,13 @@ typedef void (^ImageGalleryResponseBlock)(NSMutableArray *imageGaleryArray);
 typedef void (^VideoGalleryResponseBlock)(NSMutableArray *videoGaleryArray);
 typedef void (^LoginResponseBlock)(NSMutableDictionary *loginResponseDic);
 typedef void (^favResponceBlock)(NSMutableArray *favEventArray);
+
+typedef void (^PressReleaseResponceBlock)(NSMutableArray *pressReleaseArray);
+typedef void (^MCImageGalleryResponceBlock)(NSMutableArray *pressReleaseArray);
+typedef void (^MCVideoGalleryResponceBlock)(NSMutableArray *pressReleaseArray);
+
+
+
 
 typedef void (^checkYouTubeBlock)(NSMutableArray *youtube);
 
@@ -55,6 +63,8 @@ typedef void (^checkYouTubeBlock)(NSMutableArray *youtube);
 -(void)favList :(NSString *)propertType  onCompletion:(favResponceBlock)events onError:(MKNKErrorBlock) errorBlock;
 
 -(void)checkYoutubeLink:(NSString*)youtubeId onCompletion:(checkYouTubeBlock) cars onError:(MKNKErrorBlock) errorBlock;
+
+-(void)pressReleaseList :(NSString *)press  onCompletion:(PressReleaseResponceBlock) events onError:(MKNKErrorBlock) errorBlock;
 
 
 -(MKNetworkOperation *)downloadBrochure:(NSString *)remoteUrl toFile:(NSString *)filePath;

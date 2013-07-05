@@ -10,6 +10,11 @@
 
 @interface ExpoNewsDetailViewController : UIViewController
 
+@property BOOL fromCommonView;
+
+@property(nonatomic, retain) NSMutableDictionary *commonDic;
+
+@property (nonatomic, retain) NSMutableArray *imageArray;
 
 @property (strong, nonatomic) IBOutlet UILabel *newsTitleLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *newsImageView;

@@ -179,6 +179,12 @@
 		FB5800A1178023BD00DCE638 /* image-news@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB58009D178023BD00DCE638 /* image-news@2x.png */; };
 		FB5E45EC17804A1900AABCA3 /* ExpoLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5E45EA17804A1900AABCA3 /* ExpoLocationViewController.m */; };
 		FB5E45ED17804A1900AABCA3 /* ExpoLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB5E45EB17804A1900AABCA3 /* ExpoLocationViewController.xib */; };
+		FB60A99017875B1200BA7EE0 /* exhiblist.png in Resources */ = {isa = PBXBuildFile; fileRef = FB60A98E17875B1200BA7EE0 /* exhiblist.png */; };
+		FB60A99117875B1200BA7EE0 /* exhiblist@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB60A98F17875B1200BA7EE0 /* exhiblist@2x.png */; };
+		FB60A99417875B7F00BA7EE0 /* stafflogin_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FB60A99217875B7F00BA7EE0 /* stafflogin_bg.png */; };
+		FB60A99517875B7F00BA7EE0 /* stafflogin_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB60A99317875B7F00BA7EE0 /* stafflogin_bg@2x.png */; };
+		FB60A99917875BC900BA7EE0 /* ExpoCommonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB60A99717875BC900BA7EE0 /* ExpoCommonViewController.m */; };
+		FB60A99A17875BC900BA7EE0 /* ExpoCommonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB60A99817875BC900BA7EE0 /* ExpoCommonViewController.xib */; };
 		FB815669177EDC9100CB888D /* ExpoSocialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB815667177EDC9100CB888D /* ExpoSocialViewController.m */; };
 		FB81566A177EDC9100CB888D /* ExpoSocialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB815668177EDC9100CB888D /* ExpoSocialViewController.xib */; };
 		FB8E07D61768E4DD0001697C /* FGalleryPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8E07D11768E4DD0001697C /* FGalleryPhoto.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -225,8 +231,6 @@
 		FBC3CDA117820CB3004DD4C3 /* logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FBC3CDA017820CB2004DD4C3 /* logo.jpg */; };
 		FBC3CDA617821875004DD4C3 /* dropdownBg.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC3CDA217821867004DD4C3 /* dropdownBg.png */; };
 		FBC3CDA717821875004DD4C3 /* dropdownBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC3CDA317821868004DD4C3 /* dropdownBg@2x.png */; };
-		FBC3CDA817821875004DD4C3 /* exhibitorlist.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC3CDA41782186A004DD4C3 /* exhibitorlist.png */; };
-		FBC3CDA917821875004DD4C3 /* exhibitorlist@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC3CDA51782186B004DD4C3 /* exhibitorlist@2x.png */; };
 		FBC3CDAB17822296004DD4C3 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBC3CDAA17822295004DD4C3 /* EventKit.framework */; };
 		FBC3CDAD178222A0004DD4C3 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBC3CDAC1782229E004DD4C3 /* EventKitUI.framework */; };
 		FBC3CDB417822770004DD4C3 /* bounceBg.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC3CDAE17822768004DD4C3 /* bounceBg.png */; };
@@ -474,6 +478,13 @@
 		FB5E45E917804A1900AABCA3 /* ExpoLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpoLocationViewController.h; path = "Conference/Loc-WebView/ExpoLocationViewController.h"; sourceTree = "<group>"; };
 		FB5E45EA17804A1900AABCA3 /* ExpoLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExpoLocationViewController.m; path = "Conference/Loc-WebView/ExpoLocationViewController.m"; sourceTree = "<group>"; };
 		FB5E45EB17804A1900AABCA3 /* ExpoLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExpoLocationViewController.xib; path = "Conference/Loc-WebView/ExpoLocationViewController.xib"; sourceTree = "<group>"; };
+		FB60A98E17875B1200BA7EE0 /* exhiblist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = exhiblist.png; path = Conference/Images/exhiblist.png; sourceTree = "<group>"; };
+		FB60A98F17875B1200BA7EE0 /* exhiblist@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "exhiblist@2x.png"; path = "Conference/Images/exhiblist@2x.png"; sourceTree = "<group>"; };
+		FB60A99217875B7F00BA7EE0 /* stafflogin_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stafflogin_bg.png; path = Conference/Images/stafflogin_bg.png; sourceTree = "<group>"; };
+		FB60A99317875B7F00BA7EE0 /* stafflogin_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "stafflogin_bg@2x.png"; path = "Conference/Images/stafflogin_bg@2x.png"; sourceTree = "<group>"; };
+		FB60A99617875BC900BA7EE0 /* ExpoCommonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpoCommonViewController.h; path = Conference/CommonVC/ExpoCommonViewController.h; sourceTree = "<group>"; };
+		FB60A99717875BC900BA7EE0 /* ExpoCommonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExpoCommonViewController.m; path = Conference/CommonVC/ExpoCommonViewController.m; sourceTree = "<group>"; };
+		FB60A99817875BC900BA7EE0 /* ExpoCommonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExpoCommonViewController.xib; path = Conference/CommonVC/ExpoCommonViewController.xib; sourceTree = "<group>"; };
 		FB815666177EDC9100CB888D /* ExpoSocialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpoSocialViewController.h; path = Conference/SocialVC/ExpoSocialViewController.h; sourceTree = "<group>"; };
 		FB815667177EDC9100CB888D /* ExpoSocialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExpoSocialViewController.m; path = Conference/SocialVC/ExpoSocialViewController.m; sourceTree = "<group>"; };
 		FB815668177EDC9100CB888D /* ExpoSocialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExpoSocialViewController.xib; path = Conference/SocialVC/ExpoSocialViewController.xib; sourceTree = "<group>"; };
@@ -530,8 +541,6 @@
 		FBC3CDA017820CB2004DD4C3 /* logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = logo.jpg; sourceTree = "<group>"; };
 		FBC3CDA217821867004DD4C3 /* dropdownBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dropdownBg.png; path = Conference/Images/dropdownBg.png; sourceTree = "<group>"; };
 		FBC3CDA317821868004DD4C3 /* dropdownBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dropdownBg@2x.png"; path = "Conference/Images/dropdownBg@2x.png"; sourceTree = "<group>"; };
-		FBC3CDA41782186A004DD4C3 /* exhibitorlist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = exhibitorlist.png; path = Conference/Images/exhibitorlist.png; sourceTree = "<group>"; };
-		FBC3CDA51782186B004DD4C3 /* exhibitorlist@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "exhibitorlist@2x.png"; path = "Conference/Images/exhibitorlist@2x.png"; sourceTree = "<group>"; };
 		FBC3CDAA17822295004DD4C3 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		FBC3CDAC1782229E004DD4C3 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
 		FBC3CDAE17822768004DD4C3 /* bounceBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bounceBg.png; path = Conference/Images/bounceBg.png; sourceTree = "<group>"; };
@@ -688,6 +697,10 @@
 		FB333590176333C100C2DF64 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FB60A99217875B7F00BA7EE0 /* stafflogin_bg.png */,
+				FB60A99317875B7F00BA7EE0 /* stafflogin_bg@2x.png */,
+				FB60A98E17875B1200BA7EE0 /* exhiblist.png */,
+				FB60A98F17875B1200BA7EE0 /* exhiblist@2x.png */,
 				FB92E2181783553200CC3FE3 /* SM */,
 				FB3AA8DD1782964100184566 /* login-si.png */,
 				FB3AA8DE1782964100184566 /* login-si@2x.png */,
@@ -699,8 +712,6 @@
 				FBC3CDB31782276E004DD4C3 /* go@2x.png */,
 				FBC3CDA217821867004DD4C3 /* dropdownBg.png */,
 				FBC3CDA317821868004DD4C3 /* dropdownBg@2x.png */,
-				FBC3CDA41782186A004DD4C3 /* exhibitorlist.png */,
-				FBC3CDA51782186B004DD4C3 /* exhibitorlist@2x.png */,
 				FBC3CDA017820CB2004DD4C3 /* logo.jpg */,
 				FBC3CD901781FB32004DD4C3 /* textboxBg.png */,
 				FBC3CD911781FB33004DD4C3 /* textboxBg@2x.png */,
@@ -1199,6 +1210,9 @@
 		FBD87942175E659B00261201 = {
 			isa = PBXGroup;
 			children = (
+				FB60A99617875BC900BA7EE0 /* ExpoCommonViewController.h */,
+				FB60A99717875BC900BA7EE0 /* ExpoCommonViewController.m */,
+				FB60A99817875BC900BA7EE0 /* ExpoCommonViewController.xib */,
 				FBA6098417848878001A9214 /* SlideMenuView */,
 				FBC3CDC51782325F004DD4C3 /* YouTube */,
 				FBC3CD831781E422004DD4C3 /* Splash */,
@@ -1602,8 +1616,6 @@
 				FBC3CDA117820CB3004DD4C3 /* logo.jpg in Resources */,
 				FBC3CDA617821875004DD4C3 /* dropdownBg.png in Resources */,
 				FBC3CDA717821875004DD4C3 /* dropdownBg@2x.png in Resources */,
-				FBC3CDA817821875004DD4C3 /* exhibitorlist.png in Resources */,
-				FBC3CDA917821875004DD4C3 /* exhibitorlist@2x.png in Resources */,
 				FBC3CDB417822770004DD4C3 /* bounceBg.png in Resources */,
 				FBC3CDB517822770004DD4C3 /* close-b.png in Resources */,
 				FBC3CDB617822770004DD4C3 /* go.png in Resources */,
@@ -1624,6 +1636,11 @@
 				FB92E2261783553E00CC3FE3 /* fb-sm@2x.png in Resources */,
 				FB92E2271783553E00CC3FE3 /* instagram-sm@2x.png in Resources */,
 				FB92E2281783553E00CC3FE3 /* youtube-sm@2x.png in Resources */,
+				FB60A99017875B1200BA7EE0 /* exhiblist.png in Resources */,
+				FB60A99117875B1200BA7EE0 /* exhiblist@2x.png in Resources */,
+				FB60A99417875B7F00BA7EE0 /* stafflogin_bg.png in Resources */,
+				FB60A99517875B7F00BA7EE0 /* stafflogin_bg@2x.png in Resources */,
+				FB60A99A17875BC900BA7EE0 /* ExpoCommonViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1689,6 +1706,7 @@
 				FBC3CDC8178236A7004DD4C3 /* JSONKit.m in Sources */,
 				FB92E2131783398000CC3FE3 /* ExhibitCell.m in Sources */,
 				FBA6098217848875001A9214 /* SlideMenuView.m in Sources */,
+				FB60A99917875BC900BA7EE0 /* ExpoCommonViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

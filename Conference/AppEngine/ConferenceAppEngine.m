@@ -315,6 +315,31 @@
     
 }
 
+-(void)pressReleaseList :(NSString *)press  onCompletion:(PressReleaseResponceBlock) events onError:(MKNKErrorBlock) errorBlock{
+    
+    
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc] init];
+    [dic setValue:@"getList" forKey:@"action"];
+    MKNetworkOperation *op = [self operationWithPath:PRESSRELEASEURL params:dic
+                                          httpMethod:@"POST"];
+    
+    [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        
+        
+        [completedOperation responseJSONWithCompletionHandler:^(id jsonObject) {
+            
+            events(jsonObject);
+        }];
+        
+    } errorHandler:^(MKNetworkOperation *errorOp, NSError* error) {
+        
+        errorBlock(error);
+    }];
+    
+    [self enqueueOperation:op];
+    
+}
+
 -(MKNetworkOperation *)downloadBrochure:(NSString *)remoteUrl toFile:(NSString *)filePath
 {
     MKNetworkOperation *op = [self operationWithURLString:remoteUrl

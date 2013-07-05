@@ -8,6 +8,7 @@
 
 #import "MediaCornerViewController.h"
 #import "LBViewController.h"
+#import "ExpoCommonViewController.h"
 
 @interface MediaCornerViewController ()
 
@@ -159,9 +160,43 @@
 
 - (IBAction)pressReleaseBtnAction:(id)sender {
     
-    ConfWebViewController *confWebView = [[ConfWebViewController alloc]initWithNibName:@"ConfWebViewController" bundle:nil];
+  /* ConfWebViewController *confWebView = [[ConfWebViewController alloc]initWithNibName:@"ConfWebViewController" bundle:nil];
     [confWebView setSelectedIndex:[sender tag]];
-    [self.navigationController pushFadeViewController:confWebView];
+    [self.navigationController pushFadeViewController:confWebView];*/
+    
+    [ApplicationDelegate.HUD show:YES];
+    [self.navigationController.navigationBar setUserInteractionEnabled:NO];
+    
+    [ApplicationDelegate.appEngine pressReleaseList:@"" onCompletion:^(NSMutableArray *pressReleaseArray) {
+        
+        [ApplicationDelegate.HUD hide:YES];
+        [self.navigationController.navigationBar setUserInteractionEnabled:YES];
+        NSLog(@"videoGaleryArray.count is %i",pressReleaseArray.count);
+        [imagesList removeAllObjects];
+        [imagesList addObjectsFromArray:pressReleaseArray];
+        
+        if (imagesList.count >0) {
+            
+            ExpoCommonViewController *com = [[ExpoCommonViewController alloc]initWithNibName:@"ExpoCommonViewController" bundle:nil];
+            [com setTitleHeaderString:@"Press-Release"];
+            [com setListArray:pressReleaseArray];
+            [self.navigationController pushFadeViewController:com];
+           /* networkGallery = [[FGalleryViewController alloc] initWithPhotoSource:self];
+            [self.navigationController pushViewController:networkGallery animated:YES];*/
+        }else{
+            UIAlertView *al =[[UIAlertView alloc]initWithTitle:@"Sorry" message:@"No press release available" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [al show];
+        }
+        
+       // [self.view addSubviewWithBounce:self.videoGalleryView];
+        
+    } onError:^(NSError *error) {
+        [ApplicationDelegate.HUD hide:YES];
+        [self.navigationController.navigationBar setUserInteractionEnabled:YES];
+        [UIAlertView showWithError:error];
+
+    }];
+    
 
 }
 

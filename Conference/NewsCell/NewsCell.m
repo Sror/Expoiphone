@@ -64,5 +64,35 @@
 
 }
 
+-(void)setDetailsToCell:(NSMutableDictionary *)dic{
+    
+    NSLog(@"Dic is %@",dic);
+    
+    [self.locationLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
+    
+    NSLog(@"tit %@",[dic objectForKey:@"title"]);
+    
+    
+    [self.locationLabel setText:[dic objectForKey:@"title"]];
+    
+    NSString *iconUrl=[dic objectForKey:@"thumb_image"];
+    
+    self.imageLoadingOperation=[ApplicationDelegate.appEngine imageAtURL:[NSURL URLWithString:iconUrl] completionHandler:^(UIImage *fetchedImage, NSURL *url, BOOL isInCache) {
+        
+        
+        if([iconUrl isEqualToString:[url absoluteString]]) {
+            
+            [UIView animateWithDuration:isInCache?0.0f:0.4f delay:0 options:UIViewAnimationOptionShowHideTransitionViews animations:^{
+                self.listImgView.image = fetchedImage;
+            } completion:nil];
+        }
+        
+        
+    } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        
+    }];
+    
+}
+
 
 @end
