@@ -24,6 +24,9 @@
 #define LOGINURL [NSString stringWithFormat:@"controller/staff.php"]
 #define PRESSRELEASEURL [NSString stringWithFormat:@"controller/press_release.php"]
 
+#define SEARCHEVENTURL [NSString stringWithFormat:@"controller/event.php"]
+#define USERPROFILEURL [NSString stringWithFormat:@"controller/userprofile.php"]
+
 
 #define WEBVIEWURL [NSString stringWithFormat:@"controller/cms.php"]
 
@@ -43,7 +46,10 @@ typedef void (^PressReleaseResponceBlock)(NSMutableArray *pressReleaseArray);
 typedef void (^MCImageGalleryResponceBlock)(NSMutableArray *pressReleaseArray);
 typedef void (^MCVideoGalleryResponceBlock)(NSMutableArray *pressReleaseArray);
 
+typedef void (^SearchEventsResponseBlock)(NSMutableArray *searchEventArray);
 
+
+typedef void (^UserProfileResponseBlock)(NSMutableDictionary *userProfileResponseDic);
 
 
 typedef void (^checkYouTubeBlock)(NSMutableArray *youtube);
@@ -66,6 +72,9 @@ typedef void (^checkYouTubeBlock)(NSMutableArray *youtube);
 
 -(void)pressReleaseList :(NSString *)press  onCompletion:(PressReleaseResponceBlock) events onError:(MKNKErrorBlock) errorBlock;
 
+-(void)searchEvents:(NSMutableDictionary *)searchParams  onCompletion:(SearchEventsResponseBlock) events onError:(MKNKErrorBlock) errorBlock;
+
+-(void)addUserProfile:(NSMutableDictionary *)userParams  onCompletion:(UserProfileResponseBlock) events onError:(MKNKErrorBlock) errorBlock;
 
 -(MKNetworkOperation *)downloadBrochure:(NSString *)remoteUrl toFile:(NSString *)filePath;
 -(MKNetworkOperation *)loadWebViewStringforTitle:(NSString *)title;

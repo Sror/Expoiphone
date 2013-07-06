@@ -65,15 +65,15 @@
     }
     else{
         
+        
         [ApplicationDelegate.HUD show:YES];
         [self.navigationController.navigationController.navigationBar setUserInteractionEnabled:NO];
         [ApplicationDelegate.appEngine loginAction:self.usernameTxtField.text withPassword:self.passwordTxtField.text onCompletion:^(NSMutableDictionary *loginResponseDic) {
   
-            NSLog(@"loginresp str is %@", loginResponseDic);
             [self.navigationController.navigationController.navigationBar setUserInteractionEnabled:NO];
             [ApplicationDelegate.HUD hide:YES];
             
-            if (![loginResponseDic objectForKey:@"result"]) {
+            if ([[loginResponseDic objectForKey:@"result"] isEqualToNumber:[NSNumber numberWithBool:0]]) {
                 
                 UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Login Failed" message:@"Invalid Credentials" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 

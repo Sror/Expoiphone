@@ -44,8 +44,7 @@
     
     
     [self.view addSubview:ApplicationDelegate.HUD];
-    [ApplicationDelegate.HUD setLabelText:@"Saving"];
-
+    
     self.navigationItem.hidesBackButton = YES;
     
     if (fromView) {
@@ -68,6 +67,8 @@
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    
+    [[UIToolbar appearance] setBackgroundImage:[UIImage imageNamed:@"toolbar_bg.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
    // [self.navigationController.navigationBar setHidden:YES];
 }
 - (void)didReceiveMemoryWarning
@@ -81,6 +82,7 @@
     if (fromView) {
         [self.skipBtn setHidden:YES];
         [self.submitBtn setFrame:CGRectMake(121, 335, 80, 33)];
+         [[UIToolbar appearance] setBackgroundImage:[UIImage imageNamed:@"bg.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
     }
 }
 
@@ -147,7 +149,8 @@
     
     
     if (self.industrialArray.count==0) {
-        
+        [ApplicationDelegate.HUD setLabelText:@"Loading"];
+
         [ApplicationDelegate.HUD show:YES];
         [self.navigationController.navigationBar setUserInteractionEnabled:NO];
         
@@ -291,7 +294,7 @@
 - (IBAction)submitBtnAction:(id)sender {
     
         
-    if ([[ConferenceHelper SharedHelper]isEmptyString:self.fullNameTextField.text] || [[ConferenceHelper SharedHelper]isEmptyString:self.companyTxtField.text]   ||[[ConferenceHelper SharedHelper]isEmptyString:self.genderTxtField.text]    ||
+    if ([[ConferenceHelper SharedHelper]isEmptyString:self.fullNameTextField.text] ||[[ConferenceHelper SharedHelper]isEmptyString:self.genderTxtField.text]    ||
         [[ConferenceHelper SharedHelper]isEmptyString:self.dateOfBirthTxtField.text] ||
         [[ConferenceHelper SharedHelper]isEmptyString:self.IndustryTxtField.text]||
         [[ConferenceHelper SharedHelper]isEmptyString:self.socialTxtField.text]) {
@@ -311,13 +314,46 @@
     }
     else{
         
-        if (!fromView) {
+        
+        
+        NSMutableDictionary *userDic = [[NSMutableDictionary alloc]init];
+        [userDic setValue:self.fullNameTextField.text forKey:@"fullname"];
+        [userDic setValue:self.genderTxtField.text forKey:@"sex"];
+        [userDic setValue:self.dateOfBirthTxtField.text forKey:@"dob"];
+        [userDic setValue:self.IndustryTxtField.text forKey:@"industry"];
+        [userDic setValue:self.socialTxtField.text forKey:@"socialstatus"];
+        [userDic setValue:@"" forKey:@"username"];
+        [userDic setValue:@"" forKey:@"password"];
+
+        [ApplicationDelegate.HUD setLabelText:@"Saving"];
+        [ApplicationDelegate.HUD show:YES];
+        [self.navigationController.navigationBar setUserInteractionEnabled:NO];
+        
+        [ApplicationDelegate.appEngine addUserProfile:userDic onCompletion:^(NSMutableDictionary *userProfileResponseDic) {
+            NSLog(@"userProfileResponseDic is %@",userProfileResponseDic);
+            
+            [ApplicationDelegate.HUD hide:YES];
+            [self.navigationController.navigationBar setUserInteractionEnabled:YES];
+            if (!fromView) {
+                [self updatePlist];
+                NSLog(@"Plist entered");
+            }
+            
+        } onError:^(NSError *error) {
+            [ApplicationDelegate.HUD hide:YES];
+            [self.navigationController.navigationBar setUserInteractionEnabled:YES];
+            [UIAlertView showWithError:error];
+        }];
+        
+        /*if (!fromView) {
+            [ApplicationDelegate.HUD setLabelText:@"Saving"];
             [self updatePlist];
         }else{
+            [ApplicationDelegate.HUD setLabelText:@"Saving"];
             [ApplicationDelegate.HUD show:YES];
             [self performSelector:@selector(stopThari) withObject:nil afterDelay:3.0];
             
-        }
+        }*/
     
         
     

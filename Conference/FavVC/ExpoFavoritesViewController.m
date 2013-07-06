@@ -207,7 +207,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         if (favEventsArray.count == 0) {
             NSLog(@"00000");
             [self.favTableView setHidden:YES];
-            [self.navigationItem setRightBarButtonItem:nil];
+            [self.navigationItem setRightBarButtonItems:nil];
         }
     }
 }

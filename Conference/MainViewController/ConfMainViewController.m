@@ -240,6 +240,8 @@
     self.pageControl.currentPage = 0;
 	self.pageControl.numberOfPages = self.currentEventArr.count;
     
+    [self.latestNewsTableView setHidden:YES];
+    
 
     
 }
@@ -306,6 +308,7 @@
         NSLog(@"Current event array count is %d",latestNewsList.count);
         [ApplicationDelegate.appLatestNewsArray removeAllObjects];
         [ApplicationDelegate.appLatestNewsArray addObjectsFromArray:self.latestNewsList];
+        [self.latestNewsTableView setHidden:NO];
         [self.latestNewsTableView reloadData];
 
     } onError:^(NSError *error) {

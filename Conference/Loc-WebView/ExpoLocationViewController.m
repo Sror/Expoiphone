@@ -15,7 +15,7 @@
 @implementation ExpoLocationViewController
 
 @synthesize viewType,titleStr,webViewType,eventID;
-@synthesize forPdfView,filePathUrl;
+@synthesize forPdfView,filePathUrl,forEnquiry;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -111,19 +111,24 @@
                 [self.viewSegmentControl setHidden:YES];
                 [self.webviewForForms setFrame:CGRectMake(0, 0, 320, 460)];
                 
-                /*NSString *urlAddress = DYNAMICWEBVIEWURL(eventID, titleStr);
-                NSURL *url = [NSURL URLWithString:urlAddress];
-                NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-                [self.webviewForForms loadRequest:requestObj];
-                
-                */
+             
             }
                 break;
             case EVENTREGISTRATION:
             {
                 [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Event Registration"]];
-                [self.webviewForForms setFrame:CGRectMake(0, 50, 320, 390)];
+                [self.webviewForForms setFrame:CGRectMake(0, 50, 320, 380)];
                 [self.viewSegmentControl setHidden:NO];
+                
+                
+            }
+                break;
+                
+            case CONTACTENQUIRYFORM:
+            {
+                [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Enquiry"]];
+                [self.viewSegmentControl setHidden:YES];
+                [self.webviewForForms setFrame:CGRectMake(0, 0, 320, 460)];
                 
                 
             }
@@ -135,6 +140,10 @@
         
         if (forPdfView) {
             NSURLRequest *request = [NSURLRequest requestWithURL:filePathUrl];
+            [self.webviewForForms loadRequest:request];
+        }
+        else if (forEnquiry){
+            NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:CONTACTENQUIRYURL]];
             [self.webviewForForms loadRequest:request];
         }
         else{

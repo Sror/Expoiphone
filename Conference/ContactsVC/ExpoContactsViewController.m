@@ -64,6 +64,16 @@
     [self.navigationController pushFadeViewController:loc];*/
     
     
+    ExpoLocationViewController *loc = [[ExpoLocationViewController alloc]initWithNibName:@"ExpoLocationViewController" bundle:nil];
+    [loc setViewType:WEBVIEW];
+    [loc setWebViewType:CONTACTENQUIRYFORM];
+    [loc setForEnquiry:YES];
+    //[loc setTitleStr:@"Enquiry"];
+    //[loc setEventID:eventDetail.event_id];
+    [self.navigationController pushFadeViewController:loc];
+    
+    
+    
     
 }
 

@@ -9,6 +9,7 @@
 #import "ConfEventSearchViewController.h"
 
 #import "ActionSheetPicker.h"
+#import "ExpoEventsViewController.h"
 
 @interface ConfEventSearchViewController ()
 
@@ -17,7 +18,7 @@
 @implementation ConfEventSearchViewController
 
 @synthesize industrialTxtField,upcomingEventTxtField,dateTxtField,keywordTxtField;
-@synthesize industrialArray,eventTypeArray;
+@synthesize industrialArray,eventTypeArray,searchResultsArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,6 +27,7 @@
         // Custom initialization
         industrialArray = [[NSMutableArray alloc]init];
         eventTypeArray = [[NSMutableArray alloc]init];
+        searchResultsArray = [[NSMutableArray alloc]init];
     }
     return self;
 }
@@ -52,6 +54,17 @@
     self.keywordTxtField.leftViewMode = UITextFieldViewModeAlways;*/
     
     [[UIToolbar appearance] setBackgroundImage:[UIImage imageNamed:@"bg.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
+    
+    [self applyFonts];
+}
+
+-(void)applyFonts{
+    [self.upcomingEventTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
+    [self.keywordTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
+    [self.industrialTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
+    [self.dateTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
+    [self.endDateTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
+    
 }
 
 
@@ -277,17 +290,69 @@
 
 - (IBAction)submitBtnAction:(id)sender {
         
+   /* [ApplicationDelegate.HUD show:YES];
+    [self performSelector:@selector(stopThari) withObject:nil afterDelay:3.0];*/
+    
     [ApplicationDelegate.HUD show:YES];
-    [self performSelector:@selector(stopThari) withObject:nil afterDelay:3.0];
+    [self.navigationController.toolbar setUserInteractionEnabled:NO];
+    
+    
+    NSMutableDictionary *searcDic = [[NSMutableDictionary alloc]init];
+    [searcDic setValue:self.keywordTxtField.text forKey:@"keyword"];
+    [searcDic setValue:self.keywordTxtField.text forKey:@"upcoming"];
+    [searcDic setValue:self.keywordTxtField.text forKey:@"industry_category"];
+    [searcDic setValue:self.keywordTxtField.text forKey:@"date_end"];
+    [searcDic setValue:self.keywordTxtField.text forKey:@"date_start"];
+    
+    
+    [ApplicationDelegate.appEngine searchEvents:searcDic onCompletion:^(NSMutableArray *searchEventArray) {
+        
+        [ApplicationDelegate.HUD hide:YES];
+        [self.navigationController.toolbar setUserInteractionEnabled:YES];
+        
+        if (searchEventArray.count == 0) {
+            UIAlertView *ser = [[UIAlertView alloc]initWithTitle:@"Events Search" message:@"No search results found" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            
+            [ser show];
+            
+        }else{
+            for (NSMutableDictionary *dic in searchEventArray) {
+                [searchResultsArray addObject:[[ConferenceHelper SharedHelper] getEventsObjectFromDictionary:dic]];
+                NSLog(@"Dic is %@", dic);
+                
+            }
+            [ApplicationDelegate.appSearchEventsArray removeAllObjects];
+            [ApplicationDelegate.appSearchEventsArray addObjectsFromArray:searchResultsArray];
+            NSLog(@"search events array count is %d",ApplicationDelegate.appSearchEventsArray.count
+                  );
+            
+            [self.navigationController fadePopViewController];
+           /* ExpoEventsViewController *eveView = [[ExpoEventsViewController alloc]initWithNibName:@"ExpoEventsViewController" bundle:nil];
+            [eveView setFromSearch:YES];
+            [self.navigationController pushFadeViewController:eveView];*/
+            
+        }
+       
+        
+    } onError:^(NSError *error) {
+        
+        [ApplicationDelegate.HUD hide:YES];
+        [self.navigationController.toolbar setUserInteractionEnabled:YES];
+        
+    }];
+    
+    
+    
+    //http://conferenceapp.crisiltech.com/controller/event.php?action=search&keyword=&upcoming=&industry_category=&date_start=&date_end=
   
 }
 
 -(void)stopThari{
     
-     [ApplicationDelegate.HUD hide:YES];
+     /*[ApplicationDelegate.HUD hide:YES];
 
     UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"Search Event" message:@"No results found" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [al show];
+    [al show];*/
     
 }
 @end

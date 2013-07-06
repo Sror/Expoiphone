@@ -17,6 +17,9 @@
     
 }
 
+
+@property BOOL fromSearch;
+
 @property (strong, nonatomic) IBOutlet UIButton *searchBtn;
 
 

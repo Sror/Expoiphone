@@ -17,7 +17,7 @@
 
 @implementation ExpoEventsViewController
 
-@synthesize eventsList;
+@synthesize eventsList,fromSearch;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,7 +32,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Event"]];
+    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Events"]];
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
     
     eventsList = [[NSMutableArray alloc]init];
@@ -64,7 +64,7 @@
             for (NSMutableDictionary *dic in eventArray) {
                 
                 [eventsList addObject:[[ConferenceHelper SharedHelper] getEventsObjectFromDictionary:dic]];
-                NSLog(@"Dic is %@", dic);
+              //  NSLog(@"Dic is %@", dic);
   
             }
             [ApplicationDelegate.appEventArray removeAllObjects];
@@ -77,6 +77,14 @@
             [UIAlertView showWithError:error];
             
         }]; }
+    else if (fromSearch){
+        
+        [eventsList removeAllObjects];
+        [eventsList addObjectsFromArray:ApplicationDelegate.appSearchEventsArray];
+        [self.eventsListTableView reloadData];
+        
+        
+    }
     else{
         
         [eventsList removeAllObjects];
@@ -84,6 +92,8 @@
         [self.eventsListTableView reloadData];
         
     }
+    
+    NSLog(@"Count in end view is %d",eventsList.count);
     
     
 }
@@ -123,7 +133,7 @@
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     Events *event=[eventsList objectAtIndex:indexPath.row];
-    NSLog(@"event is %@",event.name);
+    //NSLog(@"event is %@",event.name);
     [cell.textLabel setFont:[UIFont fontWithName:@"PlutoLight" size:16.0]];
     [cell setPropertyToCell:event];
     return cell;
@@ -150,6 +160,8 @@
 }
 
 - (IBAction)searchBtnAction:(id)sender {
+    
+    [self setFromSearch:YES];
     
     ConfEventSearchViewController *eveSearch = [[ConfEventSearchViewController alloc] initWithNibName:@"ConfEventSearchViewController" bundle:nil];
     [self.navigationController pushFadeViewController:eveSearch];

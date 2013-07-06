@@ -26,6 +26,8 @@
 @property (nonatomic) int webViewType;
 
 @property (nonatomic) BOOL forPdfView;
+@property (nonatomic) BOOL forEnquiry;
+
 
 @property (nonatomic, strong) NSString* loadingImageURLString;
 @property (nonatomic, strong) MKNetworkOperation* imageLoadingOperation;

@@ -339,6 +339,66 @@
     [self enqueueOperation:op];
     
 }
+-(void)searchEvents:(NSMutableDictionary *)searchParams  onCompletion:(SearchEventsResponseBlock) events onError:(MKNKErrorBlock) errorBlock{
+    
+    //NSMutableDictionary *dic=[[NSMutableDictionary alloc] init];
+    [searchParams setValue:@"search" forKey:@"action"];
+    
+    NSLog(@"serach paramsd are %@",searchParams);
+    
+    MKNetworkOperation *op = [self operationWithPath:SEARCHEVENTURL params:searchParams
+                                          httpMethod:@"POST"];
+    
+    [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        
+        //NSLog(@"ompletedOperation.responseString %@", completedOperation.responseString);
+        
+        [completedOperation responseJSONWithCompletionHandler:^(id jsonObject) {
+            
+            events(jsonObject);
+        }];
+        
+    } errorHandler:^(MKNetworkOperation *errorOp, NSError* error) {
+        
+        errorBlock(error);
+    }];
+    
+    
+    [self enqueueOperation:op];
+    
+
+    
+}
+
+-(void)addUserProfile:(NSMutableDictionary *)userParams  onCompletion:(UserProfileResponseBlock) events onError:(MKNKErrorBlock) errorBlock{
+    
+    
+    [userParams setValue:@"adduser" forKey:@"action"];
+    
+    NSLog(@"serach paramsd are %@",userParams);
+    
+    MKNetworkOperation *op = [self operationWithPath:USERPROFILEURL params:userParams
+                                          httpMethod:@"POST"];
+    
+    [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        
+        //NSLog(@"ompletedOperation.responseString %@", completedOperation.responseString);
+        
+        [completedOperation responseJSONWithCompletionHandler:^(id jsonObject) {
+            
+            events(jsonObject);
+        }];
+        
+    } errorHandler:^(MKNetworkOperation *errorOp, NSError* error) {
+        
+        errorBlock(error);
+    }];
+    
+    
+    [self enqueueOperation:op];
+
+}
+
 
 -(MKNetworkOperation *)downloadBrochure:(NSString *)remoteUrl toFile:(NSString *)filePath
 {

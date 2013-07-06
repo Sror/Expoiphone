@@ -34,6 +34,7 @@
 #define EVENTVISITOR 100
 #define EXHIBITORSURVEY 101
 #define EVENTREGISTRATION 102
+#define CONTACTENQUIRYFORM 103
 
 #define LocationGallery 30
 #define ImageGallery 31
@@ -45,3 +46,7 @@
 
 
 #define DYNAMICWEBVIEWURL(__ID__,__FormType__,__UserId__) [NSString stringWithFormat:@"http://conferenceapp.crisiltech.com/dynamic_form_view.html?id=%@&form_type=%@&user=%@",__ID__,__FormType__,__UserId__]
+
+#define CONTACTENQUIRYURL [NSString stringWithFormat:@"http://conferenceapp.crisiltech.com/enquiy.php"]
+
+//#define ENQUIRYURL NSString stringWithFormat:@"http://conferenceapp.crisiltech.com/enquiy.php"

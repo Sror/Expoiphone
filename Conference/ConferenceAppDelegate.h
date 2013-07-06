@@ -54,6 +54,7 @@ extern NSString *const FBSessionStateChangedNotification;
 @property (nonatomic, retain) NSMutableArray *appImageGalleryArray;
 @property (nonatomic, retain) NSMutableArray *appCurrentEventArray;
 @property (nonatomic, retain) NSMutableArray *appLatestNewsArray;
+@property (nonatomic, retain) NSMutableArray *appSearchEventsArray;
 
 
 -(UIButton *)customBackBtn;

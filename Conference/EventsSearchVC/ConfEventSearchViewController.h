@@ -34,6 +34,7 @@
 
 @property (nonatomic, retain) NSMutableArray *industrialArray;
 @property (nonatomic, retain) NSMutableArray *eventTypeArray;
+@property (nonatomic, retain) NSMutableArray *searchResultsArray;
 
 - (IBAction)homeBtnAction:(id)sender;
 - (IBAction)submitBtnAction:(id)sender;

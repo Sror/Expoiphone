@@ -15,7 +15,7 @@
 @implementation ConferenceAppDelegate
 
 @synthesize appEngine,navController,appHelper,HUD;
-@synthesize appdelegateSession,appEventArray,appImageGalleryArray,appFavEventArray,appCurrentEventArray;
+@synthesize appdelegateSession,appEventArray,appImageGalleryArray,appFavEventArray,appCurrentEventArray,appSearchEventsArray;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -101,6 +101,7 @@
     self.appImageGalleryArray = [[NSMutableArray alloc]init];
     self.appCurrentEventArray = [[NSMutableArray alloc]init];
     self.appLatestNewsArray = [[NSMutableArray alloc]init];
+    self.appSearchEventsArray = [[NSMutableArray alloc]init];
     
 
     
