@@ -166,7 +166,8 @@
     [self.navigationController setToolbarHidden:NO animated:NO];
     
     [self setUpTabBar];
-    
+    [self.view addSubview:ApplicationDelegate.HUD];
+    [ApplicationDelegate.HUD setLabelText:@"Loading"];
     
     [self applyFonts];
     
@@ -306,9 +307,6 @@
     [self.navigationController setToolbarHidden:NO animated:NO];
     //[self arrangeHorizontalScrollView];
     [self.latestNewsTableView setHidden:YES];
-    
-    [self.view addSubview:ApplicationDelegate.HUD];
-    [ApplicationDelegate.HUD setLabelText:@"Loading"];
 
     if (ApplicationDelegate.appCurrentEventArray.count ==0 || ApplicationDelegate.appLatestNewsArray.count ==0) {
         [ApplicationDelegate.HUD show:YES];
@@ -344,15 +342,8 @@
         [self.latestNewsList addObjectsFromArray:ApplicationDelegate.appLatestNewsArray];
         [self.latestNewsTableView setHidden:NO];
         [self.latestNewsTableView reloadData];
-        
-        
-        
+
     }
-     
-   
-//    [self getAllNewsListFromServer];
-    
-   
     
 }
 
