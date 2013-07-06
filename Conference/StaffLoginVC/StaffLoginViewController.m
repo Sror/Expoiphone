@@ -34,12 +34,14 @@
     [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Staff Login"]];
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
     
-    
+    [self.homeLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
     
     [self.bounceView setFrame:CGRectMake(22, 25, self.bounceView.frame.size.width, self.bounceView.frame.size.height)];
     [self.eventBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:16.0]];
     [self.exBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:16.0]];
     [self.bounceHeaderLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:17.0]];
+    
+     [self.bounceView setFrame:CGRectMake(15, 5, self.bounceView.frame.size.width, self.bounceView.frame.size.height)];
     
 }
 
@@ -196,4 +198,8 @@ tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 
 
+- (void)viewDidUnload {
+    [self setHomeLabel:nil];
+    [super viewDidUnload];
+}
 @end

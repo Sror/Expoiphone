@@ -21,6 +21,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *hotelBtn;
 @property (strong, nonatomic) IBOutlet UIButton *travelBtn;
 @property (strong, nonatomic) IBOutlet UIButton *abtBtn;
+@property (strong, nonatomic) IBOutlet UILabel *homeLabel;
 
 - (IBAction)homeBtnAction:(id)sender;
 

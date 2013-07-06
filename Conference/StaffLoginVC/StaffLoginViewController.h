@@ -30,6 +30,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *exBtn;
 @property (strong, nonatomic) IBOutlet UILabel *bounceHeaderLabel;
 
+@property (strong, nonatomic) IBOutlet UILabel *homeLabel;
 
 
 @property (strong, nonatomic) IBOutlet UIView *bounceView;

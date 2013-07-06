@@ -37,6 +37,8 @@
     [self.ytBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:15.0]];
     [self.twtBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:15.0]];
     [self.igBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:15.0]];
+    
+    [self.homeLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
 
     
 }
@@ -60,10 +62,10 @@
 
 - (IBAction)instBtnAction:(id)sender {
     
-   // [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.facebook.com"]]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://instagram.com/expocentreshj"]]];
     
-    UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"Sorry" message:@"Instagram not available" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [al show];
+    /*UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"Sorry" message:@"Instagram not available" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [al show];*/
 }
 
 - (IBAction)twitBtnAction:(id)sender {
@@ -72,9 +74,18 @@
     
 }
 
+
+
+// http://ae.linkedin.com/pub/expo-centre-sharjah/39/695/82b
+
+
 - (IBAction)homeBtnAction:(id)sender {
     
     ConfMainViewController *confView = [[ConfMainViewController alloc]initWithNibName:@"ConfMainViewController" bundle:nil];
     [self.navigationController pushFadeViewController:confView];
+}
+- (void)viewDidUnload {
+    [self setHomeLabel:nil];
+    [super viewDidUnload];
 }
 @end

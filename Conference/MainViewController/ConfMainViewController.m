@@ -104,7 +104,62 @@
     
   //  self.navigationController.navigationBar hid
     self.navigationItem.hidesBackButton = YES;
-    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Current Event"]];
+    
+    UIView *titleHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, 44)];
+    [titleHeaderView setBackgroundColor:[UIColor clearColor]];
+    
+    
+    UILabel *titleView;
+    if (!titleView) {
+        titleView = [[UILabel alloc] initWithFrame:CGRectMake(40, 14, 250, 44)];
+        titleView.backgroundColor = [UIColor clearColor];
+        titleView.font = [UIFont fontWithName:@"Eagle-Bold" size:17.0];
+    }
+    titleView.text = @"Current Events";
+    titleView.textColor = [UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1];
+    [titleView sizeToFit];
+    [titleHeaderView addSubview:titleView];
+    
+    UIImageView *imgView;
+    
+    if (!imgView) {
+        imgView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 10, 25, 25)];
+        imgView.backgroundColor = [UIColor clearColor];
+    }
+    [imgView setImage:[UIImage imageNamed:@"events-serch.png"]];
+    [imgView setContentMode:UIViewContentModeScaleAspectFit];
+    [titleHeaderView addSubview:imgView];
+    
+    [self.navigationItem setTitleView:titleHeaderView];
+    
+    
+    UIView *newsLabelView = [[UIView alloc]initWithFrame:CGRectMake(0, 165, 320, 48)];
+    [newsLabelView setBackgroundColor:[UIColor clearColor]];
+    
+    UILabel *titleView2;
+    if (!titleView2) {
+        titleView2 = [[UILabel alloc] initWithFrame:CGRectMake(42, 14, 250, 44)];
+        titleView2.backgroundColor = [UIColor clearColor];
+        titleView2.font = [UIFont fontWithName:@"Eagle-Bold" size:17.0];
+    }
+    titleView2.text = @"Latest News";
+    titleView2.textColor = [UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1];
+    [titleView2 sizeToFit];
+    
+    [newsLabelView addSubview:titleView2];
+    
+    UIImageView *imgView2;
+    if (!imgView2) {
+        imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(7, 10, 25, 25)];
+        imgView2.backgroundColor = [UIColor clearColor];
+    }
+    [imgView2 setImage:[UIImage imageNamed:@"segment-serch.png"]];
+    [imgView2 setContentMode:UIViewContentModeScaleAspectFit];
+    [newsLabelView addSubview:imgView2];
+    
+    
+    [self.view addSubview:newsLabelView];
+    //[self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Current Event"]];
     
     [self.navigationController.navigationBar setHidden:NO];
     //[self.navigationController.navigationBar setHidden:NO];
@@ -240,7 +295,7 @@
     self.pageControl.currentPage = 0;
 	self.pageControl.numberOfPages = self.currentEventArr.count;
     
-    [self.latestNewsTableView setHidden:YES];
+    
     
 
     
@@ -250,35 +305,51 @@
     [super viewWillAppear:animated];
     [self.navigationController setToolbarHidden:NO animated:NO];
     //[self arrangeHorizontalScrollView];
-    
+    [self.latestNewsTableView setHidden:YES];
     
     [self.view addSubview:ApplicationDelegate.HUD];
     [ApplicationDelegate.HUD setLabelText:@"Loading"];
 
-     
-    [ApplicationDelegate.HUD show:YES];
-    [self.navigationController.toolbar setUserInteractionEnabled:NO];
-    
-    [ApplicationDelegate.appEngine currentEventList:@"" onCompletion:^(NSMutableArray *CurrentEventArray) {
+    if (ApplicationDelegate.appCurrentEventArray.count ==0 || ApplicationDelegate.appLatestNewsArray.count ==0) {
+        [ApplicationDelegate.HUD show:YES];
+        [self.navigationController.toolbar setUserInteractionEnabled:NO];
         
-        NSLog(@"Curent event aay contis %d",CurrentEventArray.count);
+        [ApplicationDelegate.appEngine currentEventList:@"" onCompletion:^(NSMutableArray *CurrentEventArray) {
+            
+            NSLog(@"Curent event aay contis %d",CurrentEventArray.count);
+            [self.currentEventArr removeAllObjects];
+            for (NSMutableDictionary *dic in CurrentEventArray) {
+                [self.currentEventArr addObject:[[ConferenceHelper SharedHelper] getEventsObjectFromDictionary:dic]];
+            }
+            NSLog(@"Current event array count is %d",currentEventArr.count);
+            [ApplicationDelegate.appCurrentEventArray removeAllObjects];
+            [ApplicationDelegate.appCurrentEventArray addObjectsFromArray:self.currentEventArr];
+            // [ApplicationDelegate.HUD hide:YES];
+            [self arrangeHorizontalScrollView];
+            [self getAllNewsListFromServer];
+            
+        } onError:^(NSError *error) {
+            [ApplicationDelegate.HUD hide:YES];
+            [self.navigationController.toolbar setUserInteractionEnabled:YES];
+            [UIAlertView showWithError:error];
+        }];
+        
+    }else{
+        
         [self.currentEventArr removeAllObjects];
-        for (NSMutableDictionary *dic in CurrentEventArray) {
-            [self.currentEventArr addObject:[[ConferenceHelper SharedHelper] getEventsObjectFromDictionary:dic]];
-        }
-        NSLog(@"Current event array count is %d",currentEventArr.count);
-        [ApplicationDelegate.appCurrentEventArray removeAllObjects];
-        [ApplicationDelegate.appCurrentEventArray addObjectsFromArray:self.currentEventArr];
-       // [ApplicationDelegate.HUD hide:YES];
+        [self.currentEventArr addObjectsFromArray:ApplicationDelegate.appCurrentEventArray];
         [self arrangeHorizontalScrollView];
-        [self getAllNewsListFromServer];
         
-    } onError:^(NSError *error) {
-        [ApplicationDelegate.HUD hide:YES];
-        [self.navigationController.toolbar setUserInteractionEnabled:YES];
-        [UIAlertView showWithError:error];
-    }];
-    
+        [self.latestNewsList removeAllObjects];
+        [self.latestNewsList addObjectsFromArray:ApplicationDelegate.appLatestNewsArray];
+        [self.latestNewsTableView setHidden:NO];
+        [self.latestNewsTableView reloadData];
+        
+        
+        
+    }
+     
+   
 //    [self getAllNewsListFromServer];
     
    

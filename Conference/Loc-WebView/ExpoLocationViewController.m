@@ -40,35 +40,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
-    // NSURL *webUrl;
-    
-    
-    
-   /* switch (webViewType) {
-            
-           
-            
-        case EXHIBITORSURVEY:
-            
-        {   webUrl = [NSURL URLWithString:DYNAMICWEBVIEWURL(eventID, titleStr)];
-            
-        }
-            
-            break;
-            
-        case EVENTVISITOR:{
-            
-        }
-            
-            break;
-            
-        default:
-            break;
-    }*/
 
-    
-    
     if (viewType==IMGVIEW) {
    
         [ApplicationDelegate.HUD show:YES];
@@ -92,6 +64,7 @@
                 
             }];
     }else{
+        [ApplicationDelegate.HUD show:YES];
         [self.imageView setHidden:YES];
         switch (webViewType) {
             case EXHIBITORSURVEY:
@@ -154,14 +127,7 @@
         }
     }
 
-    
-            
-      
-          /*  [self.imageView setHidden:YES];
-            [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Event-Visitor Survey"]];*/
-            
-        
-    //}
+
     
 }
 
@@ -184,6 +150,9 @@
     
     [ApplicationDelegate.HUD hide:YES];
     NSLog(@"Error for WEBVIEW: %@", [error description]);
+    
+    UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"Oops" message:@"Server not reachable" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [al show];
 }
 
 

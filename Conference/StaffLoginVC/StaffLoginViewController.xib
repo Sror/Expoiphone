@@ -287,7 +287,7 @@
 					<object class="IBUILabel" id="2542589">
 						<reference key="NSNextResponder" ref="771069071"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{45, 8}, {191, 25}}</string>
+						<string key="NSFrame">{{52, 8}, {191, 25}}</string>
 						<reference key="NSSuperview" ref="771069071"/>
 						<reference key="NSNextKeyView" ref="954243349"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -344,7 +344,7 @@
 					<object class="IBUIButton" id="954243349">
 						<reference key="NSNextResponder" ref="771069071"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{244, 7}, {28, 27}}</string>
+						<string key="NSFrame">{{253, 7}, {28, 27}}</string>
 						<reference key="NSSuperview" ref="771069071"/>
 						<reference key="NSNextKeyView" ref="932844198"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -422,6 +422,14 @@
 						<reference key="destination" ref="2542589"/>
 					</object>
 					<int key="connectionID">77</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">homeLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="1033339532"/>
+					</object>
+					<int key="connectionID">79</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -637,7 +645,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">78</int>
+			<int key="maxID">79</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>

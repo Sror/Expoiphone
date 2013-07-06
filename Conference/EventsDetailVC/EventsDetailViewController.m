@@ -10,6 +10,7 @@
 #import "ExpoLocationViewController.h"
 #import "LBViewController.h"
 #import "ExhibitCell.h"
+#import "ExpoCommonViewController.h"
 #import <EventKit/EventKit.h>
 
 @interface EventsDetailViewController ()
@@ -19,13 +20,14 @@
 @implementation EventsDetailViewController
 
 @synthesize eventDetail;
-@synthesize fromFavList,networkGallery,selectedVideo;
+@synthesize fromFavList,networkGallery,selectedVideo,phoneArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        phoneArray = [[NSMutableArray alloc]init];
     }
     return self;
 }
@@ -249,6 +251,7 @@
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    [self.videoGalleryView removeFromSuperview];
     [ApplicationDelegate showTabBar:self.tabBarController];
 }
 
@@ -277,12 +280,22 @@
 
 - (IBAction)videoGalleryBtnAction:(id)sender {
     
+     NSLog(@"videoGalleryArray count is %d", eventDetail.videoGalleryArray.count);
+    
     if (eventDetail.videoGalleryArray.count>0) {
-        [self setBounceInt:10];
+        
+        
+        ExpoCommonViewController *comView = [[ExpoCommonViewController alloc]initWithNibName:@"ExpoCommonViewController" bundle:nil];
+        [comView setTitleHeaderString:@"Video-Gallery"];
+        [comView setListArray:eventDetail.videoGalleryArray];
+        [comView setFromEventDetailView:YES];
+        [self.navigationController pushFadeViewController:comView];
+        
+        /*[self setBounceInt:10];
         [self.view addSubviewWithBounce:self.videoGalleryView];
         [self.bounceGoBtn setHidden:NO];
         [self.bounceViewHeaderLabel setText:@"Please select a Video"];
-        [self.videoGalleryTableView reloadData];
+        [self.videoGalleryTableView reloadData];*/
     }else{
         UIAlertView *al =[[UIAlertView alloc]initWithTitle:@"Sorry" message:@"No Videos available" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [al show];
@@ -478,7 +491,80 @@
 
 - (IBAction)callToolBarBtnAction:(id)sender {
     
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://+97142689090"]]];
+
+    [self.phoneArray removeAllObjects];
+    
+    for (NSMutableDictionary *dic in eventDetail.organizers) {
+        [self.phoneArray addObject:[dic objectForKey:@"phone_no"]];
+    }
+    
+    if (phoneArray.count == 0) {
+        UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"" message:@"No phone numbers available" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+        [al show];
+    }
+    
+    else if (phoneArray.count == 1) {
+        
+        UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"" message:@"Are you sure to call this number ?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:phoneArray[0], nil];
+        al.tag = 10;
+        [al show];
+        
+    }else if (phoneArray.count == 2){
+        
+        UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"" message:@"Please select a number to call" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:phoneArray[0],phoneArray[1], nil];
+        al.tag = 11;
+        [al show];
+        
+    }
+    else{
+        UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"" message:@"Please select a number to call" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:phoneArray[0],phoneArray[1],phoneArray[2], nil];
+        al.tag = 12;
+        [al show];
+        
+    }
+
+    
+}
+
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
+    
+    NSString *numberToCall;
+    
+    switch (alertView.tag) {
+        case 10:
+            
+            if (buttonIndex==1) {
+                NSLog(@"Phon number 0 to call is %@", phoneArray[0]);
+                numberToCall = phoneArray[0];
+            }
+            break;
+        case 11:
+            if (buttonIndex==1) {
+                NSLog(@"Phon number 0 to call is %@", phoneArray[0]);
+                numberToCall = phoneArray[0];
+            }else {
+                 NSLog(@"Phon number 1 to call is %@", phoneArray[1]);
+                numberToCall = phoneArray[1];
+            }
+            break;
+        case 12:
+            if (buttonIndex==1) {
+                NSLog(@"Phon number 0 to call is %@", phoneArray[0]);
+                numberToCall = phoneArray[0];
+            }else if (buttonIndex==2) {
+                NSLog(@"Phon number 1 to call is %@", phoneArray[1]);
+                numberToCall = phoneArray[1];
+            }else{
+                NSLog(@"Phon number 2 to call is %@", phoneArray[2]);
+                numberToCall = phoneArray[2];
+            }
+            break;
+        default:
+            break;
+    }
+    NSLog(@"NUmber to call is %@",[NSString stringWithFormat:@"telprompt://%@",numberToCall]);
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@",numberToCall]]];
     
     
 }
@@ -823,7 +909,6 @@ case 3:
     if (selectedVideo.length==0) {
         
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:@"Video Unavailable" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        
         [alert show];
     }
     
@@ -917,7 +1002,6 @@ tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if(self.bounceInt==20)
     {
-        
         static NSString *CellIdentifier2 = @"ExhibitCell";
         ExhibitCell *cell2 = (ExhibitCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier2];
         

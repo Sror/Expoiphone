@@ -1023,6 +1023,16 @@
 			name = YetAnotherToolBar;
 			sourceTree = "<group>";
 		};
+		FB4AF1F617887E7F005DC171 /* CommonView */ = {
+			isa = PBXGroup;
+			children = (
+				FB60A99617875BC900BA7EE0 /* ExpoCommonViewController.h */,
+				FB60A99717875BC900BA7EE0 /* ExpoCommonViewController.m */,
+				FB60A99817875BC900BA7EE0 /* ExpoCommonViewController.xib */,
+			);
+			name = CommonView;
+			sourceTree = "<group>";
+		};
 		FB5E45EF17804AED00AABCA3 /* Loc-WebView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1260,9 +1270,7 @@
 		FBD87942175E659B00261201 = {
 			isa = PBXGroup;
 			children = (
-				FB60A99617875BC900BA7EE0 /* ExpoCommonViewController.h */,
-				FB60A99717875BC900BA7EE0 /* ExpoCommonViewController.m */,
-				FB60A99817875BC900BA7EE0 /* ExpoCommonViewController.xib */,
+				FB4AF1F617887E7F005DC171 /* CommonView */,
 				FBA6098417848878001A9214 /* SlideMenuView */,
 				FBC3CDC51782325F004DD4C3 /* YouTube */,
 				FBC3CD831781E422004DD4C3 /* Splash */,

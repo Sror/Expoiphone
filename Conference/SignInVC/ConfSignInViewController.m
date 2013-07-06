@@ -37,6 +37,7 @@
     [ApplicationDelegate.HUD setLabelText:@"Checking"];
     [self.usernameTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
     [self.passwordTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
+    [self.homeLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
 
 }
 
@@ -104,4 +105,8 @@
 
 }
 
+- (void)viewDidUnload {
+    [self setHomeLabel:nil];
+    [super viewDidUnload];
+}
 @end

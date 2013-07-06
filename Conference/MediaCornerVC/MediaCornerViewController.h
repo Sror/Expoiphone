@@ -27,6 +27,10 @@
 
 @property (strong, nonatomic) IBOutlet UIView *videoGalleryView;
 @property (strong, nonatomic) IBOutlet UITableView *videoGalleryTableView;
+
+@property (strong, nonatomic) IBOutlet UILabel *homeLabel;
+
+
 - (IBAction)videoGalleryCloseBtnAction:(id)sender;
 - (IBAction)playVideoBtnAction:(id)sender;
 

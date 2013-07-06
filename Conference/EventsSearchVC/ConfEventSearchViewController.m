@@ -64,6 +64,7 @@
     [self.industrialTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
     [self.dateTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
     [self.endDateTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
+    [self.homeLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
     
 }
 
@@ -354,5 +355,9 @@
     UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"Search Event" message:@"No results found" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [al show];*/
     
+}
+- (void)viewDidUnload {
+    [self setHomeLabel:nil];
+    [super viewDidUnload];
 }
 @end

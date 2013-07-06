@@ -84,10 +84,6 @@
     
     NSString *videoID;
     
-    
-    // youtube.youtubeUrl = [NSString stringWithFormat:@"http://www.youtube.com/watch?v=OUz-5YjXFeg"];
-    
-    
     if (selectedVideo.length==0) {
         
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:@"Video Unavailable" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
@@ -208,12 +204,32 @@
     
    [ApplicationDelegate.appEngine videoGalleryList:@"" onCompletion:^(NSMutableArray *videoGaleryArray) {
        
-       [ApplicationDelegate.HUD hide:YES];
+       /*[ApplicationDelegate.HUD hide:YES];
        [self.navigationController.navigationBar setUserInteractionEnabled:YES];
        NSLog(@"videoGaleryArray.count is %i",videoGaleryArray.count);
        [videosList removeAllObjects];
        [videosList addObjectsFromArray:videoGaleryArray];
-       [self.view addSubviewWithBounce:self.videoGalleryView];
+       [self.view addSubviewWithBounce:self.videoGalleryView];*/
+       
+       
+       
+       [ApplicationDelegate.HUD hide:YES];
+       [self.navigationController.navigationBar setUserInteractionEnabled:YES];
+       NSLog(@"videoGaleryArray.count is %i",videoGaleryArray.count);
+
+       
+       if (videoGaleryArray.count >0) {
+           
+           ExpoCommonViewController *com = [[ExpoCommonViewController alloc]initWithNibName:@"ExpoCommonViewController" bundle:nil];
+           [com setTitleHeaderString:@"Video-Gallery"];
+           [com setListArray:videoGaleryArray];
+           [self.navigationController pushFadeViewController:com];
+
+       }else{
+           UIAlertView *al =[[UIAlertView alloc]initWithTitle:@"Sorry" message:@"No Video-Gallery available" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+           [al show];
+       }
+
 
    } onError:^(NSError *error) {
        [ApplicationDelegate.HUD hide:YES];
@@ -231,22 +247,41 @@
     
     [ApplicationDelegate.appEngine imageGalleryList:@"" onCompletion:^(NSMutableArray *imageGaleryArray) {
         
+        
         [ApplicationDelegate.HUD hide:YES];
         [self.navigationController.navigationBar setUserInteractionEnabled:YES];
+        NSLog(@"videoGaleryArray.count is %i",imageGaleryArray.count);
         
-        NSLog(@"imageGaleryArray.count is %i",imageGaleryArray.count);
-         [imagesList removeAllObjects];
-         [imagesList addObjectsFromArray:imageGaleryArray];
-        /*[ApplicationDelegate.appImageGalleryArray removeAllObjects];
-        [ApplicationDelegate.appImageGalleryArray addObjectsFromArray:imageGaleryArray];*/
         
-        if (imagesList.count >0) {
-            networkGallery = [[FGalleryViewController alloc] initWithPhotoSource:self];
-            [self.navigationController pushViewController:networkGallery animated:YES];
+        if (imageGaleryArray.count >0) {
+            
+            ExpoCommonViewController *com = [[ExpoCommonViewController alloc]initWithNibName:@"ExpoCommonViewController" bundle:nil];
+            [com setTitleHeaderString:@"Image-Gallery"];
+            [com setListArray:imageGaleryArray];
+            [self.navigationController pushFadeViewController:com];
+            
         }else{
             UIAlertView *al =[[UIAlertView alloc]initWithTitle:@"Sorry" message:@"No image gallery available" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [al show];
         }
+
+        
+//        [ApplicationDelegate.HUD hide:YES];
+//        [self.navigationController.navigationBar setUserInteractionEnabled:YES];
+//        
+//        NSLog(@"imageGaleryArray.count is %i",imageGaleryArray.count);
+//         [imagesList removeAllObjects];
+//         [imagesList addObjectsFromArray:imageGaleryArray];
+//        /*[ApplicationDelegate.appImageGalleryArray removeAllObjects];
+//        [ApplicationDelegate.appImageGalleryArray addObjectsFromArray:imageGaleryArray];*/
+//        
+//        if (imagesList.count >0) {
+//            networkGallery = [[FGalleryViewController alloc] initWithPhotoSource:self];
+//            [self.navigationController pushViewController:networkGallery animated:YES];
+//        }else{
+//            UIAlertView *al =[[UIAlertView alloc]initWithTitle:@"Sorry" message:@"No image gallery available" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//            [al show];
+//        }
         
         
     } onError:^(NSError *error) {
@@ -351,4 +386,8 @@ tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
+- (void)viewDidUnload {
+    [self setHomeLabel:nil];
+    [super viewDidUnload];
+}
 @end

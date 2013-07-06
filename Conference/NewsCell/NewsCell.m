@@ -64,7 +64,7 @@
 
 }
 
--(void)setDetailsToCell:(NSMutableDictionary *)dic{
+-(void)setDetailsToCell:(NSMutableDictionary *)dic withTitle:(NSString *)title withView:(BOOL) fromDetailView{
     
     NSLog(@"Dic is %@",dic);
     
@@ -74,9 +74,21 @@
     
     
     [self.locationLabel setText:[dic objectForKey:@"title"]];
+    NSString *iconUrl;
     
-    NSString *iconUrl=[dic objectForKey:@"thumb_image"];
-    
+    if ([title isEqualToString:@"Video-Gallery"]){
+        
+        if (fromDetailView) {
+            iconUrl=[dic objectForKey:@"thumb_image"];
+        }else{
+            iconUrl=[dic objectForKey:@"thum_image"];}
+    }
+    else if ([title isEqualToString:@"Press-Release"]){
+        
+        iconUrl=[dic objectForKey:@"thumb_image"];
+    }else{
+        iconUrl=[dic objectForKey:@"image"];
+    }
     self.imageLoadingOperation=[ApplicationDelegate.appEngine imageAtURL:[NSURL URLWithString:iconUrl] completionHandler:^(UIImage *fetchedImage, NSURL *url, BOOL isInCache) {
         
         

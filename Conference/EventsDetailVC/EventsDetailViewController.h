@@ -16,7 +16,7 @@
 #import "FGalleryViewController.h"
 #import "SlideMenuView.h"
 
-@interface EventsDetailViewController : UIViewController<UIActionSheetDelegate,FGalleryViewControllerDelegate>
+@interface EventsDetailViewController : UIViewController<UIActionSheetDelegate,FGalleryViewControllerDelegate,UIAlertViewDelegate>
 {
     
     NSIndexPath   *checkedCell;
@@ -25,6 +25,8 @@
 @property(nonatomic, retain) NSString* selectedVideo;
 @property(nonatomic, retain) Events *eventDetail;
 @property (strong, nonatomic)  FGalleryViewController *networkGallery;
+
+@property (nonatomic, retain) NSMutableArray *phoneArray;
 
 @property (nonatomic) int bounceInt;
 @property (nonatomic) int fGalleryType;

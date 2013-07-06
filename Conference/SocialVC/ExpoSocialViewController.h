@@ -25,6 +25,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *igBtn;
 @property (strong, nonatomic) IBOutlet UIButton *twtBtn;
 
+@property (strong, nonatomic) IBOutlet UILabel *homeLabel;
 
 - (IBAction)homeBtnAction:(id)sender;
 @end

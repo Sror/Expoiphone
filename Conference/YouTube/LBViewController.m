@@ -71,7 +71,7 @@
     
     NSLog(@"youtubeUrl -- %@",youtubeUrl);
 
-    self.youTubeHeadLabel.backgroundColor = [UIColor clearColor];
+   /* self.youTubeHeadLabel.backgroundColor = [UIColor clearColor];
     self.youTubeHeadLabel.font = [UIFont fontWithName:@"AdelleBasic-Bold" size:20.0];
     // titleView.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
     // self.navigationItem.titleView = titleView;
@@ -79,7 +79,24 @@
 self.youTubeHeadLabel.text = @"YouTube Player";
 self.youTubeHeadLabel.textColor = [UIColor colorWithRed:(218.0f/255.0f) green:(107.0f/255.0f) blue:(17.0f/255.0f) alpha:1];
 [self.youTubeHeadLabel sizeToFit];
-    [self.youTubeHeadLabel setFrame:CGRectMake(55, 8, 210, 34)];
+    [self.youTubeHeadLabel setFrame:CGRectMake(55, 8, 210, 34)];*/
+    
+    
+    
+    //UILabel *titleView;
+   // if (!titleView) {
+        self.youTubeHeadLabel = [[UILabel alloc] initWithFrame:CGRectMake(55, 8, 210, 34)];
+        self.youTubeHeadLabel.backgroundColor = [UIColor clearColor];
+        self.youTubeHeadLabel.font = [UIFont fontWithName:@"Eagle-Bold" size:17.0];
+    //}
+    self.youTubeHeadLabel.text =@"YouTube Player";
+
+    self.youTubeHeadLabel.textColor = [UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1];
+    [self.youTubeHeadLabel sizeToFit];
+    
+   // return titleView;
+    
+    
   /*  UIButton *backBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25,44, 44)];
     [backBtn addTarget:self action:@selector(backBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [backBtn setImage:[UIImage imageNamed:@"back_button.png"] forState:UIControlStateNormal];

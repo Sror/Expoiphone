@@ -13,6 +13,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *usernameTxtField;
 @property (strong, nonatomic) IBOutlet UITextField *passwordTxtField;
 
+@property (strong, nonatomic) IBOutlet UILabel *homeLabel;
 
 - (IBAction)loginBtnAction:(id)sender;
 

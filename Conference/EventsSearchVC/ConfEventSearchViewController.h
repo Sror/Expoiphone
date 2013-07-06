@@ -35,6 +35,7 @@
 @property (nonatomic, retain) NSMutableArray *industrialArray;
 @property (nonatomic, retain) NSMutableArray *eventTypeArray;
 @property (nonatomic, retain) NSMutableArray *searchResultsArray;
+@property (strong, nonatomic) IBOutlet UILabel *homeLabel;
 
 - (IBAction)homeBtnAction:(id)sender;
 - (IBAction)submitBtnAction:(id)sender;

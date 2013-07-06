@@ -21,6 +21,5 @@
 
 
 -(void)setNewsListToCell:(News *)newsObj;
--(void)setDetailsToCell:(NSMutableDictionary *)dic;
-
+-(void)setDetailsToCell:(NSMutableDictionary *)dic withTitle:(NSString *)title withView:(BOOL) fromDetailView;
 @end

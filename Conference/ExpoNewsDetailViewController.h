@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FGalleryViewController.h"
 
-@interface ExpoNewsDetailViewController : UIViewController
+@interface ExpoNewsDetailViewController : UIViewController<FGalleryViewControllerDelegate>
 
 @property BOOL fromCommonView;
 
 @property(nonatomic, retain) NSMutableDictionary *commonDic;
+@property (nonatomic, retain) NSString *titleHeaderString;
 
 @property (nonatomic, retain) NSMutableArray *imageArray;
 
@@ -24,6 +26,19 @@
 
 @property (nonatomic, strong) NSString* loadingImageURLString;
 @property (nonatomic, strong) MKNetworkOperation* imageLoadingOperation;
+
+@property (strong, nonatomic) IBOutlet UIButton *playBtn;
+- (IBAction)playBtnAction:(id)sender;
+@property (strong, nonatomic) IBOutlet UILabel *homeLabel;
+
+
+
+@property (strong, nonatomic)  FGalleryViewController *networkGallery;
+
+
 - (IBAction)homeBtnAction:(id)sender;
+
+
+
 
 @end

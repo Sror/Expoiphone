@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface ExpoCommonViewController : UIViewController{
+#import "FGalleryViewController.h"
+@interface ExpoCommonViewController : UIViewController<FGalleryViewControllerDelegate>{
     
 }
+
+@property (nonatomic, retain)NSString *selectedVideo;
+@property (nonatomic, retain) NSMutableArray *imageArray;
 
 @property (nonatomic, retain) NSMutableArray *listArray;
 @property (nonatomic, retain) NSString *titleHeaderString;
@@ -20,6 +23,10 @@
 - (IBAction)homBtnAction:(id)sender;
 @property (strong, nonatomic) IBOutlet UILabel *homeLabel;
 
+@property(nonatomic) BOOL fromEventDetailView;
+
+
+@property (strong, nonatomic)  FGalleryViewController *networkGallery;
 
 
 

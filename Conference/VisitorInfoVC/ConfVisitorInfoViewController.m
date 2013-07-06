@@ -33,7 +33,7 @@
     [self.hotelBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:15.0]];
     [self.abtBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:15.0]];
     [self.travelBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:15.0]];
-    
+    [self.homeLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,5 +71,9 @@
     ConfMainViewController *cfMainView= [[ConfMainViewController alloc]initWithNibName:@"ConfMainViewController" bundle:nil];
     [self.navigationController pushFadeViewController:cfMainView];
 
+}
+- (void)viewDidUnload {
+    [self setHomeLabel:nil];
+    [super viewDidUnload];
 }
 @end
