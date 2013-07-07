@@ -38,6 +38,7 @@
 
     
     [self.locationLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
+    self.locationLabel.textColor = [UIColor blackColor];
     
     NSLog(@"tit %@",newsObj.news_title);
 

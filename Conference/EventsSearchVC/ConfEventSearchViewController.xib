@@ -49,7 +49,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">search_bg.png</string>
+							<string key="NSResourceName">app_bg.png</string>
 						</object>
 					</object>
 					<object class="IBUIView" id="470919999">
@@ -212,7 +212,7 @@
 						<int key="NSvFlags">256</int>
 						<string key="NSFrame">{{0, 253}, {320, 61}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSNextKeyView" ref="35602733"/>
+						<reference key="NSNextKeyView" ref="712190405"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">4</int>
@@ -273,6 +273,7 @@
 						<int key="NSvFlags">256</int>
 						<string key="NSFrame">{{4, 269}, {28, 28}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSNextKeyView" ref="35602733"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">4</int>
@@ -406,7 +407,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{38, 268}, {277, 30}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSNextKeyView" ref="470919999"/>
+						<reference key="NSNextKeyView" ref="837585936"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -433,7 +434,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{107, 323}, {105, 36}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSNextKeyView" ref="837585936"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -523,6 +524,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{288, 274}, {17, 17}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSNextKeyView" ref="470919999"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -882,11 +884,11 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="app_bg.png">{320, 480}</string>
 			<string key="dropdownBg.png">{25, 16}</string>
 			<string key="enddate.png">{28, 28}</string>
 			<string key="events-serch.png">{28, 28}</string>
 			<string key="home-tt.png">{28, 25}</string>
-			<string key="search_bg.png">{320, 384}</string>
 			<string key="searchlist_bg.png">{320, 61}</string>
 			<string key="segment-serch.png">{28, 28}</string>
 			<string key="startdate.png">{28, 28}</string>

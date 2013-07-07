@@ -32,7 +32,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Favorites"]];
+    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Favourites"]];
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
     
     [self.view addSubview:ApplicationDelegate.HUD];

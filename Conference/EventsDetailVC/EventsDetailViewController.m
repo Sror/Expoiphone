@@ -10,6 +10,7 @@
 #import "ExpoLocationViewController.h"
 #import "LBViewController.h"
 #import "ExhibitCell.h"
+#import "ConferenceHelper.h"
 #import "ExpoCommonViewController.h"
 #import <EventKit/EventKit.h>
 
@@ -94,7 +95,7 @@
     
     
     if ([favArray count]>=10) {
-        UIAlertView *myAlert =[[UIAlertView alloc]initWithTitle:Nil message:@"Max: Favorite Count Reached" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView *myAlert =[[UIAlertView alloc]initWithTitle:Nil message:@"Max: Favourites Count Reached" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [myAlert show];
     }
     else{
@@ -105,35 +106,23 @@
             
             NSLog(@"event is is %@",eventId);
             
-           // NSLog(@"prop id is %@ and to be added is %@",propertyId, prop.PropertyId);
-            
             if ([eventDetail.event_id isEqualToString:eventId]) {
-                
                 addbool=NO;
                 break;
-                
             }
-            
         }
-        
         if (addbool) {
             
             NSLog(@"the event id value%@",eventDetail.event_id);
-            
-            
             [favArray addObject:eventDetail.event_id];
-            
-            
             [[ConferenceHelper SharedHelper] WriteArrayTothePlistFile:favArray toFile:@"favList.plist"];
-            
-            UIAlertView *myAlert =[[UIAlertView alloc]initWithTitle:Nil message:@"Property added to favourite" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            UIAlertView *myAlert =[[UIAlertView alloc]initWithTitle:Nil message:@"Event added to favourite" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [myAlert show];
-            
         }
         
         else
         {
-            UIAlertView *myAlert =[[UIAlertView alloc]initWithTitle:Nil message:@"Property already in favourite list" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            UIAlertView *myAlert =[[UIAlertView alloc]initWithTitle:Nil message:@"Event already exists in favourite list" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [myAlert show];
             
         }
@@ -495,8 +484,11 @@
     [self.phoneArray removeAllObjects];
     
     for (NSMutableDictionary *dic in eventDetail.organizers) {
+        if (![[ConferenceHelper SharedHelper]isEmptyString:[dic objectForKey:@"phone_no"]])
         [self.phoneArray addObject:[dic objectForKey:@"phone_no"]];
     }
+    
+    NSLog(@"phone array count is %d",phoneArray.count);
     
     if (phoneArray.count == 0) {
         UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"" message:@"No phone numbers available" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
@@ -504,6 +496,10 @@
     }
     
     else if (phoneArray.count == 1) {
+    
+       /*if ([[ConferenceHelper SharedHelper]isEmptyString:phoneArray[0]]) {
+            [phoneArray removeObjectAtIndex:0];
+        }*/
         
         UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"" message:@"Are you sure to call this number ?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:phoneArray[0], nil];
         al.tag = 10;

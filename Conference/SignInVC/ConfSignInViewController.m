@@ -30,7 +30,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Staff Login"]];
+    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Sign-In"]];
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
     
     [self.view addSubview:ApplicationDelegate.HUD];

@@ -29,6 +29,8 @@
     [super viewDidLoad];
     aboutUsScrollView.contentSize = CGSizeMake(320, 568);
     // Do any additional setup after loading the view from its nib.
+    
+    //[self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Registration"]];
     [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"About Us"]];
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
     

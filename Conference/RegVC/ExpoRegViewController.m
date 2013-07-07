@@ -318,9 +318,7 @@
         
     }
     else{
-        
-        
-        
+
         NSMutableDictionary *userDic = [[NSMutableDictionary alloc]init];
         [userDic setValue:self.fullNameTextField.text forKey:@"fullname"];
         [userDic setValue:self.genderTxtField.text forKey:@"sex"];
@@ -357,8 +355,6 @@
 - (IBAction)viewTouchBtnAction:(id)sender {
     
     for (UIView *vie in self.navigationController.view.subviews) {
-        
-        NSLog(@"list fo subies is %@",vie);
         if (vie.tag==DRAGVIEWTAG) {
             [UIView animateWithDuration:0.7 animations:^{
                 [vie setFrame:CGRectMake(247, 0, 73, 58)];

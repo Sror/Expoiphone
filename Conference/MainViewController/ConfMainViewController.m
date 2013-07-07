@@ -100,37 +100,43 @@
     // Do any additional setup after loading the view from its nib.
     
 
+    [self.pageControl setPageIndicatorTintColor:[UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1]];
+    
+  
+    
     [[UIToolbar appearance] setBackgroundImage:[UIImage imageNamed:@"toolbar_bg.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
     
   //  self.navigationController.navigationBar hid
     self.navigationItem.hidesBackButton = YES;
     
-    UIView *titleHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, 44)];
-    [titleHeaderView setBackgroundColor:[UIColor clearColor]];
+//    UIView *titleHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, 44)];
+//    [titleHeaderView setBackgroundColor:[UIColor clearColor]];
+//    
+//    
+//    UILabel *titleView;
+//    if (!titleView) {
+//        titleView = [[UILabel alloc] initWithFrame:CGRectMake(40, 14, 250, 44)];
+//        titleView.backgroundColor = [UIColor clearColor];
+//        titleView.font = [UIFont fontWithName:@"Eagle-Bold" size:17.0];
+//    }
+//    titleView.text = @"Current Events";
+//    titleView.textColor = [UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1];
+//    [titleView sizeToFit];
+//    [titleHeaderView addSubview:titleView];
+//    
+//    UIImageView *imgView;
+//    
+//    if (!imgView) {
+//        imgView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 10, 25, 25)];
+//        imgView.backgroundColor = [UIColor clearColor];
+//    }
+//    [imgView setImage:[UIImage imageNamed:@"events-serch.png"]];
+//    [imgView setContentMode:UIViewContentModeScaleAspectFit];
+//    [titleHeaderView addSubview:imgView];
     
+    [self.navigationItem setTitleView:[ApplicationDelegate setTitleForMainView]];
     
-    UILabel *titleView;
-    if (!titleView) {
-        titleView = [[UILabel alloc] initWithFrame:CGRectMake(40, 14, 250, 44)];
-        titleView.backgroundColor = [UIColor clearColor];
-        titleView.font = [UIFont fontWithName:@"Eagle-Bold" size:17.0];
-    }
-    titleView.text = @"Current Events";
-    titleView.textColor = [UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1];
-    [titleView sizeToFit];
-    [titleHeaderView addSubview:titleView];
-    
-    UIImageView *imgView;
-    
-    if (!imgView) {
-        imgView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 10, 25, 25)];
-        imgView.backgroundColor = [UIColor clearColor];
-    }
-    [imgView setImage:[UIImage imageNamed:@"events-serch.png"]];
-    [imgView setContentMode:UIViewContentModeScaleAspectFit];
-    [titleHeaderView addSubview:imgView];
-    
-    [self.navigationItem setTitleView:titleHeaderView];
+   // [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Registration"]];
     
     
     UIView *newsLabelView = [[UIView alloc]initWithFrame:CGRectMake(0, 165, 320, 48)];
@@ -138,7 +144,7 @@
     
     UILabel *titleView2;
     if (!titleView2) {
-        titleView2 = [[UILabel alloc] initWithFrame:CGRectMake(42, 14, 250, 44)];
+        titleView2 = [[UILabel alloc] initWithFrame:CGRectMake(42, 12, 250, 44)];
         titleView2.backgroundColor = [UIColor clearColor];
         titleView2.font = [UIFont fontWithName:@"Eagle-Bold" size:17.0];
     }
@@ -245,14 +251,14 @@
         UILabel *dateLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 37, 150, 15)];
         [dateLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:10.0]];
         [dateLabel setBackgroundColor:[UIColor clearColor]];
-        [dateLabel setTextColor:[UIColor grayColor]];
+        [dateLabel setTextColor:[UIColor blackColor]];
         [dateLabel setText:[NSString stringWithFormat:@"%@-%@",[[ConferenceHelper SharedHelper] datefromString:event.start_date],[[ConferenceHelper SharedHelper] datefromString:event.end_date]]];
         [contentView addSubview:dateLabel];
         
         UILabel *timeLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 47, 150, 15)];
         [timeLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
         [timeLabel setBackgroundColor:[UIColor clearColor]];
-        [timeLabel setTextColor:[UIColor grayColor]];
+        [timeLabel setTextColor:[UIColor blackColor]];
         [timeLabel setText:[NSString stringWithFormat:@"%@-%@",event.start_time,event.end_time]];
         [contentView addSubview:timeLabel];
         
@@ -500,7 +506,7 @@
 - (void)btnAbtTouched
 {
     ExpoAboutViewController *abtUsVC = [[ExpoAboutViewController alloc]initWithNibName:@"ExpoAboutViewController" bundle:nil];
-    [self.navigationController pushFadeViewController:abtUsVC];
+    [ApplicationDelegate.navController pushFadeViewController:abtUsVC];
 }
 - (void)btnEventsTouched
 {

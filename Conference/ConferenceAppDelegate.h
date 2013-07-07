@@ -69,7 +69,7 @@ extern NSString *const FBSessionStateChangedNotification;
 -(UIButton *)customBackBtn;
 - (UIView *)setTitle:(NSString *)title;
 -(UIView *)titleView:(NSString *)titleText;
-
+-(UIView *) setTitleForMainView;
 -(void)showMainHomeView;
 
 - (void) hideTabBar:(UITabBarController *) tabbarcontroller;

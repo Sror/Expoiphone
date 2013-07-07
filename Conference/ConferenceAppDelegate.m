@@ -106,7 +106,7 @@
     self.appSearchEventsArray = [[NSMutableArray alloc]init];
     
     
-    self.dragView = [[UIView alloc]initWithFrame:CGRectMake(247, 20, 73, 58)];
+    self.dragView = [[UIView alloc]initWithFrame:CGRectMake(240, 20, 73, 58)];
     [self.dragView setBackgroundColor:[UIColor clearColor]];
     [self.dragView setAlpha:0.0];
     [self.dragView setTag:DRAGVIEWTAG];
@@ -192,9 +192,9 @@
 
 -(UIView *)draggedView{
     
-    self.dragView = [[UIView alloc]initWithFrame:CGRectMake(247, 0, 73, 58)];
+    self.dragView = [[UIView alloc]initWithFrame:CGRectMake(243, 0, 73, 58)];
     [self.dragView setBackgroundColor:[UIColor brownColor]];
-    UIImageView *imgView = [[UIImageView alloc]initWithFrame:CGRectMake(247, 0, 73, 58)];
+    UIImageView *imgView = [[UIImageView alloc]initWithFrame:CGRectMake(243, 0, 73, 58)];
     [imgView setImage:[UIImage imageNamed:@"pulldown.png"]];
     return  self.dragView;
     
@@ -211,18 +211,17 @@
             [self.navController.view addSubview:self.dragView];
             [UIView animateWithDuration:0.7 animations:^{
                 [self.dragView setAlpha:1.0];
-                [self.dragView setFrame:CGRectMake(247, 64, 73, 58)];
+                [self.dragView setFrame:CGRectMake(240, 54, 73, 58)];
             } completion:^(BOOL finished) {
             }];
         }
-
     }
     else
     {
         if (_dragged) {
             _dragged=NO;
             [UIView animateWithDuration:0.7 animations:^{
-                [self.dragView setFrame:CGRectMake(247, 0, 73, 58)];
+                [self.dragView setFrame:CGRectMake(240, 0, 73, 58)];
                 [self.dragView setAlpha:0.0];
             } completion:^(BOOL finished) {
                 [self.dragView removeFromSuperview];
@@ -239,9 +238,54 @@
     
     UIButton *backBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25,44, 44)];
     [backBtn addTarget:self action:@selector(backBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    [backBtn setBackgroundColor:[UIColor clearColor]];
     [backBtn setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
     return backBtn;
 
+    
+}
+
+
+-(UIView *) setTitleForMainView{
+    
+    
+    UIView *titleHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 20, 320, 44)];
+    [titleHeaderView setBackgroundColor:[UIColor clearColor]];
+    
+    
+    UILabel *titleView;
+    if (!titleView) {
+        titleView = [[UILabel alloc] initWithFrame:CGRectMake(40, 12, 250, 44)];
+        titleView.backgroundColor = [UIColor clearColor];
+        titleView.font = [UIFont fontWithName:@"Eagle-Bold" size:17.0];
+    }
+    titleView.text = @"Current Events";
+    titleView.textColor = [UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1];
+    [titleView sizeToFit];
+    [titleHeaderView addSubview:titleView];
+    
+    UIImageView *imgView;
+    
+    if (!imgView) {
+        imgView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 10, 25, 25)];
+        imgView.backgroundColor = [UIColor clearColor];
+    }
+    [imgView setImage:[UIImage imageNamed:@"events-serch.png"]];
+    [imgView setContentMode:UIViewContentModeScaleAspectFit];
+    [titleHeaderView addSubview:imgView];
+    
+    UIButton *dragBtn;
+    if (!dragBtn) {
+        dragBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [dragBtn setFrame:CGRectMake(277, 0, 40, 44)];
+        dragBtn.backgroundColor = [UIColor clearColor];
+    }
+    UIPanGestureRecognizer *panBtn= [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(dragBtnAction:)];
+    [dragBtn addGestureRecognizer:panBtn];
+    [titleHeaderView addSubview:dragBtn];
+
+    return  titleHeaderView;
+    
     
 }
 - (UIView *)setTitle:(NSString *)title
@@ -249,22 +293,22 @@
     
     
     
-    UIView *containerView= [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
+    UIView *containerView= [[UIView alloc]initWithFrame:CGRectMake(44, 0, 276, 44)];
     [containerView setBackgroundColor:[UIColor clearColor]];
     
     UIButton *dragBtn;
     if (!dragBtn) {
         dragBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [dragBtn setFrame:CGRectMake(277, 0, 40, 44)];
+        [dragBtn setFrame:CGRectMake(225, 0, 40, 44)];
         dragBtn.backgroundColor = [UIColor clearColor];
-        UIPanGestureRecognizer *panBtn= [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(dragBtnAction:)];
-        [dragBtn addGestureRecognizer:panBtn];
     }
+    UIPanGestureRecognizer *panBtn= [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(dragBtnAction:)];
+    [dragBtn addGestureRecognizer:panBtn];
     [containerView addSubview:dragBtn];
     
     UILabel *titleView;
     if (!titleView) {
-        titleView = [[UILabel alloc] initWithFrame:CGRectMake(80, 10, 170, 44)];
+        titleView = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, 170, 44)];
         titleView.backgroundColor = [UIColor clearColor];
         titleView.font = [UIFont fontWithName:@"Eagle-Bold" size:17.0];
     }
