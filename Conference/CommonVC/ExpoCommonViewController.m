@@ -149,7 +149,7 @@
 
 -(void)checkAndPlay{
     
-    NSString *videoID;
+   // NSString *videoID;
     
     
     @try {

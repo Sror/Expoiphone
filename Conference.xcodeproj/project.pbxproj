@@ -225,6 +225,12 @@
 		FB92E2271783553E00CC3FE3 /* instagram-sm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB92E21F1783553E00CC3FE3 /* instagram-sm@2x.png */; };
 		FB92E2281783553E00CC3FE3 /* youtube-sm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB92E2201783553E00CC3FE3 /* youtube-sm@2x.png */; };
 		FBA6098217848875001A9214 /* SlideMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA6098117848875001A9214 /* SlideMenuView.m */; };
+		FBC2B54017894D7800B31BCC /* exhibitorsurvey-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC2B53C17894D7800B31BCC /* exhibitorsurvey-1@2x.png */; };
+		FBC2B54117894D7800B31BCC /* exhibitorsurvey-1.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC2B53D17894D7800B31BCC /* exhibitorsurvey-1.png */; };
+		FBC2B54217894D7800B31BCC /* eventvisitorsurvey-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC2B53E17894D7800B31BCC /* eventvisitorsurvey-1@2x.png */; };
+		FBC2B54317894D7800B31BCC /* eventvisitorsurvey-1.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC2B53F17894D7800B31BCC /* eventvisitorsurvey-1.png */; };
+		FBC2B5471789645300B31BCC /* pulldown.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC2B5451789645300B31BCC /* pulldown.png */; };
+		FBC2B5481789645300B31BCC /* pulldown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC2B5461789645300B31BCC /* pulldown@2x.png */; };
 		FBC3CD711781D46A004DD4C3 /* skip.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC3CD6D1781D46A004DD4C3 /* skip.png */; };
 		FBC3CD721781D46A004DD4C3 /* skip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC3CD6E1781D46A004DD4C3 /* skip@2x.png */; };
 		FBC3CD731781D46A004DD4C3 /* submit.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC3CD6F1781D46A004DD4C3 /* submit.png */; };
@@ -547,6 +553,12 @@
 		FB92E2201783553E00CC3FE3 /* youtube-sm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "youtube-sm@2x.png"; path = "Conference/Images/New/youtube-sm@2x.png"; sourceTree = "<group>"; };
 		FBA6098017848875001A9214 /* SlideMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlideMenuView.h; path = Conference/SlideMenuView.h; sourceTree = "<group>"; };
 		FBA6098117848875001A9214 /* SlideMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlideMenuView.m; path = Conference/SlideMenuView.m; sourceTree = "<group>"; };
+		FBC2B53C17894D7800B31BCC /* exhibitorsurvey-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "exhibitorsurvey-1@2x.png"; path = "Conference/Images/exhibitorsurvey-1@2x.png"; sourceTree = "<group>"; };
+		FBC2B53D17894D7800B31BCC /* exhibitorsurvey-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "exhibitorsurvey-1.png"; path = "Conference/Images/exhibitorsurvey-1.png"; sourceTree = "<group>"; };
+		FBC2B53E17894D7800B31BCC /* eventvisitorsurvey-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "eventvisitorsurvey-1@2x.png"; path = "Conference/Images/eventvisitorsurvey-1@2x.png"; sourceTree = "<group>"; };
+		FBC2B53F17894D7800B31BCC /* eventvisitorsurvey-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "eventvisitorsurvey-1.png"; path = "Conference/Images/eventvisitorsurvey-1.png"; sourceTree = "<group>"; };
+		FBC2B5451789645300B31BCC /* pulldown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pulldown.png; path = Conference/Images/pulldown.png; sourceTree = "<group>"; };
+		FBC2B5461789645300B31BCC /* pulldown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pulldown@2x.png"; path = "Conference/Images/pulldown@2x.png"; sourceTree = "<group>"; };
 		FBC3CD6D1781D46A004DD4C3 /* skip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = skip.png; path = Conference/Images/New/skip.png; sourceTree = "<group>"; };
 		FBC3CD6E1781D46A004DD4C3 /* skip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "skip@2x.png"; path = "Conference/Images/New/skip@2x.png"; sourceTree = "<group>"; };
 		FBC3CD6F1781D46A004DD4C3 /* submit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = submit.png; path = Conference/Images/New/submit.png; sourceTree = "<group>"; };
@@ -954,6 +966,12 @@
 		FB454FE91787F20F00B35B0D /* EventSearch */ = {
 			isa = PBXGroup;
 			children = (
+				FBC2B5451789645300B31BCC /* pulldown.png */,
+				FBC2B5461789645300B31BCC /* pulldown@2x.png */,
+				FBC2B53C17894D7800B31BCC /* exhibitorsurvey-1@2x.png */,
+				FBC2B53D17894D7800B31BCC /* exhibitorsurvey-1.png */,
+				FBC2B53E17894D7800B31BCC /* eventvisitorsurvey-1@2x.png */,
+				FBC2B53F17894D7800B31BCC /* eventvisitorsurvey-1.png */,
 				FB454FCC1787F1ED00B35B0D /* searchlist_bg.png */,
 				FB454FCD1787F1ED00B35B0D /* searchlist_bg@2x.png */,
 				FB454FCE1787F1ED00B35B0D /* search_bg.png */,
@@ -1713,6 +1731,12 @@
 				FB454FE51787F1EE00B35B0D /* startdate@2x.png in Resources */,
 				FB454FE61787F1EE00B35B0D /* detdiscl-w.png in Resources */,
 				FB454FE71787F1EE00B35B0D /* detdiscl-w@2x.png in Resources */,
+				FBC2B54017894D7800B31BCC /* exhibitorsurvey-1@2x.png in Resources */,
+				FBC2B54117894D7800B31BCC /* exhibitorsurvey-1.png in Resources */,
+				FBC2B54217894D7800B31BCC /* eventvisitorsurvey-1@2x.png in Resources */,
+				FBC2B54317894D7800B31BCC /* eventvisitorsurvey-1.png in Resources */,
+				FBC2B5471789645300B31BCC /* pulldown.png in Resources */,
+				FBC2B5481789645300B31BCC /* pulldown@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -121,9 +121,9 @@
         }
         else{
         
-        [self.webviewForForms loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:DYNAMICWEBVIEWURL(eventID, titleStr,@"chikku")]]];
+        [self.webviewForForms loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:DYNAMICWEBVIEWURL(eventID, titleStr,ApplicationDelegate.userNameString)]]];
 
-        NSLog(@"url is %@",DYNAMICWEBVIEWURL(eventID, titleStr,@"chikku"));
+        NSLog(@"url is %@",DYNAMICWEBVIEWURL(eventID, titleStr,ApplicationDelegate.userNameString));
         }
     }
 
@@ -136,7 +136,7 @@
 
 -(void)webViewDidStartLoad:(UIWebView *)webView {
     NSLog(@"start");
-    [ApplicationDelegate.HUD hide:YES];
+    //[ApplicationDelegate.HUD hide:YES];
 }
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView {

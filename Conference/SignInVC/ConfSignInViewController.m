@@ -68,10 +68,10 @@
         
         
         [ApplicationDelegate.HUD show:YES];
-        [self.navigationController.navigationController.navigationBar setUserInteractionEnabled:NO];
+        [self.navigationController.navigationBar setUserInteractionEnabled:NO];
         [ApplicationDelegate.appEngine loginAction:self.usernameTxtField.text withPassword:self.passwordTxtField.text onCompletion:^(NSMutableDictionary *loginResponseDic) {
   
-            [self.navigationController.navigationController.navigationBar setUserInteractionEnabled:NO];
+            [self.navigationController.navigationBar setUserInteractionEnabled:YES];
             [ApplicationDelegate.HUD hide:YES];
             
             if ([[loginResponseDic objectForKey:@"result"] isEqualToNumber:[NSNumber numberWithBool:0]]) {
@@ -83,6 +83,8 @@
             }
             else{
                 
+                [ApplicationDelegate setUserNameString:self.usernameTxtField.text];
+                
                 StaffLoginViewController *stafView = [[StaffLoginViewController alloc]initWithNibName:@"StaffLoginViewController" bundle:nil];
                 [self.navigationController pushFadeViewController:stafView];
                 
@@ -90,7 +92,7 @@
             
         } onError:^(NSError *error) {
             
-            [self.navigationController.navigationController.navigationBar setUserInteractionEnabled:NO];
+            [self.navigationController.navigationBar setUserInteractionEnabled:YES];
             [ApplicationDelegate.HUD hide:YES];
             [UIAlertView showWithError:error];
 

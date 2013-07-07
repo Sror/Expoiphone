@@ -29,11 +29,15 @@ extern NSString *const FBSessionStateChangedNotification;
 
 @class ConferenceViewController;
 
-@interface ConferenceAppDelegate : UIResponder <UIApplicationDelegate,MBProgressHUDDelegate,XOSplashVideoDelegate>
+@interface ConferenceAppDelegate : UIResponder <UIApplicationDelegate,MBProgressHUDDelegate,XOSplashVideoDelegate>{
+    
+     BOOL _dragged;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UINavigationController * navController;
 
+@property (nonatomic)  BOOL _dragged;;
 
 @property (strong, nonatomic) ConferenceViewController *viewController;
 
@@ -56,9 +60,14 @@ extern NSString *const FBSessionStateChangedNotification;
 @property (nonatomic, retain) NSMutableArray *appLatestNewsArray;
 @property (nonatomic, retain) NSMutableArray *appSearchEventsArray;
 
+@property (nonatomic, retain) UIView *dragView;
+
+
+@property (nonatomic, retain) NSString *userNameString;
+
 
 -(UIButton *)customBackBtn;
-- (UILabel *)setTitle:(NSString *)title;
+- (UIView *)setTitle:(NSString *)title;
 -(UIView *)titleView:(NSString *)titleText;
 
 -(void)showMainHomeView;

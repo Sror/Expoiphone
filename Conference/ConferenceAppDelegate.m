@@ -16,6 +16,8 @@
 
 @synthesize appEngine,navController,appHelper,HUD;
 @synthesize appdelegateSession,appEventArray,appImageGalleryArray,appFavEventArray,appCurrentEventArray,appSearchEventsArray;
+@synthesize userNameString,dragView,_dragged;
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -103,7 +105,29 @@
     self.appLatestNewsArray = [[NSMutableArray alloc]init];
     self.appSearchEventsArray = [[NSMutableArray alloc]init];
     
-
+    
+    self.dragView = [[UIView alloc]initWithFrame:CGRectMake(247, 20, 73, 58)];
+    [self.dragView setBackgroundColor:[UIColor clearColor]];
+    [self.dragView setAlpha:0.0];
+    [self.dragView setTag:DRAGVIEWTAG];
+    UIImageView *imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 73, 58)];
+    [imgView setBackgroundColor:[UIColor clearColor]];
+    [imgView setImage:[UIImage imageNamed:@"pulldown.png"]];
+    [self.dragView addSubview:imgView];
+    
+    
+    UIButton *engBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [engBtn setFrame:CGRectMake(6,12,63,22)];
+    [engBtn setBackgroundColor:[UIColor brownColor]];
+    [engBtn addTarget:self action:@selector(engBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.dragView addSubview:engBtn];
+    
+    UIButton *arabBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [arabBtn setFrame:CGRectMake(6,35,63,22)];
+    [arabBtn setBackgroundColor:[UIColor greenColor]];
+    [arabBtn addTarget:self action:@selector(arabBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.dragView addSubview:arabBtn];
+    
     
    /* for (NSString* family in [UIFont familyNames])
     {
@@ -127,6 +151,22 @@
 }
 
 
+-(void)arabBtnAction{
+    
+    
+   // self.navController.view
+    
+    NSLog(@"Arab clicked");
+    
+    
+}
+
+-(void)engBtnAction{
+    
+    NSLog(@"English clicked");
+    
+    
+}
 -(void)TESTData
 {
 
@@ -148,7 +188,48 @@
 
     }];
     
+}
+
+-(UIView *)draggedView{
     
+    self.dragView = [[UIView alloc]initWithFrame:CGRectMake(247, 0, 73, 58)];
+    [self.dragView setBackgroundColor:[UIColor brownColor]];
+    UIImageView *imgView = [[UIImageView alloc]initWithFrame:CGRectMake(247, 0, 73, 58)];
+    [imgView setImage:[UIImage imageNamed:@"pulldown.png"]];
+    return  self.dragView;
+    
+}
+
+
+- (void)dragBtnAction:(UIPanGestureRecognizer *)rec
+{
+    CGPoint vel = [rec velocityInView:self.navController.view];
+    if (vel.y > 0)
+    {
+        if (!_dragged) {
+            _dragged=YES;
+            [self.navController.view addSubview:self.dragView];
+            [UIView animateWithDuration:0.7 animations:^{
+                [self.dragView setAlpha:1.0];
+                [self.dragView setFrame:CGRectMake(247, 64, 73, 58)];
+            } completion:^(BOOL finished) {
+            }];
+        }
+
+    }
+    else
+    {
+        if (_dragged) {
+            _dragged=NO;
+            [UIView animateWithDuration:0.7 animations:^{
+                [self.dragView setFrame:CGRectMake(247, 0, 73, 58)];
+                [self.dragView setAlpha:0.0];
+            } completion:^(BOOL finished) {
+                [self.dragView removeFromSuperview];
+                [ApplicationDelegate set_dragged:NO];
+            }];
+        }
+    }
 }
 
 
@@ -163,19 +244,37 @@
 
     
 }
-- (UILabel *)setTitle:(NSString *)title
+- (UIView *)setTitle:(NSString *)title
 {
+    
+    
+    
+    UIView *containerView= [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
+    [containerView setBackgroundColor:[UIColor clearColor]];
+    
+    UIButton *dragBtn;
+    if (!dragBtn) {
+        dragBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [dragBtn setFrame:CGRectMake(277, 0, 40, 44)];
+        dragBtn.backgroundColor = [UIColor clearColor];
+        UIPanGestureRecognizer *panBtn= [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(dragBtnAction:)];
+        [dragBtn addGestureRecognizer:panBtn];
+    }
+    [containerView addSubview:dragBtn];
+    
     UILabel *titleView;
     if (!titleView) {
-        titleView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 250, 44)];
+        titleView = [[UILabel alloc] initWithFrame:CGRectMake(80, 10, 170, 44)];
         titleView.backgroundColor = [UIColor clearColor];
         titleView.font = [UIFont fontWithName:@"Eagle-Bold" size:17.0];
     }
     titleView.text = title;
+    titleView.textAlignment=NSTextAlignmentLeft;
     titleView.textColor = [UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1];
     [titleView sizeToFit];
+    [containerView addSubview:titleView];
     
-    return titleView;
+    return containerView;
 }
 
 

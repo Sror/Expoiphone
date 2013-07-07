@@ -40,6 +40,9 @@
 #define ImageGallery 31
 
 
+#define DRAGVIEWTAG 1000
+
+
 //http://conferenceapp.crisiltech.com/dynamic_form_view.html?id=25&form_type=survey_form
 
 

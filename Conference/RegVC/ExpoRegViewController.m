@@ -32,6 +32,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    //[self.view addSubview:ApplicationDelegate.dragView];
+    
     [self.navigationController.navigationBar setHidden:NO];
     
     dateFormatter = [[NSDateFormatter alloc]init];
@@ -65,6 +67,9 @@
     
     
 }
+
+
+
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     
@@ -344,19 +349,25 @@
             [self.navigationController.navigationBar setUserInteractionEnabled:YES];
             [UIAlertView showWithError:error];
         }];
-        
-        /*if (!fromView) {
-            [ApplicationDelegate.HUD setLabelText:@"Saving"];
-            [self updatePlist];
-        }else{
-            [ApplicationDelegate.HUD setLabelText:@"Saving"];
-            [ApplicationDelegate.HUD show:YES];
-            [self performSelector:@selector(stopThari) withObject:nil afterDelay:3.0];
-            
-        }*/
+
     
-        
+    }
+}
+
+- (IBAction)viewTouchBtnAction:(id)sender {
     
+    for (UIView *vie in self.navigationController.view.subviews) {
+        
+        NSLog(@"list fo subies is %@",vie);
+        if (vie.tag==DRAGVIEWTAG) {
+            [UIView animateWithDuration:0.7 animations:^{
+                [vie setFrame:CGRectMake(247, 0, 73, 58)];
+                [vie setAlpha:0.0];
+            } completion:^(BOOL finished) {
+                [vie removeFromSuperview];
+                [ApplicationDelegate set_dragged:NO];
+            }];
+        }
     }
 }
 
@@ -386,4 +397,8 @@
 }
 
 
+- (void)viewDidUnload {
+    [self setScrollViewReg:nil];
+    [super viewDidUnload];
+}
 @end

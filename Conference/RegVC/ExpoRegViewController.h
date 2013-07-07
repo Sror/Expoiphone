@@ -29,6 +29,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *IndustryTxtField;
 
 @property (nonatomic, retain) NSMutableArray *industrialArray;
+@property (strong, nonatomic) IBOutlet TPKeyboardAvoidingScrollView *scrollViewReg;
 
 @property (nonatomic, retain) AbstractActionSheetPicker *actionSheetPicker;
 @property (nonatomic) BOOL fromView;
@@ -37,5 +38,6 @@
 
 - (IBAction)skipBtnAction:(id)sender;
 - (IBAction)submitBtnAction:(id)sender;
+- (IBAction)viewTouchBtnAction:(id)sender;
 
 @end
