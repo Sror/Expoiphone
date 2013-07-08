@@ -123,9 +123,15 @@
         NSMutableDictionary * dic = [listArray objectAtIndex:indexPath.row];
         [self.imageArray removeAllObjects];
         [self.imageArray addObjectsFromArray:[dic objectForKey:@"gallery"]];
+        if (imageArray.count >0) {
+            networkGallery = [[FGalleryViewController alloc] initWithPhotoSource:self];
+            [self.navigationController pushFadeViewController:networkGallery];
+        }else{
+            UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"Gallery" message:@"No images available" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [av show];
+        }
         
-        networkGallery = [[FGalleryViewController alloc] initWithPhotoSource:self];
-        [self.navigationController pushFadeViewController:networkGallery];
+        
 
                
         

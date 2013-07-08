@@ -29,13 +29,22 @@
 
 +(UIAlertView*) showWithError:(NSError*) networkError {
 
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[networkError localizedDescription]
-                                                    message:[networkError localizedRecoverySuggestion]
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[networkError localizedDescription]
+//                                                    message:[networkError localizedRecoverySuggestion]
+//                                                   delegate:nil
+//                                          cancelButtonTitle:NSLocalizedString(@"Dismiss", @"")
+//                                          otherButtonTitles:nil];
+//    [alert show];
+//    return alert;
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Server Error"
+                                                    message:@"Server not reachable"
                                                    delegate:nil
                                           cancelButtonTitle:NSLocalizedString(@"Dismiss", @"")
                                           otherButtonTitles:nil];
     [alert show];
     return alert;
+
 }
 @end
 #endif

@@ -52,6 +52,12 @@
     return YES;
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.usernameTxtField setText:@""];
+    [self.passwordTxtField setText:@""];
+}
+
 
 - (IBAction)loginBtnAction:(id)sender {
     

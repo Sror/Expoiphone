@@ -67,7 +67,7 @@
     if (ApplicationDelegate.appEventArray.count!=0) {
         [self.view addSubviewWithBounce:self.bounceView];
     }else{
-        UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"Oops!" message:@"No Events found" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+        UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"Sorry" message:@"No Events found." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
         [al show];
     }
     
@@ -140,7 +140,7 @@
         [self.navigationController pushFadeViewController:webView];*/
     }else{
         
-        UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"Events" message:@"Please select an event name" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+        UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"Events" message:@"Please select an event name first" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
         [al show];
     }
     

@@ -336,7 +336,7 @@
      ExpoLocationViewController * amPdfVieww = [[ExpoLocationViewController alloc]initWithNibName:@"ExpoLocationViewController" bundle:nil];
     
     if ([eventDetail.brochure rangeOfString:@".pdf"].location == NSNotFound) {
-        UIAlertView *myAlert =[[UIAlertView alloc]initWithTitle:@"Sorry" message:@"No Brochures Found" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView *myAlert =[[UIAlertView alloc]initWithTitle:@"Sorry" message:@"No Brochures Available" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [myAlert show];
     } else {
         //[self.extrasView setHidden:YES];
@@ -402,11 +402,11 @@
     NSError *err;
     BOOL isSuceess=[eventSotre saveEvent:event span:EKSpanThisEvent error:&err];
     if(isSuceess){
-        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Event" message:@"Event added in calendar" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Event" message:@"Event added to calendar" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alertview show];
     }
     else{
-        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Event" message:[err description] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Event" message:@"Adding event to calendar failed" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alertview show];
     }
 }
@@ -491,7 +491,7 @@
     NSLog(@"phone array count is %d",phoneArray.count);
     
     if (phoneArray.count == 0) {
-        UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"" message:@"No phone numbers available" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+        UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"" message:@"No contact numbers available" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
         [al show];
     }
     
