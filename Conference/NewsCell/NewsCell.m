@@ -40,7 +40,7 @@
     [self.locationLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
     self.locationLabel.textColor = [UIColor blackColor];
     
-    NSLog(@"tit %@",newsObj.news_title);
+    //NSLog(@"tit %@",newsObj.news_title);
 
     
     [self.locationLabel setText:newsObj.news_title];
@@ -71,7 +71,7 @@
     
     [self.locationLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
     
-    NSLog(@"tit %@",[dic objectForKey:@"title"]);
+   // NSLog(@"tit %@",[dic objectForKey:@"title"]);
     
     
     [self.locationLabel setText:[dic objectForKey:@"title"]];

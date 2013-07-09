@@ -77,6 +77,7 @@ extern NSString *const FBSessionStateChangedNotification;
 
 
 @property(nonatomic) int langBool;
+@property(nonatomic, retain) NSString* langCode;
 
 
 - (void)openSessionWithAllowLoginUI:(BOOL)allowLoginUI;

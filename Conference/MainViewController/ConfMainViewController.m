@@ -94,12 +94,24 @@
     self.toolbarItems = [NSArray arrayWithObjects:btnAbt,fixed1, btnEvents,fixed1, btnFav,fixed1, btnContact,fixed1,btnMore, nil];
 
 }
+
+-(void)refreshView:(NSNotification *) notification;{
+    
+    NSLog(@"Notification");
+   
+    [self.navigationItem setTitleView:[ApplicationDelegate setTitleForMainView]];
+    
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    
 
+    
     [self.pageControl setPageIndicatorTintColor:[UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1]];
     
   
@@ -148,7 +160,9 @@
         titleView2.backgroundColor = [UIColor clearColor];
         titleView2.font = [UIFont fontWithName:@"Eagle-Bold" size:17.0];
     }
-    titleView2.text = @"Latest News";
+    
+    [titleView2 setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"lnews"]];
+   // titleView2.text = @"Latest News";
     titleView2.textColor = [UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1];
     [titleView2 sizeToFit];
     
@@ -216,7 +230,7 @@
         
         UIImageView *imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(41,29,78,56)];
         
-        NSLog(@"url is %@",event.logo);
+       //NSLog(@"url is %@",event.logo);
         
         NSString *iconUrl = event.logo;
         
@@ -311,6 +325,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setToolbarHidden:NO animated:NO];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:) name:@"refreshView" object:nil];
     //[self arrangeHorizontalScrollView];
     [self.latestNewsTableView setHidden:YES];
 
@@ -320,12 +335,12 @@
         
         [ApplicationDelegate.appEngine currentEventList:@"" onCompletion:^(NSMutableArray *CurrentEventArray) {
             
-            NSLog(@"Curent event aay contis %d",CurrentEventArray.count);
+           // NSLog(@"Curent event aay contis %d",CurrentEventArray.count);
             [self.currentEventArr removeAllObjects];
             for (NSMutableDictionary *dic in CurrentEventArray) {
                 [self.currentEventArr addObject:[[ConferenceHelper SharedHelper] getEventsObjectFromDictionary:dic]];
             }
-            NSLog(@"Current event array count is %d",currentEventArr.count);
+           // NSLog(@"Current event array count is %d",currentEventArr.count);
             [ApplicationDelegate.appCurrentEventArray removeAllObjects];
             [ApplicationDelegate.appCurrentEventArray addObjectsFromArray:self.currentEventArr];
             // [ApplicationDelegate.HUD hide:YES];
@@ -357,6 +372,8 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self.navigationController setToolbarHidden:YES animated:NO];
+ 
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshView" object:nil];
     
 }
 
@@ -368,12 +385,12 @@
         
         [[self latestNewsList]removeAllObjects];
     for (NSMutableDictionary *dic in newsListArray) {
-            NSLog(@"the newsListDIc = %@",dic);
+            //NSLog(@"the newsListDIc = %@",dic);
         
         [self.latestNewsList addObject:[[ConferenceHelper SharedHelper] getNewsObjectFromDictionary:dic]];
         }
         
-        NSLog(@"Current event array count is %d",latestNewsList.count);
+       // NSLog(@"Current event array count is %d",latestNewsList.count);
         [ApplicationDelegate.appLatestNewsArray removeAllObjects];
         [ApplicationDelegate.appLatestNewsArray addObjectsFromArray:self.latestNewsList];
         [self.latestNewsTableView setHidden:NO];

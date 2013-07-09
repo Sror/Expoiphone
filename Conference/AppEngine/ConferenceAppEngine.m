@@ -79,12 +79,13 @@
     
     NSMutableDictionary *dic=[[NSMutableDictionary alloc] init];
     [dic setValue:@"getList" forKey:@"action"];
+    [dic setValue:ApplicationDelegate.langCode forKey:@"language"];
     MKNetworkOperation *op = [self operationWithPath:NEWSLISTURL params:dic
                                           httpMethod:@"POST"];
     
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         
-        NSLog(@"ompletedOperation.responseString %@", completedOperation.responseString);
+        //NSLog(@"ompletedOperation.responseString %@", completedOperation.responseString);
         
         [completedOperation responseJSONWithCompletionHandler:^(id jsonObject) {
             
@@ -108,6 +109,7 @@
     NSMutableDictionary *dic=[[NSMutableDictionary alloc] init];
    // [dic setValue:@"getCurrentEvents" forKey:@"action"];
      [dic setValue:@"getlist" forKey:@"action"];
+    [dic setValue:ApplicationDelegate.langCode forKey:@"language"];
     MKNetworkOperation *op = [self operationWithPath:CURRENTEVENTSURL params:dic
                                           httpMethod:@"POST"];
     

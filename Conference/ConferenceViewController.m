@@ -131,6 +131,7 @@
 - (IBAction)englishBtnAction:(id)sender {
     
     ApplicationDelegate.langBool=LANG_English;
+    [ApplicationDelegate setLangCode:ENG_Code];
     if (!regView) {
         [self showExpoRegistrationView];
     }else{
@@ -141,7 +142,8 @@
 }
 
 - (IBAction)arabicBtnAction:(id)sender {
-        ApplicationDelegate.langBool=LANG_ARABIC;
+    ApplicationDelegate.langBool=LANG_ARABIC;
+    [ApplicationDelegate setLangCode:ARAB_Code];
     
     if (!regView) {
         [self showExpoRegistrationView];

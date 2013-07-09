@@ -122,7 +122,7 @@
 
     [dateFormat setDateFormat:@"dd LLLL yyyy"];
     dateStr = [dateFormat stringFromDate:[date dateByAddingTimeInterval:[[NSTimeZone defaultTimeZone] secondsFromGMT]]];
-    NSLog(@"Retiurned date  is %@",dateStr);
+   // NSLog(@"Retiurned date  is %@",dateStr);
     return dateStr;
     
 }
@@ -190,32 +190,27 @@
     
 }
 
--(NSDictionary *)getLanguageForAKey:(NSString *)key
+
+
+
+-(NSString *)getLanguageForAKey:(NSString *)key
 
 {
     
     
     NSDictionary *thedata;
-    
     NSMutableArray *array=[[ConferenceHelper SharedHelper] ReadArrayFromthePlistFile:@"lang.plist"];
-
+    NSLog(@"Array con is %d",array.count);
     for (NSDictionary *dic in array) {
-        
+        NSLog(@"dic is %@",dic);
         
         if ([dic objectForKey:key]) {
-            
-            
             thedata=[dic objectForKey:key];
-           
             break;
         }
-        
-        
-        
     }
-    NSLog(@"the data for key %@",thedata);
-    return thedata;
-    
+    NSLog(@"the outputStr value for lang %@ is %@",ApplicationDelegate.langCode,[thedata objectForKey:ApplicationDelegate.langCode]);
+    return [thedata objectForKey:ApplicationDelegate.langCode];
 }
 
 

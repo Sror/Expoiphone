@@ -3,6 +3,15 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>lnews</key>
+		<dict>
+			<key>ar</key>
+			<string>آخر الأخبار</string>
+			<key>en</key>
+			<string>Latest News</string>
+		</dict>
+	</dict>
+	<dict>
 		<key>cevent</key>
 		<dict>
 			<key>ar</key>

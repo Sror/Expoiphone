@@ -16,7 +16,7 @@
 
 @synthesize appEngine,navController,appHelper,HUD;
 @synthesize appdelegateSession,appEventArray,appImageGalleryArray,appFavEventArray,appCurrentEventArray,appSearchEventsArray;
-@synthesize userNameString,dragView,_dragged,langBool;
+@synthesize userNameString,dragView,_dragged,langBool,langCode;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -33,6 +33,9 @@
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"titlebar_bg.png"] forBarMetrics:UIBarMetricsDefault];
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+    
+    
+
     
     //[self returnNextDay:[NSDate date]];
     
@@ -122,13 +125,15 @@
     
     UIButton *engBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [engBtn setFrame:CGRectMake(6,12,63,22)];
-    [engBtn setBackgroundColor:[UIColor brownColor]];
+    [engBtn setBackgroundColor:[UIColor clearColor]];
+    [engBtn setImage:[UIImage imageNamed:@"english.png"] forState:UIControlStateNormal];
     [engBtn addTarget:self action:@selector(engBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [self.dragView addSubview:engBtn];
     
     UIButton *arabBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [arabBtn setFrame:CGRectMake(6,35,63,22)];
-    [arabBtn setBackgroundColor:[UIColor greenColor]];
+    [arabBtn setBackgroundColor:[UIColor clearColor]];
+    [arabBtn setImage:[UIImage imageNamed:@"arabic.png"] forState:UIControlStateNormal];
     [arabBtn addTarget:self action:@selector(arabBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [self.dragView addSubview:arabBtn];
     
@@ -159,17 +164,32 @@
     
     
    // self.navController.view
+    if ( self.langBool!=LANG_ARABIC) {
+        
     self.langBool=LANG_ARABIC;
+    [self setLangCode:ARAB_Code];
     NSLog(@"Arab clicked");
+    [self removeDraggerFromCurrentView];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshView" object:nil];
+    }else{
+        [self removeDraggerFromCurrentView];
+    }
+    //[self.navController.viewDidLoad];
     
     
 }
 
 -(void)engBtnAction{
     
+    if ( self.langBool!=LANG_English) {
     NSLog(@"English clicked");
-        self.langBool=LANG_English;
-    
+    self.langBool=LANG_English;
+    [self setLangCode:ENG_Code];
+    [self removeDraggerFromCurrentView];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshView" object:nil];
+    }else{
+        [self removeDraggerFromCurrentView];
+    }
 }
 -(void)TESTData
 {
@@ -202,6 +222,21 @@
     [imgView setImage:[UIImage imageNamed:@"pulldown.png"]];
     return  self.dragView;
     
+}
+
+-(void)removeDraggerFromCurrentView{
+    
+    for (UIView *vie in self.navController.view.subviews) {
+        if (vie.tag==DRAGVIEWTAG) {
+            [UIView animateWithDuration:0.7 animations:^{
+                [vie setFrame:CGRectMake(240, 0, 73, 58)];
+                [vie setAlpha:0.0];
+            } completion:^(BOOL finished) {
+                [vie removeFromSuperview];
+                [ApplicationDelegate set_dragged:NO];
+            }];
+        }
+    }
 }
 
 
@@ -264,8 +299,9 @@
         titleView.font = [UIFont fontWithName:@"Eagle-Bold" size:17.0];
     }
     
+    [titleView setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"cevent"]];
 
-    if (ApplicationDelegate.langBool==LANG_ARABIC) {
+   /* if (ApplicationDelegate.langBool==LANG_ARABIC) {
       
         
         
@@ -277,7 +313,7 @@
         
         
         titleView.text = [[[ConferenceHelper SharedHelper] getLanguageForAKey:@"cevent"] objectForKey:@"en"];
-    }
+    }*/
 
     
     

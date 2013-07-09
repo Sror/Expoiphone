@@ -45,6 +45,9 @@
 #define LANG_ARABIC 610
 #define LANG_English 611
 
+#define ENG_Code [NSString stringWithFormat:@"en"]
+#define ARAB_Code [NSString stringWithFormat:@"ar"]
+
 
 
 //http://conferenceapp.crisiltech.com/dynamic_form_view.html?id=25&form_type=survey_form

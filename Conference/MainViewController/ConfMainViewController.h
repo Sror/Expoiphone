@@ -42,4 +42,9 @@
 @property (nonatomic, strong) MKNetworkOperation* imageLoadingOperation;
 
 
+-(void)viewWillAppear:(BOOL)animated;
+
+-(void)refreshView:(NSNotification *) notification;
+
+
 @end
