@@ -189,6 +189,36 @@
     
     
 }
+
+-(NSDictionary *)getLanguageForAKey:(NSString *)key
+
+{
+    
+    
+    NSDictionary *thedata;
+    
+    NSMutableArray *array=[[ConferenceHelper SharedHelper] ReadArrayFromthePlistFile:@"lang.plist"];
+
+    for (NSDictionary *dic in array) {
+        
+        
+        if ([dic objectForKey:key]) {
+            
+            
+            thedata=[dic objectForKey:key];
+           
+            break;
+        }
+        
+        
+        
+    }
+    NSLog(@"the data for key %@",thedata);
+    return thedata;
+    
+}
+
+
 -(NSMutableArray *)ReadArrayFromthePlistFile:(NSString *)fileName
 {
     NSString *path=[self copyFileToDocumentDirectory:fileName];

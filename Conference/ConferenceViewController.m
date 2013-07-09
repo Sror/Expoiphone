@@ -130,6 +130,7 @@
 
 - (IBAction)englishBtnAction:(id)sender {
     
+    ApplicationDelegate.langBool=LANG_English;
     if (!regView) {
         [self showExpoRegistrationView];
     }else{
@@ -140,7 +141,7 @@
 }
 
 - (IBAction)arabicBtnAction:(id)sender {
-    
+        ApplicationDelegate.langBool=LANG_ARABIC;
     
     if (!regView) {
         [self showExpoRegistrationView];

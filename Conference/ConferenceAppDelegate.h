@@ -76,8 +76,7 @@ extern NSString *const FBSessionStateChangedNotification;
 - (void) showTabBar:(UITabBarController *) tabbarcontroller;
 
 
-
-
+@property(nonatomic) int langBool;
 
 
 - (void)openSessionWithAllowLoginUI:(BOOL)allowLoginUI;

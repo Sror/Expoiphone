@@ -16,7 +16,7 @@
 
 @synthesize appEngine,navController,appHelper,HUD;
 @synthesize appdelegateSession,appEventArray,appImageGalleryArray,appFavEventArray,appCurrentEventArray,appSearchEventsArray;
-@synthesize userNameString,dragView,_dragged;
+@synthesize userNameString,dragView,_dragged,langBool;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -56,6 +56,10 @@
     
 //    self.window.rootViewController = self.navController;
 
+    
+    
+    
+    
     
     [self.window makeKeyAndVisible];
     return YES;
@@ -155,7 +159,7 @@
     
     
    // self.navController.view
-    
+    self.langBool=LANG_ARABIC;
     NSLog(@"Arab clicked");
     
     
@@ -164,7 +168,7 @@
 -(void)engBtnAction{
     
     NSLog(@"English clicked");
-    
+        self.langBool=LANG_English;
     
 }
 -(void)TESTData
@@ -259,7 +263,24 @@
         titleView.backgroundColor = [UIColor clearColor];
         titleView.font = [UIFont fontWithName:@"Eagle-Bold" size:17.0];
     }
-    titleView.text = @"Current Events";
+    
+
+    if (ApplicationDelegate.langBool==LANG_ARABIC) {
+      
+        
+        
+        titleView.text = [[[ConferenceHelper SharedHelper] getLanguageForAKey:@"cevent"] objectForKey:@"ar"];
+        
+        
+    }
+    else if(ApplicationDelegate.langBool==LANG_English){
+        
+        
+        titleView.text = [[[ConferenceHelper SharedHelper] getLanguageForAKey:@"cevent"] objectForKey:@"en"];
+    }
+
+    
+    
     titleView.textColor = [UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1];
     [titleView sizeToFit];
     [titleHeaderView addSubview:titleView];

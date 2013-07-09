@@ -42,6 +42,10 @@
 
 #define DRAGVIEWTAG 1000
 
+#define LANG_ARABIC 610
+#define LANG_English 611
+
+
 
 //http://conferenceapp.crisiltech.com/dynamic_form_view.html?id=25&form_type=survey_form
 
