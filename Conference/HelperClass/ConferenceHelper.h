@@ -31,7 +31,7 @@
 
 -(Events *)getEventsObjectFromDictionary:(NSMutableDictionary *)dic;
 
-
+-(NSDictionary *)getLanguageForAKey:(NSString *)key;
 
 -(News *)getNewsObjectFromDictionary:(NSMutableDictionary *)dic;;
 
