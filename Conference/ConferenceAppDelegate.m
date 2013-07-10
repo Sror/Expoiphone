@@ -327,9 +327,21 @@
         imgView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 10, 25, 25)];
         imgView.backgroundColor = [UIColor clearColor];
     }
-    [imgView setImage:[UIImage imageNamed:@"events-serch.png"]];
+    [imgView setImage:[UIImage imageNamed:@"eventstitle.png"]];
     [imgView setContentMode:UIViewContentModeScaleAspectFit];
     [titleHeaderView addSubview:imgView];
+    
+    
+    UIImageView *sepImgView;
+    
+    if (!sepImgView) {
+        sepImgView = [[UIImageView alloc] initWithFrame:CGRectMake(33,7,2,29)];
+        sepImgView.backgroundColor = [UIColor clearColor];
+    }
+    [sepImgView setImage:[UIImage imageNamed:@"sep.png"]];
+    [sepImgView setContentMode:UIViewContentModeScaleAspectFit];
+    [titleHeaderView addSubview:sepImgView];
+
     
     UIButton *dragBtn;
     if (!dragBtn) {
@@ -429,7 +441,7 @@
 
 - (void) hideTabBar:(UITabBarController *) tabbarcontroller
 {
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
+   /* CGRect screenRect = [[UIScreen mainScreen] bounds];
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.0];
@@ -451,14 +463,14 @@
             view.backgroundColor = [UIColor blackColor];
         }
     }
-    [UIView commitAnimations];
+    [UIView commitAnimations];*/
 }
 
 
 
 - (void) showTabBar:(UITabBarController *) tabbarcontroller
 {
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
+  /*  CGRect screenRect = [[UIScreen mainScreen] bounds];
     float fHeight = screenRect.size.height - 49.0;
     
     if(  UIDeviceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation) )
@@ -479,7 +491,7 @@
             [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width, fHeight)];
         }
     }
-    [UIView commitAnimations];
+    [UIView commitAnimations];*/
 }
 
 

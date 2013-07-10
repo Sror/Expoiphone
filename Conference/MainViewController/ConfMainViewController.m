@@ -47,7 +47,9 @@
 
 -(void)setUpTabBar{
     
-    UIButton *abtBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25,35, 35)];
+
+    
+   /* UIButton *abtBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25,35, 35)];
     [abtBtn addTarget:self action:@selector(btnAbtTouched) forControlEvents:UIControlEventTouchUpInside];
     [abtBtn setImage:[UIImage imageNamed:@"aboutus-tb.png"] forState:UIControlStateNormal];
     UIBarButtonItem *btnAbt = [[UIBarButtonItem alloc] initWithCustomView:abtBtn];
@@ -61,46 +63,49 @@
     UIButton *eventsBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25,35, 35)];
     [eventsBtn addTarget:self action:@selector(btnEventsTouched) forControlEvents:UIControlEventTouchUpInside];
     [eventsBtn setImage:[UIImage imageNamed:@"events-tb.png"] forState:UIControlStateNormal];
-    UIBarButtonItem *btnEvents = [[UIBarButtonItem alloc] initWithCustomView:eventsBtn];
+    UIBarButtonItem *btnEvents = [[UIBarButtonItem alloc] initWithCustomView:eventsBtn];*/
     
    /* UIBarButtonItem *fixed2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     
     fixed2.width = 20.0f;*/
     
-    UIButton *favBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25,35, 35)];
+  /*  UIButton *favBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25,35, 35)];
     [favBtn addTarget:self action:@selector(btnFavTouched) forControlEvents:UIControlEventTouchUpInside];
     [favBtn setImage:[UIImage imageNamed:@"fav-tb.png"] forState:UIControlStateNormal];
     UIBarButtonItem *btnFav = [[UIBarButtonItem alloc] initWithCustomView:favBtn];
-    
+    */
    /* UIBarButtonItem *fixed3 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     
     fixed3.width = 20.0f;*/
     
-    UIButton *contactBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25,35, 35)];
+   /* UIButton *contactBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25,35, 35)];
     [contactBtn addTarget:self action:@selector(btnContactTouched) forControlEvents:UIControlEventTouchUpInside];
     [contactBtn setImage:[UIImage imageNamed:@"call-tb.png"] forState:UIControlStateNormal];
-    UIBarButtonItem *btnContact = [[UIBarButtonItem alloc] initWithCustomView:contactBtn];
+    UIBarButtonItem *btnContact = [[UIBarButtonItem alloc] initWithCustomView:contactBtn];*/
     
    /* UIBarButtonItem *fixed4 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     
     fixed4.width = 20.0f;*/
     
-    UIButton *moreBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25,35, 35)];
+  /*  UIButton *moreBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25,35, 35)];
     [moreBtn addTarget:self action:@selector(btnMoreTouched) forControlEvents:UIControlEventTouchUpInside];
     [moreBtn setImage:[UIImage imageNamed:@"list-tb.png"] forState:UIControlStateNormal];
     UIBarButtonItem *btnMore = [[UIBarButtonItem alloc] initWithCustomView:moreBtn];
     
     
-    self.toolbarItems = [NSArray arrayWithObjects:btnAbt,fixed1, btnEvents,fixed1, btnFav,fixed1, btnContact,fixed1,btnMore, nil];
+    self.toolbarItems = [NSArray arrayWithObjects:btnAbt,fixed1, btnEvents,fixed1, btnFav,fixed1, btnContact,fixed1,btnMore, nil];*/
 
 }
 
 -(void)refreshView:(NSNotification *) notification;{
     
     NSLog(@"Notification");
-   
+   [titleView2 setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"lnews"]];
     [self.navigationItem setTitleView:[ApplicationDelegate setTitleForMainView]];
-    
+    [ApplicationDelegate.appCurrentEventArray removeAllObjects];
+    [ApplicationDelegate.appLatestNewsArray removeAllObjects];
+    [self GetDataForTheView];
+    [self updateUI];
     
 }
 
@@ -108,55 +113,20 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    
 
     
-    [self.pageControl setPageIndicatorTintColor:[UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1]];
-    
-  
-    
-    [[UIToolbar appearance] setBackgroundImage:[UIImage imageNamed:@"toolbar_bg.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
-    
-  //  self.navigationController.navigationBar hid
     self.navigationItem.hidesBackButton = YES;
-    
-//    UIView *titleHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, 44)];
-//    [titleHeaderView setBackgroundColor:[UIColor clearColor]];
-//    
-//    
-//    UILabel *titleView;
-//    if (!titleView) {
-//        titleView = [[UILabel alloc] initWithFrame:CGRectMake(40, 14, 250, 44)];
-//        titleView.backgroundColor = [UIColor clearColor];
-//        titleView.font = [UIFont fontWithName:@"Eagle-Bold" size:17.0];
-//    }
-//    titleView.text = @"Current Events";
-//    titleView.textColor = [UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1];
-//    [titleView sizeToFit];
-//    [titleHeaderView addSubview:titleView];
-//    
-//    UIImageView *imgView;
-//    
-//    if (!imgView) {
-//        imgView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 10, 25, 25)];
-//        imgView.backgroundColor = [UIColor clearColor];
-//    }
-//    [imgView setImage:[UIImage imageNamed:@"events-serch.png"]];
-//    [imgView setContentMode:UIViewContentModeScaleAspectFit];
-//    [titleHeaderView addSubview:imgView];
-    
+
     [self.navigationItem setTitleView:[ApplicationDelegate setTitleForMainView]];
     
-   // [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Registration"]];
-    
-    
+    [self.navigationController setToolbarHidden:YES animated:NO];
+
+   
     UIView *newsLabelView = [[UIView alloc]initWithFrame:CGRectMake(0, 165, 320, 48)];
     [newsLabelView setBackgroundColor:[UIColor clearColor]];
     
-    UILabel *titleView2;
-    if (!titleView2) {
-        titleView2 = [[UILabel alloc] initWithFrame:CGRectMake(42, 12, 250, 44)];
+      if (!titleView2) {
+        titleView2 = [[UILabel alloc] initWithFrame:CGRectMake(47, 12, 250, 44)];
         titleView2.backgroundColor = [UIColor clearColor];
         titleView2.font = [UIFont fontWithName:@"Eagle-Bold" size:17.0];
     }
@@ -170,22 +140,27 @@
     
     UIImageView *imgView2;
     if (!imgView2) {
-        imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(7, 10, 25, 25)];
+        imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(9, 10, 25, 25)];
         imgView2.backgroundColor = [UIColor clearColor];
     }
-    [imgView2 setImage:[UIImage imageNamed:@"segment-serch.png"]];
+    [imgView2 setImage:[UIImage imageNamed:@"newstitle.png"]];
     [imgView2 setContentMode:UIViewContentModeScaleAspectFit];
     [newsLabelView addSubview:imgView2];
     
+    UIImageView *sepImgView;
+    
+    if (!sepImgView) {
+        sepImgView = [[UIImageView alloc] initWithFrame:CGRectMake(37,7,2,29)];
+        sepImgView.backgroundColor = [UIColor clearColor];
+    }
+    [sepImgView setImage:[UIImage imageNamed:@"sep.png"]];
+    [sepImgView setContentMode:UIViewContentModeScaleAspectFit];
+    [newsLabelView addSubview:sepImgView];
     
     [self.view addSubview:newsLabelView];
-    //[self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Current Event"]];
-    
     [self.navigationController.navigationBar setHidden:NO];
-    //[self.navigationController.navigationBar setHidden:NO];
-    [self.navigationController setToolbarHidden:NO animated:NO];
-    
-    [self setUpTabBar];
+   // [self setUpTabBar];
+    [self  updateUI];
     [self.view addSubview:ApplicationDelegate.HUD];
     [ApplicationDelegate.HUD setLabelText:@"Loading"];
     
@@ -195,20 +170,28 @@
 
 -(void)applyFonts{
     [self.latestNewsHeaderLabel setFont:[UIFont fontWithName:@"Eagle-Bold" size:17.0]];
+    [self.aboutUsBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
+    [self.eventsBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
+    [self.favBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
+    [self.callBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
+    [self.moreBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
+}
+
+-(void)updateUI{
+    
+    [self.aboutUsBtn setTitle:@"About" forState:UIControlStateNormal];
+    [self.eventsBtn setTitle:@"Events" forState:UIControlStateNormal];
+    [self.favBtn setTitle:@"Favourites" forState:UIControlStateNormal];
+    [self.callBtn setTitle:@"Contacts" forState:UIControlStateNormal];
+    [self.moreBtn setTitle:@"More" forState:UIControlStateNormal];
 }
 
 
 -(void)arrangeHorizontalScrollView{
     
-    
- //   NSArray *arr = [[NSArray alloc]initWithObjects:@"add1.png",@"add1.png",@"add1.png",@"add1.png",@"add1.png",@"add1.png", nil];
-    
-   /// NSInteger viewcount= 4; // Setting count for scrollview elements..
-    
-    
+
     pageControlBeingUsed = NO;
     
-    //int viewco = 4;
     
     for (int i = 0; i <self.currentEventArr.count; i++)
     {
@@ -228,7 +211,17 @@
         imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"events_bg.png"]];
         [contentView addSubview:imgView];
         
-        UIImageView *imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(41,29,78,56)];
+        
+        UIImageView *imgViewborder = [[UIImageView alloc] initWithFrame:CGRectMake(40,39,80,58)];
+        imgViewborder.backgroundColor = [UIColor clearColor];
+       // [imgViewborder setContentMode:UIViewContentModeScaleAspectFit];
+        
+        
+        imgViewborder.image = [UIImage imageNamed:[NSString stringWithFormat:@"img_bg.png"]];
+        [contentView addSubview:imgViewborder];
+        
+        UIImageView *imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(42,41,76,54)];
+        //[imgView2 setContentMode:UIViewContentModeScaleAspectFit];
         
        //NSLog(@"url is %@",event.logo);
         
@@ -253,7 +246,7 @@
 
         [contentView addSubview:imgView2];
         
-        UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 20, 170, 25)];
+        UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 32, 170, 25)];
         [titleLabel setBackgroundColor:[UIColor clearColor]];
         //[titleLabel setFont:[UIFont boldSystemFontOfSize:14.0f]];
         [titleLabel setTextColor:[UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1]];
@@ -262,21 +255,21 @@
         [titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:13.0]];
         [contentView addSubview:titleLabel];
         
-        UILabel *dateLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 37, 150, 15)];
+        UILabel *dateLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 49, 150, 15)];
         [dateLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:10.0]];
         [dateLabel setBackgroundColor:[UIColor clearColor]];
         [dateLabel setTextColor:[UIColor blackColor]];
         [dateLabel setText:[NSString stringWithFormat:@"%@-%@",[[ConferenceHelper SharedHelper] datefromString:event.start_date],[[ConferenceHelper SharedHelper] datefromString:event.end_date]]];
         [contentView addSubview:dateLabel];
         
-        UILabel *timeLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 47, 150, 15)];
+        UILabel *timeLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 59, 150, 15)];
         [timeLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
         [timeLabel setBackgroundColor:[UIColor clearColor]];
         [timeLabel setTextColor:[UIColor blackColor]];
         [timeLabel setText:[NSString stringWithFormat:@"%@-%@",event.start_time,event.end_time]];
         [contentView addSubview:timeLabel];
         
-        UILabel *cateLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 53, 150, 30)];
+        UILabel *cateLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 65, 150, 30)];
         [cateLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:11.0]];
         [cateLabel setBackgroundColor:[UIColor clearColor]];
         [cateLabel setTextColor:[UIColor blackColor]];
@@ -284,7 +277,7 @@
         [cateLabel setNumberOfLines:0];
         [contentView addSubview:cateLabel];
         
-        UILabel *locLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 65, 150, 30)];
+        UILabel *locLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 77, 150, 30)];
         [locLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:11.0]];
         [locLabel setBackgroundColor:[UIColor clearColor]];
         [locLabel setTextColor:[UIColor blackColor]];
@@ -292,7 +285,7 @@
         [locLabel setNumberOfLines:0];
         [contentView addSubview:locLabel];
         
-        UIImageView *imgView3 = [[UIImageView alloc] initWithFrame:CGRectMake(280,55,16,18)];
+        UIImageView *imgView3 = [[UIImageView alloc] initWithFrame:CGRectMake(280,61,16,18)];
         [imgView3 setImage:[UIImage imageNamed:@"detdiscl-hom.png"]];
         [contentView addSubview:imgView3];
         
@@ -316,40 +309,30 @@
     self.pageControl.currentPage = 0;
 	self.pageControl.numberOfPages = self.currentEventArr.count;
     
-    
-    
-
-    
+ 
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [self.navigationController setToolbarHidden:NO animated:NO];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:) name:@"refreshView" object:nil];
-    //[self arrangeHorizontalScrollView];
-    [self.latestNewsTableView setHidden:YES];
 
+-(void)GetDataForTheView{
+    
     if (ApplicationDelegate.appCurrentEventArray.count ==0 || ApplicationDelegate.appLatestNewsArray.count ==0) {
         [ApplicationDelegate.HUD show:YES];
-        [self.navigationController.toolbar setUserInteractionEnabled:NO];
+        //[self.navigationController.toolbar setUserInteractionEnabled:NO];
         
         [ApplicationDelegate.appEngine currentEventList:@"" onCompletion:^(NSMutableArray *CurrentEventArray) {
             
-           // NSLog(@"Curent event aay contis %d",CurrentEventArray.count);
             [self.currentEventArr removeAllObjects];
             for (NSMutableDictionary *dic in CurrentEventArray) {
                 [self.currentEventArr addObject:[[ConferenceHelper SharedHelper] getEventsObjectFromDictionary:dic]];
             }
-           // NSLog(@"Current event array count is %d",currentEventArr.count);
             [ApplicationDelegate.appCurrentEventArray removeAllObjects];
             [ApplicationDelegate.appCurrentEventArray addObjectsFromArray:self.currentEventArr];
-            // [ApplicationDelegate.HUD hide:YES];
             [self arrangeHorizontalScrollView];
             [self getAllNewsListFromServer];
             
         } onError:^(NSError *error) {
             [ApplicationDelegate.HUD hide:YES];
-            [self.navigationController.toolbar setUserInteractionEnabled:YES];
+            //[self.navigationController.toolbar setUserInteractionEnabled:YES];
             [UIAlertView showWithError:error];
         }];
         
@@ -363,16 +346,25 @@
         [self.latestNewsList addObjectsFromArray:ApplicationDelegate.appLatestNewsArray];
         [self.latestNewsTableView setHidden:NO];
         [self.latestNewsTableView reloadData];
-
+        
     }
+
+}
+
+-(void)viewWillAppear:(BOOL)animated{
     
+    
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:) name:@"refreshView" object:nil];
+    [self.latestNewsTableView setHidden:YES];
+
+    [self GetDataForTheView];
 }
 
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [self.navigationController setToolbarHidden:YES animated:NO];
- 
+   //  
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshView" object:nil];
     
 }
@@ -381,7 +373,7 @@
     [ApplicationDelegate .appEngine newsList:@"" onCompletion:^(NSMutableArray *newsListArray) {
         
         [ApplicationDelegate.HUD hide:YES];
-        [self.navigationController.toolbar setUserInteractionEnabled:YES];
+        //[self.navigationController.toolbar setUserInteractionEnabled:YES];
         
         [[self latestNewsList]removeAllObjects];
     for (NSMutableDictionary *dic in newsListArray) {
@@ -398,7 +390,7 @@
 
     } onError:^(NSError *error) {
         [ApplicationDelegate.HUD hide:YES];
-        [self.navigationController.toolbar setUserInteractionEnabled:YES];
+       // [self.navigationController.toolbar setUserInteractionEnabled:YES];
         [UIAlertView showWithError:error];
     }];
 }
@@ -506,42 +498,37 @@
 
 -(void)butonaction:(UIButton *)sender{
     
-    NSLog( @" %i button clicked", sender.tag);
-    
     EventsDetailViewController *listDetail = [[EventsDetailViewController alloc]initWithNibName:@"EventsDetailViewController" bundle:nil];
     listDetail.eventDetail = [currentEventArr objectAtIndex:sender.tag];
     [self.navigationController pushViewController:listDetail animated:YES];
     
-    
 }
 
 
 
 
-
-
-- (void)btnAbtTouched
+- (IBAction)btnAbtTouched:(id)sender
 {
     ExpoAboutViewController *abtUsVC = [[ExpoAboutViewController alloc]initWithNibName:@"ExpoAboutViewController" bundle:nil];
     [ApplicationDelegate.navController pushFadeViewController:abtUsVC];
 }
-- (void)btnEventsTouched
+- (IBAction)btnEventsTouched:(id)sender
 {
     ExpoEventsViewController *eventsVC = [[ExpoEventsViewController alloc]initWithNibName:@"ExpoEventsViewController" bundle:nil];
     [self.navigationController pushFadeViewController:eventsVC];
 }
-- (void)btnFavTouched
+- (IBAction)btnFavTouched:(id)sender
 {
     ExpoFavoritesViewController *favVC = [[ExpoFavoritesViewController alloc]initWithNibName:@"ExpoFavoritesViewController" bundle:nil];
     [self.navigationController pushFadeViewController:favVC];
 
 }
-- (void)btnContactTouched
+- (IBAction)btnContactTouched:(id)sender
 {
     ExpoContactsViewController *contactVC = [[ExpoContactsViewController alloc]initWithNibName:@"ExpoContactsViewController" bundle:nil];
     [self.navigationController pushFadeViewController:contactVC];
 }
-- (void)btnMoreTouched
+- (IBAction)btnMoreTouched:(id)sender
 {
     ExpoMoreViewController *moreVC = [[ExpoMoreViewController alloc]initWithNibName:@"ExpoMoreViewController" bundle:nil];
     [self.navigationController pushFadeViewController:moreVC];
@@ -553,4 +540,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidUnload {
+    [self setToolBarView:nil];
+    [self setAboutUsBtn:nil];
+    [self setEventsBtn:nil];
+    [self setFavBtn:nil];
+    [self setCallBtn:nil];
+    [self setMoreBtn:nil];
+    [super viewDidUnload];
+}
 @end

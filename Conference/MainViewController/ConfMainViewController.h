@@ -22,7 +22,8 @@
 @interface ConfMainViewController : UIViewController<UIScrollViewDelegate>{
     
     BOOL pageControlBeingUsed;
-    CGPoint offset; 
+    CGPoint offset;
+    UILabel *titleView2;
     
 }
 
@@ -40,6 +41,20 @@
 
 @property (nonatomic, strong) NSString* loadingImageURLString;
 @property (nonatomic, strong) MKNetworkOperation* imageLoadingOperation;
+
+
+@property (strong, nonatomic) IBOutlet UIView *toolBarView;
+@property (strong, nonatomic) IBOutlet UIButton *aboutUsBtn;
+@property (strong, nonatomic) IBOutlet UIButton *eventsBtn;
+@property (strong, nonatomic) IBOutlet UIButton *favBtn;
+@property (strong, nonatomic) IBOutlet UIButton *callBtn;
+@property (strong, nonatomic) IBOutlet UIButton *moreBtn;
+
+
+
+
+
+
 
 
 -(void)viewWillAppear:(BOOL)animated;

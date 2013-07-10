@@ -73,7 +73,7 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     
-    [[UIToolbar appearance] setBackgroundImage:[UIImage imageNamed:@"toolbar_bg.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
+   // [[UIToolbar appearance] setBackgroundImage:[UIImage imageNamed:@"toolbar_bg.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
    // [self.navigationController.navigationBar setHidden:YES];
 }
 - (void)didReceiveMemoryWarning
@@ -87,7 +87,7 @@
     if (fromView) {
         [self.skipBtn setHidden:YES];
         [self.submitBtn setFrame:CGRectMake(121, 335, 80, 33)];
-         [[UIToolbar appearance] setBackgroundImage:[UIImage imageNamed:@"bg.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
+         //[[UIToolbar appearance] setBackgroundImage:[UIImage imageNamed:@"bg.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
     }
 }
 
