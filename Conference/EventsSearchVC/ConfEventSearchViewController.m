@@ -40,6 +40,9 @@
     [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Events Search"]];
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
     
+    
+       
+    
     dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"dd MMMM YYYY"];
     
@@ -65,6 +68,22 @@
     [self.dateTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
     [self.endDateTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
     [self.homeLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
+    
+    [self.keywordTxtField setValue:[UIColor blackColor]
+                    forKeyPath:@"_placeholderLabel.textColor"];
+
+    [self.upcomingEventTxtField setValue:[UIColor darkGrayColor]
+                    forKeyPath:@"_placeholderLabel.textColor"];
+
+    [self.dateTxtField setValue:[UIColor blackColor]
+                    forKeyPath:@"_placeholderLabel.textColor"];
+
+    [self.endDateTxtField setValue:[UIColor blackColor]
+                    forKeyPath:@"_placeholderLabel.textColor"];
+
+    [self.industrialTxtField setValue:[UIColor blackColor]
+                    forKeyPath:@"_placeholderLabel.textColor"];
+
     
 }
 
