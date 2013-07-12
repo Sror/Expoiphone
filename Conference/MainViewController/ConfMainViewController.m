@@ -100,7 +100,7 @@
 -(void)refreshView:(NSNotification *) notification;{
     
     NSLog(@"Notification");
-   [titleView2 setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"lnews"]];
+    [titleView2 setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"lnews"]];
     [self.navigationItem setTitleView:[ApplicationDelegate setTitleForMainView]];
     [ApplicationDelegate.appCurrentEventArray removeAllObjects];
     [ApplicationDelegate.appLatestNewsArray removeAllObjects];

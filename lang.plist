@@ -10,14 +10,117 @@
 			<key>en</key>
 			<string>Latest News</string>
 		</dict>
-	</dict>
-	<dict>
 		<key>cevent</key>
 		<dict>
 			<key>ar</key>
 			<string>الأحداث الجارية</string>
 			<key>en</key>
 			<string>Current Events</string>
+		</dict>
+		<key>aUs</key>
+		<dict>
+			<key>ar</key>
+			<string>من نحن</string>
+			<key>en</key>
+			<string>About Us</string>
+		</dict>
+		<key>events</key>
+		<dict>
+			<key>ar</key>
+			<string>أحداث</string>
+			<key>en</key>
+			<string>Events</string>
+		</dict>
+		<key>favourites</key>
+		<dict>
+			<key>ar</key>
+			<string>المفضلات</string>
+			<key>en</key>
+			<string>Favourites</string>
+		</dict>
+		<key>cUs</key>
+		<dict>
+			<key>ar</key>
+			<string>اتصل بنا</string>
+			<key>en</key>
+			<string>Contact Us</string>
+		</dict>
+		<key>more</key>
+		<dict>
+			<key>ar</key>
+			<string>المزيد من التفاصيل</string>
+			<key>en</key>
+			<string>More</string>
+		</dict>
+		<key>history</key>
+		<dict>
+			<key>ar</key>
+			<string>سجل التصفح</string>
+			<key>en</key>
+			<string>History</string>
+		</dict>
+		<key>management</key>
+		<dict>
+			<key>ar</key>
+			<string>الإدارة</string>
+			<key>en</key>
+			<string>Management</string>
+		</dict>
+		<key>facilities</key>
+		<dict>
+			<key>ar</key>
+			<string>المرافق</string>
+			<key>en</key>
+			<string>Facilities</string>
+		</dict>
+		<key>home</key>
+		<dict>
+			<key>ar</key>
+			<string>الصفحة الرئيسية</string>
+			<key>en</key>
+			<string>Home</string>
+		</dict>
+		<key>search</key>
+		<dict>
+			<key>ar</key>
+			<string>البحث</string>
+			<key>en</key>
+			<string>Search</string>
+		</dict>
+		<key>event_List</key>
+		<dict>
+			<key>ar</key>
+			<string>قائمة الأحداث</string>
+			<key>en</key>
+			<string>Event List</string>
+		</dict>
+		<key>event_details</key>
+		<dict>
+			<key>ar</key>
+			<string>تفاصيل الحدث</string>
+			<key>en</key>
+			<string>Event Details</string>
+		</dict>
+		<key>imgGallery</key>
+		<dict>
+			<key>ar</key>
+			<string>معرض الصور</string>
+			<key>en</key>
+			<string>Image Gallery</string>
+		</dict>
+		<key>videoGallery</key>
+		<dict>
+			<key>ar</key>
+			<string>معرض الفيديو</string>
+			<key>en</key>
+			<string>Video Gallery</string>
+		</dict>
+		<key>event_Description</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
 		</dict>
 	</dict>
 </array>
