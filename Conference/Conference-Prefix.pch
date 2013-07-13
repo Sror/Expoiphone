@@ -57,6 +57,6 @@
 
 #define DYNAMICWEBVIEWURL(__ID__,__FormType__,__UserId__) [NSString stringWithFormat:@"http://conferenceapp.crisiltech.com/dynamic_form_view.html?id=%@&form_type=%@&user=%@",__ID__,__FormType__,__UserId__]
 
-#define CONTACTENQUIRYURL [NSString stringWithFormat:@"http://conferenceapp.crisiltech.com/enquiy.php"]
+#define CONTACTENQUIRYURL [NSString stringWithFormat:@"http://conferenceapp.crisiltech.com/dynamic_form_view.html?form_type=enquiry_form"]
 
 //#define ENQUIRYURL NSString stringWithFormat:@"http://conferenceapp.crisiltech.com/enquiy.php"
