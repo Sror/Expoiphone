@@ -27,7 +27,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Contact Us"]];
+    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"cUs-title"]];
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
 }
 -(void)viewWillAppear:(BOOL)animated{

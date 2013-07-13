@@ -387,6 +387,7 @@
         titleView.font = [UIFont fontWithName:@"Eagle-Bold" size:17.0];
     }
     titleView.text = title;
+   // titleView.text = [[ConferenceHelper SharedHelper] getLanguageForAKey:title];
     titleView.textAlignment=NSTextAlignmentLeft;
     titleView.textColor = [UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1];
     [titleView sizeToFit];

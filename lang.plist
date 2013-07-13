@@ -24,14 +24,21 @@
 			<key>en</key>
 			<string>About</string>
 		</dict>
-		<key>events</key>
+		<key>aUs-title</key>
+		<dict>
+			<key>ar</key>
+			<string>من نحن</string>
+			<key>en</key>
+			<string>About Us</string>
+		</dict>
+		<key>Events</key>
 		<dict>
 			<key>ar</key>
 			<string>أحداث</string>
 			<key>en</key>
 			<string>Events</string>
 		</dict>
-		<key>favourites</key>
+		<key>Favourites</key>
 		<dict>
 			<key>ar</key>
 			<string>المفضلات</string>
@@ -44,6 +51,13 @@
 			<string>اتصل بنا</string>
 			<key>en</key>
 			<string>Contact</string>
+		</dict>
+		<key>cUs-title</key>
+		<dict>
+			<key>ar</key>
+			<string>اتصل بنا</string>
+			<key>en</key>
+			<string>Contact Us</string>
 		</dict>
 		<key>more</key>
 		<dict>
@@ -116,6 +130,321 @@
 			<string>Video Gallery</string>
 		</dict>
 		<key>event_Description</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>exList</key>
+		<dict>
+			<key>ar</key>
+			<string>قائمة العارضين</string>
+			<key>en</key>
+			<string>Exhibitors List</string>
+		</dict>
+		<key>regForm</key>
+		<dict>
+			<key>ar</key>
+			<string>استمارة التسجيل</string>
+			<key>en</key>
+			<string>Registration Form</string>
+		</dict>
+		<key>brochure</key>
+		<dict>
+			<key>ar</key>
+			<string>المنشورة</string>
+			<key>en</key>
+			<string>Brochure</string>
+		</dict>
+		<key>addtoCal</key>
+		<dict>
+			<key>ar</key>
+			<string>إضافة إلى التقويم</string>
+			<key>en</key>
+			<string>Add to Cal</string>
+		</dict>
+		<key>location</key>
+		<dict>
+			<key>ar</key>
+			<string>خريطة الموقع</string>
+			<key>en</key>
+			<string>Location</string>
+		</dict>
+		<key>share</key>
+		<dict>
+			<key>ar</key>
+			<string>شارك</string>
+			<key>en</key>
+			<string>Share</string>
+		</dict>
+		<key>call</key>
+		<dict>
+			<key>ar</key>
+			<string>إتصل </string>
+			<key>en</key>
+			<string>Call</string>
+		</dict>
+		<key>mCentre</key>
+		<dict>
+			<key>ar</key>
+			<string>المركز الإعلامي</string>
+			<key>en</key>
+			<string>Media Centre</string>
+		</dict>
+		<key>visitInfo</key>
+		<dict>
+			<key>ar</key>
+			<string>معلومات الزوار</string>
+			<key>en</key>
+			<string>Visitor Info</string>
+		</dict>
+		<key>sMedia</key>
+		<dict>
+			<key>ar</key>
+			<string>وسائل الاعلام الاجتماعية</string>
+			<key>en</key>
+			<string>Social Media</string>
+		</dict>
+		<key>sForm</key>
+		<dict>
+			<key>ar</key>
+			<string>استمارة الاشتراك</string>
+			<key>en</key>
+			<string>Sub Form</string>
+		</dict>
+		<key>signIn</key>
+		<dict>
+			<key>ar</key>
+			<string>تسجيل الدخول</string>
+			<key>en</key>
+			<string>Sign-In</string>
+		</dict>
+		<key>fb</key>
+		<dict>
+			<key>ar</key>
+			<string>الفيس بوك</string>
+			<key>en</key>
+			<string>Facebook</string>
+		</dict>
+		<key>event_Description - 15</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 16</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17 - 2</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17 - 3</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17 - 4</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17 - 5</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17 - 6</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17 - 7</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17 - 8</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17 - 9</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17 - 10</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17 - 11</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17 - 12</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17 - 13</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17 - 14</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17 - 15</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17 - 16</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17 - 17</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17 - 18</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17 - 19</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17 - 20</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17 - 21</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17 - 22</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17 - 23</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17 - 24</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17 - 25</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17 - 26</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17 - 27</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17 - 28</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17 - 29</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17 - 30</key>
 		<dict>
 			<key>ar</key>
 			<string>وصف الحدث</string>

@@ -25,6 +25,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *socialMediaBtn;
 @property (strong, nonatomic) IBOutlet UIButton *signInBtn;
 @property (strong, nonatomic) IBOutlet UIButton *subFormBtn;
+@property (strong, nonatomic) IBOutlet UIButton *homeBtn;
+@property (strong, nonatomic) IBOutlet UILabel *homeLabel;
 
 
 

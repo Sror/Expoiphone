@@ -46,7 +46,35 @@
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController setToolbarHidden:YES animated:NO];
     self.moreScrollView.contentSize = CGSizeMake(320, 568);
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:) name:@"refreshView" object:nil];
+    [self updateUI];
 }
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshView" object:nil];
+    
+}
+
+
+-(void)refreshView:(NSNotification *) notification{
+    
+    [self updateUI];
+}
+
+-(void)updateUI{
+    
+    [self.mediaBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"mCentre"] forState:UIControlStateNormal];
+    [self.socialMediaBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sMedia"] forState:UIControlStateNormal];
+    [self.subFormBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sForm"] forState:UIControlStateNormal];
+    [self.signInBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"signIn"] forState:UIControlStateNormal];
+    [self.visitorBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"visitInfo"] forState:UIControlStateNormal];
+    [self.homeLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"home"]];
+    
+    
+    
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -94,5 +122,10 @@
     //ConfMainViewController *mainView = [[ConfMainViewController alloc]initWithNibName:@"ConfMainViewController" bundle:nil];
     [self.navigationController fadePopViewController];
     
+}
+- (void)viewDidUnload {
+    [self setHomeBtn:nil];
+    [self setHomeLabel:nil];
+    [super viewDidUnload];
 }
 @end

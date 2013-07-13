@@ -97,12 +97,10 @@
 
 }
 
--(void)refreshView:(NSNotification *) notification;{
+-(void)refreshView:(NSNotification *) notification{
     
     NSLog(@"Notification");
-    [titleView2 setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"lnews"]];
-    [self.navigationItem setTitleView:[ApplicationDelegate setTitleForMainView]];
-    [ApplicationDelegate.appCurrentEventArray removeAllObjects];
+        [ApplicationDelegate.appCurrentEventArray removeAllObjects];
     [ApplicationDelegate.appLatestNewsArray removeAllObjects];
     [self.scrollView setHidden:YES];
     [self.currentEventArr removeAllObjects];
@@ -185,16 +183,16 @@
 
 -(void)updateUI{
     
+    [titleView2 setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"lnews"]];
+    [self.navigationItem setTitleView:[ApplicationDelegate setTitleForMainView]];
+
+    
     [self.aboutUsBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"aUs"] forState:UIControlStateNormal];
-    [self.eventsBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"events"] forState:UIControlStateNormal];
-    [self.favBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"favourites"] forState:UIControlStateNormal];
+    [self.eventsBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"Events"] forState:UIControlStateNormal];
+    [self.favBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"Favourites"] forState:UIControlStateNormal];
     [self.callBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"cUs"] forState:UIControlStateNormal];
     [self.moreBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"more"] forState:UIControlStateNormal];
-    
-    
-    //[[ConferenceHelper SharedHelper] getLanguageForAKey:@"lnews"]]
-    
-   // [self.aboutUsBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"lnews"] forState:UIControlStateNormal];
+
 }
 
 
@@ -369,6 +367,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:) name:@"refreshView" object:nil];
     [self.latestNewsTableView setHidden:YES];
 
+    [self updateUI];
     [self GetDataForTheView];
 }
 
