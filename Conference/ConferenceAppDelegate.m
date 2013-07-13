@@ -113,25 +113,30 @@
     self.appSearchEventsArray = [[NSMutableArray alloc]init];
     
     
-    self.dragView = [[UIView alloc]initWithFrame:CGRectMake(240, 20, 73, 58)];
+    self.dragView = [[UIView alloc]initWithFrame:CGRectMake(5, 20, 311, 62)];
     [self.dragView setBackgroundColor:[UIColor clearColor]];
     [self.dragView setAlpha:0.0];
     [self.dragView setTag:DRAGVIEWTAG];
-    UIImageView *imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 73, 58)];
+    UIImageView *imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 311, 62)];
     [imgView setBackgroundColor:[UIColor clearColor]];
     [imgView setImage:[UIImage imageNamed:@"pulldown.png"]];
     [self.dragView addSubview:imgView];
     
+    UILabel *labelLang= [[UILabel alloc] initWithFrame:CGRectMake(10, 25, 120, 22)];
+    [labelLang setText:@"Change Language"];
+    labelLang .font = [UIFont fontWithName:@"Eagle-Light" size:12.0];
+    [labelLang setBackgroundColor:[UIColor clearColor]];
+    [self.dragView addSubview:labelLang];
     
-    UIButton *engBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [engBtn setFrame:CGRectMake(6,12,63,22)];
+    UIButton *engBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [engBtn setFrame:CGRectMake(130,25,63,22)];
     [engBtn setBackgroundColor:[UIColor clearColor]];
     [engBtn setImage:[UIImage imageNamed:@"english.png"] forState:UIControlStateNormal];
     [engBtn addTarget:self action:@selector(engBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [self.dragView addSubview:engBtn];
     
-    UIButton *arabBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [arabBtn setFrame:CGRectMake(6,35,63,22)];
+    UIButton *arabBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [arabBtn setFrame:CGRectMake(230,25,63,22)];
     [arabBtn setBackgroundColor:[UIColor clearColor]];
     [arabBtn setImage:[UIImage imageNamed:@"arabic.png"] forState:UIControlStateNormal];
     [arabBtn addTarget:self action:@selector(arabBtnAction) forControlEvents:UIControlEventTouchUpInside];
@@ -229,7 +234,7 @@
     for (UIView *vie in self.navController.view.subviews) {
         if (vie.tag==DRAGVIEWTAG) {
             [UIView animateWithDuration:0.7 animations:^{
-                [vie setFrame:CGRectMake(240, 0, 73, 58)];
+                [vie setFrame:CGRectMake(5, 0, 311, 62)];
                 [vie setAlpha:0.0];
             } completion:^(BOOL finished) {
                 [vie removeFromSuperview];
@@ -250,7 +255,7 @@
             [self.navController.view addSubview:self.dragView];
             [UIView animateWithDuration:0.7 animations:^{
                 [self.dragView setAlpha:1.0];
-                [self.dragView setFrame:CGRectMake(240, 54, 73, 58)];
+                [self.dragView setFrame:CGRectMake(5, 54, 311, 62)];
             } completion:^(BOOL finished) {
             }];
         }
@@ -260,7 +265,7 @@
         if (_dragged) {
             _dragged=NO;
             [UIView animateWithDuration:0.7 animations:^{
-                [self.dragView setFrame:CGRectMake(240, 0, 73, 58)];
+                [self.dragView setFrame:CGRectMake(5, 0, 311, 62)];
                 [self.dragView setAlpha:0.0];
             } completion:^(BOOL finished) {
                 [self.dragView removeFromSuperview];

@@ -104,6 +104,12 @@
     [self.navigationItem setTitleView:[ApplicationDelegate setTitleForMainView]];
     [ApplicationDelegate.appCurrentEventArray removeAllObjects];
     [ApplicationDelegate.appLatestNewsArray removeAllObjects];
+    [self.scrollView setHidden:YES];
+    [self.currentEventArr removeAllObjects];
+    [self.latestNewsList removeAllObjects];
+    [self.latestNewsTableView reloadData];
+    //[self arrangeHorizontalScrollView];
+    
     [self GetDataForTheView];
     [self updateUI];
     
@@ -126,7 +132,7 @@
     [newsLabelView setBackgroundColor:[UIColor clearColor]];
     
       if (!titleView2) {
-        titleView2 = [[UILabel alloc] initWithFrame:CGRectMake(47, 12, 250, 44)];
+        titleView2 = [[UILabel alloc] initWithFrame:CGRectMake(47, 12, 280, 44)];
         titleView2.backgroundColor = [UIColor clearColor];
         titleView2.font = [UIFont fontWithName:@"Eagle-Bold" size:17.0];
     }
@@ -179,11 +185,16 @@
 
 -(void)updateUI{
     
-    [self.aboutUsBtn setTitle:@"About" forState:UIControlStateNormal];
-    [self.eventsBtn setTitle:@"Events" forState:UIControlStateNormal];
-    [self.favBtn setTitle:@"Favourites" forState:UIControlStateNormal];
-    [self.callBtn setTitle:@"Contacts" forState:UIControlStateNormal];
-    [self.moreBtn setTitle:@"More" forState:UIControlStateNormal];
+    [self.aboutUsBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"aUs"] forState:UIControlStateNormal];
+    [self.eventsBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"events"] forState:UIControlStateNormal];
+    [self.favBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"favourites"] forState:UIControlStateNormal];
+    [self.callBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"cUs"] forState:UIControlStateNormal];
+    [self.moreBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"more"] forState:UIControlStateNormal];
+    
+    
+    //[[ConferenceHelper SharedHelper] getLanguageForAKey:@"lnews"]]
+    
+   // [self.aboutUsBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"lnews"] forState:UIControlStateNormal];
 }
 
 
@@ -386,6 +397,7 @@
         [ApplicationDelegate.appLatestNewsArray removeAllObjects];
         [ApplicationDelegate.appLatestNewsArray addObjectsFromArray:self.latestNewsList];
         [self.latestNewsTableView setHidden:NO];
+        [self.scrollView setHidden:NO];
         [self.latestNewsTableView reloadData];
 
     } onError:^(NSError *error) {

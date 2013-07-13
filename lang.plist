@@ -22,7 +22,7 @@
 			<key>ar</key>
 			<string>من نحن</string>
 			<key>en</key>
-			<string>About Us</string>
+			<string>About</string>
 		</dict>
 		<key>events</key>
 		<dict>
@@ -43,7 +43,7 @@
 			<key>ar</key>
 			<string>اتصل بنا</string>
 			<key>en</key>
-			<string>Contact Us</string>
+			<string>Contact</string>
 		</dict>
 		<key>more</key>
 		<dict>
