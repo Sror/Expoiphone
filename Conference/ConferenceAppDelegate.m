@@ -15,7 +15,7 @@
 @implementation ConferenceAppDelegate
 
 @synthesize appEngine,navController,appHelper,HUD;
-@synthesize appdelegateSession,appEventArray,appImageGalleryArray,appFavEventArray,appCurrentEventArray,appSearchEventsArray;
+@synthesize appdelegateSession,appEventArray,appImageGalleryArray,appFavEventArray,appCurrentEventArray,appSearchEventsArray,appLanguageArray;
 @synthesize userNameString,dragView,_dragged,langBool,langCode;
 
 
@@ -111,6 +111,10 @@
     self.appCurrentEventArray = [[NSMutableArray alloc]init];
     self.appLatestNewsArray = [[NSMutableArray alloc]init];
     self.appSearchEventsArray = [[NSMutableArray alloc]init];
+    self.appLanguageArray = [[NSMutableArray alloc]init];
+    
+    
+    self.appLanguageArray=[[ConferenceHelper SharedHelper] ReadArrayFromthePlistFile:@"lang.plist"];
     
     
     self.dragView = [[UIView alloc]initWithFrame:CGRectMake(5, 20, 311, 62)];
@@ -173,6 +177,7 @@
         
     self.langBool=LANG_ARABIC;
     [self setLangCode:ARAB_Code];
+        [self emptyAllArrays];
     NSLog(@"Arab clicked");
     [self removeDraggerFromCurrentView];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshView" object:nil];
@@ -189,6 +194,7 @@
     if ( self.langBool!=LANG_English) {
     NSLog(@"English clicked");
     self.langBool=LANG_English;
+         [self emptyAllArrays];
     [self setLangCode:ENG_Code];
     [self removeDraggerFromCurrentView];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshView" object:nil];
@@ -359,17 +365,12 @@
     [titleHeaderView addSubview:dragBtn];
 
     return  titleHeaderView;
-    
-    
+
 }
 - (UIView *)setTitle:(NSString *)title
 {
-    
-    
-    
     UIView *containerView= [[UIView alloc]initWithFrame:CGRectMake(44, 0, 276, 44)];
     [containerView setBackgroundColor:[UIColor clearColor]];
-    
     UIButton *dragBtn;
     if (!dragBtn) {
         dragBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -442,6 +443,15 @@
     
     ConfMainViewController *mainView = [[ConfMainViewController alloc] initWithNibName:@"ConfMainViewController" bundle:nil];
     [self.navController pushFadeViewController:mainView];
+    
+}
+
+-(void)emptyAllArrays{
+    [self.appEventArray removeAllObjects];
+    [self.appCurrentEventArray removeAllObjects];
+    [self.appLatestNewsArray removeAllObjects];
+    [self.appImageGalleryArray removeAllObjects];
+    [self.appSearchEventsArray removeAllObjects];
     
 }
 

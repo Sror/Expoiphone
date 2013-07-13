@@ -199,10 +199,9 @@
     
     
     NSDictionary *thedata;
-    NSMutableArray *array=[[ConferenceHelper SharedHelper] ReadArrayFromthePlistFile:@"lang.plist"];
-    NSLog(@"Array con is %d",array.count);
-    for (NSDictionary *dic in array) {
-        NSLog(@"dic is %@",dic);
+    NSLog(@"Array count is %d",ApplicationDelegate.appLanguageArray.count);
+    
+    for (NSDictionary *dic in ApplicationDelegate.appLanguageArray) {
         
         if ([dic objectForKey:key]) {
             thedata=[dic objectForKey:key];

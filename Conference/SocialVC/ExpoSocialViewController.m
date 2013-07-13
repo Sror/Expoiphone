@@ -30,7 +30,7 @@
     
      self.scrollView.contentSize = CGSizeMake(320, 568);
     
-    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Social Media"]];
+    //[self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Social Media"]];
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
     
     [self.fbBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:15.0]];
@@ -40,6 +40,36 @@
     
     [self.homeLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
 
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+   // [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"sMedia"]];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:) name:@"refreshView" object:nil];
+    [self updateUI];
+    
+}
+
+-(void)refreshView:(NSNotification *) notification{
+    
+    [self updateUI];
+}
+-(void)updateUI{
+    
+    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sMedia"]]];
+    
+    [self.fbBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"fb"] forState:UIControlStateNormal];
+    [self.ytBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"youTube"] forState:UIControlStateNormal];
+    [self.twtBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"twitter"] forState:UIControlStateNormal];
+    [self.igBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"instagram"] forState:UIControlStateNormal];
+    [self.homeLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"home"]];
+    
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshView" object:nil];
     
 }
 

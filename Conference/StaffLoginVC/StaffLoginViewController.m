@@ -47,16 +47,48 @@
 
 
 
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+
+
+
+
+-(void)refreshView:(NSNotification *) notification{
+    
+    [self updateUI];
+}
+
+
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.bounceView removeFromSuperview];
+     [self.bounceView removeFromSuperview];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:) name:@"refreshView" object:nil];
+    [self updateUI];
+    
 }
+-(void)updateUI{
+    
+    //[self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"visitInfo"]]];
+    [self.eventBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"eventSurvey"] forState:UIControlStateNormal];
+    [self.exBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"exSurvey"] forState:UIControlStateNormal];
+    //[self.travelBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"tvisitInfo"] forState:UIControlStateNormal];
+    [self.homeLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"home"]];
+    
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshView" object:nil];
+    
+}
+
 
 
 - (IBAction)eventVisitorBtnAction:(id)sender {

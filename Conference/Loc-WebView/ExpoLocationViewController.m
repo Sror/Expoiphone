@@ -46,7 +46,7 @@
         [ApplicationDelegate.HUD show:YES];
             [self.webviewForForms setHidden:YES];
         [self.viewSegmentControl setHidden:YES];
-            [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Location"]];
+            [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"locationmap"]]];
             
             self.imageLoadingOperation=[ApplicationDelegate.appEngine imageAtURL:[NSURL URLWithString:titleStr] completionHandler:^(UIImage *fetchedImage, NSURL *url, BOOL isInCache) {
                 [ApplicationDelegate.HUD hide:YES];
@@ -69,7 +69,7 @@
         switch (webViewType) {
             case EXHIBITORSURVEY:
             {
-                [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Exhibitor Survey"]];
+                [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"exSurvey"]]];
                 [self.viewSegmentControl setHidden:YES];
                 [self.webviewForForms setFrame:CGRectMake(0, 0, 320, 460)];
                 /*NSString *urlAddress = @"http://www.google.com";
@@ -80,11 +80,10 @@
                 break;
             case EVENTVISITOR:
             {
-                [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Event Visitor Survey"]];
+                [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"eventSurvey"]]];
                 [self.viewSegmentControl setHidden:YES];
                 [self.webviewForForms setFrame:CGRectMake(0, 0, 320, 460)];
                 
-             
             }
                 break;
             case EVENTREGISTRATION:

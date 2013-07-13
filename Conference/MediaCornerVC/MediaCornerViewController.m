@@ -34,7 +34,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Media Corner"]];
+    
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
     
     [self.view addSubview:ApplicationDelegate.HUD];
@@ -53,6 +53,33 @@
 
 }
 
+-(void)refreshView:(NSNotification *) notification{
+    
+    [self updateUI];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+   
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:) name:@"refreshView" object:nil];
+    [self updateUI];
+
+}
+-(void)updateUI{
+ 
+    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"mCentre"]]];
+    [self.pressBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"pRelease"] forState:UIControlStateNormal];
+    [self.imgGalleryBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"imgGallery"] forState:UIControlStateNormal];
+    [self.videoGalleryBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"videoGallery"] forState:UIControlStateNormal];
+    [self.homeLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"home"]];
+    
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshView" object:nil];
+
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

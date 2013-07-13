@@ -42,6 +42,7 @@
     [self.subFormBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:17.0]];
     [self.signInBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:17.0]];
     [self.visitorBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:17.0]];
+    [self.homeLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController setToolbarHidden:YES animated:NO];

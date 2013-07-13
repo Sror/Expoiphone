@@ -62,9 +62,14 @@ extern NSString *const FBSessionStateChangedNotification;
 
 @property (nonatomic, retain) UIView *dragView;
 
+@property (nonatomic, retain) NSMutableArray *appLanguageArray;
+
 
 @property (nonatomic, retain) NSString *userNameString;
 
+
+
+-(void)emptyAllArrays;
 
 -(UIButton *)customBackBtn;
 - (UIView *)setTitle:(NSString *)title;

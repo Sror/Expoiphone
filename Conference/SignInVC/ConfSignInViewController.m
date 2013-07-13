@@ -30,13 +30,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Sign-In"]];
+    
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
     
     [self.view addSubview:ApplicationDelegate.HUD];
     [ApplicationDelegate.HUD setLabelText:@"Checking"];
     [self.usernameTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
     [self.passwordTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
+    [self.loginBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
     [self.homeLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
 
 }
@@ -47,6 +48,28 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)refreshView:(NSNotification *) notification{
+    
+    [self updateUI];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self updateUI];
+}
+
+-(void)updateUI{
+    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"signIn"]]];
+    [self.usernameTxtField setText:@""];
+    [self.passwordTxtField setText:@""];
+    [self.loginBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"signIn"] forState:UIControlStateNormal];
+    [self.usernameTxtField setPlaceholder:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"username"]];
+    [self.passwordTxtField setPlaceholder:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"password"]];
+    [self.homeLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"home"]];
+    
+    
+    
+}
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
     return YES;
@@ -54,6 +77,8 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshView" object:nil];
     [self.usernameTxtField setText:@""];
     [self.passwordTxtField setText:@""];
 }
@@ -115,6 +140,7 @@
 
 - (void)viewDidUnload {
     [self setHomeLabel:nil];
+    [self setLoginBtn:nil];
     [super viewDidUnload];
 }
 @end

@@ -425,6 +425,7 @@
     NSMutableDictionary *dic=[[NSMutableDictionary alloc] init];
     [dic setValue:@"getHTML" forKey:@"action"];
     [dic setValue:title forKey:@"title"];
+    [dic setValue:ApplicationDelegate.langCode forKey:@"language"];
 
     MKNetworkOperation *op = [self operationWithPath:WEBVIEWURL params:dic
                                           httpMethod:@"POST"];

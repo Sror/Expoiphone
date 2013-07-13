@@ -41,10 +41,7 @@
     
     industrialArray =[[NSMutableArray alloc]init];
     
-    
-    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Registration"]];
-    
-    
+
     [self.view addSubview:ApplicationDelegate.HUD];
     
     self.navigationItem.hidesBackButton = YES;
@@ -65,14 +62,30 @@
     [self.IndustryTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
     [self.socialTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
     
+    [self.skipBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:15.0]];
+    [self.submitBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:15.0]];
+}
+
+-(void)applyLanguage{
+    
+    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"regForm"]]];
+    
+    [self.skipBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"skip"] forState:UIControlStateNormal];
+    [self.submitBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"submit"] forState:UIControlStateNormal];
+    
+    [self.fullNameTextField setPlaceholder:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"fname"]];
+    //[self.companyTxtField setPlaceholder:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"aUs"]];
+    [self.genderTxtField setPlaceholder:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sex"]];
+    [self.dateOfBirthTxtField setPlaceholder:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"dob"]];
+    [self.IndustryTxtField setPlaceholder:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"indInterest"]];
+    [self.socialTxtField setPlaceholder:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sStatus"]];
     
 }
 
 
-
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshView" object:nil];
    // [[UIToolbar appearance] setBackgroundImage:[UIImage imageNamed:@"toolbar_bg.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
    // [self.navigationController.navigationBar setHidden:YES];
 }
@@ -82,8 +95,19 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)refreshView:(NSNotification *) notification{
+    
+    NSLog(@"Notification");
+    
+    [self applyLanguage];
+    
+}
+
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self applyLanguage];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:) name:@"refreshView" object:nil];
+    
     if (fromView) {
         [self.skipBtn setHidden:YES];
         [self.submitBtn setFrame:CGRectMake(121, 335, 80, 33)];
@@ -123,7 +147,7 @@
         
         [self doneEditing];
         
-        UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"Sex" message:@"Please select Gender" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Male",@"Female", nil];
+        UIAlertView *al = [[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sex"] message:@"Please select Gender" delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"cancel"] otherButtonTitles:@"Male",@"Female", nil];
         al.tag = 10;
         [al show];
         

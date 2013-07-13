@@ -20,6 +20,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *mgmntBtn;
 @property (strong, nonatomic) IBOutlet UIButton *servicesBtn;
 @property (strong, nonatomic) IBOutlet UIButton *faciltiesBtn;
+@property (strong, nonatomic) IBOutlet UILabel *homeLabel;
 
 
 

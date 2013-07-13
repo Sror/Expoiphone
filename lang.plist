@@ -80,6 +80,13 @@
 			<key>en</key>
 			<string>Management</string>
 		</dict>
+		<key>services</key>
+		<dict>
+			<key>ar</key>
+			<string>الخدمات</string>
+			<key>en</key>
+			<string>Services</string>
+		</dict>
 		<key>facilities</key>
 		<dict>
 			<key>ar</key>
@@ -164,7 +171,7 @@
 			<key>en</key>
 			<string>Add to Cal</string>
 		</dict>
-		<key>location</key>
+		<key>locationmap</key>
 		<dict>
 			<key>ar</key>
 			<string>خريطة الموقع</string>
@@ -227,180 +234,187 @@
 			<key>en</key>
 			<string>Facebook</string>
 		</dict>
-		<key>event_Description - 15</key>
+		<key>youTube</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>YouTube</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>YouTube</string>
 		</dict>
-		<key>event_Description - 16</key>
+		<key>twitter</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>تويتر</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>Twitter</string>
 		</dict>
-		<key>event_Description - 17</key>
+		<key>instagram</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>إينستاجرام</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>Instagram</string>
 		</dict>
-		<key>event_Description - 17 - 2</key>
+		<key>pRelease</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>البيانات الصحفية</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>Press Releases</string>
 		</dict>
-		<key>event_Description - 17 - 3</key>
+		<key>abSharjah</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>عن الشارقة </string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>About Sharjah</string>
 		</dict>
-		<key>event_Description - 17 - 4</key>
+		<key>tvisitInfo</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>لسفر و تأشيرات الدخول</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>Travel &amp; Visa Info</string>
 		</dict>
-		<key>event_Description - 17 - 5</key>
+		<key>hotel_shopping</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>الفنادق و التسوق</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>Hotels &amp; Shopping</string>
 		</dict>
-		<key>event_Description - 17 - 6</key>
+		<key>eventSurvey</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>مسح زوار الحدث</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>Event Visitor Survey</string>
 		</dict>
-		<key>event_Description - 17 - 7</key>
+		<key>exSurvey</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>مسح العارضين</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>Exhibitor Survey</string>
 		</dict>
-		<key>event_Description - 17 - 8</key>
+		<key>enq</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>الإستفسارات</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>Enquiry</string>
 		</dict>
-		<key>event_Description - 17 - 9</key>
+		<key>map</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>خريطة القاعة</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>Hall Map</string>
 		</dict>
-		<key>event_Description - 17 - 10</key>
+		<key>submit</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>تسجيل</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>Submit</string>
 		</dict>
-		<key>event_Description - 17 - 11</key>
+		<key>skip</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>تخطى</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>Skip</string>
 		</dict>
-		<key>event_Description - 17 - 12</key>
+		<key>cancel</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>إلغاء</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>Cancel</string>
 		</dict>
-		<key>event_Description - 17 - 13</key>
+		<key>add</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>إضافة</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>Add</string>
 		</dict>
-		<key>event_Description - 17 - 14</key>
+		<key>sponsors</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>الرعاة</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>Sponsors</string>
 		</dict>
-		<key>event_Description - 17 - 15</key>
+		<key>supporters</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>بدعم من</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>Supported by</string>
 		</dict>
-		<key>event_Description - 17 - 16</key>
+		<key>mPartners</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>الشركاء الإعلاميين</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>Media Partners</string>
 		</dict>
-		<key>event_Description - 17 - 17</key>
+		<key>IndustryCategory</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>فئة الصناعة</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>Industry Category</string>
 		</dict>
-		<key>event_Description - 17 - 18</key>
+		<key>fname</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>الاسم الكامل</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>Full Name</string>
 		</dict>
-		<key>event_Description - 17 - 19</key>
+		<key>sStatus</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>الحالة الاجتماعية</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>Social Status</string>
 		</dict>
-		<key>event_Description - 17 - 20</key>
+		<key>sex</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>الجنس</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>Sex</string>
 		</dict>
-		<key>event_Description - 17 - 21</key>
+		<key>dob</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>تاريخ الميلاد</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>Date Of Birth</string>
 		</dict>
-		<key>event_Description - 17 - 22</key>
+		<key>indInterest</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>الصناعية الإهتمامات</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>Industrial Interest</string>
 		</dict>
-		<key>event_Description - 17 - 23</key>
+		<key>username</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>اسم المستخدم</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>Username</string>
+		</dict>
+		<key>password</key>
+		<dict>
+			<key>ar</key>
+			<string>كلمة السر</string>
+			<key>en</key>
+			<string>Password</string>
 		</dict>
 		<key>event_Description - 17 - 24</key>
 		<dict>

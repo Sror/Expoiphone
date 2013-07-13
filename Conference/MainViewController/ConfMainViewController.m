@@ -378,6 +378,7 @@
     
 }
 
+
 -(void)getAllNewsListFromServer{
     [ApplicationDelegate .appEngine newsList:@"" onCompletion:^(NSMutableArray *newsListArray) {
         
