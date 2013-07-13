@@ -186,7 +186,6 @@
     [titleView2 setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"lnews"]];
     [self.navigationItem setTitleView:[ApplicationDelegate setTitleForMainView]];
 
-    
     [self.aboutUsBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"aUs"] forState:UIControlStateNormal];
     [self.eventsBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"Events"] forState:UIControlStateNormal];
     [self.favBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"Favourites"] forState:UIControlStateNormal];
