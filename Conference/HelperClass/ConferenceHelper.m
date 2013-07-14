@@ -199,7 +199,7 @@
     
     
     NSDictionary *thedata;
-    NSLog(@"Array count is %d",ApplicationDelegate.appLanguageArray.count);
+    //NSLog(@"Array count is %d",ApplicationDelegate.appLanguageArray.count);
     
     for (NSDictionary *dic in ApplicationDelegate.appLanguageArray) {
         
@@ -208,7 +208,7 @@
             break;
         }
     }
-    NSLog(@"the outputStr value for lang %@ is %@",ApplicationDelegate.langCode,[thedata objectForKey:ApplicationDelegate.langCode]);
+    //NSLog(@"the outputStr value for lang %@ is %@",ApplicationDelegate.langCode,[thedata objectForKey:ApplicationDelegate.langCode]);
     return [thedata objectForKey:ApplicationDelegate.langCode];
 }
 

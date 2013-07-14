@@ -18,6 +18,7 @@
 
 @property (nonatomic, strong) NSString* loadingImageURLString;
 @property (nonatomic, strong) MKNetworkOperation* imageLoadingOperation;
+@property (strong, nonatomic) IBOutlet UIImageView *detailImg;
 
 
 -(void)setNewsListToCell:(News *)newsObj;

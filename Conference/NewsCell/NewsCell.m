@@ -37,6 +37,12 @@
     //[self.listLabel setFont:[UIFont fontWithName:@"AdelleBasic-Bold" size:16.0]];
 
     
+    
+    if (ApplicationDelegate.langBool == LANG_ARABIC) {
+        [self.detailImg setTransform:CGAffineTransformMakeRotation(M_PI)];
+    }
+
+    
     [self.locationLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
     self.locationLabel.textColor = [UIColor blackColor];
     
@@ -69,6 +75,7 @@
     
     NSLog(@"Dic is %@",dic);
     
+        
     [self.locationLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
     
    // NSLog(@"tit %@",[dic objectForKey:@"title"]);

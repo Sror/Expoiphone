@@ -298,36 +298,22 @@
 
 -(UIView *) setTitleForMainView{
     
+   
     
     UIView *titleHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 20, 320, 44)];
     [titleHeaderView setBackgroundColor:[UIColor clearColor]];
     
+    titleHeaderView.tag =1234;
+    
     
     UILabel *titleView;
     if (!titleView) {
-        titleView = [[UILabel alloc] initWithFrame:CGRectMake(40, 12, 250, 44)];
+        titleView = [[UILabel alloc] init];
         titleView.backgroundColor = [UIColor clearColor];
         titleView.font = [UIFont fontWithName:@"Eagle-Bold" size:17.0];
     }
     
     [titleView setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"cevent"]];
-
-   /* if (ApplicationDelegate.langBool==LANG_ARABIC) {
-      
-        
-        
-        titleView.text = [[[ConferenceHelper SharedHelper] getLanguageForAKey:@"cevent"] objectForKey:@"ar"];
-        
-        
-    }
-    else if(ApplicationDelegate.langBool==LANG_English){
-        
-        
-        titleView.text = [[[ConferenceHelper SharedHelper] getLanguageForAKey:@"cevent"] objectForKey:@"en"];
-    }*/
-
-    
-    
     titleView.textColor = [UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1];
     [titleView sizeToFit];
     [titleHeaderView addSubview:titleView];
@@ -335,7 +321,7 @@
     UIImageView *imgView;
     
     if (!imgView) {
-        imgView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 10, 25, 25)];
+        imgView = [[UIImageView alloc] init];
         imgView.backgroundColor = [UIColor clearColor];
     }
     [imgView setImage:[UIImage imageNamed:@"eventstitle.png"]];
@@ -346,24 +332,64 @@
     UIImageView *sepImgView;
     
     if (!sepImgView) {
-        sepImgView = [[UIImageView alloc] initWithFrame:CGRectMake(33,7,2,29)];
+        sepImgView = [[UIImageView alloc] init];
         sepImgView.backgroundColor = [UIColor clearColor];
     }
     [sepImgView setImage:[UIImage imageNamed:@"sep.png"]];
     [sepImgView setContentMode:UIViewContentModeScaleAspectFit];
     [titleHeaderView addSubview:sepImgView];
 
+    UIImageView *ribImgView;
+    
+    if (!ribImgView) {
+        ribImgView = [[UIImageView alloc] init];
+        ribImgView.backgroundColor = [UIColor clearColor];
+    }
+    [ribImgView setImage:[UIImage imageNamed:@"ribbon.png"]];
+    [ribImgView setContentMode:UIViewContentModeScaleAspectFit];
+    [titleHeaderView addSubview:ribImgView];
+    
     
     UIButton *dragBtn;
     if (!dragBtn) {
         dragBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [dragBtn setFrame:CGRectMake(277, 0, 40, 44)];
         dragBtn.backgroundColor = [UIColor clearColor];
     }
     UIPanGestureRecognizer *panBtn= [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(dragBtnAction:)];
     [dragBtn addGestureRecognizer:panBtn];
     [titleHeaderView addSubview:dragBtn];
 
+    
+    switch (self.langBool) {
+        case LANG_English:{
+            [titleView setFrame:CGRectMake(40, 0, 250, 44)];
+            [imgView setFrame:CGRectMake(5, 10, 25, 25)];
+            [sepImgView setFrame:CGRectMake(33,7,2,29)];
+            [dragBtn setFrame:CGRectMake(277, 0, 40, 44)];
+            [ribImgView setFrame:CGRectMake(272,0,27,44)];
+            [titleView setTextAlignment:NSTextAlignmentLeft];
+        }
+            break;
+        case LANG_ARABIC:{
+            
+            [titleView setFrame:CGRectMake(10, 0, 258, 44)];
+            [imgView setFrame:CGRectMake(280, 10, 25, 25)];
+            [sepImgView setFrame:CGRectMake(275,7,2,29)];
+            [dragBtn setFrame:CGRectMake(10, 0, 40, 44)];
+            [ribImgView setFrame:CGRectMake(10,0,27,44)];
+            [titleView setTextAlignment:NSTextAlignmentRight];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    
+    
+    
+    
+    
     return  titleHeaderView;
 
 }

@@ -35,83 +35,11 @@
     return self;
 }
 
-/*-(UIButton *)customButton{
-    
-    UIButton *customBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25,44, 44)];
-    [customBtn addTarget:self action:@selector(backBtnAction) forControlEvents:UIControlEventTouchUpInside];
-    [customBtn setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
-    return backBtn;
-}*/
 
 
 
--(void)setUpTabBar{
-    
 
-    
-   /* UIButton *abtBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25,35, 35)];
-    [abtBtn addTarget:self action:@selector(btnAbtTouched) forControlEvents:UIControlEventTouchUpInside];
-    [abtBtn setImage:[UIImage imageNamed:@"aboutus-tb.png"] forState:UIControlStateNormal];
-    UIBarButtonItem *btnAbt = [[UIBarButtonItem alloc] initWithCustomView:abtBtn];
-    
-    UIBarButtonItem *fixed1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    
-    fixed1.width = 20.0f;
-    
-    
-    
-    UIButton *eventsBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25,35, 35)];
-    [eventsBtn addTarget:self action:@selector(btnEventsTouched) forControlEvents:UIControlEventTouchUpInside];
-    [eventsBtn setImage:[UIImage imageNamed:@"events-tb.png"] forState:UIControlStateNormal];
-    UIBarButtonItem *btnEvents = [[UIBarButtonItem alloc] initWithCustomView:eventsBtn];*/
-    
-   /* UIBarButtonItem *fixed2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    
-    fixed2.width = 20.0f;*/
-    
-  /*  UIButton *favBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25,35, 35)];
-    [favBtn addTarget:self action:@selector(btnFavTouched) forControlEvents:UIControlEventTouchUpInside];
-    [favBtn setImage:[UIImage imageNamed:@"fav-tb.png"] forState:UIControlStateNormal];
-    UIBarButtonItem *btnFav = [[UIBarButtonItem alloc] initWithCustomView:favBtn];
-    */
-   /* UIBarButtonItem *fixed3 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    
-    fixed3.width = 20.0f;*/
-    
-   /* UIButton *contactBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25,35, 35)];
-    [contactBtn addTarget:self action:@selector(btnContactTouched) forControlEvents:UIControlEventTouchUpInside];
-    [contactBtn setImage:[UIImage imageNamed:@"call-tb.png"] forState:UIControlStateNormal];
-    UIBarButtonItem *btnContact = [[UIBarButtonItem alloc] initWithCustomView:contactBtn];*/
-    
-   /* UIBarButtonItem *fixed4 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    
-    fixed4.width = 20.0f;*/
-    
-  /*  UIButton *moreBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25,35, 35)];
-    [moreBtn addTarget:self action:@selector(btnMoreTouched) forControlEvents:UIControlEventTouchUpInside];
-    [moreBtn setImage:[UIImage imageNamed:@"list-tb.png"] forState:UIControlStateNormal];
-    UIBarButtonItem *btnMore = [[UIBarButtonItem alloc] initWithCustomView:moreBtn];
-    
-    
-    self.toolbarItems = [NSArray arrayWithObjects:btnAbt,fixed1, btnEvents,fixed1, btnFav,fixed1, btnContact,fixed1,btnMore, nil];*/
 
-}
-
--(void)refreshView:(NSNotification *) notification{
-    
-    NSLog(@"Notification");
-        [ApplicationDelegate.appCurrentEventArray removeAllObjects];
-    [ApplicationDelegate.appLatestNewsArray removeAllObjects];
-    [self.scrollView setHidden:YES];
-    [self.currentEventArr removeAllObjects];
-    [self.latestNewsList removeAllObjects];
-    [self.latestNewsTableView reloadData];
-    //[self arrangeHorizontalScrollView];
-    
-    [self GetDataForTheView];
-    [self updateUI];
-    
-}
 
 - (void)viewDidLoad
 {
@@ -126,42 +54,7 @@
     [self.navigationController setToolbarHidden:YES animated:NO];
 
    
-    UIView *newsLabelView = [[UIView alloc]initWithFrame:CGRectMake(0, 165, 320, 48)];
-    [newsLabelView setBackgroundColor:[UIColor clearColor]];
-    
-      if (!titleView2) {
-        titleView2 = [[UILabel alloc] initWithFrame:CGRectMake(47, 12, 280, 44)];
-        titleView2.backgroundColor = [UIColor clearColor];
-        titleView2.font = [UIFont fontWithName:@"Eagle-Bold" size:17.0];
-    }
-    
-    [titleView2 setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"lnews"]];
-   // titleView2.text = @"Latest News";
-    titleView2.textColor = [UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1];
-    [titleView2 sizeToFit];
-    
-    [newsLabelView addSubview:titleView2];
-    
-    UIImageView *imgView2;
-    if (!imgView2) {
-        imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(9, 10, 25, 25)];
-        imgView2.backgroundColor = [UIColor clearColor];
-    }
-    [imgView2 setImage:[UIImage imageNamed:@"newstitle.png"]];
-    [imgView2 setContentMode:UIViewContentModeScaleAspectFit];
-    [newsLabelView addSubview:imgView2];
-    
-    UIImageView *sepImgView;
-    
-    if (!sepImgView) {
-        sepImgView = [[UIImageView alloc] initWithFrame:CGRectMake(37,7,2,29)];
-        sepImgView.backgroundColor = [UIColor clearColor];
-    }
-    [sepImgView setImage:[UIImage imageNamed:@"sep.png"]];
-    [sepImgView setContentMode:UIViewContentModeScaleAspectFit];
-    [newsLabelView addSubview:sepImgView];
-    
-    [self.view addSubview:newsLabelView];
+   
     [self.navigationController.navigationBar setHidden:NO];
    // [self setUpTabBar];
     [self  updateUI];
@@ -170,6 +63,100 @@
     
     [self applyFonts];
     
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    
+    
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:) name:@"refreshView" object:nil];
+    [self.latestNewsTableView setHidden:YES];
+    
+    [self updateUI];
+    [self GetDataForTheView];
+}
+
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    //
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshView" object:nil];
+    
+}
+
+
+
+-(void)refreshView:(NSNotification *) notification{
+    
+    NSLog(@"Notification");
+    [ApplicationDelegate.appCurrentEventArray removeAllObjects];
+    [ApplicationDelegate.appLatestNewsArray removeAllObjects];
+    [self.scrollView setHidden:YES];
+    [self.currentEventArr removeAllObjects];
+    [self.latestNewsList removeAllObjects];
+    [self.latestNewsTableView reloadData];
+    //[self arrangeHorizontalScrollView];
+    
+    [self GetDataForTheView];
+    [self updateUI];
+    
+}
+
+-(void)setNewsHeader{
+    
+    for (UIView *vi in self.view.subviews) {
+        if (vi.tag == 123) {
+            [vi removeFromSuperview];
+        }
+    }
+    
+    UIView *newsLabelView = [[UIView alloc]initWithFrame:CGRectMake(0, 165, 320, 48)];
+    newsLabelView.tag = 123;
+    [newsLabelView setBackgroundColor:[UIColor clearColor]];
+    
+    
+    UIImageView *imgView2;
+    UIImageView *sepImgView;
+    
+    switch (ApplicationDelegate.langBool) {
+        case LANG_English:{
+            
+            titleView2 = [[UILabel alloc] initWithFrame:CGRectMake(43, 0, 280, 44)];
+            [titleView2 setTextAlignment:NSTextAlignmentLeft];
+            imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(9, 10, 25, 25)];
+            sepImgView = [[UIImageView alloc] initWithFrame:CGRectMake(37,7,2,29)];
+        }
+            break;
+        case LANG_ARABIC:{
+            
+            titleView2 = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 258, 44)];
+            [titleView2 setTextAlignment:NSTextAlignmentRight];
+            imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(280, 10, 25, 25)];
+            sepImgView = [[UIImageView alloc] initWithFrame:CGRectMake(275,7,2,29)];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    titleView2.backgroundColor = [UIColor clearColor];
+    titleView2.font = [UIFont fontWithName:@"Eagle-Bold" size:17.0];
+    [titleView2 setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"lnews"]];
+    titleView2.textColor = [UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1];
+    [newsLabelView addSubview:titleView2];
+
+    imgView2.backgroundColor = [UIColor clearColor];
+    [imgView2 setImage:[UIImage imageNamed:@"newstitle.png"]];
+    [imgView2 setContentMode:UIViewContentModeScaleAspectFit];
+    [newsLabelView addSubview:imgView2];
+  
+    sepImgView.backgroundColor = [UIColor clearColor];
+    [sepImgView setImage:[UIImage imageNamed:@"sep.png"]];
+    [sepImgView setContentMode:UIViewContentModeScaleAspectFit];
+    [newsLabelView addSubview:sepImgView];
+    
+    [self.view addSubview:newsLabelView];
 }
 
 -(void)applyFonts{
@@ -183,7 +170,16 @@
 
 -(void)updateUI{
     
-    [titleView2 setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"lnews"]];
+    [self setNewsHeader];
+    
+    
+    for (UIView *vi in self.navigationController.navigationBar.subviews) {
+        if (vi.tag == 1234) {
+            NSLog(@"removed");
+            [vi removeFromSuperview];
+        }
+    }
+    //[titleView2 setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"lnews"]];
     [self.navigationItem setTitleView:[ApplicationDelegate setTitleForMainView]];
 
     [self.aboutUsBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"aUs"] forState:UIControlStateNormal];
@@ -197,122 +193,217 @@
 
 -(void)arrangeHorizontalScrollView{
     
-
-    pageControlBeingUsed = NO;
+    
+    for (UIView *vie in self.scrollView.subviews) {
+        [vie removeFromSuperview];
+    }
     
     
-    for (int i = 0; i <self.currentEventArr.count; i++)
-    {
-        CGFloat y = i * scrollView.frame.size.width;
-        UIView *contentView = [[UIView alloc]initWithFrame:CGRectMake(y, 0,scrollView.frame.size.width, scrollView.frame.size.height)];
-        contentView.backgroundColor = [UIColor clearColor];
-        
-
-        Events *event = [self.currentEventArr objectAtIndex:i];
-        NSLog(@"dic is %@",event.event_id);
-       
-        UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(22, 11,contentView.frame.size.width-40, contentView.frame.size.height - 23)];
-        imgView.backgroundColor = [UIColor clearColor];
-        [imgView setContentMode:UIViewContentModeScaleAspectFit];
-        
-     
-        imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"events_bg.png"]];
-        [contentView addSubview:imgView];
-        
-        
-        UIImageView *imgViewborder = [[UIImageView alloc] initWithFrame:CGRectMake(40,39,80,58)];
-        imgViewborder.backgroundColor = [UIColor clearColor];
-       // [imgViewborder setContentMode:UIViewContentModeScaleAspectFit];
-        
-        
-        imgViewborder.image = [UIImage imageNamed:[NSString stringWithFormat:@"img_bg.png"]];
-        [contentView addSubview:imgViewborder];
-        
-        UIImageView *imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(42,41,76,54)];
-        //[imgView2 setContentMode:UIViewContentModeScaleAspectFit];
-        
-       //NSLog(@"url is %@",event.logo);
-        
-        NSString *iconUrl = event.logo;
-        
-        self.imageLoadingOperation=[ApplicationDelegate.appEngine imageAtURL:[NSURL URLWithString:iconUrl] completionHandler:^(UIImage *fetchedImage, NSURL *url, BOOL isInCache) {
+    
+    switch (ApplicationDelegate.langBool) {
+        case LANG_ARABIC:
             
             
-            if([iconUrl isEqualToString:[url absoluteString]]) {
+            pageControlBeingUsed = NO;
+            for (int i = 0; i <self.currentEventArr.count; i++)
+            {
+                CGFloat y = i * scrollView.frame.size.width;
+                UIView *contentView = [[UIView alloc]initWithFrame:CGRectMake(y, 0,scrollView.frame.size.width, scrollView.frame.size.height)];
+                contentView.backgroundColor = [UIColor clearColor];
                 
-                [UIView animateWithDuration:isInCache?0.0f:0.4f delay:0 options:UIViewAnimationOptionShowHideTransitionViews animations:^{
-                    imgView2.image = fetchedImage;
-                } completion:nil];
+                Events *event = [self.currentEventArr objectAtIndex:i];
+                
+                UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(22, 11,contentView.frame.size.width-40, contentView.frame.size.height - 23)];
+                imgView.backgroundColor = [UIColor clearColor];
+                [imgView setContentMode:UIViewContentModeScaleAspectFit];
+                imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"events_bg.png"]];
+                [contentView addSubview:imgView];
+                
+                
+                UIImageView *imgViewborder = [[UIImageView alloc] initWithFrame:CGRectMake(205,39,80,58)];
+                imgViewborder.backgroundColor = [UIColor clearColor];
+                imgViewborder.image = [UIImage imageNamed:[NSString stringWithFormat:@"img_bg.png"]];
+                [contentView addSubview:imgViewborder];
+                
+                UIImageView *imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(207,41,76,54)];
+                NSString *iconUrl = event.logo;
+                self.imageLoadingOperation=[ApplicationDelegate.appEngine imageAtURL:[NSURL URLWithString:iconUrl] completionHandler:^(UIImage *fetchedImage, NSURL *url, BOOL isInCache) {
+                    if([iconUrl isEqualToString:[url absoluteString]]) {
+                        
+                        [UIView animateWithDuration:isInCache?0.0f:0.4f delay:0 options:UIViewAnimationOptionShowHideTransitionViews animations:^{
+                            imgView2.image = fetchedImage;
+                        } completion:nil];
+                    }
+                } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+                }];
+                [contentView addSubview:imgView2];
+                
+                UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 32, 180, 25)];
+                [titleLabel setBackgroundColor:[UIColor clearColor]];
+                [titleLabel setTextAlignment:NSTextAlignmentRight];
+                //[titleLabel setFont:[UIFont boldSystemFontOfSize:14.0f]];
+                [titleLabel setTextColor:[UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1]];
+                [titleLabel setNumberOfLines:0];
+                [titleLabel setText:event.name];
+                [titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:13.0]];
+                [contentView addSubview:titleLabel];
+                
+                UILabel *dateLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 49, 180, 15)];
+                [dateLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:10.0]];
+                [dateLabel setBackgroundColor:[UIColor clearColor]];
+                [dateLabel setTextColor:[UIColor blackColor]];
+                [dateLabel setTextAlignment:NSTextAlignmentRight];
+                [dateLabel setText:[NSString stringWithFormat:@"%@-%@",[[ConferenceHelper SharedHelper] datefromString:event.start_date],[[ConferenceHelper SharedHelper] datefromString:event.end_date]]];
+                [contentView addSubview:dateLabel];
+                
+                UILabel *timeLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 59, 180, 15)];
+                [timeLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
+                [timeLabel setBackgroundColor:[UIColor clearColor]];
+                [timeLabel setTextColor:[UIColor blackColor]];
+                [timeLabel setTextAlignment:NSTextAlignmentRight];
+                [timeLabel setText:[NSString stringWithFormat:@"%@-%@",event.start_time,event.end_time]];
+                [contentView addSubview:timeLabel];
+                
+                UILabel *cateLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 65, 180, 30)];
+                [cateLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:11.0]];
+                [cateLabel setBackgroundColor:[UIColor clearColor]];
+                [cateLabel setTextColor:[UIColor blackColor]];
+                [cateLabel setTextAlignment:NSTextAlignmentRight];
+                [cateLabel setText:event.industry_category];
+                [cateLabel setNumberOfLines:0];
+                [contentView addSubview:cateLabel];
+                
+                UILabel *locLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 77, 180, 30)];
+                [locLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:11.0]];
+                [locLabel setBackgroundColor:[UIColor clearColor]];
+                [locLabel setTextColor:[UIColor blackColor]];
+                [locLabel setText:event.location];
+                [locLabel setTextAlignment:NSTextAlignmentRight];
+                [locLabel setNumberOfLines:0];
+                [contentView addSubview:locLabel];
+                
+                UIImageView *imgView3 = [[UIImageView alloc] initWithFrame:CGRectMake(25,61,16,18)];
+                [imgView3 setImage:[UIImage imageNamed:@"detdiscl-hom.png"]];
+                imgView3.transform = CGAffineTransformMakeRotation(M_PI);
+                [contentView addSubview:imgView3];
+                
+                
+                UIButton *myBtn =[UIButton buttonWithType:UIButtonTypeCustom];
+                [myBtn setFrame:CGRectMake(22, 11,imgView.frame.size.width, imgView.frame.size.height)];
+                myBtn.tag = i;
+                [myBtn setBackgroundColor:[UIColor clearColor]];
+                [myBtn addTarget:self action:@selector(butonaction:) forControlEvents:UIControlEventTouchUpInside];
+                [contentView addSubview:myBtn];
+                
+                
+                [scrollView addSubview:contentView];
+                
+            }
+
+            
+            
+            break;
+        case LANG_English:
+            
+            pageControlBeingUsed = NO;
+            for (int i = 0; i <self.currentEventArr.count; i++)
+            {
+                CGFloat y = i * scrollView.frame.size.width;
+                UIView *contentView = [[UIView alloc]initWithFrame:CGRectMake(y, 0,scrollView.frame.size.width, scrollView.frame.size.height)];
+                contentView.backgroundColor = [UIColor clearColor];
+                
+                Events *event = [self.currentEventArr objectAtIndex:i];
+                
+                UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(22, 11,contentView.frame.size.width-40, contentView.frame.size.height - 23)];
+                imgView.backgroundColor = [UIColor clearColor];
+                [imgView setContentMode:UIViewContentModeScaleAspectFit];
+                imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"events_bg.png"]];
+                [contentView addSubview:imgView];
+                
+                
+                UIImageView *imgViewborder = [[UIImageView alloc] initWithFrame:CGRectMake(40,39,80,58)];
+                imgViewborder.backgroundColor = [UIColor clearColor];
+                imgViewborder.image = [UIImage imageNamed:[NSString stringWithFormat:@"img_bg.png"]];
+                [contentView addSubview:imgViewborder];
+                
+                UIImageView *imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(42,41,76,54)];
+                NSString *iconUrl = event.logo;
+                self.imageLoadingOperation=[ApplicationDelegate.appEngine imageAtURL:[NSURL URLWithString:iconUrl] completionHandler:^(UIImage *fetchedImage, NSURL *url, BOOL isInCache) {
+                    if([iconUrl isEqualToString:[url absoluteString]]) {
+                        
+                        [UIView animateWithDuration:isInCache?0.0f:0.4f delay:0 options:UIViewAnimationOptionShowHideTransitionViews animations:^{
+                            imgView2.image = fetchedImage;
+                        } completion:nil];
+                    }
+                } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+                }];
+                [contentView addSubview:imgView2];
+                
+                UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 32, 170, 25)];
+                [titleLabel setBackgroundColor:[UIColor clearColor]];
+                //[titleLabel setFont:[UIFont boldSystemFontOfSize:14.0f]];
+                [titleLabel setTextColor:[UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1]];
+                [titleLabel setNumberOfLines:0];
+                [titleLabel setText:event.name];
+                [titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:13.0]];
+                [contentView addSubview:titleLabel];
+                
+                UILabel *dateLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 49, 150, 15)];
+                [dateLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:10.0]];
+                [dateLabel setBackgroundColor:[UIColor clearColor]];
+                [dateLabel setTextColor:[UIColor blackColor]];
+                [dateLabel setText:[NSString stringWithFormat:@"%@-%@",[[ConferenceHelper SharedHelper] datefromString:event.start_date],[[ConferenceHelper SharedHelper] datefromString:event.end_date]]];
+                [contentView addSubview:dateLabel];
+                
+                UILabel *timeLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 59, 150, 15)];
+                [timeLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
+                [timeLabel setBackgroundColor:[UIColor clearColor]];
+                [timeLabel setTextColor:[UIColor blackColor]];
+                [timeLabel setText:[NSString stringWithFormat:@"%@-%@",event.start_time,event.end_time]];
+                [contentView addSubview:timeLabel];
+                
+                UILabel *cateLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 65, 150, 30)];
+                [cateLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:11.0]];
+                [cateLabel setBackgroundColor:[UIColor clearColor]];
+                [cateLabel setTextColor:[UIColor blackColor]];
+                [cateLabel setText:event.industry_category];
+                [cateLabel setNumberOfLines:0];
+                [contentView addSubview:cateLabel];
+                
+                UILabel *locLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 77, 150, 30)];
+                [locLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:11.0]];
+                [locLabel setBackgroundColor:[UIColor clearColor]];
+                [locLabel setTextColor:[UIColor blackColor]];
+                [locLabel setText:event.location];
+                [locLabel setNumberOfLines:0];
+                [contentView addSubview:locLabel];
+                
+                UIImageView *imgView3 = [[UIImageView alloc] initWithFrame:CGRectMake(280,61,16,18)];
+                [imgView3 setImage:[UIImage imageNamed:@"detdiscl-hom.png"]];
+                [contentView addSubview:imgView3];
+                
+                
+                UIButton *myBtn =[UIButton buttonWithType:UIButtonTypeCustom];
+                [myBtn setFrame:CGRectMake(22, 11,imgView.frame.size.width, imgView.frame.size.height)];
+                myBtn.tag = i;
+                [myBtn setBackgroundColor:[UIColor clearColor]];
+                [myBtn addTarget:self action:@selector(butonaction:) forControlEvents:UIControlEventTouchUpInside];
+                [contentView addSubview:myBtn];
+                
+                
+                [scrollView addSubview:contentView];
+                
             }
             
             
-        } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
             
+            break;
             
-            
-        }];
-
-        [contentView addSubview:imgView2];
-        
-        UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 32, 170, 25)];
-        [titleLabel setBackgroundColor:[UIColor clearColor]];
-        //[titleLabel setFont:[UIFont boldSystemFontOfSize:14.0f]];
-        [titleLabel setTextColor:[UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1]];
-        [titleLabel setNumberOfLines:0];
-        [titleLabel setText:event.name];
-        [titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:13.0]];
-        [contentView addSubview:titleLabel];
-        
-        UILabel *dateLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 49, 150, 15)];
-        [dateLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:10.0]];
-        [dateLabel setBackgroundColor:[UIColor clearColor]];
-        [dateLabel setTextColor:[UIColor blackColor]];
-        [dateLabel setText:[NSString stringWithFormat:@"%@-%@",[[ConferenceHelper SharedHelper] datefromString:event.start_date],[[ConferenceHelper SharedHelper] datefromString:event.end_date]]];
-        [contentView addSubview:dateLabel];
-        
-        UILabel *timeLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 59, 150, 15)];
-        [timeLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
-        [timeLabel setBackgroundColor:[UIColor clearColor]];
-        [timeLabel setTextColor:[UIColor blackColor]];
-        [timeLabel setText:[NSString stringWithFormat:@"%@-%@",event.start_time,event.end_time]];
-        [contentView addSubview:timeLabel];
-        
-        UILabel *cateLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 65, 150, 30)];
-        [cateLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:11.0]];
-        [cateLabel setBackgroundColor:[UIColor clearColor]];
-        [cateLabel setTextColor:[UIColor blackColor]];
-        [cateLabel setText:event.industry_category];
-        [cateLabel setNumberOfLines:0];
-        [contentView addSubview:cateLabel];
-        
-        UILabel *locLabel = [[UILabel alloc]initWithFrame:CGRectMake(130, 77, 150, 30)];
-        [locLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:11.0]];
-        [locLabel setBackgroundColor:[UIColor clearColor]];
-        [locLabel setTextColor:[UIColor blackColor]];
-        [locLabel setText:event.location];
-        [locLabel setNumberOfLines:0];
-        [contentView addSubview:locLabel];
-        
-        UIImageView *imgView3 = [[UIImageView alloc] initWithFrame:CGRectMake(280,61,16,18)];
-        [imgView3 setImage:[UIImage imageNamed:@"detdiscl-hom.png"]];
-        [contentView addSubview:imgView3];
-        
-        
-        UIButton *myBtn =[UIButton buttonWithType:UIButtonTypeCustom];
-        [myBtn setFrame:CGRectMake(22, 11,imgView.frame.size.width, imgView.frame.size.height)];
-        myBtn.tag = i;
-        [myBtn setBackgroundColor:[UIColor clearColor]];
-        [myBtn addTarget:self action:@selector(butonaction:) forControlEvents:UIControlEventTouchUpInside];
-        [contentView addSubview:myBtn];
-        
-        
-        [scrollView addSubview:contentView];
-        
+        default:
+            break;
     }
-//    scrollView.contentSize = CGSizeMake(scrollView.frame.size.width *self.currentEventArr.count, scrollView.frame.size.height);
-//    self.pageControl.currentPage = 0;
-//	self.pageControl.numberOfPages = self.currentEventArr.count;
-    
+
+   
     scrollView.contentSize = CGSizeMake(scrollView.frame.size.width *self.currentEventArr.count, scrollView.frame.size.height);
     self.pageControl.currentPage = 0;
 	self.pageControl.numberOfPages = self.currentEventArr.count;
@@ -359,24 +450,6 @@
 
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    
-    
-    [super viewWillAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:) name:@"refreshView" object:nil];
-    [self.latestNewsTableView setHidden:YES];
-
-    [self updateUI];
-    [self GetDataForTheView];
-}
-
-
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-   //  
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshView" object:nil];
-    
-}
 
 
 -(void)getAllNewsListFromServer{
@@ -459,7 +532,19 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"NewsCell";
+    static NSString *CellIdentifier;
+    
+    switch (ApplicationDelegate.langBool) {
+        case LANG_English:
+            CellIdentifier = @"NewsCell";
+            break;
+        case LANG_ARABIC:
+            CellIdentifier = @"NewsCell-Arab";
+        default:
+            break;
+    }
+    
+    
     NewsCell *cell = (NewsCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
@@ -479,11 +564,7 @@
     
     News *new = [latestNewsList objectAtIndex:indexPath.row];
     [cell setNewsListToCell:new];
-   /* Events *event=[eventsList objectAtIndex:indexPath.row];
-    
-    //   NSLog(@"Nearby aray in list is %@", [prop.NearBy description]);
-    [cell.textLabel setFont:[UIFont fontWithName:@"PlutoLight" size:16.0]];
-    [cell setPropertyToCell:event];*/
+
     
     return cell;
 }
