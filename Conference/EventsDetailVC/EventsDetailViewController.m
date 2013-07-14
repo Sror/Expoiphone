@@ -39,7 +39,7 @@
     // Do any additional setup after loading the view from its nib.
     
     
-    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Event Details"]];
+   
     
     UIButton *backBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25,44, 44)];
     [backBtn addTarget:self action:@selector(backBtnAction) forControlEvents:UIControlEventTouchUpInside];
@@ -76,16 +76,43 @@
     [self.supporterHeadLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:13.0]];
     self.mainScrollView.contentSize = CGSizeMake(320, 1050);
     
-    
-    
     [self.homLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
     [self.brochureLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
     [self.addCalLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
     [self.mapLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
     [self.callLbabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
     [self.shareLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
+    
+    [self.imagGalleryBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
+    [self.videoGalleryBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
+    [self.regBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
+    [self.exhitBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
 
 }
+
+
+
+-(void)updateUI{
+    
+    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"event_details"]]];
+    [self.imagGalleryBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"imgGallery"] forState:UIControlStateNormal];
+    [self.videoGalleryBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"videoGallery"] forState:UIControlStateNormal];
+    [self.exhitBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"exList"] forState:UIControlStateNormal];
+    [self.regBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"regForm"] forState:UIControlStateNormal];
+    
+    [self.homLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"home"]];
+    [self.brochureLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"brochure"]];
+    [self.addCalLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"addtoCal"]];
+    [self.mapLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"locationmap"]];
+    [self.callLbabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"call"]];
+    [self.shareLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"share"]];
+    
+[self.mediaPartnerHeadLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"mPartners"]];
+[self.supporterHeadLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"supporters"]];
+[self.sponsorHeadLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sponsors"]];
+    
+}
+
 
 -(void)favBtnTouched{
     
@@ -161,6 +188,7 @@
     }];
     
     [self arrangeHorizontaScrollViews];
+    [self updateUI];
     
     
 }
@@ -1077,6 +1105,10 @@ tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     [self setMapLabel:nil];
     [self setShareLabel:nil];
     [self setCallLbabel:nil];
+    [self setImagGalleryBtn:nil];
+    [self setVideoGalleryBtn:nil];
+    [self setExhitBtn:nil];
+    [self setRegBtn:nil];
     [super viewDidUnload];
 }
 @end

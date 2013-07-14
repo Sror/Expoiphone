@@ -36,6 +36,16 @@
 @property (strong, nonatomic) IBOutlet UILabel *supporterHeadLabel;
 @property (strong, nonatomic) IBOutlet UILabel *mediaPartnerHeadLabel;
 
+@property (strong, nonatomic) IBOutlet UIButton *imagGalleryBtn;
+@property (strong, nonatomic) IBOutlet UIButton *videoGalleryBtn;
+@property (strong, nonatomic) IBOutlet UIButton *exhitBtn;
+@property (strong, nonatomic) IBOutlet UIButton *regBtn;
+
+
+
+
+
+
 
 @property (nonatomic) BOOL fromFavList;
 
