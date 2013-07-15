@@ -34,8 +34,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"More"]];
-    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
+    
+    self.navigationItem.hidesBackButton = YES;
+    
+   // [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
     
     [self.mediaBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:17.0]];
     [self.socialMediaBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:17.0]];
@@ -64,6 +66,14 @@
 }
 
 -(void)updateUI{
+    
+    for (UIView *vie in self.navigationController.navigationBar.subviews) {
+        if (vie.tag == 143) {
+            [vie removeFromSuperview];
+        }
+    }
+    
+    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"more"]]];
     
     [self.mediaBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"mCentre"] forState:UIControlStateNormal];
     [self.socialMediaBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sMedia"] forState:UIControlStateNormal];

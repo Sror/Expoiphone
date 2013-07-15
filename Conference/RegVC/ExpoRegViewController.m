@@ -53,22 +53,30 @@
 }
 -(void)applyFonts{
     
-    //fullNameTextField,companyTxtField,genderTxtField,socialTxtField,dateOfBirthTxtField,IndustryTxtField;
-    
     [self.fullNameTextField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
     [self.companyTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
     [self.genderTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
     [self.dateOfBirthTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
     [self.IndustryTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
     [self.socialTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
-    
     [self.skipBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:15.0]];
     [self.submitBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:15.0]];
+    
 }
 
 -(void)applyLanguage{
     
-    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"regForm"]]];
+    
+    for (UIView *vie in self.navigationController.navigationBar.subviews) {
+        if (vie.tag == 1434) {
+            [vie removeFromSuperview];
+            NSLog(@"Title view removed in regView");
+        }
+    }
+    
+    
+     [self.navigationItem setTitleView:[ApplicationDelegate setTitleForViews:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"regForm"]]];
+    //[self.navigationItem setTitleView:[[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"regForm"]]];
     
     [self.skipBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"skip"] forState:UIControlStateNormal];
     [self.submitBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"submit"] forState:UIControlStateNormal];
@@ -105,6 +113,9 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
+    
+    
     [self applyLanguage];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:) name:@"refreshView" object:nil];
     
