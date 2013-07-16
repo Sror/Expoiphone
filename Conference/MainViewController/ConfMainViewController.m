@@ -73,7 +73,7 @@
     [self.latestNewsTableView setHidden:YES];
     
     [self updateUI];
-    [self GetDataForTheView];
+   // [self GetDataForTheView];
 }
 
 
@@ -97,7 +97,7 @@
     [self.latestNewsTableView reloadData];
     //[self arrangeHorizontalScrollView];
     
-    [self GetDataForTheView];
+   // [self GetDataForTheView];
     [self updateUI];
     
 }

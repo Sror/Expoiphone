@@ -47,7 +47,7 @@
     self.navigationItem.hidesBackButton = YES;
     
     if (fromView) {
-        [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
+       // [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
     }
     [self applyFonts];
 }
@@ -75,8 +75,12 @@
     }
     
     
+    if (fromView) {
+        [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"regForm"]]];
+    }
+         else{
      [self.navigationItem setTitleView:[ApplicationDelegate setTitleForViews:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"regForm"]]];
-    //[self.navigationItem setTitleView:[[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"regForm"]]];
+         }
     
     [self.skipBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"skip"] forState:UIControlStateNormal];
     [self.submitBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"submit"] forState:UIControlStateNormal];

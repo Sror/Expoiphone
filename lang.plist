@@ -416,12 +416,12 @@
 			<key>en</key>
 			<string>Password</string>
 		</dict>
-		<key>event_Description - 17 - 24</key>
+		<key>staffLogin</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>Staff Login</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>Staff Login</string>
 		</dict>
 		<key>event_Description - 17 - 25</key>
 		<dict>

@@ -33,6 +33,18 @@
 @property (strong, nonatomic) IBOutlet UILabel *homeLabel;
 
 
+@property (strong, nonatomic) IBOutlet UIScrollView *engContainerView;
+
+@property (strong, nonatomic) IBOutlet UIScrollView *arabContainerView;
+@property (strong, nonatomic) IBOutlet UIButton *arabEventBtn;
+@property (strong, nonatomic) IBOutlet UIButton *arabExhbtBtn;
+@property (strong, nonatomic) IBOutlet UIImageView *imgDet1;
+@property (strong, nonatomic) IBOutlet UIImageView *imgDet2;
+
+
+
+
+
 @property (strong, nonatomic) IBOutlet UIView *bounceView;
 @property (strong, nonatomic) IBOutlet UITableView *eventTableView;
 - (IBAction)closeBtnAction:(id)sender;

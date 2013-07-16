@@ -28,7 +28,7 @@
 {
     [super viewDidLoad];
     aboutUsScrollView.contentSize = CGSizeMake(320, 568);
-self.arabScrollView.contentSize = CGSizeMake(320, 568);
+    self.arabScrollView.contentSize = CGSizeMake(320, 568);
     
     self.navigationItem.hidesBackButton = YES;
     // Do any additional setup after loading the view from its nib.
@@ -75,22 +75,13 @@ self.arabScrollView.contentSize = CGSizeMake(320, 568);
     
     [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"aUs-title"]]];
     [self.homeLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"home"]];
-   /* [self.historyBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"history"] forState:UIControlStateNormal];
-    
-    [self.mgmntBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"management"] forState:UIControlStateNormal];
-    [self.faciltiesBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"facilities"] forState:UIControlStateNormal];
-    [self.servicesBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"services"] forState:UIControlStateNormal];*/
+
     
     switch (ApplicationDelegate.langBool) {
         case LANG_English:{
             [self.arabScrollView setHidden:YES];
             [self.aboutUsScrollView setHidden:NO];
-           /* self.historyBtn.transform = CGAffineTransformMakeRotation(M_PI);
-            self.historyBtn.titleLabel.transform = CGAffineTransformMakeRotation(M_PI);*/
-            
-            
             [self.historyBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"history"] forState:UIControlStateNormal];
-            
             [self.mgmntBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"management"] forState:UIControlStateNormal];
             [self.faciltiesBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"facilities"] forState:UIControlStateNormal];
             [self.servicesBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"services"] forState:UIControlStateNormal];

@@ -31,7 +31,8 @@
     // Do any additional setup after loading the view from its nib.
     
     
-    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
+    //[self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
+    self.navigationItem.hidesBackButton = YES;
     
     [self.view addSubview:ApplicationDelegate.HUD];
     [ApplicationDelegate.HUD setLabelText:@"Checking"];
@@ -55,17 +56,30 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:) name:@"refreshView" object:nil];
     [self updateUI];
 }
 
 -(void)updateUI{
+    
+    
+    for (UIView *vie in self.navigationController.navigationBar.subviews) {
+        if (vie.tag == 143) {
+            [vie removeFromSuperview];
+        }
+    }
+    
     [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"signIn"]]];
+    [self.homeLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"home"]];
+    
+    
+    
     [self.usernameTxtField setText:@""];
     [self.passwordTxtField setText:@""];
     [self.loginBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"signIn"] forState:UIControlStateNormal];
     [self.usernameTxtField setPlaceholder:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"username"]];
     [self.passwordTxtField setPlaceholder:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"password"]];
-    [self.homeLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"home"]];
+    //[self.homeLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"home"]];
     
     
     

@@ -34,8 +34,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    self.navigationItem.hidesBackButton = YES;
     
-    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
+   // [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
     
     [self.view addSubview:ApplicationDelegate.HUD];
     [ApplicationDelegate.HUD setLabelText:@"Loading"];
@@ -66,12 +67,72 @@
 
 }
 -(void)updateUI{
+    
+    
+    
+    for (UIView *vie in self.navigationController.navigationBar.subviews) {
+        if (vie.tag == 143) {
+            [vie removeFromSuperview];
+        }
+    }
+    
+     [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"mCentre"]]];
+    [self.homeLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"home"]];
+    
+    switch (ApplicationDelegate.langBool) {
+        case LANG_English:{
+            [self.arabContainerView setHidden:YES];
+            [self.mcScrollView setHidden:NO];
+            [self.pressBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"pRelease"] forState:UIControlStateNormal];
+            [self.imgGalleryBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"imgGallery"] forState:UIControlStateNormal];
+            [self.videoGalleryBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"videoGallery"] forState:UIControlStateNormal];
+            
+        }
+            break;
+        case LANG_ARABIC:{
+            
+            [self.arabContainerView setHidden:NO];
+            [self.mcScrollView setHidden:YES];
+            
+            [self.arabPrBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"pRelease"] forState:UIControlStateNormal];
+            [self.arabIGBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"imgGallery"] forState:UIControlStateNormal];
+            [self.arabVGBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"videoGallery"] forState:UIControlStateNormal];
+           // [self.arabBtnS setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"services"] forState:UIControlStateNormal];
+            
+            self.arabPrBtn.transform = CGAffineTransformMakeRotation(M_PI);
+            self.arabIGBtn.transform = CGAffineTransformMakeRotation(M_PI);
+            self.arabVGBtn.transform = CGAffineTransformMakeRotation(M_PI);
+            //self.arabBtnS.transform = CGAffineTransformMakeRotation(M_PI);
+            
+            self.arabPrBtn.titleLabel.transform = CGAffineTransformMakeRotation(M_PI);
+            self.arabIGBtn.titleLabel.transform = CGAffineTransformMakeRotation(M_PI);
+            self.arabVGBtn.titleLabel.transform = CGAffineTransformMakeRotation(M_PI);
+            //self.arabBtnS.titleLabel.transform = CGAffineTransformMakeRotation(M_PI);
+            
+            self.detImg1.transform = CGAffineTransformMakeRotation(M_PI);
+            self.detImg2.transform = CGAffineTransformMakeRotation(M_PI);
+            self.detImg3.transform = CGAffineTransformMakeRotation(M_PI);
+           // self.arab4.transform = CGAffineTransformMakeRotation(M_PI);
+            
+            
+            
+            
+        }
+            //self.historyBtn.transform = CGAffineTransformMakeRotation(M_PI);
+            break;
+            
+        default:
+            break;
+    }
+    
+    
+/*
  
     [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"mCentre"]]];
     [self.pressBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"pRelease"] forState:UIControlStateNormal];
     [self.imgGalleryBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"imgGallery"] forState:UIControlStateNormal];
     [self.videoGalleryBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"videoGallery"] forState:UIControlStateNormal];
-    [self.homeLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"home"]];
+    [self.homeLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"home"]];*/
     
 }
 
@@ -415,6 +476,13 @@ tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void)viewDidUnload {
     [self setHomeLabel:nil];
+    [self setArabContainerView:nil];
+    [self setArabPrBtn:nil];
+    [self setArabIGBtn:nil];
+    [self setArabVGBtn:nil];
+    [self setDetImg1:nil];
+    [self setDetImg2:nil];
+    [self setDetImg3:nil];
     [super viewDidUnload];
 }
 @end

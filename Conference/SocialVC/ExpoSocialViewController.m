@@ -29,9 +29,11 @@
     // Do any additional setup after loading the view from its nib.
     
      self.scrollView.contentSize = CGSizeMake(320, 568);
+    self.arabContainerView.contentSize = CGSizeMake(320, 568);
+    self.navigationItem.hidesBackButton = YES;
     
     //[self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Social Media"]];
-    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
+    //[self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
     
     [self.fbBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:15.0]];
     [self.ytBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:15.0]];
@@ -57,13 +59,73 @@
 }
 -(void)updateUI{
     
-    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sMedia"]]];
+   /* [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sMedia"]]];
     
     [self.fbBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"fb"] forState:UIControlStateNormal];
     [self.ytBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"youTube"] forState:UIControlStateNormal];
     [self.twtBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"twitter"] forState:UIControlStateNormal];
     [self.igBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"instagram"] forState:UIControlStateNormal];
+    [self.homeLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"home"]];*/
+    
+    
+    
+    for (UIView *vie in self.navigationController.navigationBar.subviews) {
+        if (vie.tag == 143) {
+            [vie removeFromSuperview];
+        }
+    }
+    
+    
+    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sMedia"]]];
     [self.homeLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"home"]];
+    
+    
+    switch (ApplicationDelegate.langBool) {
+        case LANG_English:{
+            [self.arabContainerView setHidden:YES];
+            [self.scrollView setHidden:NO];
+            [self.fbBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"fb"] forState:UIControlStateNormal];
+            [self.ytBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"youTube"] forState:UIControlStateNormal];
+            [self.twtBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"instagram"] forState:UIControlStateNormal];
+            [self.igBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"twitter"] forState:UIControlStateNormal];
+        }
+            break;
+        case LANG_ARABIC:{
+            
+            [self.arabContainerView setHidden:NO];
+            [self.scrollView setHidden:YES];
+            
+            [self.arabfbBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"fb"] forState:UIControlStateNormal];
+            [self.arabytBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"youTube"] forState:UIControlStateNormal];
+            [self.arabigBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"instagram"] forState:UIControlStateNormal];
+            [self.arabTwtBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"twitter"] forState:UIControlStateNormal];
+            
+            self.arabfbBtn.transform = CGAffineTransformMakeRotation(M_PI);
+            self.arabytBtn.transform = CGAffineTransformMakeRotation(M_PI);
+            self.arabigBtn.transform = CGAffineTransformMakeRotation(M_PI);
+            self.arabTwtBtn.transform = CGAffineTransformMakeRotation(M_PI);
+            
+            self.arabfbBtn.titleLabel.transform = CGAffineTransformMakeRotation(M_PI);
+            self.arabytBtn.titleLabel.transform = CGAffineTransformMakeRotation(M_PI);
+            self.arabigBtn.titleLabel.transform = CGAffineTransformMakeRotation(M_PI);
+            self.arabTwtBtn.titleLabel.transform = CGAffineTransformMakeRotation(M_PI);
+            
+            self.detImg1.transform = CGAffineTransformMakeRotation(M_PI);
+            self.detImg2.transform = CGAffineTransformMakeRotation(M_PI);
+            self.detImg3.transform = CGAffineTransformMakeRotation(M_PI);
+            self.detImg4.transform = CGAffineTransformMakeRotation(M_PI);
+            
+            
+            
+            
+        }
+            //self.historyBtn.transform = CGAffineTransformMakeRotation(M_PI);
+            break;
+            
+        default:
+            break;
+    }
+
     
 }
 
@@ -116,6 +178,15 @@
 }
 - (void)viewDidUnload {
     [self setHomeLabel:nil];
+    [self setArabContainerView:nil];
+    [self setArabfbBtn:nil];
+    [self setArabytBtn:nil];
+    [self setArabigBtn:nil];
+    [self setArabTwtBtn:nil];
+    [self setDetImg1:nil];
+    [self setDetImg2:nil];
+    [self setDetImg3:nil];
+    [self setDetImg4:nil];
     [super viewDidUnload];
 }
 @end

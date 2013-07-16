@@ -31,8 +31,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Staff Login"]];
-    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
+    self.navigationItem.hidesBackButton = YES;
+    
+    
+    //[self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
     
     [self.homeLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
     
@@ -75,11 +77,57 @@
 }
 -(void)updateUI{
     
-    //[self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"visitInfo"]]];
-    [self.eventBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"eventSurvey"] forState:UIControlStateNormal];
-    [self.exBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"exSurvey"] forState:UIControlStateNormal];
-    //[self.travelBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"tvisitInfo"] forState:UIControlStateNormal];
+
+    for (UIView *vie in self.navigationController.navigationBar.subviews) {
+        if (vie.tag == 143) {
+            [vie removeFromSuperview];
+        }
+    }
+    
+    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"staffLogin"]]];
     [self.homeLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"home"]];
+   
+    
+    
+    switch (ApplicationDelegate.langBool) {
+        case LANG_English:{
+            [self.arabContainerView setHidden:YES];
+            [self.engContainerView setHidden:NO];
+            [self.eventBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"eventSurvey"] forState:UIControlStateNormal];
+            [self.exBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"exSurvey"] forState:UIControlStateNormal];
+            
+        }
+            break;
+        case LANG_ARABIC:{
+            
+            [self.arabContainerView setHidden:NO];
+            [self.engContainerView setHidden:YES];
+            
+            [self.arabEventBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"eventSurvey"] forState:UIControlStateNormal];
+            [self.arabExhbtBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"exSurvey"] forState:UIControlStateNormal];
+            
+            self.arabEventBtn.transform = CGAffineTransformMakeRotation(M_PI);
+            self.arabExhbtBtn.transform = CGAffineTransformMakeRotation(M_PI);
+            
+            self.arabEventBtn.titleLabel.transform = CGAffineTransformMakeRotation(M_PI);
+            self.arabExhbtBtn.titleLabel.transform = CGAffineTransformMakeRotation(M_PI);
+
+            
+            self.imgDet1.transform = CGAffineTransformMakeRotation(M_PI);
+            self.imgDet2.transform = CGAffineTransformMakeRotation(M_PI);
+
+     
+            
+        }
+            //self.historyBtn.transform = CGAffineTransformMakeRotation(M_PI);
+            break;
+            
+        default:
+            break;
+    }
+
+
+    
     
 }
 
@@ -232,6 +280,12 @@ tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void)viewDidUnload {
     [self setHomeLabel:nil];
+    [self setEngContainerView:nil];
+    [self setArabContainerView:nil];
+    [self setArabEventBtn:nil];
+    [self setArabExhbtBtn:nil];
+    [self setImgDet1:nil];
+    [self setImgDet2:nil];
     [super viewDidUnload];
 }
 @end

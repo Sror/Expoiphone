@@ -28,8 +28,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Visitor Info"]];
-    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
+    self.navigationItem.hidesBackButton = YES;
+    
+   // [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Visitor Info"]];
+   // [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
     [self.hotelBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:15.0]];
     [self.abtBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:15.0]];
     [self.travelBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:15.0]];
@@ -52,11 +54,64 @@
 }
 -(void)updateUI{
     
+    
+    
+    for (UIView *vie in self.navigationController.navigationBar.subviews) {
+        if (vie.tag == 143) {
+            [vie removeFromSuperview];
+        }
+    }
+    
+    //[self.homeLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"home"]];
     [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"visitInfo"]]];
-    [self.hotelBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"hotel_shopping"] forState:UIControlStateNormal];
-    [self.abtBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"abSharjah"] forState:UIControlStateNormal];
-    [self.travelBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"tvisitInfo"] forState:UIControlStateNormal];
     [self.homeLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"home"]];
+    
+    switch (ApplicationDelegate.langBool) {
+        case LANG_English:{
+            [self.arabContainerView setHidden:YES];
+            [self.engContainerView setHidden:NO];
+
+            [self.hotelBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"hotel_shopping"] forState:UIControlStateNormal];
+            [self.abtBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"abSharjah"] forState:UIControlStateNormal];
+            [self.travelBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"tvisitInfo"] forState:UIControlStateNormal];
+            
+        }
+            break;
+        case LANG_ARABIC:{
+            
+            [self.arabContainerView setHidden:NO];
+            [self.engContainerView setHidden:YES];
+            
+            [self.arabHSBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"hotel_shopping"] forState:UIControlStateNormal];
+            [self.arabASBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"abSharjah"] forState:UIControlStateNormal];
+            [self.arabTVBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"tvisitInfo"] forState:UIControlStateNormal];
+
+            self.arabHSBtn.transform = CGAffineTransformMakeRotation(M_PI);
+            self.arabASBtn.transform = CGAffineTransformMakeRotation(M_PI);
+            self.arabTVBtn.transform = CGAffineTransformMakeRotation(M_PI);
+            
+            self.arabHSBtn.titleLabel.transform = CGAffineTransformMakeRotation(M_PI);
+            self.arabASBtn.titleLabel.transform = CGAffineTransformMakeRotation(M_PI);
+            self.arabTVBtn.titleLabel.transform = CGAffineTransformMakeRotation(M_PI);
+            
+            self.detImg1.transform = CGAffineTransformMakeRotation(M_PI);
+            self.detImg2.transform = CGAffineTransformMakeRotation(M_PI);
+            self.detImg3.transform = CGAffineTransformMakeRotation(M_PI);
+            
+            
+            
+            
+        }
+            //self.historyBtn.transform = CGAffineTransformMakeRotation(M_PI);
+            break;
+            
+        default:
+            break;
+    }
+    
+
+    
+   /* */
     
 }
 
@@ -104,6 +159,14 @@
 }
 - (void)viewDidUnload {
     [self setHomeLabel:nil];
+    [self setArabContainerView:nil];
+    [self setEngContainerView:nil];
+    [self setArabASBtn:nil];
+    [self setArabTVBtn:nil];
+    [self setArabHSBtn:nil];
+    [self setDetImg1:nil];
+    [self setDetImg2:nil];
+    [self setDetImg3:nil];
     [super viewDidUnload];
 }
 @end
