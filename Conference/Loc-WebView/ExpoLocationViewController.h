@@ -12,6 +12,9 @@
 @interface ExpoLocationViewController : UIViewController<UIWebViewDelegate>{
     
     
+    NSString *headerString;
+    
+    
 }
 @property (nonatomic, retain) NSString *titleStr;
 @property (nonatomic, retain) NSString *eventID;

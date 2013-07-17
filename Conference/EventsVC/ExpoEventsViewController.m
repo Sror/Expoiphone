@@ -32,8 +32,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Events"]];
-    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
+    /*[self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Events"]];
+    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];*/
+    self.navigationItem.hidesBackButton = YES;
     
     eventsList = [[NSMutableArray alloc]init];
     
@@ -48,7 +49,23 @@
 -(void)viewWillAppear:(BOOL)animated{
     
     [self.navigationController setToolbarHidden:YES animated:NO];
-    [self.navigationItem setRightBarButtonItem:nil];
+   // [self.navigationItem setRightBarButtonItem:nil];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:) name:@"refreshView" object:nil];
+    [self updateUI];
+    
+    [self getDataFromServer];
+    
+    
+    NSLog(@"Count in end view is %d",eventsList.count);
+    
+    
+}
+
+
+-(void)getDataFromServer{
+    
     
     if ([ApplicationDelegate.appEventArray count]== 0) {
         
@@ -64,8 +81,8 @@
             for (NSMutableDictionary *dic in eventArray) {
                 
                 [eventsList addObject:[[ConferenceHelper SharedHelper] getEventsObjectFromDictionary:dic]];
-              //  NSLog(@"Dic is %@", dic);
-  
+                //  NSLog(@"Dic is %@", dic);
+                
             }
             [ApplicationDelegate.appEventArray removeAllObjects];
             [ApplicationDelegate.appEventArray addObjectsFromArray:eventsList];
@@ -92,9 +109,30 @@
         [self.eventsListTableView reloadData];
         
     }
+}
+-(void)updateUI{
     
-    NSLog(@"Count in end view is %d",eventsList.count);
     
+    for (UIView *vie in self.navigationController.navigationBar.subviews) {
+        if (vie.tag == 143) {
+            [vie removeFromSuperview];
+        }
+    }
+    
+    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"Events"]]];
+    
+    [self.searchBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"search"] forState:UIControlStateNormal];
+    [self getDataFromServer];
+}
+
+-(void)refreshView:(NSNotification *) notification{
+    
+    [self updateUI];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshView" object:nil];
     
 }
 

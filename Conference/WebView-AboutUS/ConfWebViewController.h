@@ -13,10 +13,13 @@
 @interface ConfWebViewController : UIViewController<UIWebViewDelegate>{
     
     
+    NSString *titleHead;
+    
 }
 
 @property (strong, nonatomic) IBOutlet UIWebView *InfoWebView;
 @property (nonatomic, retain) NSString *eventId;
+@property (nonatomic, retain) NSString *titleWeb;
 
 @property(nonatomic) int selectedIndex;
 

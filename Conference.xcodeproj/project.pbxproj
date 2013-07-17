@@ -191,6 +191,8 @@
 		FB456EC1176E0F4900E5C080 /* home-tt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB456EBB176E0F4900E5C080 /* home-tt@2x.png */; };
 		FB456EC2176E0F4900E5C080 /* toolbar_bg-tt.png in Resources */ = {isa = PBXBuildFile; fileRef = FB456EBC176E0F4900E5C080 /* toolbar_bg-tt.png */; };
 		FB456EC3176E0F4900E5C080 /* toolbar_bg-tt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB456EBD176E0F4900E5C080 /* toolbar_bg-tt@2x.png */; };
+		FB4EC73717972C8F00C47E29 /* event_img_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FB4EC73517972C8F00C47E29 /* event_img_bg.png */; };
+		FB4EC73817972C8F00C47E29 /* event_img_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB4EC73617972C8F00C47E29 /* event_img_bg@2x.png */; };
 		FB56C2E5177F3AB0000633F6 /* ConfSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB56C2E3177F3AB0000633F6 /* ConfSignInViewController.m */; };
 		FB56C2E6177F3AB0000633F6 /* ConfSignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB56C2E4177F3AB0000633F6 /* ConfSignInViewController.xib */; };
 		FB58009E178023BD00DCE638 /* desc-news.png in Resources */ = {isa = PBXBuildFile; fileRef = FB58009A178023BD00DCE638 /* desc-news.png */; };
@@ -529,6 +531,8 @@
 		FB456EBB176E0F4900E5C080 /* home-tt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "home-tt@2x.png"; path = "Conference/Images/YetAnotherToolBar/home-tt@2x.png"; sourceTree = "<group>"; };
 		FB456EBC176E0F4900E5C080 /* toolbar_bg-tt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "toolbar_bg-tt.png"; path = "Conference/Images/YetAnotherToolBar/toolbar_bg-tt.png"; sourceTree = "<group>"; };
 		FB456EBD176E0F4900E5C080 /* toolbar_bg-tt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "toolbar_bg-tt@2x.png"; path = "Conference/Images/YetAnotherToolBar/toolbar_bg-tt@2x.png"; sourceTree = "<group>"; };
+		FB4EC73517972C8F00C47E29 /* event_img_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = event_img_bg.png; path = Conference/Images/event_img_bg.png; sourceTree = "<group>"; };
+		FB4EC73617972C8F00C47E29 /* event_img_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "event_img_bg@2x.png"; path = "Conference/Images/event_img_bg@2x.png"; sourceTree = "<group>"; };
 		FB56C2E2177F3AAE000633F6 /* ConfSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfSignInViewController.h; path = Conference/SignInVC/ConfSignInViewController.h; sourceTree = "<group>"; };
 		FB56C2E3177F3AB0000633F6 /* ConfSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfSignInViewController.m; path = Conference/SignInVC/ConfSignInViewController.m; sourceTree = "<group>"; };
 		FB56C2E4177F3AB0000633F6 /* ConfSignInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConfSignInViewController.xib; path = Conference/SignInVC/ConfSignInViewController.xib; sourceTree = "<group>"; };
@@ -947,6 +951,8 @@
 		FB34E3F3176E5AFB0036E396 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				FB4EC73517972C8F00C47E29 /* event_img_bg.png */,
+				FB4EC73617972C8F00C47E29 /* event_img_bg@2x.png */,
 				FB58009A178023BD00DCE638 /* desc-news.png */,
 				FB58009B178023BD00DCE638 /* desc-news@2x.png */,
 				FB58009C178023BD00DCE638 /* image-news.png */,
@@ -1821,6 +1827,8 @@
 				FB04324A1792D0910019D456 /* img_bg_news@2x.png in Resources */,
 				FB04324D1792E1FF0019D456 /* ribbon.png in Resources */,
 				FB04324E1792E1FF0019D456 /* ribbon@2x.png in Resources */,
+				FB4EC73717972C8F00C47E29 /* event_img_bg.png in Resources */,
+				FB4EC73817972C8F00C47E29 /* event_img_bg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

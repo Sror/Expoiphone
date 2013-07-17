@@ -30,23 +30,49 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
+    self.navigationItem.hidesBackButton = YES;
     [self.view addSubview:ApplicationDelegate.HUD];
     [ApplicationDelegate.HUD setLabelText:@"Loading"];
 }
 
 
+-(void)refreshView:(NSNotification *) notification{
+    
+    
+    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:headerString]]];
+    
+    [self loadWebViews];
+    
+    //[self updateUI];
+}
+
+
+-(void)updateUI{
+    
+    
+    
+    
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshView" object:nil];
+    
+}
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:) name:@"refreshView" object:nil];
+
 
     if (viewType==IMGVIEW) {
-   
         [ApplicationDelegate.HUD show:YES];
-            [self.webviewForForms setHidden:YES];
+        [self.webviewForForms setHidden:YES];
         [self.viewSegmentControl setHidden:YES];
-            [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"locationmap"]]];
+        
+            //[self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"locationmap"]]];
+        headerString = @"locationmap";
             
             self.imageLoadingOperation=[ApplicationDelegate.appEngine imageAtURL:[NSURL URLWithString:titleStr] completionHandler:^(UIImage *fetchedImage, NSURL *url, BOOL isInCache) {
                 [ApplicationDelegate.HUD hide:YES];
@@ -69,18 +95,16 @@
         switch (webViewType) {
             case EXHIBITORSURVEY:
             {
-                [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"exSurvey"]]];
+                //[self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"exSurvey"]]];
+                headerString = @"exSurvey";
                 [self.viewSegmentControl setHidden:YES];
                 [self.webviewForForms setFrame:CGRectMake(0, 0, 320, 460)];
-                /*NSString *urlAddress = @"http://www.google.com";
-                NSURL *url = [NSURL URLWithString:urlAddress];
-                NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-                [self.webviewForForms loadRequest:requestObj];*/
             }
                 break;
             case EVENTVISITOR:
             {
-                [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"eventSurvey"]]];
+                //[self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"eventSurvey"]]];
+                headerString = @"eventSurvey";
                 [self.viewSegmentControl setHidden:YES];
                 [self.webviewForForms setFrame:CGRectMake(0, 0, 320, 460)];
                 
@@ -88,46 +112,45 @@
                 break;
             case EVENTREGISTRATION:
             {
-                [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Event Registration"]];
+                //[self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Event Registration"]];
+                headerString = @"event_Reg";
                 [self.webviewForForms setFrame:CGRectMake(0, 50, 320, 380)];
                 [self.viewSegmentControl setHidden:NO];
-                
-                
             }
                 break;
                 
             case CONTACTENQUIRYFORM:
             {
-                [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Enquiry"]];
+                //[self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Enquiry"]];
+                headerString = @"enq";
                 [self.viewSegmentControl setHidden:YES];
                 [self.webviewForForms setFrame:CGRectMake(0, 0, 320, 460)];
-                
-                
             }
                 break;
-            
             default:
                 break;
         }
-        
-        if (forPdfView) {
-            NSURLRequest *request = [NSURLRequest requestWithURL:filePathUrl];
-            [self.webviewForForms loadRequest:request];
-        }
-        else if (forEnquiry){
-            NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:CONTACTENQUIRYURL]];
-            [self.webviewForForms loadRequest:request];
-        }
-        else{
-        
-        [self.webviewForForms loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:DYNAMICWEBVIEWURL(eventID, titleStr,ApplicationDelegate.userNameString)]]];
-
-        NSLog(@"url is %@",DYNAMICWEBVIEWURL(eventID, titleStr,ApplicationDelegate.userNameString));
-        }
+        [self loadWebViews];
     }
 
 
+    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:headerString]]];
     
+}
+
+-(void)loadWebViews{
+    if (forPdfView) {
+        NSURLRequest *request = [NSURLRequest requestWithURL:filePathUrl];
+        [self.webviewForForms loadRequest:request];
+    }
+    else if (forEnquiry){
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:CONTACTENQUIRYURL]];
+        [self.webviewForForms loadRequest:request];
+    }
+    else{
+        [self.webviewForForms loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:DYNAMICWEBVIEWURL(eventID, titleStr,ApplicationDelegate.userNameString)]]];
+        NSLog(@"url is %@",DYNAMICWEBVIEWURL(eventID, titleStr,ApplicationDelegate.userNameString));
+    }
 }
 
 #pragma mark - Delegate methods

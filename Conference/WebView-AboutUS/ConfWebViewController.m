@@ -16,7 +16,7 @@
 @implementation ConfWebViewController
 
 @synthesize selectedIndex;
-@synthesize webViewOperation,eventId;
+@synthesize webViewOperation,eventId,titleWeb;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,7 +30,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
+    //[self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
+    self.navigationItem.hidesBackButton = YES;
     [self.view addSubview:ApplicationDelegate.HUD];
     [ApplicationDelegate.HUD setLabelText:@"Loading"];
 
@@ -40,55 +41,88 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    NSString *titleWeb;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:) name:@"refreshView" object:nil];
+        
+   // NSString *titleWeb;
     
     switch (selectedIndex) {
         case HISTORYVIEW:
-           [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"History"]];
+            titleHead = @"history";
+          // [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"History"]];
             titleWeb = @"history";
             break;
         case MANAGEMENTVIEW:
-            [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Management"]];
+            titleHead = @"management";
+            //[self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Management"]];
             titleWeb = @"management";
             break;
         case SERVICESVIEW:
-            [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Services"]];
+            titleHead = @"services";
+           // [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Services"]];
             titleWeb = @"services";
             break;
         case FACILITYVIEW:
-            [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Facilities"]];
+            titleHead = @"facilities";
+           // [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Facilities"]];
             titleWeb = @"facility";
             break;
         case PRESSRELEASEVIEW:
-            [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Press Release"]];
+            titleHead = @"pRelease";
+           // [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Press Release"]];
             titleWeb = @"press_release";
             break;
         case ABOUTSHARJAHVIEW:
-            [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"About Sharjah"]];
+            titleHead = @"abSharjah";
+            //[self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"About Sharjah"]];
             titleWeb = @"about_sharjah";
             break;
         case TRAVELVIEW:
-            [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Travel & Visa Info"]];
+            titleHead = @"tvisitInfo";
+            //[self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Travel & Visa Info"]];
             titleWeb = @"travel_visa";
             break;
         case HOTELVIEW:
-            [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Hotels & Shopping"]];
+            titleHead = @"hotel_shopping";
+            //[self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Hotels & Shopping"]];
             titleWeb = @"hotels_shopping";
             break;
-        /*case VISITORSURVEY:
-            [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Event Visitor Survey"]];
-            titleWeb = @"survey_form";
-            break;
-        case EXHIBITORSURVEY:
-            [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Exhibitor Survey"]];
-            titleWeb = @"exhibitor_form";
-            break;*/
-            
             
         default:
             break;
     }
  
+    [self updateUI];
+    
+
+    //MKNetworkOperation *op2 =
+    
+}
+
+
+-(void)refreshView:(NSNotification *) notification{
+    
+    [self updateUI];
+}
+
+-(void)updateUI{
+    
+    
+    
+    for (UIView *vie in self.navigationController.navigationBar.subviews) {
+        if (vie.tag == 143) {
+            [vie removeFromSuperview];
+        }
+    }
+    
+    NSLog(@"title head is %@", titleHead);
+    //[self.homeLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"home"]];
+    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:titleHead]]];
+    [self loadWebViewWithData];
+}
+
+-(void)loadWebViewWithData{
+    
     [ApplicationDelegate.HUD show:YES];
     [self.navigationController.navigationBar setUserInteractionEnabled:NO];
     
@@ -106,11 +140,15 @@
         [ApplicationDelegate.HUD hide:YES];
         [self.navigationController.navigationBar setUserInteractionEnabled:YES];
         [UIAlertView showWithError:error];
-
+        
     }];
+
     
-    
-    //MKNetworkOperation *op2 =
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshView" object:nil];
     
 }
 

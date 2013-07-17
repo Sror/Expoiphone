@@ -423,12 +423,12 @@
 			<key>en</key>
 			<string>Staff Login</string>
 		</dict>
-		<key>event_Description - 17 - 25</key>
+		<key>event_Reg</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>Event Registration</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>Event Registration</string>
 		</dict>
 		<key>event_Description - 17 - 26</key>
 		<dict>
