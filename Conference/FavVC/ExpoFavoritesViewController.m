@@ -32,8 +32,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Favourites"]];
-    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
+    /*[self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Favourites"]];
+    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];*/
+    self.navigationItem.hidesBackButton = YES;
     
     [self.view addSubview:ApplicationDelegate.HUD];
     [ApplicationDelegate.HUD setLabelText:@"Loading"];
@@ -52,18 +53,77 @@
     
     UIBarButtonItem* deleteItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     
+    UIBarButtonItem *fixed1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    fixed1.width = 40.0f;
     
     if ([[ConferenceHelper SharedHelper] ReadArrayFromthePlistFile:@"favList.plist"].count ==0) {
         //[self.HUD hide:YES];
         [self.navigationItem setRightBarButtonItem:nil];
     }else{
         
-        UIBarButtonItem *fixed1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-        fixed1.width = 40.0f;
+       
+        /*UIPanGestureRecognizer *panBtn= [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(dragBtnAction:)];
+        [fixed1 addGestureRecognizer:panBtn];*/
         
         [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:fixed1,deleteItem, nil]];
       //  [self.navigationItem setRightBarButtonItem:deleteItem];
     }
+    
+    
+    
+    
+    for (UIView *vie in self.navigationController.navigationBar.subviews) {
+        if (vie.tag == 143) {
+            [vie removeFromSuperview];
+        }
+    }
+    
+    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"Favourites"]]];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:) name:@"refreshView" object:nil];
+    [self updateUI];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshView" object:nil];
+    
+}
+
+
+-(void)refreshView:(NSNotification *) notification{
+    
+    [self updateUI];
+}
+
+-(void)updateUI{
+    
+    [self.favEventsArray removeAllObjects];
+    [self.favTableView reloadData];
+    [self getData];
+    
+    
+    
+}
+
+-(void)getData{
+    
+    [ApplicationDelegate.appEngine favList:@"" onCompletion:^(NSMutableArray *favEventArray) {
+        for (NSMutableDictionary *dic in favEventArray) {
+            [favEventsArray addObject:[[ConferenceHelper SharedHelper] getEventsObjectFromDictionary:dic] ];
+        }
+        NSLog(@"Fav Evnt array is %d",favEventsArray.count);
+        [ApplicationDelegate.appFavEventArray removeAllObjects];
+        [ApplicationDelegate.appFavEventArray addObjectsFromArray:favEventsArray];
+        [ApplicationDelegate.HUD hide:YES];
+        [self.navigationController.navigationBar setUserInteractionEnabled:YES];
+        [self.favTableView setHidden:NO];
+        [self.favTableView reloadData];
+    } onError:^(NSError *error) {
+        [ApplicationDelegate.HUD hide:YES];
+        [self.navigationController.navigationBar setUserInteractionEnabled:YES];
+        [UIAlertView showWithError:error];
+    }];
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -80,8 +140,8 @@
             
             [ApplicationDelegate.HUD show:YES];
             [self.navigationController.navigationBar setUserInteractionEnabled:NO];
-            
-            [ApplicationDelegate.appEngine favList:@"" onCompletion:^(NSMutableArray *favEventArray) {
+            [self getData];
+            /*[ApplicationDelegate.appEngine favList:@"" onCompletion:^(NSMutableArray *favEventArray) {
                 for (NSMutableDictionary *dic in favEventArray) {
                     [favEventsArray addObject:[[ConferenceHelper SharedHelper] getEventsObjectFromDictionary:dic] ];
                 }
@@ -96,7 +156,7 @@
                 [ApplicationDelegate.HUD hide:YES];
                 [self.navigationController.navigationBar setUserInteractionEnabled:YES];
                 [UIAlertView showWithError:error];
-            }];
+            }];*/
            }
     }else{
         [favEventsArray removeAllObjects];

@@ -37,6 +37,20 @@
 @property (nonatomic, retain) NSMutableArray *searchResultsArray;
 @property (strong, nonatomic) IBOutlet UILabel *homeLabel;
 
+
+@property (strong, nonatomic) IBOutlet UIView *engView;
+@property (strong, nonatomic) IBOutlet UIView *arabView;
+
+@property (strong, nonatomic) IBOutlet UITextField *arabEventTxtField;
+@property (strong, nonatomic) IBOutlet UITextField *arabIndustryTxtField;
+@property (strong, nonatomic) IBOutlet UITextField *arabStartTxtField;
+@property (strong, nonatomic) IBOutlet UITextField *arabEndTxtField;
+
+
+@property (strong, nonatomic) IBOutlet UIButton *submitBtn;
+
+
+
 - (IBAction)homeBtnAction:(id)sender;
 - (IBAction)submitBtnAction:(id)sender;
 

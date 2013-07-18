@@ -50,7 +50,8 @@
     
     [self.navigationController setToolbarHidden:YES animated:NO];
    // [self.navigationItem setRightBarButtonItem:nil];
-    
+    ApplicationDelegate.HUD.labelText = @"Loading";
+
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:) name:@"refreshView" object:nil];
     [self updateUI];
@@ -66,6 +67,9 @@
 
 -(void)getDataFromServer{
     
+    [self.eventsListTableView setHidden:YES];
+    [ApplicationDelegate.appEventArray removeAllObjects];
+    [self.eventsList removeAllObjects];
     
     if ([ApplicationDelegate.appEventArray count]== 0) {
         
@@ -81,12 +85,12 @@
             for (NSMutableDictionary *dic in eventArray) {
                 
                 [eventsList addObject:[[ConferenceHelper SharedHelper] getEventsObjectFromDictionary:dic]];
-                //  NSLog(@"Dic is %@", dic);
                 
             }
             [ApplicationDelegate.appEventArray removeAllObjects];
             [ApplicationDelegate.appEventArray addObjectsFromArray:eventsList];
             [self.eventsListTableView reloadData];
+            [self.eventsListTableView setHidden:NO];
             
         } onError:^(NSError *error) {
             [ApplicationDelegate.HUD hide:YES];
@@ -95,9 +99,9 @@
             
         }]; }
     else if (fromSearch){
-        
         [eventsList removeAllObjects];
         [eventsList addObjectsFromArray:ApplicationDelegate.appSearchEventsArray];
+        [self.eventsListTableView setHidden:NO];
         [self.eventsListTableView reloadData];
         
         
@@ -122,6 +126,7 @@
     [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"Events"]]];
     
     [self.searchBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"search"] forState:UIControlStateNormal];
+    [self.view insertSubview:ApplicationDelegate.HUD aboveSubview:self.eventsListTableView];
     [self getDataFromServer];
 }
 
@@ -154,7 +159,21 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"EventsCell";
+    //static NSString *CellIdentifier = @"EventsCell";
+    
+    
+    static NSString *CellIdentifier;
+    
+    switch (ApplicationDelegate.langBool) {
+        case LANG_English:
+            CellIdentifier = @"EventsCell";
+            break;
+        case LANG_ARABIC:
+            CellIdentifier = @"EventsCell-Arab";
+        default:
+            break;
+    }
+    
     EventsCell *cell = (EventsCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
@@ -171,7 +190,6 @@
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     Events *event=[eventsList objectAtIndex:indexPath.row];
-    //NSLog(@"event is %@",event.name);
     [cell.textLabel setFont:[UIFont fontWithName:@"PlutoLight" size:16.0]];
     [cell setPropertyToCell:event];
     return cell;

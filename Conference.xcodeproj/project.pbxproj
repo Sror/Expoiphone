@@ -207,6 +207,7 @@
 		FB60A99517875B7F00BA7EE0 /* stafflogin_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB60A99317875B7F00BA7EE0 /* stafflogin_bg@2x.png */; };
 		FB60A99917875BC900BA7EE0 /* ExpoCommonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB60A99717875BC900BA7EE0 /* ExpoCommonViewController.m */; };
 		FB60A99A17875BC900BA7EE0 /* ExpoCommonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB60A99817875BC900BA7EE0 /* ExpoCommonViewController.xib */; };
+		FB683DED179842D4006E77F9 /* EventsCell-Arab.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB683DEC179842D4006E77F9 /* EventsCell-Arab.xib */; };
 		FB7B9D7F178DC5B20075B6F4 /* img_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FB7B9D77178DC5B20075B6F4 /* img_bg.png */; };
 		FB7B9D80178DC5B20075B6F4 /* img_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB7B9D78178DC5B20075B6F4 /* img_bg@2x.png */; };
 		FB7B9D81178DC5B20075B6F4 /* eventstitle.png in Resources */ = {isa = PBXBuildFile; fileRef = FB7B9D79178DC5B20075B6F4 /* eventstitle.png */; };
@@ -550,6 +551,7 @@
 		FB60A99617875BC900BA7EE0 /* ExpoCommonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpoCommonViewController.h; path = Conference/CommonVC/ExpoCommonViewController.h; sourceTree = "<group>"; };
 		FB60A99717875BC900BA7EE0 /* ExpoCommonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExpoCommonViewController.m; path = Conference/CommonVC/ExpoCommonViewController.m; sourceTree = "<group>"; };
 		FB60A99817875BC900BA7EE0 /* ExpoCommonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExpoCommonViewController.xib; path = Conference/CommonVC/ExpoCommonViewController.xib; sourceTree = "<group>"; };
+		FB683DEC179842D4006E77F9 /* EventsCell-Arab.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "EventsCell-Arab.xib"; sourceTree = "<group>"; };
 		FB7B9D77178DC5B20075B6F4 /* img_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = img_bg.png; path = Conference/Images/New/img_bg.png; sourceTree = "<group>"; };
 		FB7B9D78178DC5B20075B6F4 /* img_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "img_bg@2x.png"; path = "Conference/Images/New/img_bg@2x.png"; sourceTree = "<group>"; };
 		FB7B9D79178DC5B20075B6F4 /* eventstitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = eventstitle.png; path = Conference/Images/New/eventstitle.png; sourceTree = "<group>"; };
@@ -764,6 +766,7 @@
 				FB252D9617645235000F6A0A /* EventsCell.h */,
 				FB252D9717645235000F6A0A /* EventsCell.m */,
 				FB252D99176452DC000F6A0A /* EventsCell.xib */,
+				FB683DEC179842D4006E77F9 /* EventsCell-Arab.xib */,
 			);
 			name = CustomCells;
 			sourceTree = "<group>";
@@ -1829,6 +1832,7 @@
 				FB04324E1792E1FF0019D456 /* ribbon@2x.png in Resources */,
 				FB4EC73717972C8F00C47E29 /* event_img_bg.png in Resources */,
 				FB4EC73817972C8F00C47E29 /* event_img_bg@2x.png in Resources */,
+				FB683DED179842D4006E77F9 /* EventsCell-Arab.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

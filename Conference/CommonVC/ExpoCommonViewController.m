@@ -35,10 +35,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    
+    self.navigationItem.hidesBackButton=YES;
     [self.homeLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
     
-    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
+   // [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

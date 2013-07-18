@@ -296,6 +296,42 @@
 }
 
 
+-(UIView *)setTitleForDetailView{
+    
+    UIView *titleHeaderView = [[UIView alloc]init]; //WithFrame:CGRectMake(0, 20, 320, 44)];
+    titleHeaderView.contentMode = UIViewContentModeScaleToFill;
+    [titleHeaderView setBackgroundColor:[UIColor greenColor]];
+    titleHeaderView.tag =12345;
+    
+    switch (self.langBool) {
+        case LANG_English:{
+            [titleHeaderView setFrame:CGRectMake(0, 20, 230, 44)];
+            /*[titleView setFrame:CGRectMake(40, 0, 250, 44)];
+            [imgView setFrame:CGRectMake(5, 10, 25, 25)];
+            [sepImgView setFrame:CGRectMake(33,7,2,29)];
+            [dragBtn setFrame:CGRectMake(277, 0, 40, 44)];
+            [ribImgView setFrame:CGRectMake(272,0,27,44)];
+            [titleView setTextAlignment:NSTextAlignmentLeft];*/
+        }
+            break;
+        case LANG_ARABIC:{
+            
+            [titleHeaderView setFrame:CGRectMake(60, 0, 200, 44)];
+            /*[imgView setFrame:CGRectMake(280, 10, 25, 25)];
+            [sepImgView setFrame:CGRectMake(275,7,2,29)];
+            [dragBtn setFrame:CGRectMake(10, 0, 40, 44)];
+            [ribImgView setFrame:CGRectMake(10,0,27,44)];
+            [titleView setTextAlignment:NSTextAlignmentRight];*/
+        }
+            break;
+            
+        default:
+            break;
+    }
+    return titleHeaderView;
+}
+
+
 -(UIView *) setTitleForMainView{
     
    

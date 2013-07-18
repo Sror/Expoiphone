@@ -37,11 +37,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Events Search"]];
-    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
+   /* [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Events Search"]];
+    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];*/
     
+    self.navigationItem.hidesBackButton = YES;
     
-       
     
     dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"dd MMMM YYYY"];
@@ -67,6 +67,12 @@
     [self.industrialTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
     [self.dateTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
     [self.endDateTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
+    
+    [self.arabEventTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
+    [self.arabIndustryTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
+    [self.arabStartTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
+    [self.arabEndTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
+    
     [self.homeLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
     
     [self.keywordTxtField setValue:[UIColor blackColor]
@@ -83,6 +89,10 @@
 
     [self.industrialTxtField setValue:[UIColor blackColor]
                     forKeyPath:@"_placeholderLabel.textColor"];
+    
+    
+    
+
 
     
 }
@@ -91,12 +101,57 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:) name:@"refreshView" object:nil];
+    [self updateUI];
+    
     //[[UIToolbar appearance] setBackgroundImage:[[UIImage alloc] init] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
+    
+}
+-(void)refreshView:(NSNotification *) notification{
+    
+    [self updateUI];
+}
+
+
+-(void)updateUI{
+    
+    for (UIView *vie in self.navigationController.navigationBar.subviews) {
+        if (vie.tag == 143) {
+            [vie removeFromSuperview];
+        }
+    }
+    
+    
+    switch (ApplicationDelegate.langBool) {
+        case LANG_English:
+            [self.arabView setHidden:YES];
+            [self.engView setHidden:NO];
+            
+            break;
+        case LANG_ARABIC:
+            [self.arabView setHidden:NO];
+            [self.engView setHidden:YES];
+            [self.arabIndustryTxtField setPlaceholder:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"indInterest"]];
+            [self.arabEventTxtField setPlaceholder:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"upcomingEvent"]];
+            [self.arabEndTxtField setPlaceholder:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"startdate"]];
+            [self.arabStartTxtField setPlaceholder:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"enddate"]];
+            break;
+        default:
+            break;
+    }
+    
+      
+    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"eventssearch"]]];
+    
+    [self.submitBtn.titleLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"submit"]];
+    [self.keywordTxtField setPlaceholder:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"entersearchkeyword"]]; 
     
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [[UIToolbar appearance] setBackgroundImage:[UIImage imageNamed:@"toolbar_bg.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
+   // [[UIToolbar appearance] setBackgroundImage:[UIImage imageNamed:@"toolbar_bg.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshView" object:nil];
 }
 
 -(void)DatePickerView
@@ -318,11 +373,28 @@
     
     
     NSMutableDictionary *searcDic = [[NSMutableDictionary alloc]init];
-    [searcDic setValue:self.keywordTxtField.text forKey:@"keyword"];
-    [searcDic setValue:self.keywordTxtField.text forKey:@"upcoming"];
-    [searcDic setValue:self.keywordTxtField.text forKey:@"industry_category"];
-    [searcDic setValue:self.keywordTxtField.text forKey:@"date_end"];
-    [searcDic setValue:self.keywordTxtField.text forKey:@"date_start"];
+    switch (ApplicationDelegate.langBool) {
+        case LANG_English:
+            [searcDic setValue:self.keywordTxtField.text forKey:@"keyword"];
+            [searcDic setValue:self.upcomingEventTxtField.text forKey:@"upcoming"];
+            [searcDic setValue:self.industrialTxtField.text forKey:@"industry_category"];
+            [searcDic setValue:self.dateTxtField.text forKey:@"date_start"];
+            [searcDic setValue:self.endDateTxtField.text forKey:@"date_end"];
+            
+            break;
+        case LANG_ARABIC:
+            [searcDic setValue:self.keywordTxtField.text forKey:@"keyword"];
+            [searcDic setValue:self.arabEventTxtField.text forKey:@"upcoming"];
+            [searcDic setValue:self.arabIndustryTxtField.text forKey:@"industry_category"];
+            [searcDic setValue:self.arabStartTxtField.text forKey:@"date_start"];
+            [searcDic setValue:self.arabEndTxtField.text forKey:@"date_end"];
+            break;
+            
+        default:
+            break;
+    }
+    
+    
     
     
     [ApplicationDelegate.appEngine searchEvents:searcDic onCompletion:^(NSMutableArray *searchEventArray) {
@@ -377,6 +449,13 @@
 }
 - (void)viewDidUnload {
     [self setHomeLabel:nil];
+    [self setEngView:nil];
+    [self setArabView:nil];
+    [self setArabEventTxtField:nil];
+    [self setArabIndustryTxtField:nil];
+    [self setArabStartTxtField:nil];
+    [self setArabEndTxtField:nil];
+    [self setSubmitBtn:nil];
     [super viewDidUnload];
 }
 @end

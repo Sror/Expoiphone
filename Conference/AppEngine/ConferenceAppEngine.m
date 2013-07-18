@@ -21,6 +21,7 @@
     
     NSMutableDictionary *dic=[[NSMutableDictionary alloc] init];
     [dic setValue:@"getlist" forKey:@"action"];
+    [dic setValue:ApplicationDelegate.langCode forKey:@"language"];
     MKNetworkOperation *op =[self operationWithPath:INDUSTRYCATEGORYURL params:dic
                                          httpMethod:@"POST"];
     
@@ -43,11 +44,12 @@
 }
 
 
-
--(void)eventsList :(NSString *)eventType  onCompletion:(EventsResponseBlock) events onError:(MKNKErrorBlock) errorBlock{
+-(void)getEventDetails :(NSString *)eventId  onCompletion:(EventDetailsBlock) events onError:(MKNKErrorBlock) errorBlock{
     
     NSMutableDictionary *dic=[[NSMutableDictionary alloc] init];
-    [dic setValue:@"getlist" forKey:@"action"];
+    [dic setValue:@"getDetails" forKey:@"action"];
+    [dic setValue:eventId forKey:@"eventid"];
+    [dic setValue:ApplicationDelegate.langCode forKey:@"language"];
     MKNetworkOperation *op = [self operationWithPath:EVENTSURL params:dic
                                           httpMethod:@"POST"];
     
@@ -65,9 +67,35 @@
         errorBlock(error);
     }];
     
+    [self enqueueOperation:op];
+    
+
+    
+}
+
+-(void)eventsList :(NSString *)eventType  onCompletion:(EventsResponseBlock) events onError:(MKNKErrorBlock) errorBlock{
+    
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc] init];
+    [dic setValue:@"getlist" forKey:@"action"];
+    [dic setValue:ApplicationDelegate.langCode forKey:@"language"];
+    MKNetworkOperation *op = [self operationWithPath:EVENTSURL params:dic
+                                          httpMethod:@"POST"];
+    
+    [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        
+        //NSLog(@"ompletedOperation.responseString %@", completedOperation.responseString);
+        
+        [completedOperation responseJSONWithCompletionHandler:^(id jsonObject) {
+            
+            events(jsonObject);
+        }];
+        
+    } errorHandler:^(MKNetworkOperation *errorOp, NSError* error) {
+        
+        errorBlock(error);
+    }];
     
     [self enqueueOperation:op];
-
     
 }
 /// http://conferenceapp.crisiltech.com/controller/event.php?action=getCurrentEvents
@@ -135,6 +163,7 @@
     
     NSMutableDictionary *dic=[[NSMutableDictionary alloc] init];
     [dic setValue:@"getList" forKey:@"action"];
+    [dic setValue:ApplicationDelegate.langCode forKey:@"language"];
     MKNetworkOperation *op = [self operationWithPath:IMAGEGALLERYURL params:dic
                                           httpMethod:@"POST"];
     
@@ -201,6 +230,7 @@
     
     NSMutableDictionary *dic=[[NSMutableDictionary alloc] init];
     [dic setValue:@"getlist" forKey:@"action"];
+    [dic setValue:ApplicationDelegate.langCode forKey:@"language"];
     MKNetworkOperation *op = [self operationWithPath:VIDEOGALLERYURL params:dic
                                           httpMethod:@"POST"];
     
@@ -226,6 +256,7 @@
     
     NSMutableDictionary *dic=[[NSMutableDictionary alloc] init];
     [dic setValue:@"getFavouriteList" forKey:@"action"];
+    [dic setValue:ApplicationDelegate.langCode forKey:@"language"];
     NSString *string1=@"";
     NSLog(@"the array=%@",[[ConferenceHelper SharedHelper] ReadArrayFromthePlistFile:@"favList.plist"]);
     int i=0;
@@ -322,6 +353,7 @@
     
     NSMutableDictionary *dic=[[NSMutableDictionary alloc] init];
     [dic setValue:@"getList" forKey:@"action"];
+    [dic setValue:ApplicationDelegate.langCode forKey:@"language"];
     MKNetworkOperation *op = [self operationWithPath:PRESSRELEASEURL params:dic
                                           httpMethod:@"POST"];
     
@@ -345,6 +377,7 @@
     
     //NSMutableDictionary *dic=[[NSMutableDictionary alloc] init];
     [searchParams setValue:@"search" forKey:@"action"];
+    [searchParams setValue:ApplicationDelegate.langCode forKey:@"language"];
     
     NSLog(@"serach paramsd are %@",searchParams);
     

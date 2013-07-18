@@ -24,6 +24,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *LocationLabel;
 @property (strong, nonatomic) IBOutlet UILabel *categoryLabel;
 
+@property (strong, nonatomic) IBOutlet UIImageView *detImg;
 
 
 @property (nonatomic, strong) NSString* loadingImageURLString;

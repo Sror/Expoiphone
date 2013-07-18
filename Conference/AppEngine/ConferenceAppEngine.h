@@ -53,6 +53,9 @@ typedef void (^UserProfileResponseBlock)(NSMutableDictionary *userProfileRespons
 
 
 typedef void (^checkYouTubeBlock)(NSMutableArray *youtube);
+typedef void (^EventDetailsBlock) (NSMutableArray *detailsArray);
+
+-(void)getEventDetails :(NSString *)eventId  onCompletion:(EventDetailsBlock) events onError:(MKNKErrorBlock) errorBlock;
 
 -(void)industryCategoryList: (NSString *)industry onCompletion:(industryCategoryResponseBlock) events onError:(MKNKErrorBlock) errorBlock;
 

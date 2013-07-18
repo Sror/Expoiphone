@@ -53,6 +53,9 @@
     [self.categoryLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
     [self.LocationLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:13.0]];
     
+    if (ApplicationDelegate.langBool == LANG_ARABIC) {
+        [self.detImg setTransform:CGAffineTransformMakeRotation(M_PI)];
+    }
     
     [self.eventNameLabel setText:event.name];
     [self.categoryLabel setText:event.industry_category];

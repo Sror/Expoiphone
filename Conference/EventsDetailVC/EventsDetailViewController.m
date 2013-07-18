@@ -41,12 +41,12 @@
     
    
     
-    UIButton *backBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25,44, 44)];
+   /* UIButton *backBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25,44, 44)];
     [backBtn addTarget:self action:@selector(backBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [backBtn setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
     
-    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:backBtn]];
-    UIButton *favBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25,35, 35)];
+    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:backBtn]];*/
+    /*UIButton *favBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25,35, 35)];
     [favBtn addTarget:self action:@selector(favBtnTouched) forControlEvents:UIControlEventTouchUpInside];
     [favBtn setImage:[UIImage imageNamed:@"fav.png"] forState:UIControlStateNormal];
     UIBarButtonItem *btnAbt = [[UIBarButtonItem alloc] initWithCustomView:favBtn];
@@ -56,8 +56,8 @@
     
     if (!fromFavList) {
         [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:fixed1,btnAbt, nil]];
-    }
-    
+    }*/
+    self.navigationItem.hidesBackButton = YES;
     [self.view addSubview:ApplicationDelegate.HUD];
     ApplicationDelegate.HUD.labelText = @"Downloading";
     
@@ -94,7 +94,9 @@
 
 -(void)updateUI{
     
-    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"event_details"]]];
+    
+    [self.navigationItem setTitleView:[ApplicationDelegate setTitleForDetailView]];
+  //  [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"event_details"]]];
     [self.imagGalleryBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"imgGallery"] forState:UIControlStateNormal];
     [self.videoGalleryBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"videoGallery"] forState:UIControlStateNormal];
     [self.exhitBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"exList"] forState:UIControlStateNormal];

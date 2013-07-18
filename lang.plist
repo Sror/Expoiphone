@@ -430,35 +430,91 @@
 			<key>en</key>
 			<string>Event Registration</string>
 		</dict>
-		<key>event_Description - 17 - 26</key>
+		<key>upcomingEvent</key>
+		<dict>
+			<key>ar</key>
+			<string>Upcoming event</string>
+			<key>en</key>
+			<string>Upcoming event</string>
+		</dict>
+		<key>startdate</key>
+		<dict>
+			<key>ar</key>
+			<string>Start date</string>
+			<key>en</key>
+			<string>Start date</string>
+		</dict>
+		<key>enddate</key>
+		<dict>
+			<key>ar</key>
+			<string>End date</string>
+			<key>en</key>
+			<string>End date</string>
+		</dict>
+		<key>entersearchkeyword</key>
+		<dict>
+			<key>ar</key>
+			<string>Enter search keyword</string>
+			<key>en</key>
+			<string>Enter search keyword</string>
+		</dict>
+		<key>eventssearch</key>
+		<dict>
+			<key>ar</key>
+			<string>Events Search</string>
+			<key>en</key>
+			<string>Events Search</string>
+		</dict>
+		<key>event_Description - 17 - 30 - 2</key>
 		<dict>
 			<key>ar</key>
 			<string>وصف الحدث</string>
 			<key>en</key>
 			<string>Event Description</string>
 		</dict>
-		<key>event_Description - 17 - 27</key>
+		<key>event_Description - 17 - 30 - 3</key>
 		<dict>
 			<key>ar</key>
 			<string>وصف الحدث</string>
 			<key>en</key>
 			<string>Event Description</string>
 		</dict>
-		<key>event_Description - 17 - 28</key>
+		<key>event_Description - 17 - 30 - 4</key>
 		<dict>
 			<key>ar</key>
 			<string>وصف الحدث</string>
 			<key>en</key>
 			<string>Event Description</string>
 		</dict>
-		<key>event_Description - 17 - 29</key>
+		<key>event_Description - 17 - 30 - 5</key>
 		<dict>
 			<key>ar</key>
 			<string>وصف الحدث</string>
 			<key>en</key>
 			<string>Event Description</string>
 		</dict>
-		<key>event_Description - 17 - 30</key>
+		<key>event_Description - 17 - 30 - 6</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17 - 30 - 7</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17 - 30 - 8</key>
+		<dict>
+			<key>ar</key>
+			<string>وصف الحدث</string>
+			<key>en</key>
+			<string>Event Description</string>
+		</dict>
+		<key>event_Description - 17 - 30 - 9</key>
 		<dict>
 			<key>ar</key>
 			<string>وصف الحدث</string>

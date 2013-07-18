@@ -77,6 +77,10 @@ extern NSString *const FBSessionStateChangedNotification;
 -(UIView *) setTitleForMainView;
 -(void)showMainHomeView;
 - (UIView *)setTitleForViews:(NSString *)title;
+-(UIView *)setTitleForDetailView;
+
+
+- (void)dragBtnAction:(UIPanGestureRecognizer *)rec;
 
 - (void) hideTabBar:(UITabBarController *) tabbarcontroller;
 - (void) showTabBar:(UITabBarController *) tabbarcontroller;
