@@ -128,11 +128,25 @@
             [self.videoGalleryBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"videoGallery"] forState:UIControlStateNormal];
             [self.exhitBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"exList"] forState:UIControlStateNormal];
             [self.regBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"regForm"] forState:UIControlStateNormal];
-           
             
+            [self.borderImgView setFrame:CGRectMake(15, 16, 96, 70)];
+            [self.eventLogoImageView setFrame:CGRectMake(17, 17, 92, 67)];
+            [self.eventNameLabel setFrame:CGRectMake(117, 13, 190, 21)];
+            [self.dateLabel setFrame:CGRectMake(117, 32, 190, 16)];
+            [self.timeLabel setFrame:CGRectMake(117, 44, 190, 16)];
+            [self.categoryLabel setFrame:CGRectMake(117, 57, 190, 16)];
+            [self.locationLabel setFrame:CGRectMake(117, 68, 190, 21)];
+            
+            
+            [self.eventNameLabel setTextAlignment:NSTextAlignmentLeft];
+            [self.dateLabel setTextAlignment:NSTextAlignmentLeft];
+            [self.timeLabel setTextAlignment:NSTextAlignmentLeft];
+            [self.categoryLabel setTextAlignment:NSTextAlignmentLeft];
+            [self.locationLabel setTextAlignment:NSTextAlignmentLeft];
             [self.mediaPartnerHeadLabel setTextAlignment:NSTextAlignmentLeft];
             [self.supporterHeadLabel setTextAlignment:NSTextAlignmentLeft];
             [self.sponsorHeadLabel setTextAlignment:NSTextAlignmentLeft];
+            
             break;
         case LANG_ARABIC:
             [self sethidden:NO];
@@ -142,9 +156,24 @@
             [self.arabExhibitBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"exList"] forState:UIControlStateNormal];
             [self.arabRegBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"regForm"] forState:UIControlStateNormal];
             
+            [self.borderImgView setFrame:CGRectMake(205, 16, 96, 70)];
+            [self.eventLogoImageView setFrame:CGRectMake(207, 17, 92, 67)];
+            [self.eventNameLabel setFrame:CGRectMake(10, 13, 190, 21)];
+            [self.dateLabel setFrame:CGRectMake(10, 32, 190, 16)];
+            [self.timeLabel setFrame:CGRectMake(10, 44, 190, 16)];
+            [self.categoryLabel setFrame:CGRectMake(10, 57, 190, 16)];
+            [self.locationLabel setFrame:CGRectMake(10, 68, 190, 21)];
+            
+            [self.eventNameLabel setTextAlignment:NSTextAlignmentRight];
+            [self.dateLabel setTextAlignment:NSTextAlignmentRight];
+            [self.timeLabel setTextAlignment:NSTextAlignmentRight];
+            [self.categoryLabel setTextAlignment:NSTextAlignmentRight];
+            [self.locationLabel setTextAlignment:NSTextAlignmentRight];
             [self.mediaPartnerHeadLabel setTextAlignment:NSTextAlignmentRight];
             [self.supporterHeadLabel setTextAlignment:NSTextAlignmentRight];
             [self.sponsorHeadLabel setTextAlignment:NSTextAlignmentRight];
+            
+       
             break;
             
             
@@ -159,7 +188,7 @@
   //  [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"event_details"]]];
     
     
-    
+    [self.eventDescLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"event_Description"]];
     
     [self.homLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"home"]];
     [self.brochureLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"brochure"]];
@@ -496,7 +525,7 @@
         
         
         ExpoCommonViewController *comView = [[ExpoCommonViewController alloc]initWithNibName:@"ExpoCommonViewController" bundle:nil];
-        [comView setTitleHeaderString:@"Video-Gallery"];
+        [comView setTitleHeaderString:@"videoGallery"];
         [comView setListArray:eventDetail.videoGalleryArray];
         [comView setFromEventDetailView:YES];
         [self.navigationController pushFadeViewController:comView];
@@ -1307,6 +1336,8 @@ tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     [self setArabVideoBtn:nil];
     [self setArabExhibitBtn:nil];
     [self setArabRegBtn:nil];
+    [self setBorderImgView:nil];
+    [self setEventDescLabel:nil];
     [super viewDidUnload];
 }
 @end

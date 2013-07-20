@@ -37,6 +37,7 @@
     self.navigationItem.hidesBackButton = YES;
     
     eventsList = [[NSMutableArray alloc]init];
+    [ApplicationDelegate.appEventArray removeAllObjects];
     
    // [self.searchBtn.titleLabel setText:@"Search"];
     [self.searchBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:12.0]];
@@ -56,7 +57,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:) name:@"refreshView" object:nil];
     [self updateUI];
     
-    [self getDataFromServer];
+    NSLog(@"app events array is %d",eventsList.count);
+    //[self getDataFromServer];
     
     
     NSLog(@"Count in end view is %d",eventsList.count);
@@ -68,8 +70,11 @@
 -(void)getDataFromServer{
     
     [self.eventsListTableView setHidden:YES];
-    [ApplicationDelegate.appEventArray removeAllObjects];
-    [self.eventsList removeAllObjects];
+    //[ApplicationDelegate.appEventArray removeAllObjects];
+   // [self.eventsList removeAllObjects];
+    
+    
+    
     
     if ([ApplicationDelegate.appEventArray count]== 0) {
         
@@ -110,6 +115,8 @@
         
         [eventsList removeAllObjects];
         [eventsList addObjectsFromArray:ApplicationDelegate.appEventArray];
+        
+        [self.eventsListTableView setHidden:NO];
         [self.eventsListTableView reloadData];
         
     }
@@ -131,7 +138,7 @@
 }
 
 -(void)refreshView:(NSNotification *) notification{
-    
+   // ApplicationDelegate.appEventArray removeAllObjects
     [self updateUI];
 }
 

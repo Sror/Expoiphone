@@ -61,6 +61,7 @@ extern NSString *const FBSessionStateChangedNotification;
 @property (nonatomic, retain) NSMutableArray *appSearchEventsArray;
 
 @property (nonatomic, retain) UIView *dragView;
+@property (nonatomic, retain) UIImageView *imgDragView;
 
 @property (nonatomic, retain) NSMutableArray *appLanguageArray;
 
@@ -79,7 +80,7 @@ extern NSString *const FBSessionStateChangedNotification;
 - (UIView *)setTitleForViews:(NSString *)title;
 -(UIView *)setTitleForDetailView;
 
-
+-(void)removeDraggerFromCurrentView;
 - (void)dragBtnAction:(UIPanGestureRecognizer *)rec;
 
 - (void) hideTabBar:(UITabBarController *) tabbarcontroller;

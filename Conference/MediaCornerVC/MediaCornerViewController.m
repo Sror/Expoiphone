@@ -262,7 +262,8 @@
         if (imagesList.count >0) {
             
             ExpoCommonViewController *com = [[ExpoCommonViewController alloc]initWithNibName:@"ExpoCommonViewController" bundle:nil];
-            [com setTitleHeaderString:@"Press-Release"];
+            [com setTitleHeaderString:@"pRelease"];
+            //[com setTitleHeaderString:@"Press-Release"];
             [com setListArray:pressReleaseArray];
             [self.navigationController pushFadeViewController:com];
            /* networkGallery = [[FGalleryViewController alloc] initWithPhotoSource:self];
@@ -309,7 +310,7 @@
        if (videoGaleryArray.count >0) {
            
            ExpoCommonViewController *com = [[ExpoCommonViewController alloc]initWithNibName:@"ExpoCommonViewController" bundle:nil];
-           [com setTitleHeaderString:@"Video-Gallery"];
+           [com setTitleHeaderString:@"videoGallery"];
            [com setListArray:videoGaleryArray];
            [self.navigationController pushFadeViewController:com];
 
@@ -344,7 +345,7 @@
         if (imageGaleryArray.count >0) {
             
             ExpoCommonViewController *com = [[ExpoCommonViewController alloc]initWithNibName:@"ExpoCommonViewController" bundle:nil];
-            [com setTitleHeaderString:@"Image-Gallery"];
+            [com setTitleHeaderString:@"imgGallery"];
             [com setListArray:imageGaleryArray];
             [self.navigationController pushFadeViewController:com];
             

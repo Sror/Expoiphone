@@ -16,7 +16,7 @@
 
 @synthesize appEngine,navController,appHelper,HUD;
 @synthesize appdelegateSession,appEventArray,appImageGalleryArray,appFavEventArray,appCurrentEventArray,appSearchEventsArray,appLanguageArray;
-@synthesize userNameString,dragView,_dragged,langBool,langCode;
+@synthesize userNameString,dragView,_dragged,langBool,langCode,imgDragView;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -117,14 +117,14 @@
     self.appLanguageArray=[[ConferenceHelper SharedHelper] ReadArrayFromthePlistFile:@"lang.plist"];
     
     
-    self.dragView = [[UIView alloc]initWithFrame:CGRectMake(5, 20, 311, 62)];
+    self.dragView = [[UIView alloc]initWithFrame:CGRectMake(1, 0, 311, 62)];
     [self.dragView setBackgroundColor:[UIColor clearColor]];
     [self.dragView setAlpha:0.0];
     [self.dragView setTag:DRAGVIEWTAG];
-    UIImageView *imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 311, 62)];
-    [imgView setBackgroundColor:[UIColor clearColor]];
-    [imgView setImage:[UIImage imageNamed:@"pulldown.png"]];
-    [self.dragView addSubview:imgView];
+    self.imgDragView = [[UIImageView alloc]initWithFrame:CGRectMake(1, 0, 311, 62)];
+    [self.imgDragView setBackgroundColor:[UIColor clearColor]];
+    [self.imgDragView setImage:[UIImage imageNamed:@"pulldown.png"]];
+    [self.dragView addSubview:self.imgDragView];
     
     UILabel *labelLang= [[UILabel alloc] initWithFrame:CGRectMake(10, 25, 120, 22)];
     [labelLang setText:@"Change Language"];
@@ -244,6 +244,13 @@
                 [vie setAlpha:0.0];
             } completion:^(BOOL finished) {
                 [vie removeFromSuperview];
+                /*if (ApplicationDelegate.langBool == LANG_ARABIC) {
+                    [self.imgDragView setImage:[UIImage imageNamed:@"pulldown-arab.png"]];
+                }else{
+                    [self.imgDragView setImage:[UIImage imageNamed:@"pulldown-eng.png"]];
+                }*/
+        
+                
                 [ApplicationDelegate set_dragged:NO];
             }];
         }

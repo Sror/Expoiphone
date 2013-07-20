@@ -465,12 +465,12 @@
 			<key>en</key>
 			<string>Events Search</string>
 		</dict>
-		<key>event_Description - 17 - 30 - 2</key>
+		<key>newsDetail</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>News Detail</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>News Detail</string>
 		</dict>
 		<key>event_Description - 17 - 30 - 3</key>
 		<dict>

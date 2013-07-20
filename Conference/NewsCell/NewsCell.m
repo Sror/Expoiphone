@@ -82,6 +82,10 @@
     
     
     [self.locationLabel setText:[dic objectForKey:@"title"]];
+    
+    if (ApplicationDelegate.langBool == LANG_ARABIC) {
+        [self.detailImg setTransform:CGAffineTransformMakeRotation(M_PI)];
+    }
     NSString *iconUrl;
     
     if ([title isEqualToString:@"Video-Gallery"]){

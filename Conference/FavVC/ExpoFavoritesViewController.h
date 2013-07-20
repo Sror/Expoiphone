@@ -9,10 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "ConferenceAppDelegate.h"
 
-@interface ExpoFavoritesViewController : UIViewController
+@interface ExpoFavoritesViewController : UIViewController{
+    
+    UIButton *button;
+}
 
 @property (strong, nonatomic) IBOutlet UITableView *favTableView;
 
+@property (strong, nonatomic) IBOutlet UILabel *homeLabel;
 
 @property (nonatomic, retain) NSMutableArray *favEventsArray;
 - (IBAction)homeBtnAction:(id)sender;

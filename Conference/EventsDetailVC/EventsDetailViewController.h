@@ -46,6 +46,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *arabExhibitBtn;
 @property (strong, nonatomic) IBOutlet UIButton *arabRegBtn;
 
+@property (strong, nonatomic) IBOutlet UIImageView *borderImgView;
+@property (strong, nonatomic) IBOutlet UILabel *eventDescLabel;
 
 
 @property (nonatomic, retain) NSMutableArray* sponsorArray;

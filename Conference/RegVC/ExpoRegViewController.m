@@ -98,8 +98,7 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshView" object:nil];
-   // [[UIToolbar appearance] setBackgroundImage:[UIImage imageNamed:@"toolbar_bg.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
-   // [self.navigationController.navigationBar setHidden:YES];
+
 }
 - (void)didReceiveMemoryWarning
 {

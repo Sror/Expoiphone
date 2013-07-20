@@ -33,9 +33,9 @@
     // Do any additional setup after loading the view from its nib.
     
     
-        
+    self.navigationItem.hidesBackButton = YES;
     
-    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
+   // [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
     
     [self.newsTitleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:15.0]];
     [self.newsDetailTxtView setFont:[UIFont fontWithName:@"Eagle-Light" size:12.0]];
@@ -46,6 +46,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setToolbarHidden:YES animated:NO];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:) name:@"refreshView" object:nil];
     
     NSString *iconUrl;
     
@@ -115,8 +116,7 @@
 
     else{
     
-    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"News Details"]];
-
+        [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"newsDetail"]]];
     [self.newsTitleLabel setText:[newsDetail news_title]];
     [self.newsDetailTxtView setText:[newsDetail news_description]];
     
@@ -203,7 +203,26 @@
     [super viewDidUnload];
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshView" object:nil];
+    
+}
 
+-(void)refreshView:(NSNotification *) notification{
+    
+    NSLog(@"Notification");
+    
+    [self applyLanguage];
+    
+}
+
+-(void)applyLanguage{
+    
+    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"newsDetail"]]];
+    
+    
+}
 -(BOOL) validateYouTubeUrl: (NSString *) youTubeUrl
 {
     

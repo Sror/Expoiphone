@@ -43,11 +43,45 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:titleHeaderString]];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:) name:@"refreshView" object:nil];
+    //[self.latestNewsTableView setHidden:YES];
+    
+    
+    
+    NSLog(@"header string is %@",titleHeaderString);
+    
+    
+    [self updateUI];
+
+    
+    //[self.navigationItem setTitleView:[ApplicationDelegate setTitle:titleHeaderString]];
     
     [self.listTableView reloadData];
 }
 
+-(void)updateUI{
+    
+    for (UIView *vie in self.navigationController.navigationBar.subviews) {
+        if (vie.tag == 143) {
+            [vie removeFromSuperview];
+        }
+    }
+    
+    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:titleHeaderString]]];
+    [self.listTableView reloadData];
+    
+    
+}
+
+-(void)refreshView:(NSNotification *) notification{
+    [self updateUI];
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    //
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshView" object:nil];
+    
+}
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -68,7 +102,18 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"NewsCell";
+    static NSString *CellIdentifier;
+    
+    switch (ApplicationDelegate.langBool) {
+        case LANG_English:
+            CellIdentifier = @"NewsCell";
+            break;
+        case LANG_ARABIC:
+            CellIdentifier = @"NewsCell-Arab";
+        default:
+            break;
+    }
+    
     NewsCell *cell = (NewsCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {

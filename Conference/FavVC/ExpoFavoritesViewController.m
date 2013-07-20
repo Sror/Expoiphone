@@ -35,60 +35,168 @@
     /*[self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Favourites"]];
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];*/
     self.navigationItem.hidesBackButton = YES;
-    
+    [self.homeLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
     [self.view addSubview:ApplicationDelegate.HUD];
     [ApplicationDelegate.HUD setLabelText:@"Loading"];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController setToolbarHidden:YES animated:NO];
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [button setTitle:@"Edit" forState:UIControlStateNormal];
+//    [button.layer setCornerRadius:4.0f];
+//    [button.layer setMasksToBounds:YES];
+//    [button.layer setBorderWidth:1.0f];
+//    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    [button.layer setBorderColor: [[UIColor blackColor] CGColor]];
+//    button.frame=CGRectMake(0.0, 100.0, 60.0, 30.0);
+//    [button addTarget:self action:@selector(EditTable:) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    UIBarButtonItem* deleteItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+//    
+//    UIBarButtonItem *fixed1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+//    fixed1.width = 40.0f;
+//    
+//    if ([[ConferenceHelper SharedHelper] ReadArrayFromthePlistFile:@"favList.plist"].count ==0) {
+//        //[self.HUD hide:YES];
+//        [self.navigationItem setRightBarButtonItem:nil];
+//    }else{
+//        
+//       
+//        /*UIPanGestureRecognizer *panBtn= [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(dragBtnAction:)];
+//        [fixed1 addGestureRecognizer:panBtn];*/
+//        
+//        [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:fixed1,deleteItem, nil]];
+//      //  [self.navigationItem setRightBarButtonItem:deleteItem];
+//    }
+    
+    
+    
+    
+//    for (UIView *vie in self.navigationController.navigationBar.subviews) {
+//        if (vie.tag == 143) {
+//            [vie removeFromSuperview];
+//        }
+//    }
+//    
+//    [
+    //[self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"Favourites"]]];
+    [self.navigationItem setTitleView:[self titleForDetailView]];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:) name:@"refreshView" object:nil];
+   // [self updateUI];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [ApplicationDelegate.appFavEventArray removeAllObjects];
+    [ApplicationDelegate.appFavEventArray addObjectsFromArray:self.favEventsArray];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshView" object:nil];
+    
+}
+
+
+-(UIView*)titleForDetailView{
+    
+    
+    for (UIView *vi in self.navigationController.navigationBar.subviews) {
+        if (vi.tag == 12345) {
+            [vi removeFromSuperview];
+        }
+    }
+    UIView *titleHeaderView = [[UIView alloc]init]; //WithFrame:CGRectMake(0, 20, 320, 44)];
+    titleHeaderView.contentMode = UIViewContentModeScaleToFill;
+    [titleHeaderView setBackgroundColor:[UIColor clearColor]];
+    titleHeaderView.tag =12345;
+    
+    UILabel *titleView;
+    if (!titleView) {
+        titleView = [[UILabel alloc] init];
+        titleView.backgroundColor = [UIColor clearColor];
+        titleView.font = [UIFont fontWithName:@"Eagle-Bold" size:17.0];
+    }
+    
+    [titleView setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"Favourites"]];
+    titleView.textColor = [UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1];
+    //[titleView sizeToFit];
+    [titleHeaderView addSubview:titleView];
+    
+    
+    UIImageView *ribImgView;
+    ribImgView = [[UIImageView alloc] init];
+    ribImgView.backgroundColor = [UIColor clearColor];
+    [ribImgView setImage:[UIImage imageNamed:@"ribbon.png"]];
+    [ribImgView setContentMode:UIViewContentModeScaleAspectFit];
+    [titleHeaderView addSubview:ribImgView];
+    
+    button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:@"Edit" forState:UIControlStateNormal];
     [button.layer setCornerRadius:4.0f];
     [button.layer setMasksToBounds:YES];
     [button.layer setBorderWidth:1.0f];
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [button.layer setBorderColor: [[UIColor blackColor] CGColor]];
-    button.frame=CGRectMake(0.0, 100.0, 60.0, 30.0);
     [button addTarget:self action:@selector(EditTable:) forControlEvents:UIControlEventTouchUpInside];
     
-    UIBarButtonItem* deleteItem = [[UIBarButtonItem alloc] initWithCustomView:button];
-    
-    UIBarButtonItem *fixed1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    fixed1.width = 40.0f;
-    
-    if ([[ConferenceHelper SharedHelper] ReadArrayFromthePlistFile:@"favList.plist"].count ==0) {
-        //[self.HUD hide:YES];
-        [self.navigationItem setRightBarButtonItem:nil];
+    if ([[ConferenceHelper SharedHelper] ReadArrayFromthePlistFile:@"favList.plist"].count ==0){
+        
     }else{
-        
-       
-        /*UIPanGestureRecognizer *panBtn= [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(dragBtnAction:)];
-        [fixed1 addGestureRecognizer:panBtn];*/
-        
-        [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:fixed1,deleteItem, nil]];
-      //  [self.navigationItem setRightBarButtonItem:deleteItem];
+        [titleHeaderView addSubview:button];
     }
     
     
     
+    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom] ;//]WithFrame:CGRectMake(0, 25,44, 44)];
+    [backBtn addTarget:self action:@selector(backBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    [backBtn setBackgroundColor:[UIColor clearColor]];
+    [backBtn setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
+    [titleHeaderView addSubview:backBtn];
     
-    for (UIView *vie in self.navigationController.navigationBar.subviews) {
-        if (vie.tag == 143) {
-            [vie removeFromSuperview];
+    
+    UIButton *dragBtn;
+    dragBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    dragBtn.backgroundColor = [UIColor clearColor];
+    UIPanGestureRecognizer *panBtn= [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(dragBtnAction:)];
+    [dragBtn addGestureRecognizer:panBtn];
+    [titleHeaderView addSubview:dragBtn];
+
+    
+    switch (ApplicationDelegate.langBool) {
+        case LANG_English:{
+            [titleHeaderView setFrame:CGRectMake(0, 20, 295, 44)];
+            [titleView setFrame:CGRectMake(70, 0, 170, 44)];
+            [ribImgView setFrame:CGRectMake(265,0,27,44)];
+            [dragBtn setFrame:CGRectMake(265, 0, 40, 44)];
+            [button setFrame:CGRectMake(205, 9, 50, 25)];
+            [backBtn setFrame:CGRectMake(0, 0, 44, 44)];
+  
         }
+            break;
+        case LANG_ARABIC:{
+            
+            [titleHeaderView setFrame:CGRectMake(0, 20, 295, 44)];
+            [titleView setFrame:CGRectMake(110, 0, 170, 44)];
+            [ribImgView setFrame:CGRectMake(0,0,27,44)];
+            [dragBtn setFrame:CGRectMake(0, 0, 40, 44)];
+            [button setFrame:CGRectMake(35,9,50, 25)];
+            [backBtn setFrame:CGRectMake(250, 0, 44, 44)];
+
+        }
+            break;
+            
+        default:
+            break;
     }
     
-    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"Favourites"]]];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:) name:@"refreshView" object:nil];
-    [self updateUI];
+    return titleHeaderView;
 }
 
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshView" object:nil];
+- (void)dragBtnAction:(UIPanGestureRecognizer *)rec
+{
+    [ApplicationDelegate dragBtnAction:rec];
     
 }
-
+-(void)backBtnAction{
+    [self.navigationController fadePopViewController];
+}
 
 -(void)refreshView:(NSNotification *) notification{
     
@@ -96,10 +204,16 @@
 }
 
 -(void)updateUI{
-    
-    [self.favEventsArray removeAllObjects];
+    self.editing = NO;
+    [self.favTableView setEditing:NO];
     [self.favTableView reloadData];
-    [self getData];
+    [self.homeLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"home"]];
+    [self.navigationItem setTitleView:[self titleForDetailView]];
+    
+    
+    /*[self.favEventsArray removeAllObjects];
+    [self.favTableView reloadData];
+    [self getData];*/
     
     
     
@@ -157,6 +271,7 @@
                 [self.navigationController.navigationBar setUserInteractionEnabled:YES];
                 [UIAlertView showWithError:error];
             }];*/
+           // [self getData];
            }
     }else{
         [favEventsArray removeAllObjects];
@@ -186,7 +301,18 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"EventsCell";
+    static NSString *CellIdentifier;
+    
+    switch (ApplicationDelegate.langBool) {
+        case LANG_English:
+            CellIdentifier = @"EventsCell";
+            break;
+        case LANG_ARABIC:
+            CellIdentifier = @"EventsCell-Arab";
+        default:
+            break;
+    }
+    
     EventsCell *cell = (EventsCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
@@ -266,8 +392,11 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         
         if (favEventsArray.count == 0) {
             NSLog(@"00000");
+            [ApplicationDelegate.appFavEventArray removeAllObjects];
             [self.favTableView setHidden:YES];
-            [self.navigationItem setRightBarButtonItems:nil];
+            [button setHidden:YES];
+            
+            //[self.navigationItem setRightBarButtonItems:nil];
         }
     }
 }
@@ -298,8 +427,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         UIButton *buton=(UIButton *)sender;
         [buton setTitle:@"Edit" forState:UIButtonTypeCustom];
         [buton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-		[self.navigationItem.rightBarButtonItem setTitle:@"Edit"];
-		[self.navigationItem.rightBarButtonItem setStyle:UIBarButtonItemStylePlain];
+        //[sender setTitle:@"Edit"];
+		//[self.navigationItem.rightBarButtonItem setTitle:@"Edit"];
+		//[self.navigationItem.rightBarButtonItem setStyle:UIBarButtonItemStylePlain];
 	}
 	else
 	{
@@ -309,8 +439,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         UIButton *buton=(UIButton *)sender;
         [buton setTitle:@"Done" forState:UIButtonTypeCustom];
         [buton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-		[self.navigationItem.rightBarButtonItem setTitle:@"Done"];
-		[self.navigationItem.rightBarButtonItem setStyle:UIBarButtonItemStyleDone];
+		//[self.navigationItem.rightBarButtonItem setTitle:@"Done"];
+		//[self.navigationItem.rightBarButtonItem setStyle:UIBarButtonItemStyleDone];
 	}
 }
 
@@ -328,5 +458,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     ConfMainViewController *cfMainView= [[ConfMainViewController alloc]initWithNibName:@"ConfMainViewController" bundle:nil];
     [self.navigationController pushFadeViewController:cfMainView];
     
+}
+- (void)viewDidUnload {
+    [self setHomeLabel:nil];
+    [super viewDidUnload];
 }
 @end
