@@ -46,6 +46,8 @@
 
 -(void)getEventDetails :(NSString *)eventId  onCompletion:(EventDetailsBlock) events onError:(MKNKErrorBlock) errorBlock{
     
+    
+    NSLog(@"event id is %@",eventId);
     NSMutableDictionary *dic=[[NSMutableDictionary alloc] init];
     [dic setValue:@"getDetails" forKey:@"action"];
     [dic setValue:eventId forKey:@"eventid"];
@@ -55,7 +57,7 @@
     
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         
-        //NSLog(@"ompletedOperation.responseString %@", completedOperation.responseString);
+        NSLog(@"ompletedOperation.responseString for eventdetails is %@", completedOperation.responseString);
         
         [completedOperation responseJSONWithCompletionHandler:^(id jsonObject) {
             

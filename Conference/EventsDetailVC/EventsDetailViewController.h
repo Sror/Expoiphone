@@ -41,9 +41,16 @@
 @property (strong, nonatomic) IBOutlet UIButton *exhitBtn;
 @property (strong, nonatomic) IBOutlet UIButton *regBtn;
 
+@property (strong, nonatomic) IBOutlet UIButton *arabImgBtn;
+@property (strong, nonatomic) IBOutlet UIButton *arabVideoBtn;
+@property (strong, nonatomic) IBOutlet UIButton *arabExhibitBtn;
+@property (strong, nonatomic) IBOutlet UIButton *arabRegBtn;
 
 
 
+@property (nonatomic, retain) NSMutableArray* sponsorArray;
+@property (nonatomic, retain) NSMutableArray* supporterArray;
+@property (nonatomic, retain) NSMutableArray* mediaArray;
 
 
 

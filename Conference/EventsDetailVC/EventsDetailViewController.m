@@ -22,6 +22,7 @@
 
 @synthesize eventDetail;
 @synthesize fromFavList,networkGallery,selectedVideo,phoneArray;
+@synthesize supporterArray,sponsorArray,mediaArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,6 +30,11 @@
     if (self) {
         // Custom initialization
         phoneArray = [[NSMutableArray alloc]init];
+        
+        sponsorArray = [[NSMutableArray alloc] init];
+        supporterArray = [[NSMutableArray alloc] init];
+        mediaArray = [[NSMutableArray alloc] init];
+
     }
     return self;
 }
@@ -38,10 +44,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    [self.arabExhibitBtn setHidden:YES];
+    [self.arabImgBtn setHidden:YES];
+    [self.arabRegBtn setHidden:YES];
+    [self.arabVideoBtn setHidden:YES];
     
-   
-    
-   /* UIButton *backBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25,44, 44)];
+      /* UIButton *backBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25,44, 44)];
     [backBtn addTarget:self action:@selector(backBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [backBtn setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
     
@@ -59,7 +67,7 @@
     }*/
     self.navigationItem.hidesBackButton = YES;
     [self.view addSubview:ApplicationDelegate.HUD];
-    ApplicationDelegate.HUD.labelText = @"Downloading";
+    
     
     [self.videoGalleryView setFrame:CGRectMake(15, 5, self.videoGalleryView.frame.size.width, self.videoGalleryView.frame.size.height)];
     
@@ -87,20 +95,71 @@
     [self.videoGalleryBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
     [self.regBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
     [self.exhitBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
+    
+    [self.arabImgBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
+    [self.arabVideoBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
+    [self.arabRegBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
+    [self.arabExhibitBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
 
 }
 
 
 
+-(void)sethidden:(BOOL)key{
+    
+    [self.arabExhibitBtn setHidden:key];
+    [self.arabImgBtn setHidden:key];
+    [self.arabVideoBtn setHidden:key];
+    [self.arabRegBtn setHidden:key];
+    
+    [self.exhitBtn setHidden:!key];
+    [self.imagGalleryBtn setHidden:!key];
+    [self.videoGalleryBtn setHidden:!key];
+    [self.regBtn setHidden:!key];
+}
+
 -(void)updateUI{
     
     
-    [self.navigationItem setTitleView:[ApplicationDelegate setTitleForDetailView]];
+    switch (ApplicationDelegate.langBool) {
+        case LANG_English:
+            [self sethidden:YES];
+            [self.imagGalleryBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"imgGallery"] forState:UIControlStateNormal];
+            [self.videoGalleryBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"videoGallery"] forState:UIControlStateNormal];
+            [self.exhitBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"exList"] forState:UIControlStateNormal];
+            [self.regBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"regForm"] forState:UIControlStateNormal];
+           
+            
+            [self.mediaPartnerHeadLabel setTextAlignment:NSTextAlignmentLeft];
+            [self.supporterHeadLabel setTextAlignment:NSTextAlignmentLeft];
+            [self.sponsorHeadLabel setTextAlignment:NSTextAlignmentLeft];
+            break;
+        case LANG_ARABIC:
+            [self sethidden:NO];
+            
+            [self.arabImgBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"imgGallery"] forState:UIControlStateNormal];
+            [self.arabVideoBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"videoGallery"] forState:UIControlStateNormal];
+            [self.arabExhibitBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"exList"] forState:UIControlStateNormal];
+            [self.arabRegBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"regForm"] forState:UIControlStateNormal];
+            
+            [self.mediaPartnerHeadLabel setTextAlignment:NSTextAlignmentRight];
+            [self.supporterHeadLabel setTextAlignment:NSTextAlignmentRight];
+            [self.sponsorHeadLabel setTextAlignment:NSTextAlignmentRight];
+            break;
+            
+            
+          
+            
+        default:
+            break;
+    }
+    
+    
+    [self.navigationItem setTitleView:[self titleForDetailView]];
   //  [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"event_details"]]];
-    [self.imagGalleryBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"imgGallery"] forState:UIControlStateNormal];
-    [self.videoGalleryBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"videoGallery"] forState:UIControlStateNormal];
-    [self.exhitBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"exList"] forState:UIControlStateNormal];
-    [self.regBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"regForm"] forState:UIControlStateNormal];
+    
+    
+    
     
     [self.homLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"home"]];
     [self.brochureLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"brochure"]];
@@ -109,10 +168,111 @@
     [self.callLbabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"call"]];
     [self.shareLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"share"]];
     
-[self.mediaPartnerHeadLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"mPartners"]];
-[self.supporterHeadLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"supporters"]];
-[self.sponsorHeadLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sponsors"]];
     
+    
+  [self.mediaPartnerHeadLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"mPartners"]];
+  [self.supporterHeadLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"supporters"]];
+  [self.sponsorHeadLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sponsors"]];
+    
+}
+
+
+-(UIView*)titleForDetailView{
+    
+    
+    for (UIView *vi in self.navigationController.navigationBar.subviews) {
+        if (vi.tag == 12345) {
+            [vi removeFromSuperview];
+        }
+    }
+    UIView *titleHeaderView = [[UIView alloc]init]; //WithFrame:CGRectMake(0, 20, 320, 44)];
+    titleHeaderView.contentMode = UIViewContentModeScaleToFill;
+    [titleHeaderView setBackgroundColor:[UIColor clearColor]];
+    titleHeaderView.tag =12345;
+    
+    UILabel *titleView;
+    if (!titleView) {
+        titleView = [[UILabel alloc] init];
+        titleView.backgroundColor = [UIColor clearColor];
+        titleView.font = [UIFont fontWithName:@"Eagle-Bold" size:17.0];
+    }
+    
+    [titleView setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"event_details"]];
+    titleView.textColor = [UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1];
+    //[titleView sizeToFit];
+    [titleHeaderView addSubview:titleView];
+    
+    
+    UIImageView *ribImgView;
+    ribImgView = [[UIImageView alloc] init];
+    ribImgView.backgroundColor = [UIColor clearColor];
+    [ribImgView setImage:[UIImage imageNamed:@"ribbon.png"]];
+    [ribImgView setContentMode:UIViewContentModeScaleAspectFit];
+    [titleHeaderView addSubview:ribImgView];
+
+    UIButton *favBtn = [UIButton buttonWithType:UIButtonTypeCustom] ;//]WithFrame:CGRectMake(0, 25,35, 35)];
+    [favBtn addTarget:self action:@selector(favBtnTouched) forControlEvents:UIControlEventTouchUpInside];
+    [favBtn setImage:[UIImage imageNamed:@"fav.png"] forState:UIControlStateNormal];
+    [favBtn setBackgroundColor:[UIColor clearColor]];
+    [titleHeaderView addSubview:favBtn];
+    
+    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom] ;//]WithFrame:CGRectMake(0, 25,44, 44)];
+    [backBtn addTarget:self action:@selector(backBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    [backBtn setBackgroundColor:[UIColor clearColor]];
+    [backBtn setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
+    [titleHeaderView addSubview:backBtn];
+    
+    
+    UIButton *dragBtn;
+    dragBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    dragBtn.backgroundColor = [UIColor clearColor];
+    UIPanGestureRecognizer *panBtn= [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(dragBtnAction:)];
+    [dragBtn addGestureRecognizer:panBtn];
+    [titleHeaderView addSubview:dragBtn];
+    
+    switch (ApplicationDelegate.langBool) {
+        case LANG_English:{
+            [titleHeaderView setFrame:CGRectMake(0, 20, 295, 44)];
+            [titleView setFrame:CGRectMake(50, 0, 170, 44)];
+            [ribImgView setFrame:CGRectMake(265,0,27,44)];
+            [dragBtn setFrame:CGRectMake(265, 0, 40, 44)];
+            [favBtn setFrame:CGRectMake(225, 5, 35, 35)];
+            [backBtn setFrame:CGRectMake(0, 0, 44, 44)];
+            
+             /*[imgView setFrame:CGRectMake(5, 10, 25, 25)];
+             [sepImgView setFrame:CGRectMake(33,7,2,29)];
+             
+             
+             [titleView setTextAlignment:NSTextAlignmentLeft];*/
+        }
+            break;
+        case LANG_ARABIC:{
+            
+            [titleHeaderView setFrame:CGRectMake(0, 20, 295, 44)];
+            [titleView setFrame:CGRectMake(90, 0, 170, 44)];
+            [ribImgView setFrame:CGRectMake(0,0,27,44)];
+            [dragBtn setFrame:CGRectMake(0, 0, 40, 44)];
+            [favBtn setFrame:CGRectMake(35, 5, 35, 35)];
+            [backBtn setFrame:CGRectMake(250, 0, 44, 44)];
+            /*[imgView setFrame:CGRectMake(280, 10, 25, 25)];
+             [sepImgView setFrame:CGRectMake(275,7,2,29)];
+             [dragBtn setFrame:CGRectMake(10, 0, 40, 44)];
+             [ribImgView setFrame:CGRectMake(10,0,27,44)];
+             [titleView setTextAlignment:NSTextAlignmentRight];*/
+        }
+            break;
+            
+        default:
+            break;
+    }
+
+    return titleHeaderView;
+}
+
+- (void)dragBtnAction:(UIPanGestureRecognizer *)rec
+{
+    [ApplicationDelegate dragBtnAction:rec];
+
 }
 
 
@@ -167,14 +327,14 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:) name:@"refreshView" object:nil];
+
     
     [ApplicationDelegate hideTabBar:self.tabBarController];
     
     [self.eventNameLabel setText:eventDetail.name];
     [self.categoryLabel setText:eventDetail.industry_category];
     [self.locationLabel setText:eventDetail.location];
-//    [self.categoryLabel setText:@"Education Technology & Resources"];
-//    [self.locationLabel setText:@"Sharjah, UAE"];
     [self.dateLabel setText:[NSString stringWithFormat:@"%@ - %@",[[ConferenceHelper SharedHelper] datefromString:eventDetail.start_date],[[ConferenceHelper SharedHelper] datefromString:eventDetail.end_date]]];
     [self.timeLabel setText:[NSString stringWithFormat:@"%@ - %@",eventDetail.start_time,eventDetail.end_time]];
     [self.descriptionTxtView setText:eventDetail.description];
@@ -197,10 +357,7 @@
 
 -(void)arrangeHorizontaScrollViews{
     
-   NSMutableArray* sponsorArray = [[NSMutableArray alloc] init];
-   NSMutableArray* supporterArray = [[NSMutableArray alloc] init];
-   NSMutableArray* mediaArray = [[NSMutableArray alloc] init];
-    
+      
     
     for (NSMutableDictionary *dic in eventDetail.sponsors) {
         
@@ -265,11 +422,45 @@
     
 }
 
+-(void)refreshView:(NSNotification *) notification{
+    
+    ApplicationDelegate.HUD.labelText = @"Loading";
+    [ApplicationDelegate.HUD show:YES];
+    [self.navigationController.navigationBar setUserInteractionEnabled:NO];
+    
+    [ApplicationDelegate.appEngine getEventDetails:eventDetail.event_id onCompletion:^(NSMutableDictionary *detailsDic) {
+        
+        NSLog(@"detail dic is %@",detailsDic);
+        
+        [ApplicationDelegate.HUD hide:YES];
+        [self.navigationController.navigationBar setUserInteractionEnabled:YES];
+
+        Events *ev = [[ConferenceHelper SharedHelper] getEventsObjectFromDictionary:detailsDic];
+        [self setEventDetail:ev];
+        
+        [self.eventNameLabel setText:eventDetail.name];
+        [self.categoryLabel setText:eventDetail.industry_category];
+        [self.locationLabel setText:eventDetail.location];
+        [self.dateLabel setText:[NSString stringWithFormat:@"%@ - %@",[[ConferenceHelper SharedHelper] datefromString:eventDetail.start_date],[[ConferenceHelper SharedHelper] datefromString:eventDetail.end_date]]];
+        [self.timeLabel setText:[NSString stringWithFormat:@"%@ - %@",eventDetail.start_time,eventDetail.end_time]];
+        [self.descriptionTxtView setText:eventDetail.description];
+        
+    } onError:^(NSError *error) {
+        [ApplicationDelegate.HUD hide:YES];
+        [self.navigationController.navigationBar setUserInteractionEnabled:YES];
+        
+        
+    }];
+    
+    [self updateUI];
+}
+
 -(void)backBtnAction{
     [self.navigationController fadePopViewController];
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshView" object:nil];
     [self.videoGalleryView removeFromSuperview];
     [ApplicationDelegate showTabBar:self.tabBarController];
 }
@@ -362,6 +553,7 @@
 
 - (IBAction)galleryToolBarBtnAction:(id)sender {
     
+    ApplicationDelegate.HUD.labelText = @"Downloading";
     
      ExpoLocationViewController * amPdfVieww = [[ExpoLocationViewController alloc]initWithNibName:@"ExpoLocationViewController" bundle:nil];
     
@@ -1111,6 +1303,10 @@ tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     [self setVideoGalleryBtn:nil];
     [self setExhitBtn:nil];
     [self setRegBtn:nil];
+    [self setArabImgBtn:nil];
+    [self setArabVideoBtn:nil];
+    [self setArabExhibitBtn:nil];
+    [self setArabRegBtn:nil];
     [super viewDidUnload];
 }
 @end
