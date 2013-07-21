@@ -616,7 +616,7 @@
             
            // __weak EventsDetailViewController *self_ = self;
             [self.downloadOperation addCompletionHandler:^(MKNetworkOperation* completedRequest) {
-                DLog(@"%@", completedRequest);
+                DLog(@"completedRequest  >>> %@", completedRequest);
                 [ApplicationDelegate.HUD hide:YES];
                 [self.navigationController.navigationBar setUserInteractionEnabled:YES];
                 [amPdfVieww setForPdfView:YES];

@@ -133,6 +133,9 @@
         [self loadWebViews];
     }
 
+    if (forPdfView) {
+        headerString =@"brochure";
+    }
 
     [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:headerString]]];
     
@@ -140,6 +143,7 @@
 
 -(void)loadWebViews{
     if (forPdfView) {
+        [self.viewSegmentControl setHidden:YES];
         NSURLRequest *request = [NSURLRequest requestWithURL:filePathUrl];
         [self.webviewForForms loadRequest:request];
     }

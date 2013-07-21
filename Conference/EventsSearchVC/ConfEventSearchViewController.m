@@ -46,7 +46,7 @@
     dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"dd MMMM YYYY"];
     
-    eventTypeArray = [[NSMutableArray alloc]initWithObjects:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"upcomingEvent"],[[ConferenceHelper SharedHelper] getLanguageForAKey:@"currentevent"], nil];
+    
     
     
     [self.view addSubview:ApplicationDelegate.HUD];
@@ -144,7 +144,7 @@
     
       
     [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"eventssearch"]]];
-    
+    eventTypeArray = [[NSMutableArray alloc]initWithObjects:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"upcomingEvent"],[[ConferenceHelper SharedHelper] getLanguageForAKey:@"currentevent"], nil];
     [self.submitBtn.titleLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"submit"]];
     [self.keywordTxtField setPlaceholder:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"entersearchkeyword"]]; 
     
