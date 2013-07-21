@@ -237,7 +237,7 @@
 		<key>youTube</key>
 		<dict>
 			<key>ar</key>
-			<string>YouTube</string>
+			<string>يوتيوب</string>
 			<key>en</key>
 			<string>YouTube</string>
 		</dict>
@@ -433,93 +433,338 @@
 		<key>upcomingEvent</key>
 		<dict>
 			<key>ar</key>
-			<string>Upcoming event</string>
+			<string>الحدث المرتقب</string>
 			<key>en</key>
 			<string>Upcoming event</string>
+		</dict>
+		<key>currentevent</key>
+		<dict>
+			<key>ar</key>
+			<string>الحدث الحالي</string>
+			<key>en</key>
+			<string>Current event</string>
 		</dict>
 		<key>startdate</key>
 		<dict>
 			<key>ar</key>
-			<string>Start date</string>
+			<string>تاريخ البدء</string>
 			<key>en</key>
 			<string>Start date</string>
 		</dict>
 		<key>enddate</key>
 		<dict>
 			<key>ar</key>
-			<string>End date</string>
+			<string>تاريخ الانتهاء</string>
 			<key>en</key>
 			<string>End date</string>
 		</dict>
 		<key>entersearchkeyword</key>
 		<dict>
 			<key>ar</key>
-			<string>Enter search keyword</string>
+			<string>أدخل كلمة البحث</string>
 			<key>en</key>
 			<string>Enter search keyword</string>
 		</dict>
 		<key>eventssearch</key>
 		<dict>
 			<key>ar</key>
-			<string>Events Search</string>
+			<string>بحث الأحداث</string>
 			<key>en</key>
 			<string>Events Search</string>
 		</dict>
 		<key>newsDetail</key>
 		<dict>
 			<key>ar</key>
-			<string>News Detail</string>
+			<string>تفاصيل الخبر</string>
 			<key>en</key>
-			<string>News Detail</string>
+			<string>News Details</string>
 		</dict>
-		<key>event_Description - 17 - 30 - 3</key>
+		<key>loading</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>تحميل</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>Loading</string>
 		</dict>
-		<key>event_Description - 17 - 30 - 4</key>
+		<key>searching</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>جاري البحث</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>Searching</string>
 		</dict>
-		<key>event_Description - 17 - 30 - 5</key>
+		<key>downloading</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>تحميل</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>Downloading</string>
 		</dict>
-		<key>event_Description - 17 - 30 - 6</key>
+		<key>checking</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>جاري الفحص</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>Checking</string>
 		</dict>
-		<key>event_Description - 17 - 30 - 7</key>
+		<key>selectCategory</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>حدد الفئة</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>Select a category</string>
 		</dict>
-		<key>event_Description - 17 - 30 - 8</key>
+		<key>done</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>تم</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>Done</string>
 		</dict>
-		<key>event_Description - 17 - 30 - 9</key>
+		<key>registration</key>
 		<dict>
 			<key>ar</key>
-			<string>وصف الحدث</string>
+			<string>تسجيل</string>
 			<key>en</key>
-			<string>Event Description</string>
+			<string>Registration</string>
+		</dict>
+		<key>chooseanevent</key>
+		<dict>
+			<key>ar</key>
+			<string>الرجاء اختيار الحدث</string>
+			<key>en</key>
+			<string>Please choose an event</string>
+		</dict>
+		<key>error</key>
+		<dict>
+			<key>ar</key>
+			<string>خطأ</string>
+			<key>en</key>
+			<string>Error</string>
+		</dict>
+		<key>shareResponse</key>
+		<dict>
+			<key>ar</key>
+			<string>تمت المشاركة في فيسبوك بنجاح</string>
+			<key>en</key>
+			<string>Facebook share successfully completed</string>
+		</dict>
+		<key>noSearchResults</key>
+		<dict>
+			<key>ar</key>
+			<string>لم يتم العثور على نتائج البحث</string>
+			<key>en</key>
+			<string>No search results found</string>
+		</dict>
+		<key>enterAllDetails</key>
+		<dict>
+			<key>ar</key>
+			<string>الرجاء إدخال جميع المعلومات</string>
+			<key>en</key>
+			<string>Please enter all the details</string>
+		</dict>
+		<key>loginFailed</key>
+		<dict>
+			<key>ar</key>
+			<string>فشل تسجيل الدخول</string>
+			<key>en</key>
+			<string>Login Failed</string>
+		</dict>
+		<key>invalidCredentials</key>
+		<dict>
+			<key>ar</key>
+			<string>بيانات الاعتماد غير صالحة</string>
+			<key>en</key>
+			<string>Invalid credentials</string>
+		</dict>
+		<key>maxCountReached</key>
+		<dict>
+			<key>ar</key>
+			<string>بلغ الحد الأعلى للمفضلات</string>
+			<key>en</key>
+			<string>Max. favourites count reached</string>
+		</dict>
+		<key>addedToFav</key>
+		<dict>
+			<key>ar</key>
+			<string>أضف الحدث قائمة المفضلات</string>
+			<key>en</key>
+			<string>Event added to favourite</string>
+		</dict>
+		<key>alreadyExists</key>
+		<dict>
+			<key>ar</key>
+			<string>الحدث في قائمة المفضلات</string>
+			<key>en</key>
+			<string>Event already exists in favourite list</string>
+		</dict>
+		<key>sorry</key>
+		<dict>
+			<key>ar</key>
+			<string>آسف</string>
+			<key>en</key>
+			<string>Sorry</string>
+		</dict>
+		<key>noImages</key>
+		<dict>
+			<key>ar</key>
+			<string>لا توجد صور</string>
+			<key>en</key>
+			<string>No gallery images available</string>
+		</dict>
+		<key>noVideos</key>
+		<dict>
+			<key>ar</key>
+			<string>لا  توجد أشرطة الفيديو</string>
+			<key>en</key>
+			<string>No videos available</string>
+		</dict>
+		<key>noexhibitList</key>
+		<dict>
+			<key>ar</key>
+			<string>لا تتوفر قائمة العارضين</string>
+			<key>en</key>
+			<string>No exhibitor list available</string>
+		</dict>
+		<key>nobrochures</key>
+		<dict>
+			<key>ar</key>
+			<string>لم يتم العثور على كتيبات</string>
+			<key>en</key>
+			<string>No brochures found</string>
+		</dict>
+		<key>addedToCalendar</key>
+		<dict>
+			<key>ar</key>
+			<string>أضف الحدث إلى التقويم</string>
+			<key>en</key>
+			<string>Event added to calendar</string>
+		</dict>
+		<key>addingCalendarFailed</key>
+		<dict>
+			<key>ar</key>
+			<string>فشلت إضافة حدث إلى تقويم </string>
+			<key>en</key>
+			<string>Adding event to calendar failed</string>
+		</dict>
+		<key>noMapAvailable</key>
+		<dict>
+			<key>ar</key>
+			<string>لا تتوفر أماكن في الخريطة</string>
+			<key>en</key>
+			<string>No map locations available</string>
+		</dict>
+		<key>noContactsAvailable</key>
+		<dict>
+			<key>ar</key>
+			<string>أرقام الاتصال غيرالمتاحة</string>
+			<key>en</key>
+			<string>No contact numbers available</string>
+		</dict>
+		<key>sureToCall</key>
+		<dict>
+			<key>ar</key>
+			<string>هل أنت متأكد من رقم الإتصال؟?   </string>
+			<key>en</key>
+			<string>Are you sure to call this number?</string>
+		</dict>
+		<key>selectNumber</key>
+		<dict>
+			<key>ar</key>
+			<string>الرجاء تحديد رقم للاتصال</string>
+			<key>en</key>
+			<string>Please select a number to call</string>
+		</dict>
+		<key>addTwitAcc</key>
+		<dict>
+			<key>ar</key>
+			<string>الرجاء إضافة حساب تويتر على جهازك وحاول مرة أخرى</string>
+			<key>en</key>
+			<string>Please add  one Twitter account to your device and try again</string>
+		</dict>
+		<key>videoUnavailable</key>
+		<dict>
+			<key>ar</key>
+			<string>الفيديو غير متوفر</string>
+			<key>en</key>
+			<string>Video Unavailable</string>
+		</dict>
+		<key>noFavFound</key>
+		<dict>
+			<key>ar</key>
+			<string>لم يتم العثور على المفضلة. يرجى تعيين الحث</string>
+			<key>en</key>
+			<string>No favourites found. Please mark some events as favourites</string>
+		</dict>
+		<key>serverNotReachable</key>
+		<dict>
+			<key>ar</key>
+			<string>الشبكة لا يمكن الوصول إليها</string>
+			<key>en</key>
+			<string>Server not reachable</string>
+		</dict>
+		<key>selectGender</key>
+		<dict>
+			<key>ar</key>
+			<string>الرجاء اختيار نوع الجنس</string>
+			<key>en</key>
+			<string>Please select gender </string>
+		</dict>
+		<key>fillAllBeforeSubmit</key>
+		<dict>
+			<key>ar</key>
+			<string>يرجى ملئ جميع الحقول قبل أن تقدم</string>
+			<key>en</key>
+			<string>Please fill up all fields before you submit</string>
+		</dict>
+		<key>skipReg</key>
+		<dict>
+			<key>ar</key>
+			<string>تخطي التسجيل</string>
+			<key>en</key>
+			<string>Skip registration</string>
+		</dict>
+		<key>ok</key>
+		<dict>
+			<key>ar</key>
+			<string>تم</string>
+			<key>en</key>
+			<string>OK</string>
+		</dict>
+		<key>noPressRelease</key>
+		<dict>
+			<key>ar</key>
+			<string>لا تتوفر البيانات الصحفية</string>
+			<key>en</key>
+			<string>No press releases available</string>
+		</dict>
+		<key>noVideoGalleryAvailabe</key>
+		<dict>
+			<key>ar</key>
+			<string>معرض الفيديو غير متوفر</string>
+			<key>en</key>
+			<string>No video gallery available</string>
+		</dict>
+		<key>noEventsFound</key>
+		<dict>
+			<key>ar</key>
+			<string>لم يتم العثور على الأحداث</string>
+			<key>en</key>
+			<string>No events found</string>
+		</dict>
+		<key>selectEventFirst</key>
+		<dict>
+			<key>ar</key>
+			<string>يرجى تحديد اسم الحدث الأول</string>
+			<key>en</key>
+			<string>Please select an event name first</string>
+		</dict>
+		<key>servererror</key>
+		<dict>
+			<key>ar</key>
+			<string>خطأ في الشبكة</string>
+			<key>en</key>
+			<string>Server error</string>
 		</dict>
 	</dict>
 </array>
