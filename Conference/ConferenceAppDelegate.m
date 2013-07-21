@@ -16,7 +16,7 @@
 
 @synthesize appEngine,navController,appHelper,HUD;
 @synthesize appdelegateSession,appEventArray,appImageGalleryArray,appFavEventArray,appCurrentEventArray,appSearchEventsArray,appLanguageArray;
-@synthesize userNameString,dragView,_dragged,langBool,langCode,imgDragView;
+@synthesize userNameString,dragView,_dragged,langBool,langCode,imgDragView,confDownloadEngine;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -59,7 +59,7 @@
     
 //    self.window.rootViewController = self.navController;
 
-    
+    self.confDownloadEngine=[[ConferenceAppEngine alloc] initWithHostName:nil];
     
     
     

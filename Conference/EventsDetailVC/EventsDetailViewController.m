@@ -608,7 +608,7 @@
             [ApplicationDelegate.HUD show:YES];
             [self.navigationController.navigationBar setUserInteractionEnabled:NO];
             
-            self.downloadOperation=   [ApplicationDelegate.appEngine downloadBrochure:eventDetail.brochure toFile:pdfFilePath];
+            self.downloadOperation=   [ApplicationDelegate.confDownloadEngine downloadBrochure:eventDetail.brochure toFile:pdfFilePath];
             
             [self.downloadOperation onDownloadProgressChanged:^(double progress) {
                 DLog(@"%.2f", progress*100.0);
@@ -618,7 +618,7 @@
             [self.downloadOperation addCompletionHandler:^(MKNetworkOperation* completedRequest) {
                 DLog(@"completedRequest  >>> %@", completedRequest);
                 [ApplicationDelegate.HUD hide:YES];
-                [self.navigationController.navigationBar setUserInteractionEnabled:YES];
+               
                 [amPdfVieww setForPdfView:YES];
                 [amPdfVieww setFilePathUrl:[NSURL fileURLWithPath:pdfFilePath]];
                 [self.navigationController pushFadeViewController:amPdfVieww];
@@ -641,6 +641,12 @@
     
 }
 
+
+-(void)hiddenNavigationbar
+{
+    
+    
+}
 - (IBAction)adCalendarToolBarBtnAction:(id)sender {
     
     EKEventStore *eventSotre = [[EKEventStore alloc] init];

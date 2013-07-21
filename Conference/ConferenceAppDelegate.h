@@ -85,7 +85,7 @@ extern NSString *const FBSessionStateChangedNotification;
 
 - (void) hideTabBar:(UITabBarController *) tabbarcontroller;
 - (void) showTabBar:(UITabBarController *) tabbarcontroller;
-
+@property(strong,nonatomic)ConferenceAppEngine *confDownloadEngine;
 
 @property(nonatomic) int langBool;
 @property(nonatomic, retain) NSString* langCode;
