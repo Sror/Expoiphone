@@ -161,7 +161,7 @@
         
         [self doneEditing];
         
-        UIAlertView *al = [[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sex"] message:@"Please select Gender" delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"cancel"] otherButtonTitles:@"Male",@"Female", nil];
+        UIAlertView *al = [[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sex"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"selectGender"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"cancel"] otherButtonTitles:@"Male",@"Female", nil];
         al.tag = 10;
         [al show];
         
@@ -192,7 +192,7 @@
     
     
     if (self.industrialArray.count==0) {
-        [ApplicationDelegate.HUD setLabelText:@"Loading"];
+        [ApplicationDelegate.HUD setLabelText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"loading"]];
 
         [ApplicationDelegate.HUD show:YES];
         [self.navigationController.navigationBar setUserInteractionEnabled:NO];
@@ -216,7 +216,7 @@
             ActionStringCancelBlock cancel = ^(ActionSheetStringPicker *picker) {
             };
             
-            [ActionSheetStringPicker showPickerWithTitle:@"Select a Category" rows:self.industrialArray initialSelection:0 doneBlock:done cancelBlock:cancel origin:sender];
+            [ActionSheetStringPicker showPickerWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"selectCategory"] rows:self.industrialArray initialSelection:0 doneBlock:done cancelBlock:cancel origin:sender];
 
         } onError:^(NSError *error) {
             [ApplicationDelegate.HUD hide:YES];
@@ -344,11 +344,11 @@
         NSLog(@"empty");
         
         if (!fromView) {
-            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Please fill up all fields before you submit" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Skip Registration", nil];
+            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"error"] message:@"Please fill up all fields before you submit" delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"skipReg"], nil];
             alertView.tag = 20;
             [alertView show];
         }else{
-            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Please fill up all fields before you submit" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"fillAllBeforeSubmit"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
             [alertView show];
         }
         

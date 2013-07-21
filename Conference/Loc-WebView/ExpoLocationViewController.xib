@@ -51,7 +51,7 @@
 					<object class="IBUIWebView" id="164018261">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrameSize">{320, 460}</string>
+						<string key="NSFrameSize">{320, 432}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSNextKeyView" ref="88900288"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -69,6 +69,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{52, 12}, {229, 30}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>

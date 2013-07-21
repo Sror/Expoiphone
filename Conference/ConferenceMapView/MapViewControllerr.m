@@ -17,17 +17,19 @@
 - (void)viewDidLoad
 {
     
-    UIButton *backBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25,44, 44)];
+    /*UIButton *backBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25,44, 44)];
     [backBtn addTarget:self action:@selector(backBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [backBtn setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
     
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:backBtn]];
     [self.navigationItem setRightBarButtonItem:nil];
-
-    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Location"]];
+*/
+  //  [self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Location"]];
     CLLocationCoordinate2D location;
     //location.latitude = (double) 51.501468;
     //location.longitude = (double) -0.141596;
+    
+    self.navigationItem.hidesBackButton = YES;
     //
 	location.latitude = [lat doubleValue];
 	location.longitude =  [lon doubleValue];
@@ -43,11 +45,27 @@
     // Set some coordinates for our position (Buckingham Palace!)
 	
 	//[newAnnotation release];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:) name:@"refreshView" object:nil];
+    [self updateUI];
+
 
 }
 
+-(void)refreshView:(NSNotification *) notification{
+    
+    [self updateUI];
+}
+
+-(void)updateUI{
+    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"locationmap"]]];
+}
 -(void)backBtnAction{
     [self.navigationController fadePopViewController];
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshView" object:nil];
 }
 
 // When a map annotation point is added, zoom to it (1500 range)

@@ -334,13 +334,13 @@
             NSLog(@"the event id value%@",eventDetail.event_id);
             [favArray addObject:eventDetail.event_id];
             [[ConferenceHelper SharedHelper] WriteArrayTothePlistFile:favArray toFile:@"favList.plist"];
-            UIAlertView *myAlert =[[UIAlertView alloc]initWithTitle:Nil message:@"Event added to favourite" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            UIAlertView *myAlert =[[UIAlertView alloc]initWithTitle:Nil message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"maxCountReached"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
             [myAlert show];
         }
         
         else
         {
-            UIAlertView *myAlert =[[UIAlertView alloc]initWithTitle:Nil message:@"Event already exists in favourite list" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            UIAlertView *myAlert =[[UIAlertView alloc]initWithTitle:Nil message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"alreadyExists"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
             [myAlert show];
             
         }
@@ -453,7 +453,7 @@
 
 -(void)refreshView:(NSNotification *) notification{
     
-    ApplicationDelegate.HUD.labelText = @"Loading";
+    ApplicationDelegate.HUD.labelText = [[ConferenceHelper SharedHelper] getLanguageForAKey:@"loading"];
     [ApplicationDelegate.HUD show:YES];
     [self.navigationController.navigationBar setUserInteractionEnabled:NO];
     
@@ -510,7 +510,7 @@
         networkGallery = [[FGalleryViewController alloc] initWithPhotoSource:self];
         [self.navigationController pushViewController:networkGallery animated:YES];
     }else{
-        UIAlertView *al =[[UIAlertView alloc]initWithTitle:@"Sorry" message:@"No image gallery available" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView *al =[[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sorry"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"noImages"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
         [al show];
     }
 
@@ -536,7 +536,7 @@
         [self.bounceViewHeaderLabel setText:@"Please select a Video"];
         [self.videoGalleryTableView reloadData];*/
     }else{
-        UIAlertView *al =[[UIAlertView alloc]initWithTitle:@"Sorry" message:@"No Videos available" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView *al =[[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sorry"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"noVideos"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
         [al show];
     }
     
@@ -551,7 +551,7 @@
         [self.bounceViewHeaderLabel setText:@"Exhibitors List"];
         [self.videoGalleryTableView reloadData];
     }else{
-        UIAlertView *al =[[UIAlertView alloc]initWithTitle:@"Sorry" message:@"No Exhibitors list available" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView *al =[[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sorry"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"noexhibitlist"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
         [al show];
     }
     
@@ -587,7 +587,7 @@
      ExpoLocationViewController * amPdfVieww = [[ExpoLocationViewController alloc]initWithNibName:@"ExpoLocationViewController" bundle:nil];
     
     if ([eventDetail.brochure rangeOfString:@".pdf"].location == NSNotFound) {
-        UIAlertView *myAlert =[[UIAlertView alloc]initWithTitle:@"Sorry" message:@"No Brochures Available" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView *myAlert =[[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sorry"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"nobrochures"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
         [myAlert show];
     } else {
         //[self.extrasView setHidden:YES];
@@ -653,11 +653,11 @@
     NSError *err;
     BOOL isSuceess=[eventSotre saveEvent:event span:EKSpanThisEvent error:&err];
     if(isSuceess){
-        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Event" message:@"Event added to calendar" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"Events"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"addedToCalendar"] otherButtonTitles:nil];
         [alertview show];
     }
     else{
-        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Event" message:@"Adding event to calendar failed" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"Events"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"addingCalendarFailed"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil];
         [alertview show];
     }
 }
@@ -690,7 +690,7 @@
         networkGallery = [[FGalleryViewController alloc] initWithPhotoSource:self];
         [self.navigationController pushViewController:networkGallery animated:YES];
     }else{
-        UIAlertView *al =[[UIAlertView alloc]initWithTitle:@"Sorry" message:@"No locations available" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView *al =[[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sorry"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"noMapAvailable"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
         [al show];
     }
         
@@ -742,7 +742,7 @@
     NSLog(@"phone array count is %d",phoneArray.count);
     
     if (phoneArray.count == 0) {
-        UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"" message:@"No contact numbers available" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+        UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"" message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"noContactsAvailable"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"cancel"] otherButtonTitles:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"], nil];
         [al show];
     }
     
@@ -752,19 +752,19 @@
             [phoneArray removeObjectAtIndex:0];
         }*/
         
-        UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"" message:@"Are you sure to call this number ?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:phoneArray[0], nil];
+        UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"" message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sureToCall"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"cancel"] otherButtonTitles:phoneArray[0], nil];
         al.tag = 10;
         [al show];
         
     }else if (phoneArray.count == 2){
         
-        UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"" message:@"Please select a number to call" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:phoneArray[0],phoneArray[1], nil];
+        UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"" message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"selectNumber"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"cancel"] otherButtonTitles:phoneArray[0],phoneArray[1], nil];
         al.tag = 11;
         [al show];
         
     }
     else{
-        UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"" message:@"Please select a number to call" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:phoneArray[0],phoneArray[1],phoneArray[2], nil];
+        UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"" message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"selectNumber"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"cancel"] otherButtonTitles:phoneArray[0],phoneArray[1],phoneArray[2], nil];
         al.tag = 12;
         [al show];
         
@@ -820,10 +820,10 @@
     
     
     UIActionSheet *photoSourcePicker = [[UIActionSheet alloc] initWithTitle:nil
-                                                                   delegate:self cancelButtonTitle:@"Cancel"
+                                                                   delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"cancel"]
                                                      destructiveButtonTitle:nil
-                                                          otherButtonTitles:@"Facebook",
-                                        @"Twitter",
+                                                          otherButtonTitles:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"fb"],
+                                        [[ConferenceHelper SharedHelper] getLanguageForAKey:@"twitter"],
                                         nil,
                                         nil];
     
@@ -890,7 +890,7 @@
             {
                 // you can show alert here
                 // [self.HUD hide:YES];
-                UIAlertView *twitAlert = [[UIAlertView alloc]initWithTitle:@"SharjahExpoCentre" message:@"Please add one Twitter account to your settings and try again" delegate:self cancelButtonTitle:@"oK" otherButtonTitles:nil, nil];
+                UIAlertView *twitAlert = [[UIAlertView alloc]initWithTitle:@"SharjahExpoCentre" message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"addTwitAcc"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
                 [twitAlert show];
             }
         }
@@ -1155,13 +1155,13 @@ case 3:
     
     if (selectedVideo.length==0) {
         
-        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:@"Video Unavailable" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"videoUnavailable"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
         [alert show];
     }
     
     else if (![self validateYouTubeUrl:selectedVideo])
     {
-        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:@"Video Unavailable" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"videoUnavailable"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
         
         [alert show];
     }
@@ -1193,7 +1193,7 @@ case 3:
                 
             }
             @catch (NSException *exception) {
-                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:@"Video Unavailable" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"videoUnavailable"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
                 
                 [alert show];
             }
@@ -1202,7 +1202,7 @@ case 3:
             }
             
         }else{
-            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:@"Video Unavailable" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"videoUnavailable"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
             
             [alert show];
         }

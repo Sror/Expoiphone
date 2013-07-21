@@ -33,7 +33,7 @@
     //[self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
     self.navigationItem.hidesBackButton = YES;
     [self.view addSubview:ApplicationDelegate.HUD];
-    [ApplicationDelegate.HUD setLabelText:@"Loading"];
+    [ApplicationDelegate.HUD setLabelText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"loading"]];
 
  
 }

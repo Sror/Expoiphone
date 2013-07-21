@@ -37,7 +37,7 @@
     self.navigationItem.hidesBackButton = YES;
     [self.homeLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
     [self.view addSubview:ApplicationDelegate.HUD];
-    [ApplicationDelegate.HUD setLabelText:@"Loading"];
+    [ApplicationDelegate.HUD setLabelText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"loading"]];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController setToolbarHidden:YES animated:NO];
@@ -248,7 +248,7 @@
         
         if ([[ConferenceHelper SharedHelper] ReadArrayFromthePlistFile:@"favList.plist"].count ==0) {
             
-            UIAlertView *aert = [[UIAlertView alloc]initWithTitle:@"Sorry" message:@"No Favorites Found. Please mark some events as favorites" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            UIAlertView *aert = [[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"noFavFound"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
             [aert show];
         }else{
             

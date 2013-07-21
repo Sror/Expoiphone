@@ -46,11 +46,11 @@
     dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"dd MMMM YYYY"];
     
-    eventTypeArray = [[NSMutableArray alloc]initWithObjects:@"Upcoming event",@"Current Event", nil];
+    eventTypeArray = [[NSMutableArray alloc]initWithObjects:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"upcomingEvent"],[[ConferenceHelper SharedHelper] getLanguageForAKey:@"currentevent"], nil];
     
     
     [self.view addSubview:ApplicationDelegate.HUD];
-    [ApplicationDelegate.HUD setLabelText:@"Searching"];
+    [ApplicationDelegate.HUD setLabelText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"searching"]];
     
    /* UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 28, 20)];
     self.keywordTxtField.leftView = paddingView;
@@ -311,7 +311,7 @@
             ActionStringCancelBlock cancel = ^(ActionSheetStringPicker *picker) {
             };
             
-            [ActionSheetStringPicker showPickerWithTitle:@"Select a Category" rows:self.industrialArray initialSelection:0 doneBlock:done cancelBlock:cancel origin:sender];
+            [ActionSheetStringPicker showPickerWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"selectCategory"] rows:self.industrialArray initialSelection:0 doneBlock:done cancelBlock:cancel origin:sender];
             
         } onError:^(NSError *error) {
             [ApplicationDelegate.HUD hide:YES];
@@ -329,7 +329,7 @@
         ActionStringCancelBlock cancel = ^(ActionSheetStringPicker *picker) {
         };
         
-        [ActionSheetStringPicker showPickerWithTitle:@"Select a category" rows:self.industrialArray initialSelection:0 doneBlock:done cancelBlock:cancel origin:sender];
+        [ActionSheetStringPicker showPickerWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"selectCategory"] rows:self.industrialArray initialSelection:0 doneBlock:done cancelBlock:cancel origin:sender];
     }
     }else{
         
@@ -403,7 +403,7 @@
         [self.navigationController.toolbar setUserInteractionEnabled:YES];
         
         if (searchEventArray.count == 0) {
-            UIAlertView *ser = [[UIAlertView alloc]initWithTitle:@"Events Search" message:@"No search results found" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            UIAlertView *ser = [[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"eventsSearch"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"noSearchResults"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
             
             [ser show];
             

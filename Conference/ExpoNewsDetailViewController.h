@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "FGalleryViewController.h"
 
-@interface ExpoNewsDetailViewController : UIViewController<FGalleryViewControllerDelegate>
+@interface ExpoNewsDetailViewController : UIViewController<FGalleryViewControllerDelegate>{
+    
+    UIButton *button;
+}
 
 @property BOOL fromCommonView;
 

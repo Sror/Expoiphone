@@ -59,7 +59,7 @@
    // [self setUpTabBar];
     [self  updateUI];
     [self.view addSubview:ApplicationDelegate.HUD];
-    [ApplicationDelegate.HUD setLabelText:@"Loading"];
+    [ApplicationDelegate.HUD setLabelText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"loading"]];
     
     [self applyFonts];
     
@@ -414,7 +414,7 @@
 
 -(void)GetDataForTheView{
     
-    if (ApplicationDelegate.appCurrentEventArray.count ==0 || ApplicationDelegate.appLatestNewsArray.count ==0) {
+    /*if (ApplicationDelegate.appCurrentEventArray.count ==0 || ApplicationDelegate.appLatestNewsArray.count ==0) {
         [ApplicationDelegate.HUD show:YES];
         //[self.navigationController.toolbar setUserInteractionEnabled:NO];
         
@@ -446,7 +446,7 @@
         [self.latestNewsTableView setHidden:NO];
         [self.latestNewsTableView reloadData];
         
-    }
+    }*/
 
 }
 

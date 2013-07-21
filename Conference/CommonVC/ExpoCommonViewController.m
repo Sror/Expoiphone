@@ -143,7 +143,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
-    if ([titleHeaderString isEqualToString:@"Video-Gallery"]){
+    if ([titleHeaderString isEqualToString:@"videoGallery"]){
         
          NSMutableDictionary * dic = [listArray objectAtIndex:indexPath.row];
         
@@ -154,7 +154,7 @@
         [self checkAndPlay];
         
            }
-    else if ([titleHeaderString isEqualToString:@"Press-Release"]){
+    else if ([titleHeaderString isEqualToString:@"pRelease"]){
         
         ExpoNewsDetailViewController *listDetail = [[ExpoNewsDetailViewController alloc]initWithNibName:@"ExpoNewsDetailViewController" bundle:nil];
         listDetail.commonDic = [listArray objectAtIndex:indexPath.row];
@@ -172,7 +172,7 @@
             networkGallery = [[FGalleryViewController alloc] initWithPhotoSource:self];
             [self.navigationController pushFadeViewController:networkGallery];
         }else{
-            UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"Gallery" message:@"No images available" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            UIAlertView *av = [[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sorry"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"noImages"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
             [av show];
         }
         
@@ -206,16 +206,13 @@
     @try {
         if (selectedVideo.length==0) {
             
-            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:@"Video Unavailable" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            
-            [alert show];
-        }
+            UIAlertView *al =[[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sorry"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"noVideos"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
+            [al show];        }
         
         else if (![self validateYouTubeUrl:selectedVideo])
         {
-            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:@"Video Unavailable" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            
-            [alert show];
+            UIAlertView *al =[[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sorry"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"noVideos"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
+            [al show];
         }
         else{
             
@@ -271,9 +268,8 @@
     }
     @catch (NSException *exception) {
         
-        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil message:@"Video Unavailable" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        
-        [alert show];
+        UIAlertView *al =[[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sorry"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"noVideos"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
+        [al show];
         
     }
     @finally {

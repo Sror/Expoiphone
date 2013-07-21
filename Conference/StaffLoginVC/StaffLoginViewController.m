@@ -87,6 +87,7 @@
     [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"staffLogin"]]];
     [self.homeLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"home"]];
    
+    [self.bounceHeaderLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"chooseanevent"]];
     
     
     switch (ApplicationDelegate.langBool) {
@@ -147,9 +148,8 @@
     if (ApplicationDelegate.appEventArray.count!=0) {
         [self.view addSubviewWithBounce:self.bounceView];
     }else{
-        UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"Sorry" message:@"No Events found." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-        [al show];
-    }
+        UIAlertView *al = [[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sorry"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"noEventsFound"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"cancel"] otherButtonTitles:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"], nil];
+        [al show];    }
     
 
 }
@@ -162,7 +162,7 @@
     if (ApplicationDelegate.appEventArray.count!=0) {
         [self.view addSubviewWithBounce:self.bounceView];
     }else{
-        UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"Oops!" message:@"No Events found" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+        UIAlertView *al = [[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sorry"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"noEventsFound"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"cancel"] otherButtonTitles:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"], nil];
         [al show];
     }
 }
@@ -220,7 +220,7 @@
         [self.navigationController pushFadeViewController:webView];*/
     }else{
         
-        UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"Events" message:@"Please select an event name first" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+        UIAlertView *al = [[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"Events"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"selectEventFirst"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"cancel"] otherButtonTitles:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"], nil];
         [al show];
     }
     

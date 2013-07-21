@@ -117,11 +117,11 @@
     self.appLanguageArray=[[ConferenceHelper SharedHelper] ReadArrayFromthePlistFile:@"lang.plist"];
     
     
-    self.dragView = [[UIView alloc]initWithFrame:CGRectMake(1, 0, 311, 62)];
+    self.dragView = [[UIView alloc]initWithFrame:CGRectMake(2.73, 0, 311, 62)];
     [self.dragView setBackgroundColor:[UIColor clearColor]];
     [self.dragView setAlpha:0.0];
     [self.dragView setTag:DRAGVIEWTAG];
-    self.imgDragView = [[UIImageView alloc]initWithFrame:CGRectMake(1, 0, 311, 62)];
+    self.imgDragView = [[UIImageView alloc]initWithFrame:CGRectMake(2.73, 0, 311, 62)];
     [self.imgDragView setBackgroundColor:[UIColor clearColor]];
     [self.imgDragView setImage:[UIImage imageNamed:@"pulldown.png"]];
     [self.dragView addSubview:self.imgDragView];
@@ -240,7 +240,7 @@
     for (UIView *vie in self.navController.view.subviews) {
         if (vie.tag==DRAGVIEWTAG) {
             [UIView animateWithDuration:0.7 animations:^{
-                [vie setFrame:CGRectMake(5, 0, 311, 62)];
+                [vie setFrame:CGRectMake(2.73, 0, 311, 62)];
                 [vie setAlpha:0.0];
             } completion:^(BOOL finished) {
                 [vie removeFromSuperview];
@@ -268,7 +268,7 @@
             [self.navController.view addSubview:self.dragView];
             [UIView animateWithDuration:0.7 animations:^{
                 [self.dragView setAlpha:1.0];
-                [self.dragView setFrame:CGRectMake(5, 54, 311, 62)];
+                [self.dragView setFrame:CGRectMake(2.73, 54, 311, 62)];
             } completion:^(BOOL finished) {
             }];
         }
@@ -278,7 +278,7 @@
         if (_dragged) {
             _dragged=NO;
             [UIView animateWithDuration:0.7 animations:^{
-                [self.dragView setFrame:CGRectMake(5, 0, 311, 62)];
+                [self.dragView setFrame:CGRectMake(2.73, 0, 311, 62)];
                 [self.dragView setAlpha:0.0];
             } completion:^(BOOL finished) {
                 [self.dragView removeFromSuperview];

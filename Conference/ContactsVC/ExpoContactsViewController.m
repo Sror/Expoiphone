@@ -114,10 +114,10 @@
     
     
     UIActionSheet *photoSourcePicker = [[UIActionSheet alloc] initWithTitle:nil
-                                                                   delegate:self cancelButtonTitle:@"Cancel"
+                                                                   delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"cancel"]
                                                      destructiveButtonTitle:nil
-                                                          otherButtonTitles:@"Facebook",
-                                        @"Twitter",
+                                                          otherButtonTitles:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"fb"],
+                                        [[ConferenceHelper SharedHelper] getLanguageForAKey:@"twitter"],
                                         nil,
                                         nil];
     
@@ -184,7 +184,10 @@
             {
                 // you can show alert here
                 // [self.HUD hide:YES];
-                UIAlertView *twitAlert = [[UIAlertView alloc]initWithTitle:@"SharjahExpoCentre" message:@"Please add one Twitter account to your settings and try again" delegate:self cancelButtonTitle:@"oK" otherButtonTitles:nil, nil];
+               /* UIAlertView *twitAlert = [[UIAlertView alloc]initWithTitle:@"SharjahExpoCentre" message:@"Please add one Twitter account to your settings and try again" delegate:self cancelButtonTitle:@"oK" otherButtonTitles:nil, nil];
+                [twitAlert show];*/
+                // [self.HUD hide:YES];
+                UIAlertView *twitAlert = [[UIAlertView alloc]initWithTitle:@"SharjahExpoCentre" message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"addTwitAcc"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
                 [twitAlert show];
             }
         }

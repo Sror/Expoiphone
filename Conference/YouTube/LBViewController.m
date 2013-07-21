@@ -45,6 +45,7 @@
     label.text=@"Video";
     self.navigationItem.titleView = label;
     [label sizeToFit];*/
+    
    
     
     self.navigationItem.titleView = [ApplicationDelegate setTitle:@"Video"];

@@ -42,6 +42,129 @@
     [self.homeLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
 }
 
+-(UIView*)titleForDetailView{
+    
+    
+    for (UIView *vi in self.navigationController.navigationBar.subviews) {
+        if (vi.tag == 12345) {
+            [vi removeFromSuperview];
+        }
+    }
+    UIView *titleHeaderView = [[UIView alloc]init]; //WithFrame:CGRectMake(0, 20, 320, 44)];
+    titleHeaderView.contentMode = UIViewContentModeScaleToFill;
+    [titleHeaderView setBackgroundColor:[UIColor clearColor]];
+    titleHeaderView.tag =12345;
+    
+    UILabel *titleView;
+    if (!titleView) {
+        titleView = [[UILabel alloc] init];
+        titleView.backgroundColor = [UIColor clearColor];
+        titleView.font = [UIFont fontWithName:@"Eagle-Bold" size:17.0];
+    }
+    
+    [titleView setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"pRelease"]];
+    titleView.textColor = [UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1];
+    //[titleView sizeToFit];
+    [titleHeaderView addSubview:titleView];
+    
+    
+    UIImageView *ribImgView;
+    ribImgView = [[UIImageView alloc] init];
+    ribImgView.backgroundColor = [UIColor clearColor];
+    [ribImgView setImage:[UIImage imageNamed:@"ribbon.png"]];
+    [ribImgView setContentMode:UIViewContentModeScaleAspectFit];
+    [titleHeaderView addSubview:ribImgView];
+    
+   /*  button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setBackgroundColor:[UIColor brownColor]];
+    [button setTitle:@"Gallery" forState:UIControlStateNormal];
+    [button.layer setCornerRadius:4.0f];
+    [button.layer setMasksToBounds:YES];
+    [button.layer setBorderWidth:1.0f];
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [button.layer setBorderColor: [[UIColor blackColor] CGColor]];
+    //button.frame=CGRectMake(0.0, 100.0, 75.0, 30.0);
+    [button addTarget:self action:@selector(galleryAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    if (self.imageArray.count>0) {
+        [titleHeaderView addSubview:button];
+    }*/
+    
+    /*if ([[ConferenceHelper SharedHelper] ReadArrayFromthePlistFile:@"favList.plist"].count ==0){
+        
+    }else{
+        
+    }*/
+    
+    UIButton *bt = [UIButton buttonWithType:UIButtonTypeCustom];
+    [bt setBackgroundColor:[UIColor clearColor]];
+    [bt setTitle:@"Gallery" forState:UIControlStateNormal];
+    [bt.layer setCornerRadius:4.0f];
+    [bt.layer setMasksToBounds:YES];
+    [bt.layer setBorderWidth:1.0f];
+    [bt setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [bt.layer setBorderColor: [[UIColor blackColor] CGColor]];
+    [bt addTarget:self action:@selector(galleryAction) forControlEvents:UIControlEventTouchUpInside];
+
+    if (self.imageArray.count>0) {
+        [titleHeaderView addSubview:bt];
+    }
+    
+    [titleHeaderView addSubview:bt];
+    
+    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom] ;//]WithFrame:CGRectMake(0, 25,44, 44)];
+    [backBtn addTarget:self action:@selector(backBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    [backBtn setBackgroundColor:[UIColor clearColor]];
+    [backBtn setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
+    [titleHeaderView addSubview:backBtn];
+    
+    
+    UIButton *dragBtn;
+    dragBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    dragBtn.backgroundColor = [UIColor clearColor];
+    UIPanGestureRecognizer *panBtn= [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(dragBtnAction:)];
+    [dragBtn addGestureRecognizer:panBtn];
+    [titleHeaderView addSubview:dragBtn];
+    
+    
+    switch (ApplicationDelegate.langBool) {
+        case LANG_English:{
+            [titleHeaderView setFrame:CGRectMake(0, 20, 320, 44)];
+            [titleView setFrame:CGRectMake(70, 0, 140, 44)];
+            [ribImgView setFrame:CGRectMake(270,0,27,44)];
+            [dragBtn setFrame:CGRectMake(270, 0, 40, 44)];
+            [bt setFrame:CGRectMake(210, 6, 60, 30)];
+            [backBtn setFrame:CGRectMake(0, 0, 44, 44)];
+            
+        }
+            break;
+        case LANG_ARABIC:{
+            
+            [titleHeaderView setFrame:CGRectMake(0, 20, 320, 44)];
+            [titleView setFrame:CGRectMake(110, 0, 170, 44)];
+            [ribImgView setFrame:CGRectMake(10,0,27,44)];
+            [dragBtn setFrame:CGRectMake(10, 0, 40, 44)];
+            [bt setFrame:CGRectMake(40,6,60, 30)];
+            [backBtn setFrame:CGRectMake(250, 0, 44, 44)];
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    return titleHeaderView;
+}
+- (void)dragBtnAction:(UIPanGestureRecognizer *)rec
+{
+    [ApplicationDelegate dragBtnAction:rec];
+    
+}
+-(void)backBtnAction{
+    [self.navigationController fadePopViewController];
+}
+
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -53,8 +176,9 @@
     if (fromCommonView) {
         
         [self.imageArray removeAllObjects];
-        [self.navigationItem setTitleView:[ApplicationDelegate setTitle:titleHeaderString]];
+        //[self.navigationItem setTitleView:[ApplicationDelegate setTitle:titleHeaderString]];
         
+        [self.navigationItem setTitleView:[self titleForDetailView]];
         
         if ([titleHeaderString isEqualToString:@"Video-Gallery"]){
             
@@ -95,15 +219,15 @@
         
         if (self.imageArray.count>0) {
             
-            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-            [button setTitle:@"Gallery" forState:UIControlStateNormal];
-            [button.layer setCornerRadius:4.0f];
-            [button.layer setMasksToBounds:YES];
-            [button.layer setBorderWidth:1.0f];
-            [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-            [button.layer setBorderColor: [[UIColor blackColor] CGColor]];
-            button.frame=CGRectMake(0.0, 100.0, 60.0, 30.0);
-            [button addTarget:self action:@selector(galleryAction) forControlEvents:UIControlEventTouchUpInside];
+//            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//            [button setTitle:@"Gallery" forState:UIControlStateNormal];
+//            [button.layer setCornerRadius:4.0f];
+//            [button.layer setMasksToBounds:YES];
+//            [button.layer setBorderWidth:1.0f];
+//            [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//            [button.layer setBorderColor: [[UIColor blackColor] CGColor]];
+//            button.frame=CGRectMake(0.0, 100.0, 60.0, 30.0);
+//            [button addTarget:self action:@selector(galleryAction) forControlEvents:UIControlEventTouchUpInside];
             
             UIBarButtonItem* gallItem = [[UIBarButtonItem alloc] initWithCustomView:button];
 
@@ -219,8 +343,13 @@
 
 -(void)applyLanguage{
     
-    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"newsDetail"]]];
     
+    if (fromCommonView) {
+        [self.navigationItem setTitleView:[self titleForDetailView]];
+    }
+    else{
+    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"newsDetail"]]];
+    }
     
 }
 -(BOOL) validateYouTubeUrl: (NSString *) youTubeUrl

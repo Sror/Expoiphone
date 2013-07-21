@@ -326,6 +326,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:) name:@"refreshView" object:nil];
 	
     _isActive = YES;
     
@@ -348,9 +350,20 @@
 }
 
 
+-(void)refreshView:(NSNotification *) notification{
+    
+    NSLog(@"Notification");
+    
+    [self updateTitle];
+}
+
 - (void)viewWillDisappear:(BOOL)animated
+
+
+
 {
     [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshView" object:nil];
     
 	_isActive = NO;
 
@@ -693,8 +706,9 @@
     if (!_hideTitle){
         //[self setTitle:[NSString stringWithFormat:@"%i %@ %i", _currentIndex+1, NSLocalizedString(@"of", @"") , [_photoSource numberOfPhotosForPhotoGallery:self]]];
         
+//        [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[NSString stringWithFormat:@"%i %@ %i", _currentIndex+1, NSLocalizedString(@"of", @"") , [_photoSource numberOfPhotosForPhotoGallery:self]]]];
+
         [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[NSString stringWithFormat:@"%i %@ %i", _currentIndex+1, NSLocalizedString(@"of", @"") , [_photoSource numberOfPhotosForPhotoGallery:self]]]];
-        
         //;
     }else{
         [self setTitle:@""];

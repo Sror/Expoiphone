@@ -35,7 +35,7 @@
     self.navigationItem.hidesBackButton = YES;
     
     [self.view addSubview:ApplicationDelegate.HUD];
-    [ApplicationDelegate.HUD setLabelText:@"Checking"];
+    [ApplicationDelegate.HUD setLabelText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"checking"]];
     [self.usernameTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
     [self.passwordTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
     [self.loginBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
@@ -105,7 +105,7 @@
     [self.passwordTxtField resignFirstResponder];
     
     if ([[ConferenceHelper SharedHelper]isEmptyString:self.usernameTxtField.text] || [[ConferenceHelper SharedHelper]isEmptyString:self.passwordTxtField.text]) {
-        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"" message:@"Please enter the details" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"" message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"enterAllDetails"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
         [alert show];
 
     }
@@ -121,7 +121,7 @@
             
             if ([[loginResponseDic objectForKey:@"result"] isEqualToNumber:[NSNumber numberWithBool:0]]) {
                 
-                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Login Failed" message:@"Invalid Credentials" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"loginFailed"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"invalidCredentials"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
                 
                 [alert show];
                 

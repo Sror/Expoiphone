@@ -39,7 +39,7 @@
    // [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
     
     [self.view addSubview:ApplicationDelegate.HUD];
-    [ApplicationDelegate.HUD setLabelText:@"Loading"];
+    [ApplicationDelegate.HUD setLabelText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"loading"]];
 
     
     self.mcScrollView.contentSize = CGSizeMake(320, 568);
@@ -269,7 +269,7 @@
            /* networkGallery = [[FGalleryViewController alloc] initWithPhotoSource:self];
             [self.navigationController pushViewController:networkGallery animated:YES];*/
         }else{
-            UIAlertView *al =[[UIAlertView alloc]initWithTitle:@"Sorry" message:@"No press release available" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            UIAlertView *al =[[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sorry"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"noPressRelease"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
             [al show];
         }
         
@@ -315,7 +315,7 @@
            [self.navigationController pushFadeViewController:com];
 
        }else{
-           UIAlertView *al =[[UIAlertView alloc]initWithTitle:@"Sorry" message:@"No Video-Gallery available" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+           UIAlertView *al =[[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sorry"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"noVideos"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
            [al show];
        }
 
@@ -350,7 +350,7 @@
             [self.navigationController pushFadeViewController:com];
             
         }else{
-            UIAlertView *al =[[UIAlertView alloc]initWithTitle:@"Sorry" message:@"No image gallery available" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            UIAlertView *al =[[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sorry"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"noImages"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
             [al show];
         }
 

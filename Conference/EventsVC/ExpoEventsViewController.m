@@ -104,10 +104,15 @@
             
         }]; }
     else if (fromSearch){
+        
         [eventsList removeAllObjects];
-        [eventsList addObjectsFromArray:ApplicationDelegate.appSearchEventsArray];
+        if (ApplicationDelegate.appSearchEventsArray.count==0) {
+            [eventsList addObjectsFromArray:ApplicationDelegate.appEventArray];
+        }else{
+            [eventsList addObjectsFromArray:ApplicationDelegate.appSearchEventsArray];}
         [self.eventsListTableView setHidden:NO];
         [self.eventsListTableView reloadData];
+        [self setFromSearch:NO];
         
         
     }
