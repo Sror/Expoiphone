@@ -440,13 +440,14 @@
 		[mediaArray addObject:img];
     }
     
-    self.sponsorsView = [[SlideMenuView alloc] initWithFrameColorAndButtons:CGRectMake(0.0f, 413.0f, 320, 60.0f) backgroundColor:[UIColor clearColor]  buttons:sponsorArray];
+    
+    self.sponsorsView = [[SlideMenuView alloc] initWithFrameColorAndButtons:CGRectMake(15.0f, 413.0f, 290, 60.0f) backgroundColor:[UIColor clearColor]  buttons:sponsorArray];
     [self.mainScrollView addSubview:self.sponsorsView];
     
-    self.supportersView = [[SlideMenuView alloc] initWithFrameColorAndButtons:CGRectMake(0.0f, 500.0f, 320, 60.0f) backgroundColor:[UIColor clearColor]  buttons:supporterArray];
+    self.supportersView = [[SlideMenuView alloc] initWithFrameColorAndButtons:CGRectMake(15.0f, 500.0f, 290, 60.0f) backgroundColor:[UIColor clearColor]  buttons:supporterArray];
     [self.mainScrollView addSubview:self.supportersView];
     
-    self.mediapartnersVieew = [[SlideMenuView alloc] initWithFrameColorAndButtons:CGRectMake(0.0f, 585.0f, 320, 60.0f) backgroundColor:[UIColor clearColor]  buttons:mediaArray];
+    self.mediapartnersVieew = [[SlideMenuView alloc] initWithFrameColorAndButtons:CGRectMake(15.0f, 585.0f, 290, 60.0f) backgroundColor:[UIColor clearColor]  buttons:mediaArray];
     [self.mainScrollView addSubview:self.mediapartnersVieew];
     
 }
@@ -775,6 +776,9 @@
 
 -(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
     
+    
+    if (alertView.tag == 10 || alertView.tag == 11 ||alertView.tag ==12) {
+       
     NSString *numberToCall;
     
     switch (alertView.tag) {
@@ -812,7 +816,7 @@
     NSLog(@"NUmber to call is %@",[NSString stringWithFormat:@"telprompt://%@",numberToCall]);
     
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@",numberToCall]]];
-    
+    }
     
 }
 

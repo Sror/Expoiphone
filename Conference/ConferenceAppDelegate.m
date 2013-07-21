@@ -780,10 +780,10 @@
     if (error) {
         //[self.HUD hide:YES];
         UIAlertView *alertView = [[UIAlertView alloc]
-                                  initWithTitle:@"Error"
+                                  initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"error"]
                                   message:error.localizedDescription
                                   delegate:nil
-                                  cancelButtonTitle:@"OK"
+                                  cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"]
                                   otherButtonTitles:nil];
         [alertView show];
     }
@@ -831,10 +831,10 @@
                           [result objectForKey:@"id"]];
          }
          // Show the result in an alert
-         [[[UIAlertView alloc] initWithTitle:@"Facebook"
-                                     message:@"Facebook share successfully completed"
+         [[[UIAlertView alloc] initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"fb"]
+                                     message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"shareResponse"]
                                     delegate:self
-                           cancelButtonTitle:@"OK!"
+                           cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"]
                            otherButtonTitles:nil]
           show];
      }];
