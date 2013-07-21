@@ -74,6 +74,7 @@
     [self.arabEndTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
     
     [self.homeLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
+    [self.submitBtn.titleLabel setTextColor:[UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1]];
     
     [self.keywordTxtField setValue:[UIColor blackColor]
                     forKeyPath:@"_placeholderLabel.textColor"];

@@ -34,36 +34,14 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     
-   // [self.navigationController.navigationBar setHidden:YES];
-   /*
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
-    label.backgroundColor = [UIColor clearColor];
-    label.font = [UIFont boldSystemFontOfSize:20.0];
-    label.shadowColor = [UIColor colorWithWhite:0.0 alpha:1];
-    label.textColor=[UIColor whiteColor];
-    label.textAlignment = UITextAlignmentCenter;
-    label.text=@"Video";
-    self.navigationItem.titleView = label;
-    [label sizeToFit];*/
-    
-   
-    
-    self.navigationItem.titleView = [ApplicationDelegate setTitle:@"Video"];
+
 
     UIButton *backBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25,44, 44)];
     [backBtn addTarget:self action:@selector(Backbuton) forControlEvents:UIControlEventTouchUpInside];
     [backBtn setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
 
-     //UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithCustomView:backBtn] ;
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:backBtn]];
-    
-    /*UIButton *backBtn     = [UIButton buttonWithType:UIButtonTypeCustom];
-    UIImage *backBtnImage = [UIImage imageNamed:@"back_button.png"]  ;
-    [backBtn setBackgroundImage:backBtnImage forState:UIControlStateNormal];  
-    [backBtn addTarget:self action:@selector(Backbuton) forControlEvents:UIControlEventTouchUpInside];
-    backBtn.frame = CGRectMake(0, 0, 52, 33);  
-    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithCustomView:backBtn] ;
-    self.navigationItem.leftBarButtonItem =cancelButton;*/
+
     
     
     NSLog(@"%@",youtubeUrl);
@@ -72,41 +50,21 @@
     
     NSLog(@"youtubeUrl -- %@",youtubeUrl);
 
-   /* self.youTubeHeadLabel.backgroundColor = [UIColor clearColor];
-    self.youTubeHeadLabel.font = [UIFont fontWithName:@"AdelleBasic-Bold" size:20.0];
-    // titleView.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
-    // self.navigationItem.titleView = titleView;
-//}
-self.youTubeHeadLabel.text = @"YouTube Player";
-self.youTubeHeadLabel.textColor = [UIColor colorWithRed:(218.0f/255.0f) green:(107.0f/255.0f) blue:(17.0f/255.0f) alpha:1];
-[self.youTubeHeadLabel sizeToFit];
-    [self.youTubeHeadLabel setFrame:CGRectMake(55, 8, 210, 34)];*/
-    
-    
-    
-    //UILabel *titleView;
-   // if (!titleView) {
-        self.youTubeHeadLabel = [[UILabel alloc] initWithFrame:CGRectMake(55, 8, 210, 34)];
-        self.youTubeHeadLabel.backgroundColor = [UIColor clearColor];
-        self.youTubeHeadLabel.font = [UIFont fontWithName:@"Eagle-Bold" size:17.0];
-    //}
-    self.youTubeHeadLabel.text =@"YouTube Player";
 
+   // self.youTubeHeadLabel = [[UILabel alloc] initWithFrame:CGRectMake(55, 8, 210, 34)];
+    self.youTubeHeadLabel.backgroundColor = [UIColor clearColor];
+    self.youTubeHeadLabel.font = [UIFont fontWithName:@"Eagle-Bold" size:17.0];
+    
     self.youTubeHeadLabel.textColor = [UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1];
-    [self.youTubeHeadLabel sizeToFit];
-    
-   // return titleView;
-    
-    
-  /*  UIButton *backBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25,44, 44)];
-    [backBtn addTarget:self action:@selector(backBtnAction) forControlEvents:UIControlEventTouchUpInside];
-    [backBtn setImage:[UIImage imageNamed:@"back_button.png"] forState:UIControlStateNormal];
-    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:backBtn]];*/
+   // [self.youTubeHeadLabel sizeToFit];
+
 
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
+    self.youTubeHeadLabel.text =[[ConferenceHelper SharedHelper] getLanguageForAKey:@"youTube"];
     self.controller = [[LBYouTubePlayerViewController alloc] initWithYouTubeURL:[NSURL URLWithString:youtubeUrl]];
     self.controller.delegate = self;
     self.controller.quality = LBYouTubePlayerQualityLarge;

@@ -193,7 +193,7 @@
     [self.homLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"home"]];
     [self.brochureLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"brochure"]];
     [self.addCalLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"addtoCal"]];
-    [self.mapLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"locationmap"]];
+    [self.mapLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"floormap"]];
     [self.callLbabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"call"]];
     [self.shareLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"share"]];
     
@@ -279,8 +279,8 @@
             
             [titleHeaderView setFrame:CGRectMake(0, 20, 295, 44)];
             [titleView setFrame:CGRectMake(90, 0, 170, 44)];
-            [ribImgView setFrame:CGRectMake(0,0,27,44)];
-            [dragBtn setFrame:CGRectMake(0, 0, 40, 44)];
+            [dragBtn setFrame:CGRectMake(7, 0, 40, 44)];
+            [ribImgView setFrame:CGRectMake(7,0,27,44)];
             [favBtn setFrame:CGRectMake(35, 5, 35, 35)];
             [backBtn setFrame:CGRectMake(250, 0, 44, 44)];
             /*[imgView setFrame:CGRectMake(280, 10, 25, 25)];
@@ -311,9 +311,9 @@
     NSMutableArray *favArray=[[NSMutableArray alloc] init];
     favArray  = [[ConferenceHelper SharedHelper] ReadArrayFromthePlistFile:@"favList.plist"];
     
-    
+    //@"maxCountReached"
     if ([favArray count]>=10) {
-        UIAlertView *myAlert =[[UIAlertView alloc]initWithTitle:Nil message:@"Max: Favourites Count Reached" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView *myAlert =[[UIAlertView alloc]initWithTitle:Nil message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"maxCountReached"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
         [myAlert show];
     }
     else{
@@ -334,7 +334,7 @@
             NSLog(@"the event id value%@",eventDetail.event_id);
             [favArray addObject:eventDetail.event_id];
             [[ConferenceHelper SharedHelper] WriteArrayTothePlistFile:favArray toFile:@"favList.plist"];
-            UIAlertView *myAlert =[[UIAlertView alloc]initWithTitle:Nil message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"maxCountReached"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
+            UIAlertView *myAlert =[[UIAlertView alloc]initWithTitle:Nil message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"addedToFav"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
             [myAlert show];
         }
         
@@ -653,7 +653,7 @@
     NSError *err;
     BOOL isSuceess=[eventSotre saveEvent:event span:EKSpanThisEvent error:&err];
     if(isSuceess){
-        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"Events"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"addedToCalendar"] otherButtonTitles:nil];
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"Events"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"addedToCalendar"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil];
         [alertview show];
     }
     else{
@@ -739,10 +739,10 @@
         [self.phoneArray addObject:[dic objectForKey:@"phone_no"]];
     }
     
-    NSLog(@"phone array count is %d",phoneArray.count);
+    NSLog(@"phone array count is %d, and phone arrat desc is %@",phoneArray.count, [phoneArray description]);
     
     if (phoneArray.count == 0) {
-        UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"" message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"noContactsAvailable"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"cancel"] otherButtonTitles:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"], nil];
+        UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"" message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"noContactsAvailable"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
         [al show];
     }
     
@@ -789,7 +789,7 @@
             if (buttonIndex==1) {
                 NSLog(@"Phon number 0 to call is %@", phoneArray[0]);
                 numberToCall = phoneArray[0];
-            }else {
+            }else if (buttonIndex==2) {
                  NSLog(@"Phon number 1 to call is %@", phoneArray[1]);
                 numberToCall = phoneArray[1];
             }
@@ -801,7 +801,7 @@
             }else if (buttonIndex==2) {
                 NSLog(@"Phon number 1 to call is %@", phoneArray[1]);
                 numberToCall = phoneArray[1];
-            }else{
+            }else if (buttonIndex==3){
                 NSLog(@"Phon number 2 to call is %@", phoneArray[2]);
                 numberToCall = phoneArray[2];
             }

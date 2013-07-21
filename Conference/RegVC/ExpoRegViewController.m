@@ -59,11 +59,25 @@
     [self.dateOfBirthTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
     [self.IndustryTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
     [self.socialTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
+    [self.mobileTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
     [self.skipBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:15.0]];
     [self.submitBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:15.0]];
     
+    
+    // [UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1]
+    
+    [self.skipBtn.titleLabel setTextColor:[UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1]];
+    [self.submitBtn.titleLabel setTextColor:[UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1]];
+    
 }
 
+
+- (BOOL) validateEmail: (NSString *) candidate {
+    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    NSLog(@"called");
+    return [emailTest evaluateWithObject:candidate];
+}
 -(void)applyLanguage{
     
     
@@ -86,7 +100,8 @@
     [self.submitBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"submit"] forState:UIControlStateNormal];
     
     [self.fullNameTextField setPlaceholder:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"fname"]];
-    //[self.companyTxtField setPlaceholder:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"aUs"]];
+    [self.companyTxtField setPlaceholder:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"email"]];
+    [self.mobileTxtField setPlaceholder:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"mobile"]];
     [self.genderTxtField setPlaceholder:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sex"]];
     [self.dateOfBirthTxtField setPlaceholder:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"dob"]];
     [self.IndustryTxtField setPlaceholder:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"indInterest"]];
@@ -138,6 +153,7 @@
     [genderTxtField resignFirstResponder];
     [IndustryTxtField resignFirstResponder];
     [dateOfBirthTxtField resignFirstResponder];
+    [self.mobileTxtField resignFirstResponder];
     
     
 }
@@ -340,7 +356,9 @@
     if ([[ConferenceHelper SharedHelper]isEmptyString:self.fullNameTextField.text] ||[[ConferenceHelper SharedHelper]isEmptyString:self.genderTxtField.text]    ||
         [[ConferenceHelper SharedHelper]isEmptyString:self.dateOfBirthTxtField.text] ||
         [[ConferenceHelper SharedHelper]isEmptyString:self.IndustryTxtField.text]||
-        [[ConferenceHelper SharedHelper]isEmptyString:self.socialTxtField.text]) {
+        [[ConferenceHelper SharedHelper]isEmptyString:self.socialTxtField.text] ||
+        [[ConferenceHelper SharedHelper]isEmptyString:self.socialTxtField.text] ||
+        [[ConferenceHelper SharedHelper]isEmptyString:self.companyTxtField.text]) {
         NSLog(@"empty");
         
         if (!fromView) {
@@ -352,8 +370,12 @@
             [alertView show];
         }
         
-       
-        
+    }
+    
+    else if (![self validateEmail:companyTxtField.text]) {
+        UIAlertView *alert;
+        alert = [[UIAlertView alloc] initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"error"] message:@"Enter a valid Email" delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"]otherButtonTitles:nil];
+        [alert show];
     }
     else{
 
@@ -363,6 +385,8 @@
         [userDic setValue:self.dateOfBirthTxtField.text forKey:@"dob"];
         [userDic setValue:self.IndustryTxtField.text forKey:@"industry"];
         [userDic setValue:self.socialTxtField.text forKey:@"socialstatus"];
+        [userDic setValue:self.companyTxtField.text forKey:@"email"];
+        [userDic setValue:self.mobileTxtField.text forKey:@"mobile"];
         [userDic setValue:@"" forKey:@"username"];
         [userDic setValue:@"" forKey:@"password"];
 
@@ -433,6 +457,7 @@
 
 - (void)viewDidUnload {
     [self setScrollViewReg:nil];
+    [self setMobileTxtField:nil];
     [super viewDidUnload];
 }
 @end

@@ -73,6 +73,8 @@
     [self.latestNewsTableView setHidden:YES];
     
     [self updateUI];
+    [self.view insertSubview:ApplicationDelegate.HUD aboveSubview:titleView2];
+    
     [self GetDataForTheView];
 }
 
@@ -89,6 +91,9 @@
 -(void)refreshView:(NSNotification *) notification{
     
     NSLog(@"Notification");
+    
+    [ApplicationDelegate.HUD removeFromSuperview];
+    
     [ApplicationDelegate.appCurrentEventArray removeAllObjects];
     [ApplicationDelegate.appLatestNewsArray removeAllObjects];
     [self.scrollView setHidden:YES];
@@ -96,9 +101,15 @@
     [self.latestNewsList removeAllObjects];
     [self.latestNewsTableView reloadData];
     //[self arrangeHorizontalScrollView];
+    //[self.view insertSubview:ApplicationDelegate.HUD aboveSubview:self.latestNewsHeaderLabel];
     
+    /*[self.view addSubview:ApplicationDelegate.HUD];
+    [self.view bringSubviewToFront:ApplicationDelegate.HUD];*/
+
+    
+   [self updateUI];
    [self GetDataForTheView];
-    [self updateUI];
+        
     
 }
 
@@ -139,6 +150,7 @@
         default:
             break;
     }
+   // [self.view sendSubviewToBack:titleView2];
     
     titleView2.backgroundColor = [UIColor clearColor];
     titleView2.font = [UIFont fontWithName:@"Eagle-Bold" size:17.0];
@@ -413,6 +425,8 @@
 
 
 -(void)GetDataForTheView{
+    
+    [self.view addSubview:ApplicationDelegate.HUD];
     
     if (ApplicationDelegate.appCurrentEventArray.count ==0 || ApplicationDelegate.appLatestNewsArray.count ==0) {
         [ApplicationDelegate.HUD show:YES];

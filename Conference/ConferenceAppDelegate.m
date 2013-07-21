@@ -123,7 +123,12 @@
     [self.dragView setTag:DRAGVIEWTAG];
     self.imgDragView = [[UIImageView alloc]initWithFrame:CGRectMake(2.73, 0, 311, 62)];
     [self.imgDragView setBackgroundColor:[UIColor clearColor]];
-    [self.imgDragView setImage:[UIImage imageNamed:@"pulldown.png"]];
+    if (self.langBool == LANG_ARABIC) {
+        [self.imgDragView setImage:[UIImage imageNamed:@"pulldown_arabicbg.png"]];
+    }else{
+        [self.imgDragView setImage:[UIImage imageNamed:@"pulldown.png"]];
+    }
+    
     [self.dragView addSubview:self.imgDragView];
     
     UILabel *labelLang= [[UILabel alloc] initWithFrame:CGRectMake(10, 25, 120, 22)];
@@ -250,6 +255,11 @@
                     [self.imgDragView setImage:[UIImage imageNamed:@"pulldown-eng.png"]];
                 }*/
         
+                if (self.langBool == LANG_ARABIC) {
+                    [self.imgDragView setImage:[UIImage imageNamed:@"pulldown_arabicbg.png"]];
+                }else{
+                    [self.imgDragView setImage:[UIImage imageNamed:@"pulldown.png"]];
+                }
                 
                 [ApplicationDelegate set_dragged:NO];
             }];
@@ -408,8 +418,8 @@
             [titleView setFrame:CGRectMake(40, 0, 250, 44)];
             [imgView setFrame:CGRectMake(5, 10, 25, 25)];
             [sepImgView setFrame:CGRectMake(33,7,2,29)];
-            [dragBtn setFrame:CGRectMake(277, 0, 40, 44)];
-            [ribImgView setFrame:CGRectMake(272,0,27,44)];
+            [dragBtn setFrame:CGRectMake(271.8, 0, 40, 44)];
+            [ribImgView setFrame:CGRectMake(271.8,0,27,44)];
             [titleView setTextAlignment:NSTextAlignmentLeft];
         }
             break;
@@ -418,8 +428,8 @@
             [titleView setFrame:CGRectMake(10, 0, 258, 44)];
             [imgView setFrame:CGRectMake(280, 10, 25, 25)];
             [sepImgView setFrame:CGRectMake(275,7,2,29)];
-            [dragBtn setFrame:CGRectMake(10, 0, 40, 44)];
-            [ribImgView setFrame:CGRectMake(10,0,27,44)];
+            [dragBtn setFrame:CGRectMake(14, 0, 40, 44)];
+            [ribImgView setFrame:CGRectMake(14,0,27,44)];
             [titleView setTextAlignment:NSTextAlignmentRight];
         }
             break;
@@ -472,16 +482,16 @@
     switch (self.langBool) {
         case LANG_English:{
             [titleView setFrame:CGRectMake(44, 0, 200, 44)];
-            [dragBtn setFrame:CGRectMake(255, 0, 40, 44)];
-            [ribImgView setFrame:CGRectMake(270,0,27,44)];
+            [dragBtn setFrame:CGRectMake(271.8, 0, 40, 44)];
+            [ribImgView setFrame:CGRectMake(271.8,0,27,44)];
             [backBtn setFrame:CGRectMake(0, 0,44, 44)];
         }
             break;
         case LANG_ARABIC:{
             
             [titleView setFrame:CGRectMake(44, 0, 200, 44)];
-            [dragBtn setFrame:CGRectMake(10, 0, 40, 44)];
-            [ribImgView setFrame:CGRectMake(10,0,27,44)];
+            [dragBtn setFrame:CGRectMake(14, 0, 40, 44)];
+            [ribImgView setFrame:CGRectMake(14,0,27,44)];
             [backBtn setFrame:CGRectMake(260, 0,44, 44)];
         }
             break;

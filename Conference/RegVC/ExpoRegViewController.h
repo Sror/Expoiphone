@@ -27,6 +27,8 @@
 @property (strong, nonatomic) IBOutlet UITextField *genderTxtField;
 @property (strong, nonatomic) IBOutlet UITextField *dateOfBirthTxtField;
 @property (strong, nonatomic) IBOutlet UITextField *IndustryTxtField;
+@property (strong, nonatomic) IBOutlet UITextField *mobileTxtField;
+
 
 @property (nonatomic, retain) NSMutableArray *industrialArray;
 @property (strong, nonatomic) IBOutlet TPKeyboardAvoidingScrollView *scrollViewReg;

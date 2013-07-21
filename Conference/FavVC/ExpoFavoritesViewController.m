@@ -132,7 +132,7 @@
     [button.layer setCornerRadius:4.0f];
     [button.layer setMasksToBounds:YES];
     [button.layer setBorderWidth:1.0f];
-    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1] forState:UIControlStateNormal];
     [button.layer setBorderColor: [[UIColor blackColor] CGColor]];
     [button addTarget:self action:@selector(EditTable:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -174,9 +174,9 @@
             
             [titleHeaderView setFrame:CGRectMake(0, 20, 295, 44)];
             [titleView setFrame:CGRectMake(110, 0, 170, 44)];
-            [ribImgView setFrame:CGRectMake(0,0,27,44)];
-            [dragBtn setFrame:CGRectMake(0, 0, 40, 44)];
-            [button setFrame:CGRectMake(35,9,50, 25)];
+            [ribImgView setFrame:CGRectMake(8,0,27,44)];
+            [dragBtn setFrame:CGRectMake(8, 0, 40, 44)];
+            [button setFrame:CGRectMake(40,9,50, 25)];
             [backBtn setFrame:CGRectMake(250, 0, 44, 44)];
 
         }
@@ -199,8 +199,12 @@
 }
 
 -(void)refreshView:(NSNotification *) notification{
-    
     [self updateUI];
+    [self.favEventsArray removeAllObjects];
+    [self.favTableView reloadData];
+    [self getData];
+    
+    
 }
 
 -(void)updateUI{
@@ -211,9 +215,7 @@
     [self.navigationItem setTitleView:[self titleForDetailView]];
     
     
-    /*[self.favEventsArray removeAllObjects];
-    [self.favTableView reloadData];
-    [self getData];*/
+    /**/
     
     
     
@@ -426,7 +428,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 		[ self.favTableView reloadData];
         UIButton *buton=(UIButton *)sender;
         [buton setTitle:@"Edit" forState:UIButtonTypeCustom];
-        [buton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        //[buton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         //[sender setTitle:@"Edit"];
 		//[self.navigationItem.rightBarButtonItem setTitle:@"Edit"];
 		//[self.navigationItem.rightBarButtonItem setStyle:UIBarButtonItemStylePlain];
@@ -438,7 +440,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 		[self.favTableView reloadData];
         UIButton *buton=(UIButton *)sender;
         [buton setTitle:@"Done" forState:UIButtonTypeCustom];
-        [buton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        //[buton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 		//[self.navigationItem.rightBarButtonItem setTitle:@"Done"];
 		//[self.navigationItem.rightBarButtonItem setStyle:UIBarButtonItemStyleDone];
 	}

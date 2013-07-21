@@ -68,6 +68,7 @@
     }
     
     [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:titleHeaderString]]];
+    [self.homeLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"home"]];
     [self.listTableView reloadData];
     
     

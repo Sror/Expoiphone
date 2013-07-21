@@ -766,6 +766,27 @@
 			<key>en</key>
 			<string>Server error</string>
 		</dict>
+		<key>email</key>
+		<dict>
+			<key>ar</key>
+			<string>E-mail</string>
+			<key>en</key>
+			<string>E-mail</string>
+		</dict>
+		<key>floormap</key>
+		<dict>
+			<key>ar</key>
+			<string>Floor map</string>
+			<key>en</key>
+			<string>Floor map</string>
+		</dict>
+		<key>mobile</key>
+		<dict>
+			<key>ar</key>
+			<string>Mobile Number</string>
+			<key>en</key>
+			<string>Mobile Number</string>
+		</dict>
 	</dict>
 </array>
 </plist>
