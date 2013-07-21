@@ -414,9 +414,8 @@
 
 -(void)GetDataForTheView{
     
-    /*if (ApplicationDelegate.appCurrentEventArray.count ==0 || ApplicationDelegate.appLatestNewsArray.count ==0) {
+    if (ApplicationDelegate.appCurrentEventArray.count ==0 || ApplicationDelegate.appLatestNewsArray.count ==0) {
         [ApplicationDelegate.HUD show:YES];
-        //[self.navigationController.toolbar setUserInteractionEnabled:NO];
         
         [ApplicationDelegate.appEngine currentEventList:@"" onCompletion:^(NSMutableArray *CurrentEventArray) {
             
@@ -431,7 +430,6 @@
             
         } onError:^(NSError *error) {
             [ApplicationDelegate.HUD hide:YES];
-            //[self.navigationController.toolbar setUserInteractionEnabled:YES];
             [UIAlertView showWithError:error];
         }];
         
@@ -446,7 +444,7 @@
         [self.latestNewsTableView setHidden:NO];
         [self.latestNewsTableView reloadData];
         
-    }*/
+    }
 
 }
 
