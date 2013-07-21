@@ -138,8 +138,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:) name:@"refreshView" object:nil];
     
     if (fromView) {
+        
         [self.skipBtn setHidden:YES];
-        [self.submitBtn setFrame:CGRectMake(121, 335, 80, 33)];
+        
+            [self.submitBtn.titleLabel setTextColor:[UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1]];
+        [self.submitBtn setFrame:CGRectMake(121, 355, 80, 33)];
          //[[UIToolbar appearance] setBackgroundImage:[UIImage imageNamed:@"bg.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
     }
 }

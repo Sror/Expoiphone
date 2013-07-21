@@ -124,7 +124,7 @@
                 //[self.navigationItem setTitleView:[ApplicationDelegate setTitle:@"Enquiry"]];
                 headerString = @"enq";
                 [self.viewSegmentControl setHidden:YES];
-                [self.webviewForForms setFrame:CGRectMake(0, 0, 320, 460)];
+                [self.webviewForForms setFrame:CGRectMake(0, 0, 320, 428)];
             }
                 break;
             default:

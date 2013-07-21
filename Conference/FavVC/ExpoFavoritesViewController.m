@@ -129,11 +129,12 @@
     
     button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:@"Edit" forState:UIControlStateNormal];
+    
     [button.layer setCornerRadius:4.0f];
     [button.layer setMasksToBounds:YES];
     [button.layer setBorderWidth:1.0f];
     [button setTitleColor:[UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1] forState:UIControlStateNormal];
-    [button.layer setBorderColor: [[UIColor blackColor] CGColor]];
+    [button.layer setBorderColor: [[UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1] CGColor]];
     [button addTarget:self action:@selector(EditTable:) forControlEvents:UIControlEventTouchUpInside];
     
     if ([[ConferenceHelper SharedHelper] ReadArrayFromthePlistFile:@"favList.plist"].count ==0){

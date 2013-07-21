@@ -780,42 +780,54 @@
     if (alertView.tag == 10 || alertView.tag == 11 ||alertView.tag ==12) {
        
     NSString *numberToCall;
-    
+        BOOL theCallEnable=NO;
     switch (alertView.tag) {
         case 10:
             
             if (buttonIndex==1) {
                 NSLog(@"Phon number 0 to call is %@", phoneArray[0]);
                 numberToCall = phoneArray[0];
+                  theCallEnable=YES;
             }
             break;
         case 11:
             if (buttonIndex==1) {
                 NSLog(@"Phon number 0 to call is %@", phoneArray[0]);
                 numberToCall = phoneArray[0];
+                  theCallEnable=YES;
             }else if (buttonIndex==2) {
                  NSLog(@"Phon number 1 to call is %@", phoneArray[1]);
                 numberToCall = phoneArray[1];
+                  theCallEnable=YES;
             }
             break;
         case 12:
             if (buttonIndex==1) {
                 NSLog(@"Phon number 0 to call is %@", phoneArray[0]);
                 numberToCall = phoneArray[0];
+                  theCallEnable=YES;
             }else if (buttonIndex==2) {
                 NSLog(@"Phon number 1 to call is %@", phoneArray[1]);
                 numberToCall = phoneArray[1];
+                  theCallEnable=YES;
             }else if (buttonIndex==3){
                 NSLog(@"Phon number 2 to call is %@", phoneArray[2]);
                 numberToCall = phoneArray[2];
+                theCallEnable=YES;
             }
+            
+            
             break;
         default:
             break;
     }
-    NSLog(@"NUmber to call is %@",[NSString stringWithFormat:@"telprompt://%@",numberToCall]);
+   
+        if (theCallEnable) {
+            NSLog(@"NUmber to call is %@",[NSString stringWithFormat:@"telprompt://%@",numberToCall]);
+            
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@",numberToCall]]];
+        }
     
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@",numberToCall]]];
     }
     
 }
