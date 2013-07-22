@@ -58,44 +58,10 @@
 					<object class="IBUIScrollView" id="772939551">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<array class="NSMutableArray" key="NSSubviews">
-							<object class="IBUIImageView" id="304601179">
-								<reference key="NSNextResponder" ref="772939551"/>
-								<int key="NSvFlags">256</int>
-								<string key="NSFrame">{{306, 64}, {8, 12}}</string>
-								<reference key="NSSuperview" ref="772939551"/>
-								<reference key="NSWindow"/>
-								<bool key="IBUIOpaque">NO</bool>
-								<bool key="IBUIClipsSubviews">YES</bool>
-								<int key="IBUIContentMode">4</int>
-								<bool key="IBUIMultipleTouchEnabled">YES</bool>
-								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<object class="NSCustomResource" key="IBUIImage">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">arrow-right.png</string>
-								</object>
-							</object>
-							<object class="IBUIImageView" id="672291206">
-								<reference key="NSNextResponder" ref="772939551"/>
-								<int key="NSvFlags">256</int>
-								<string key="NSFrame">{{2, 64}, {8, 12}}</string>
-								<reference key="NSSuperview" ref="772939551"/>
-								<reference key="NSWindow"/>
-								<bool key="IBUIOpaque">NO</bool>
-								<bool key="IBUIClipsSubviews">YES</bool>
-								<int key="IBUIContentMode">4</int>
-								<bool key="IBUIMultipleTouchEnabled">YES</bool>
-								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<object class="NSCustomResource" key="IBUIImage">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">arrow-left.png</string>
-								</object>
-							</object>
-						</array>
 						<string key="NSFrame">{{0, 4}, {320, 139}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="160005732"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor" id="206799408">
 							<int key="NSColorSpace">3</int>
@@ -128,7 +94,6 @@
 						<string key="NSFrame">{{20, 215}, {281, 200}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<reference key="IBUIBackgroundColor" ref="206799408"/>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -647,10 +612,7 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">11</int>
 						<reference key="object" ref="772939551"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="304601179"/>
-							<reference ref="672291206"/>
-						</array>
+						<array class="NSMutableArray" key="children"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -698,16 +660,6 @@
 						<reference key="object" ref="600938861"/>
 						<reference key="parent" ref="326770367"/>
 					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">41</int>
-						<reference key="object" ref="304601179"/>
-						<reference key="parent" ref="772939551"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">42</int>
-						<reference key="object" ref="672291206"/>
-						<reference key="parent" ref="772939551"/>
-					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -733,8 +685,6 @@
 				<real value="1" key="28.IBUIButtonInspectorSelectedEdgeInsetMetadataKey"/>
 				<string key="29.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<real value="2" key="29.IBUIButtonInspectorSelectedEdgeInsetMetadataKey"/>
-				<string key="41.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="42.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="8.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
@@ -748,6 +698,35 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">ConfMainViewController</string>
 					<string key="superclassName">UIViewController</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="btnAbtTouched:">id</string>
+						<string key="btnContactTouched:">id</string>
+						<string key="btnEventsTouched:">id</string>
+						<string key="btnFavTouched:">id</string>
+						<string key="btnMoreTouched:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="btnAbtTouched:">
+							<string key="name">btnAbtTouched:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="btnContactTouched:">
+							<string key="name">btnContactTouched:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="btnEventsTouched:">
+							<string key="name">btnEventsTouched:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="btnFavTouched:">
+							<string key="name">btnFavTouched:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="btnMoreTouched:">
+							<string key="name">btnMoreTouched:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="aboutUsBtn">UIButton</string>
 						<string key="callBtn">UIButton</string>
@@ -816,8 +795,6 @@
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="aboutus-tb.png">{26, 25}</string>
 			<string key="app_bg.png">{320, 480}</string>
-			<string key="arrow-left.png">{8, 12}</string>
-			<string key="arrow-right.png">{8, 12}</string>
 			<string key="call-tb.png">{24, 24}</string>
 			<string key="events-tb.png">{26, 27}</string>
 			<string key="fav-tb.png">{27, 27}</string>
