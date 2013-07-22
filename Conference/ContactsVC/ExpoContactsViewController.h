@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "ConferenceAppDelegate.h"
 #import "MapViewControllerr.h"
+#import <MessageUI/MFMailComposeViewController.h>
 
 
-@interface ExpoContactsViewController : UIViewController<UIActionSheetDelegate>{
+@interface ExpoContactsViewController : UIViewController<UIActionSheetDelegate,MFMailComposeViewControllerDelegate>{
     
     
 }
@@ -28,5 +29,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *mapLabel;
 @property (strong, nonatomic) IBOutlet UILabel *callLabel;
 
+-(void)displayComposerSheet;
+
+-(void)launchMailAppOnDevice;
 
 @end

@@ -34,14 +34,20 @@
     //[self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
     self.navigationItem.hidesBackButton = YES;
     
-    [self.view addSubview:ApplicationDelegate.HUD];
-    [ApplicationDelegate.HUD setLabelText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"checking"]];
+    //[self.view addSubview:ApplicationDelegate.HUD];
+    
     [self.usernameTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
     [self.passwordTxtField setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
     [self.loginBtn.titleLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:14.0]];
     [self.homeLabel setFont:[UIFont fontWithName:@"Eagle-Light" size:9.0]];
 
 }
+
+
+
+
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -56,6 +62,8 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self.view addSubview:ApplicationDelegate.HUD];
+    [ApplicationDelegate.HUD setLabelText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"checking"]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:) name:@"refreshView" object:nil];
     [self updateUI];
 }
@@ -72,14 +80,11 @@
     [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"signIn"]]];
     [self.homeLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"home"]];
     
-    
-    
     [self.usernameTxtField setText:@""];
     [self.passwordTxtField setText:@""];
     [self.loginBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"signIn"] forState:UIControlStateNormal];
     [self.usernameTxtField setPlaceholder:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"username"]];
     [self.passwordTxtField setPlaceholder:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"password"]];
-    //[self.homeLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"home"]];
     
     
     
@@ -91,6 +96,7 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    [ApplicationDelegate.HUD removeFromSuperview];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshView" object:nil];
     [self.usernameTxtField setText:@""];

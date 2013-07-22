@@ -102,7 +102,7 @@
     [bt.layer setCornerRadius:4.0f];
     [bt.layer setMasksToBounds:YES];
     [bt.layer setBorderWidth:1.0f];
-    [bt setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [bt setTitleColor:[UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1] forState:UIControlStateNormal];
     [bt.layer setBorderColor: [[UIColor blackColor] CGColor]];
     [bt addTarget:self action:@selector(galleryAction) forControlEvents:UIControlEventTouchUpInside];
 

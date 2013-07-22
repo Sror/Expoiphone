@@ -15,13 +15,14 @@
 @end
 
 @implementation StaffLoginViewController
-@synthesize eventId;
+@synthesize eventId,eventsList;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        eventsList = [[NSMutableArray alloc]init];
     }
     return self;
 }
@@ -32,6 +33,10 @@
     // Do any additional setup after loading the view from its nib.
     
     self.navigationItem.hidesBackButton = YES;
+    
+    [self.view addSubview:ApplicationDelegate.HUD];
+    [ApplicationDelegate.HUD setLabelText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"loading"]];
+
     
     
     //[self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]initWithCustomView:[ApplicationDelegate customBackBtn]]];
@@ -75,6 +80,88 @@
     [self updateUI];
     
 }
+
+-(void)logoutAction{
+    [self.navigationController fadePopViewController];
+}
+- (void)dragBtnAction:(UIPanGestureRecognizer *)rec
+{
+    [ApplicationDelegate dragBtnAction:rec];
+    
+}
+
+
+- (UIView *)setHeaderTitle:(NSString *)title
+{
+    
+    UIView *containerView= [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
+    [containerView setTag:143];
+    [containerView setBackgroundColor:[UIColor clearColor]];
+    
+    /* UIButton *backBtn = [[UIButton alloc]init];
+     [backBtn addTarget:self action:@selector(backBtnAction) forControlEvents:UIControlEventTouchUpInside];
+     [backBtn setBackgroundColor:[UIColor clearColor]];
+     [backBtn setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];*/
+    
+    UIButton *bt = [UIButton buttonWithType:UIButtonTypeCustom];
+    [bt setBackgroundColor:[UIColor clearColor]];
+    [bt setTitle:@"Logout" forState:UIControlStateNormal];
+    [bt.layer setCornerRadius:4.0f];
+    [bt.layer setMasksToBounds:YES];
+    [bt.layer setBorderWidth:1.0f];
+    [bt setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [bt.layer setBorderColor: [[UIColor blackColor] CGColor]];
+    [bt addTarget:self action:@selector(logoutAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *dragBtn;
+    dragBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    dragBtn.backgroundColor = [UIColor clearColor];
+    UIPanGestureRecognizer *panBtn= [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(dragBtnAction:)];
+    [dragBtn addGestureRecognizer:panBtn];
+    
+    UILabel *titleView;
+    titleView = [[UILabel alloc] init];
+    titleView.backgroundColor = [UIColor clearColor];
+    titleView.font = [UIFont fontWithName:@"Eagle-Bold" size:17.0];
+    titleView.text = title;
+    titleView.textAlignment=NSTextAlignmentCenter;
+    titleView.textColor = [UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1];
+    [titleView setTextAlignment:NSTextAlignmentCenter];
+    
+    UIImageView *ribImgView;
+    ribImgView = [[UIImageView alloc] init];
+    ribImgView.backgroundColor = [UIColor clearColor];
+    [ribImgView setImage:[UIImage imageNamed:@"ribbon.png"]];
+    [ribImgView setContentMode:UIViewContentModeScaleAspectFit];
+    
+    switch (ApplicationDelegate.langBool) {
+        case LANG_English:{
+            [titleView setFrame:CGRectMake(44, 0, 200, 44)];
+            [dragBtn setFrame:CGRectMake(271.8, 0, 40, 44)];
+            [ribImgView setFrame:CGRectMake(271.8,0,27,44)];
+            //[bt setFrame:CGRectMake(0, 0,44, 44)];
+            [bt setFrame:CGRectMake(10, 7, 60, 30)];
+        }
+            break;
+        case LANG_ARABIC:{
+            
+            [titleView setFrame:CGRectMake(44, 0, 200, 44)];
+            [dragBtn setFrame:CGRectMake(14, 0, 40, 44)];
+            [ribImgView setFrame:CGRectMake(14,0,27,44)];
+            //[bt setFrame:CGRectMake(260, 0,44, 44)];
+            [bt setFrame:CGRectMake(240,6,60, 30)];
+        }
+            break;
+        default:
+            break;
+    }
+    [containerView addSubview:titleView];
+    [containerView addSubview:bt];
+    [containerView addSubview:dragBtn];
+    [containerView addSubview:ribImgView];
+    return containerView;
+}
+
 -(void)updateUI{
     
 
@@ -83,8 +170,11 @@
             [vie removeFromSuperview];
         }
     }
+    [ApplicationDelegate.HUD setLabelText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"loading"]];
+    [ApplicationDelegate.appEventArray removeAllObjects];
     
-    [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"staffLogin"]]];
+    [self.navigationItem setTitleView:[self setHeaderTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"signIn"]]];
+    //[self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"signIn"]]];
     [self.homeLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"home"]];
    
     [self.bounceHeaderLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"chooseanevent"]];
@@ -139,6 +229,40 @@
 }
 
 
+-(void)getEventData{
+    
+    
+    [self.view addSubview:ApplicationDelegate.HUD];
+    
+    [self.eventsList removeAllObjects];
+    [ApplicationDelegate.HUD show:YES];
+    [self.navigationController.navigationBar setUserInteractionEnabled:NO];
+    
+    [ApplicationDelegate.appEngine eventsList:@"" onCompletion:^(NSMutableArray *eventArray) {
+        
+        [ApplicationDelegate.HUD hide:YES];
+        [self.navigationController.navigationBar setUserInteractionEnabled:YES];
+        
+        for (NSMutableDictionary *dic in eventArray) {
+            
+            [eventsList addObject:[[ConferenceHelper SharedHelper] getEventsObjectFromDictionary:dic]];
+            
+        }
+        [ApplicationDelegate.appEventArray removeAllObjects];
+        [ApplicationDelegate.appEventArray addObjectsFromArray:eventsList];
+        [self.eventTableView reloadData];
+        [self.eventTableView setHidden:NO];
+         [self.view addSubviewWithBounce:self.bounceView];
+       
+        
+        
+    } onError:^(NSError *error) {
+        [ApplicationDelegate.HUD hide:YES];
+        [self.navigationController.navigationBar setUserInteractionEnabled:YES];
+        [UIAlertView showWithError:error];
+        
+    }];
+}
 
 - (IBAction)eventVisitorBtnAction:(id)sender {
     
@@ -148,8 +272,14 @@
     if (ApplicationDelegate.appEventArray.count!=0) {
         [self.view addSubviewWithBounce:self.bounceView];
     }else{
-        UIAlertView *al = [[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sorry"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"noEventsFound"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"cancel"] otherButtonTitles:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"], nil];
-        [al show];    }
+        
+        [self getEventData];
+        
+        /*UIAlertView *al = [[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sorry"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"noEventsFound"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"cancel"] otherButtonTitles:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"], nil];
+        [al show];  */
+    
+    
+    }
     
 
 }
@@ -162,8 +292,10 @@
     if (ApplicationDelegate.appEventArray.count!=0) {
         [self.view addSubviewWithBounce:self.bounceView];
     }else{
-        UIAlertView *al = [[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sorry"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"noEventsFound"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"cancel"] otherButtonTitles:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"], nil];
-        [al show];
+        [self getEventData];
+       // [self.view addSubviewWithBounce:self.bounceView];
+       /* UIAlertView *al = [[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sorry"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"noEventsFound"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"cancel"] otherButtonTitles:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"], nil];
+        [al show];*/
     }
 }
 
@@ -180,7 +312,7 @@
 
 - (IBAction)goBtnAction:(id)sender {
     
-    if (self.eventId) {        
+    if (self.eventId.length!=0) {
         
         NSString *action;
         ExpoLocationViewController *loc = [[ExpoLocationViewController alloc]initWithNibName:@"ExpoLocationViewController" bundle:nil];
@@ -220,7 +352,7 @@
         [self.navigationController pushFadeViewController:webView];*/
     }else{
         
-        UIAlertView *al = [[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"Events"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"selectEventFirst"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"cancel"] otherButtonTitles:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"], nil];
+        UIAlertView *al = [[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"Events"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"selectEventFirst"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"cancel"] otherButtonTitles:nil, nil];
         [al show];
     }
     

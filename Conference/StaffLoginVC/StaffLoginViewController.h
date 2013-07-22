@@ -17,6 +17,7 @@
     
     
 }
+@property (nonatomic, retain) NSMutableArray *eventsList;
 
 @property (nonatomic) int btnType;
 

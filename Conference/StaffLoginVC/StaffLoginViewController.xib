@@ -196,7 +196,7 @@
 								</object>
 							</object>
 						</array>
-						<string key="NSFrame">{{10, 42}, {302, 301}}</string>
+						<string key="NSFrame">{{10, 62}, {302, 301}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="763231350"/>
@@ -322,7 +322,7 @@
 								<reference key="IBUIImage" ref="1051234922"/>
 							</object>
 						</array>
-						<string key="NSFrame">{{9, 42}, {302, 301}}</string>
+						<string key="NSFrame">{{9, 62}, {302, 301}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="1050282805"/>
@@ -333,7 +333,7 @@
 					</object>
 					<object class="IBUIView" id="780160540">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">-2147483356</int>
 						<array class="NSMutableArray" key="NSSubviews">
 							<object class="IBUIImageView" id="655721986">
 								<reference key="NSNextResponder" ref="780160540"/>

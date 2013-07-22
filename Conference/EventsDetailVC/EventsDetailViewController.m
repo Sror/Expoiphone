@@ -262,7 +262,7 @@
     switch (ApplicationDelegate.langBool) {
         case LANG_English:{
             [titleHeaderView setFrame:CGRectMake(0, 20, 295, 44)];
-            [titleView setFrame:CGRectMake(50, 0, 170, 44)];
+            [titleView setFrame:CGRectMake(85, 0, 150, 44)];
             [ribImgView setFrame:CGRectMake(265,0,27,44)];
             [dragBtn setFrame:CGRectMake(265, 0, 40, 44)];
             [favBtn setFrame:CGRectMake(225, 5, 35, 35)];
@@ -278,7 +278,7 @@
         case LANG_ARABIC:{
             
             [titleHeaderView setFrame:CGRectMake(0, 20, 295, 44)];
-            [titleView setFrame:CGRectMake(90, 0, 170, 44)];
+            [titleView setFrame:CGRectMake(100, 0, 170, 44)];
             [dragBtn setFrame:CGRectMake(7, 0, 40, 44)];
             [ribImgView setFrame:CGRectMake(7,0,27,44)];
             [favBtn setFrame:CGRectMake(35, 5, 35, 35)];
@@ -618,6 +618,7 @@
             [self.downloadOperation addCompletionHandler:^(MKNetworkOperation* completedRequest) {
                 DLog(@"completedRequest  >>> %@", completedRequest);
                 [ApplicationDelegate.HUD hide:YES];
+                [self.navigationController.navigationBar setUserInteractionEnabled:YES];
                
                 [amPdfVieww setForPdfView:YES];
                 [amPdfVieww setFilePathUrl:[NSURL fileURLWithPath:pdfFilePath]];
@@ -834,6 +835,8 @@
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@",numberToCall]]];
         }
     
+    } else if (alertView.tag == 10001){
+        [self dismissModalViewControllerAnimated:YES];
     }
     
 }
@@ -846,7 +849,7 @@
                                                      destructiveButtonTitle:nil
                                                           otherButtonTitles:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"fb"],
                                         [[ConferenceHelper SharedHelper] getLanguageForAKey:@"twitter"],
-                                        nil,
+                                        [[ConferenceHelper SharedHelper] getLanguageForAKey:@"email"],
                                         nil];
     
     [photoSourcePicker showInView:self.view];
@@ -917,13 +920,205 @@
             }
         }
             break;
+        case 2:{
+            Class mailClass = (NSClassFromString(@"MFMailComposeViewController"));
+            
+            if (mailClass != nil)
+                
+            {
+                
+                // We must always check whether the current device is configured for sending emails
+                
+                if ([mailClass canSendMail])
+                    
+                {
+                    
+                    [self displayComposerSheet];
+                    
+                }
+                
+                else
+                    
+                {
+                    
+                    [self launchMailAppOnDevice];
+                    
+                }
+                
+            }
+            
+            else
+                
+            {
+                
+                [self launchMailAppOnDevice];
+                
+            }
+
+        }
+            break;
         default:
             break;
             
     }
 }
 
+#pragma mark -
+
+#pragma mark Compose Mail
+
+
+
+// Displays an email composition interface inside the application. Populates all the Mail fields.
+
+-(void)displayComposerSheet
+
+{
     
+    MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
+    
+    picker.mailComposeDelegate = self;
+    
+    
+    
+    [picker setSubject:@"Sharjah Expo App"];
+    
+    // Set up recipients
+    
+    NSArray *toRecipients = [NSArray arrayWithObject:@""];
+    
+    /*NSArray *ccRecipients = [NSArray arrayWithObjects:@"second@example.com", @"third@example.com", nil];
+     
+     NSArray *bccRecipients = [NSArray arrayWithObject:@"fourth@example.com"];*/
+    
+    
+    
+    [picker setToRecipients:toRecipients];
+    
+    /*[picker setCcRecipients:ccRecipients];
+     
+     [picker setBccRecipients:bccRecipients];*/
+    
+    
+    
+    // Attach an image to the email
+    
+    /* NSString *path = [[NSBundle mainBundle] pathForResource:@”rainy” ofType:@”png”];
+     
+     NSData *myData = [NSData dataWithContentsOfFile:path];
+     
+     [picker addAttachmentData:myData mimeType:@"image/png" fileName:@"rainy"];
+     */
+    
+    
+    // Fill out the email body text
+    
+    NSString *emailBody = @"";
+    
+    [picker setMessageBody:emailBody isHTML:NO];
+    
+    
+    
+    [self presentModalViewController:picker animated:YES];
+    
+    // [picker release];
+    
+}
+
+// Dismisses the email composition interface when users tap Cancel or Send. Proceeds to update the message field with the result of the operation.
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+
+{
+    NSString *message;
+    
+    // message.hidden = NO;
+    
+    // Notifies users about errors associated with the interface
+    
+    switch (result)
+    
+    {
+            
+        case MFMailComposeResultCancelled:
+            
+            //  message.text = 
+            
+            message = @"Message canceled";
+            
+            break;
+            
+        case MFMailComposeResultSaved:
+            
+            //message.text = @”Result: saved”;
+            message = @"Message saved";
+            
+            break;
+            
+        case MFMailComposeResultSent:
+            
+            // message.text = @”Result: sent”;
+            message = @"Message sent";
+            
+            break;
+            
+        case MFMailComposeResultFailed:
+            
+            // message.text = @”Result: cancelled”;
+            message = @"Message canceled";
+            
+            break;
+            
+        default:
+            
+            message = @"Message not sent";
+            // message.text = @”Result: not sent”;
+            
+            break;
+            
+    }
+    
+    UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"" message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    al .tag = 10001;
+    [al show];
+ 
+    //[self dismissModalViewControllerAnimated:YES];
+    
+}
+
+#pragma mark -
+
+#pragma mark Workaround
+
+// Launches the Mail application on the device.
+
+-(void)launchMailAppOnDevice
+
+{
+    
+    /* NSString *recipients = @”mailto:first@example.com?cc=second@example.com,third@example.com&subject=Hello from California!”;
+     
+     NSString *body = @”&body=It is raining in sunny California!”;
+     
+     
+     
+     NSString *email = [NSString stringWithFormat:@"%@%@", recipients, body];
+     
+     email = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+     
+     
+     
+     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];*/
+    
+}
+
+
+
+/*/
+ 
+ 
+ */
+
     /*UIActionSheet *photoSourcePicker = [[UIActionSheet alloc] initWithTitle:nil
                                                                    delegate:self cancelButtonTitle:@"Cancel"
                                                      destructiveButtonTitle:nil

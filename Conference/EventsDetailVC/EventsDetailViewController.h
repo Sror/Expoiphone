@@ -15,8 +15,9 @@
 #import "ConfMainViewController.h"
 #import "FGalleryViewController.h"
 #import "SlideMenuView.h"
+#import <MessageUI/MFMailComposeViewController.h>
 
-@interface EventsDetailViewController : UIViewController<UIActionSheetDelegate,FGalleryViewControllerDelegate,UIAlertViewDelegate>
+@interface EventsDetailViewController : UIViewController<UIActionSheetDelegate,FGalleryViewControllerDelegate,UIAlertViewDelegate,MFMailComposeViewControllerDelegate>
 {
     
     NSIndexPath   *checkedCell;
@@ -126,7 +127,9 @@
 
 
 
+-(void)displayComposerSheet;
 
+-(void)launchMailAppOnDevice;
 
 
 
