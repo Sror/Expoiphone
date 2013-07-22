@@ -94,6 +94,12 @@
     
     
 
+    //[self.skipBtn.layer setBorderColor: [[UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1] CGColor]];
+    [self.submitBtn.layer setBorderColor: [[UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1] CGColor]];
+    [self.submitBtn.layer setBorderWidth:1.0];
+    //[self.skipBtn.layer setBorderWidth:1.0];
+    //[self.skipBtn.layer setCornerRadius:8.0f];
+    [self.submitBtn.layer setCornerRadius:8.0f];
 
     
 }

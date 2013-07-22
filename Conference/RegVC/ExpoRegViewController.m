@@ -8,6 +8,7 @@
 
 #import "ExpoRegViewController.h"
 #import "ActionSheetPicker.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface ExpoRegViewController ()
 
@@ -65,6 +66,13 @@
     
     
     // [UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1]
+    
+    [self.skipBtn.layer setBorderColor: [[UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1] CGColor]];
+    [self.submitBtn.layer setBorderColor: [[UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1] CGColor]];
+    [self.submitBtn.layer setBorderWidth:1.0];
+    [self.skipBtn.layer setBorderWidth:1.0];
+    [self.skipBtn.layer setCornerRadius:8.0f];
+    [self.submitBtn.layer setCornerRadius:8.0f];
     
     [self.skipBtn.titleLabel setTextColor:[UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1]];
     [self.submitBtn.titleLabel setTextColor:[UIColor colorWithRed:(60.0f/255.0f) green:(115.0f/255.0f) blue:(171.0f/255.0f) alpha:1]];

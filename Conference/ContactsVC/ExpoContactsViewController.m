@@ -258,7 +258,7 @@
     
     // Set up recipients
     
-    NSArray *toRecipients = [NSArray arrayWithObject:@""];
+    NSArray *toRecipients = [NSArray arrayWithObject:@"info@expo-centre.ae"];
     
     /*NSArray *ccRecipients = [NSArray arrayWithObjects:@"second@example.com", @"third@example.com", nil];
      
@@ -317,7 +317,7 @@
             
             //  message.text =
             
-            message = @"Message canceled";
+            message = @"Message cancelled";
             
             break;
             
