@@ -79,7 +79,7 @@
     [self.keywordTxtField setValue:[UIColor blackColor]
                     forKeyPath:@"_placeholderLabel.textColor"];
 
-    [self.upcomingEventTxtField setValue:[UIColor darkGrayColor]
+    [self.upcomingEventTxtField setValue:[UIColor blackColor]
                     forKeyPath:@"_placeholderLabel.textColor"];
 
     [self.dateTxtField setValue:[UIColor blackColor]

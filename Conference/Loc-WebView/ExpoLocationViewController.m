@@ -31,8 +31,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.hidesBackButton = YES;
-    [self.view addSubview:ApplicationDelegate.HUD];
-    [ApplicationDelegate.HUD setLabelText:@"Loading"];
+    
 }
 
 
@@ -56,18 +55,24 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    [ApplicationDelegate.HUD removeFromSuperview];
+    [self.navigationController.navigationBar setUserInteractionEnabled:YES];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshView" object:nil];
     
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self.view addSubview:ApplicationDelegate.HUD];
+    [ApplicationDelegate.HUD setLabelText:@"Loading"];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:) name:@"refreshView" object:nil];
 
+    [self.navigationController.navigationBar setUserInteractionEnabled:NO];
 
     if (viewType==IMGVIEW) {
         [ApplicationDelegate.HUD show:YES];
+        
         [self.webviewForForms setHidden:YES];
         [self.viewSegmentControl setHidden:YES];
         
@@ -76,6 +81,7 @@
             
             self.imageLoadingOperation=[ApplicationDelegate.appEngine imageAtURL:[NSURL URLWithString:titleStr] completionHandler:^(UIImage *fetchedImage, NSURL *url, BOOL isInCache) {
                 [ApplicationDelegate.HUD hide:YES];
+                [self.navigationController.navigationBar setUserInteractionEnabled:YES];
                 if([titleStr isEqualToString:[url absoluteString]]) {
                     
                     [UIView animateWithDuration:isInCache?0.0f:0.4f delay:0 options:UIViewAnimationOptionShowHideTransitionViews animations:^{
@@ -84,13 +90,13 @@
                 }
                 
             } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
-                
+                [self.navigationController.navigationBar setUserInteractionEnabled:YES];
                 [ApplicationDelegate.HUD hide:YES];
                 [UIAlertView showWithError:error];
                 
             }];
     }else{
-        [ApplicationDelegate.HUD show:YES];
+        //[ApplicationDelegate.HUD show:YES];
         [self.imageView setHidden:YES];
         switch (webViewType) {
             case EXHIBITORSURVEY:
@@ -162,12 +168,14 @@
 
 -(void)webViewDidStartLoad:(UIWebView *)webView {
     NSLog(@"start");
-    //[ApplicationDelegate.HUD hide:YES];
+    [ApplicationDelegate.HUD show:YES];
+    [self.navigationController.navigationBar setUserInteractionEnabled:NO];
 }
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView {
     
     [ApplicationDelegate.HUD hide:YES];
+    [self.navigationController.navigationBar setUserInteractionEnabled:YES];
     NSLog(@"finish");
 }
 
@@ -175,9 +183,11 @@
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
     
     [ApplicationDelegate.HUD hide:YES];
+    
+    [self.navigationController.navigationBar setUserInteractionEnabled:YES];
     NSLog(@"Error for WEBVIEW: %@", [error description]);
     
-    UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"Oops" message:@"Server not reachable" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    UIAlertView *al = [[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sorry"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"serverNotReachable"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
     [al show];
 }
 
@@ -209,4 +219,6 @@
             break;
     }
 }
+
+
 @end

@@ -17,6 +17,8 @@
 #import "ExpoMoreViewController.h"
 #import "ConfMainViewController.h"
 
+
+#import "CQMFloatingController.h"
 //#import "UINavigationController+Push.h"
 
 @interface ConferenceViewController : UIViewController{
@@ -25,6 +27,9 @@
     
 }
 @property (strong, nonatomic) UITabBarController *tabBarController;
+
+//@property (strong, nonatomic) IBOutlet TPKeyboardAvoidingScrollView *regScrollView;
+
 
 
 @property (nonatomic) BOOL regView;

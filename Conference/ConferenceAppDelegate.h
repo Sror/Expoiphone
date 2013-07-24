@@ -32,6 +32,7 @@ extern NSString *const FBSessionStateChangedNotification;
 @interface ConferenceAppDelegate : UIResponder <UIApplicationDelegate,MBProgressHUDDelegate,XOSplashVideoDelegate>{
     
      BOOL _dragged;
+    UILabel *labelLang;
 }
 
 @property (strong, nonatomic) UIWindow *window;

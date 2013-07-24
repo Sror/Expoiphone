@@ -175,7 +175,7 @@
             
             [titleHeaderView setFrame:CGRectMake(0, 20, 295, 44)];
             [titleView setFrame:CGRectMake(110, 0, 170, 44)];
-            [ribImgView setFrame:CGRectMake(8,0,27,44)];
+            [ribImgView setFrame:CGRectMake(8.2,0,27,44)];
             [dragBtn setFrame:CGRectMake(8, 0, 40, 44)];
             [button setFrame:CGRectMake(40,9,50, 25)];
             [backBtn setFrame:CGRectMake(250, 0, 44, 44)];
@@ -224,6 +224,8 @@
 
 -(void)getData{
     
+    
+    NSLog(@"favEventsArray %d, app favEventsArray %d",self.favEventsArray.count,ApplicationDelegate.appFavEventArray.count);
     [ApplicationDelegate.appEngine favList:@"" onCompletion:^(NSMutableArray *favEventArray) {
         for (NSMutableDictionary *dic in favEventArray) {
             [favEventsArray addObject:[[ConferenceHelper SharedHelper] getEventsObjectFromDictionary:dic] ];

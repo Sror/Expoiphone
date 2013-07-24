@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UINavigationController+Push.h"
-
+#import "CQMFloatingController.h"
 @class TPKeyboardAvoidingScrollView;
 @class AbstractActionSheetPicker;
 

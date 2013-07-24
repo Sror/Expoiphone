@@ -205,6 +205,7 @@
         
         if ([dic objectForKey:key]) {
             thedata=[dic objectForKey:key];
+           // NSLog(@"the data is %@", thedata);
             break;
         }
     }

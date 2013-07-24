@@ -35,6 +35,7 @@
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
     
     
+    //[labelLang setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"changeLanguage"]];
 
     
     //[self returnNextDay:[NSDate date]];
@@ -120,6 +121,15 @@
     self.appLanguageArray=[[ConferenceHelper SharedHelper] ReadArrayFromthePlistFile:@"lang.plist"];
     
     
+    
+   /* for (NSDictionary *dic in ApplicationDelegate.appLanguageArray) {
+     
+        if ([dic objectForKey:@"changeLanguage"]) {
+            NSLog(@"lan dic is %@", dic);
+        }
+    }*/
+    
+    
     self.dragView = [[UIView alloc]initWithFrame:CGRectMake(2.73, 0, 311, 62)];
     [self.dragView setBackgroundColor:[UIColor clearColor]];
     [self.dragView setAlpha:0.0];
@@ -134,8 +144,8 @@
     
     [self.dragView addSubview:self.imgDragView];
     
-    UILabel *labelLang= [[UILabel alloc] initWithFrame:CGRectMake(10, 25, 120, 22)];
-    [labelLang setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"changeLanguage"]];
+    labelLang= [[UILabel alloc] initWithFrame:CGRectMake(20, 25, 120, 22)];
+    
     labelLang .font = [UIFont fontWithName:@"Eagle-Light" size:12.0];
     [labelLang setBackgroundColor:[UIColor clearColor]];
     [self.dragView addSubview:labelLang];
@@ -273,6 +283,8 @@
 
 - (void)dragBtnAction:(UIPanGestureRecognizer *)rec
 {
+    [labelLang setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"changeLanguage"]];
+    
     CGPoint vel = [rec velocityInView:self.navController.view];
     if (vel.y > 0)
     {
@@ -555,8 +567,8 @@
         case LANG_ARABIC:{
             
             [titleView setFrame:CGRectMake(20, 0, 220, 44)];
-            [dragBtn setFrame:CGRectMake(-10, 0, 40, 44)];
-            [ribImgView setFrame:CGRectMake(-10,0,27,44)];
+            [dragBtn setFrame:CGRectMake(-7, 0, 40, 44)];
+            [ribImgView setFrame:CGRectMake(-7,0,27,44)];
         }
             break;
         default:
@@ -619,6 +631,7 @@
 }
 
 -(void)emptyAllArrays{
+    [self.appFavEventArray removeAllObjects];
     [self.appEventArray removeAllObjects];
     [self.appCurrentEventArray removeAllObjects];
     [self.appLatestNewsArray removeAllObjects];

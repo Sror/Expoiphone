@@ -268,6 +268,14 @@
 		FB92E2271783553E00CC3FE3 /* instagram-sm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB92E21F1783553E00CC3FE3 /* instagram-sm@2x.png */; };
 		FB92E2281783553E00CC3FE3 /* youtube-sm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB92E2201783553E00CC3FE3 /* youtube-sm@2x.png */; };
 		FBA6098217848875001A9214 /* SlideMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA6098117848875001A9214 /* SlideMenuView.m */; };
+		FBAC8F2517A0585C00599607 /* CQMFloatingContentOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBAC8F1917A0585200599607 /* CQMFloatingContentOverlayView.m */; };
+		FBAC8F2617A0585C00599607 /* CQMFloatingController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBAC8F1B17A0585200599607 /* CQMFloatingController.m */; };
+		FBAC8F2717A0585C00599607 /* CQMFloatingFrameView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBAC8F1D17A0585300599607 /* CQMFloatingFrameView.m */; };
+		FBAC8F2817A0585C00599607 /* CQMFloatingMaskControl.m in Sources */ = {isa = PBXBuildFile; fileRef = FBAC8F1F17A0585600599607 /* CQMFloatingMaskControl.m */; };
+		FBAC8F2917A0585C00599607 /* CQMFloatingNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FBAC8F2217A0585900599607 /* CQMFloatingNavigationBar.m */; };
+		FBAC8F2A17A0585C00599607 /* CQMPathUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = FBAC8F2417A0585B00599607 /* CQMPathUtilities.m */; };
+		FBAC8F3717A06DEC00599607 /* appstoreicon.png in Resources */ = {isa = PBXBuildFile; fileRef = FBAC8F3517A06DEC00599607 /* appstoreicon.png */; };
+		FBAC8F3817A06DEC00599607 /* appstoreicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FBAC8F3617A06DEC00599607 /* appstoreicon@2x.png */; };
 		FBBCA2D51791E1E8005D4033 /* button_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FBBCA2D31791E1E8005D4033 /* button_bg.png */; };
 		FBBCA2D61791E1E8005D4033 /* button_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FBBCA2D41791E1E8005D4033 /* button_bg@2x.png */; };
 		FBC2B54017894D7800B31BCC /* exhibitorsurvey-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC2B53C17894D7800B31BCC /* exhibitorsurvey-1@2x.png */; };
@@ -641,6 +649,21 @@
 		FB92E2201783553E00CC3FE3 /* youtube-sm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "youtube-sm@2x.png"; path = "Conference/Images/New/youtube-sm@2x.png"; sourceTree = "<group>"; };
 		FBA6098017848875001A9214 /* SlideMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlideMenuView.h; path = Conference/SlideMenuView.h; sourceTree = "<group>"; };
 		FBA6098117848875001A9214 /* SlideMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlideMenuView.m; path = Conference/SlideMenuView.m; sourceTree = "<group>"; };
+		FBAC8F1817A0585200599607 /* CQMFloatingContentOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CQMFloatingContentOverlayView.h; path = Conference/Classes/CQMFloatingContentOverlayView.h; sourceTree = "<group>"; };
+		FBAC8F1917A0585200599607 /* CQMFloatingContentOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CQMFloatingContentOverlayView.m; path = Conference/Classes/CQMFloatingContentOverlayView.m; sourceTree = "<group>"; };
+		FBAC8F1A17A0585200599607 /* CQMFloatingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CQMFloatingController.h; path = Conference/Classes/CQMFloatingController.h; sourceTree = "<group>"; };
+		FBAC8F1B17A0585200599607 /* CQMFloatingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CQMFloatingController.m; path = Conference/Classes/CQMFloatingController.m; sourceTree = "<group>"; };
+		FBAC8F1C17A0585300599607 /* CQMFloatingFrameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CQMFloatingFrameView.h; path = Conference/Classes/CQMFloatingFrameView.h; sourceTree = "<group>"; };
+		FBAC8F1D17A0585300599607 /* CQMFloatingFrameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CQMFloatingFrameView.m; path = Conference/Classes/CQMFloatingFrameView.m; sourceTree = "<group>"; };
+		FBAC8F1E17A0585500599607 /* CQMFloatingMaskControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CQMFloatingMaskControl.h; path = Conference/Classes/CQMFloatingMaskControl.h; sourceTree = "<group>"; };
+		FBAC8F1F17A0585600599607 /* CQMFloatingMaskControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CQMFloatingMaskControl.m; path = Conference/Classes/CQMFloatingMaskControl.m; sourceTree = "<group>"; };
+		FBAC8F2017A0585700599607 /* CQMFloatingMaskControlDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CQMFloatingMaskControlDelegate.h; path = Conference/Classes/CQMFloatingMaskControlDelegate.h; sourceTree = "<group>"; };
+		FBAC8F2117A0585700599607 /* CQMFloatingNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CQMFloatingNavigationBar.h; path = Conference/Classes/CQMFloatingNavigationBar.h; sourceTree = "<group>"; };
+		FBAC8F2217A0585900599607 /* CQMFloatingNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CQMFloatingNavigationBar.m; path = Conference/Classes/CQMFloatingNavigationBar.m; sourceTree = "<group>"; };
+		FBAC8F2317A0585B00599607 /* CQMPathUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CQMPathUtilities.h; path = Conference/Classes/CQMPathUtilities.h; sourceTree = "<group>"; };
+		FBAC8F2417A0585B00599607 /* CQMPathUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CQMPathUtilities.m; path = Conference/Classes/CQMPathUtilities.m; sourceTree = "<group>"; };
+		FBAC8F3517A06DEC00599607 /* appstoreicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appstoreicon.png; sourceTree = "<group>"; };
+		FBAC8F3617A06DEC00599607 /* appstoreicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appstoreicon@2x.png"; sourceTree = "<group>"; };
 		FBBCA2D31791E1E8005D4033 /* button_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_bg.png; sourceTree = "<group>"; };
 		FBBCA2D41791E1E8005D4033 /* button_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_bg@2x.png"; sourceTree = "<group>"; };
 		FBC2B53C17894D7800B31BCC /* exhibitorsurvey-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "exhibitorsurvey-1@2x.png"; path = "Conference/Images/exhibitorsurvey-1@2x.png"; sourceTree = "<group>"; };
@@ -828,6 +851,8 @@
 		FB333590176333C100C2DF64 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FBAC8F3517A06DEC00599607 /* appstoreicon.png */,
+				FBAC8F3617A06DEC00599607 /* appstoreicon@2x.png */,
 				FB663CC6179C410F006314B3 /* arrow-left.png */,
 				FB663CC7179C4110006314B3 /* arrow-left@2x.png */,
 				FB663CC8179C4111006314B3 /* arrow-right.png */,
@@ -1350,6 +1375,26 @@
 			name = SlideMenuView;
 			sourceTree = "<group>";
 		};
+		FBAC8F2C17A0586000599607 /* PopUpClasses */ = {
+			isa = PBXGroup;
+			children = (
+				FBAC8F1817A0585200599607 /* CQMFloatingContentOverlayView.h */,
+				FBAC8F1917A0585200599607 /* CQMFloatingContentOverlayView.m */,
+				FBAC8F1A17A0585200599607 /* CQMFloatingController.h */,
+				FBAC8F1B17A0585200599607 /* CQMFloatingController.m */,
+				FBAC8F1C17A0585300599607 /* CQMFloatingFrameView.h */,
+				FBAC8F1D17A0585300599607 /* CQMFloatingFrameView.m */,
+				FBAC8F1E17A0585500599607 /* CQMFloatingMaskControl.h */,
+				FBAC8F1F17A0585600599607 /* CQMFloatingMaskControl.m */,
+				FBAC8F2017A0585700599607 /* CQMFloatingMaskControlDelegate.h */,
+				FBAC8F2117A0585700599607 /* CQMFloatingNavigationBar.h */,
+				FBAC8F2217A0585900599607 /* CQMFloatingNavigationBar.m */,
+				FBAC8F2317A0585B00599607 /* CQMPathUtilities.h */,
+				FBAC8F2417A0585B00599607 /* CQMPathUtilities.m */,
+			);
+			name = PopUpClasses;
+			sourceTree = "<group>";
+		};
 		FBC3CD821781E3F2004DD4C3 /* NewsDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -1420,6 +1465,7 @@
 		FBD87942175E659B00261201 = {
 			isa = PBXGroup;
 			children = (
+				FBAC8F2C17A0586000599607 /* PopUpClasses */,
 				82ADCA9A179C5A83005D90C4 /* appicon@2x.png */,
 				82ADCA98179C5A7C005D90C4 /* appicon.png */,
 				822595AE178C4A1800CE6E90 /* lang.plist */,
@@ -1917,6 +1963,8 @@
 				82ADCA9B179C5A83005D90C4 /* appicon@2x.png in Resources */,
 				82ADCA9E179C5AD9005D90C4 /* contacts_.png in Resources */,
 				82ADCA9F179C5AD9005D90C4 /* contacts_@2x.png in Resources */,
+				FBAC8F3717A06DEC00599607 /* appstoreicon.png in Resources */,
+				FBAC8F3817A06DEC00599607 /* appstoreicon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1983,6 +2031,12 @@
 				FB92E2131783398000CC3FE3 /* ExhibitCell.m in Sources */,
 				FBA6098217848875001A9214 /* SlideMenuView.m in Sources */,
 				FB60A99917875BC900BA7EE0 /* ExpoCommonViewController.m in Sources */,
+				FBAC8F2517A0585C00599607 /* CQMFloatingContentOverlayView.m in Sources */,
+				FBAC8F2617A0585C00599607 /* CQMFloatingController.m in Sources */,
+				FBAC8F2717A0585C00599607 /* CQMFloatingFrameView.m in Sources */,
+				FBAC8F2817A0585C00599607 /* CQMFloatingMaskControl.m in Sources */,
+				FBAC8F2917A0585C00599607 /* CQMFloatingNavigationBar.m in Sources */,
+				FBAC8F2A17A0585C00599607 /* CQMPathUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -86,6 +86,12 @@
     NSLog(@"called");
     return [emailTest evaluateWithObject:candidate];
 }
+
+-(void)cancel{
+    NSLog(@"Cancel");
+    CQMFloatingController *floatingController = [CQMFloatingController sharedFloatingController];
+    [floatingController dismissAnimated:YES];
+}
 -(void)applyLanguage{
     
     
@@ -101,7 +107,10 @@
         [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"regForm"]]];
     }
          else{
-     [self.navigationItem setTitleView:[ApplicationDelegate setTitleForViews:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"regForm"]]];
+    // [self.navigationItem setTitleView:[ApplicationDelegate setTitleForViews:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"regForm"]]];
+             [self.navigationItem setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"regForm"]];
+             [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)]];
+             [self.navigationController.navigationBar setHidden:NO];
          }
     
     [self.skipBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"skip"] forState:UIControlStateNormal];
@@ -114,6 +123,13 @@
     [self.dateOfBirthTxtField setPlaceholder:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"dob"]];
     [self.IndustryTxtField setPlaceholder:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"indInterest"]];
     [self.socialTxtField setPlaceholder:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sStatus"]];
+    
+    if (ApplicationDelegate.langBool == LANG_ARABIC) {
+        [self.mobileTxtField setTextAlignment:NSTextAlignmentRight];
+    }
+    else{
+        [self.mobileTxtField setTextAlignment:NSTextAlignmentLeft];
+    }
     
 }
 

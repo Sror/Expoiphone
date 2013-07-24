@@ -47,13 +47,15 @@
     // Do any additional setup after loading the view from its nib.
 
     
+    [self.pageControl setFrame:CGRectMake(0, 138, 320, 20)];
+    
     self.navigationItem.hidesBackButton = YES;
 
     [self.navigationItem setTitleView:[ApplicationDelegate setTitleForMainView]];
     
     [self.navigationController setToolbarHidden:YES animated:NO];
 
-   
+   [self.pageControl addTarget:self action:@selector(changePage:) forControlEvents:UIControlEventValueChanged];
    
     [self.navigationController.navigationBar setHidden:NO];
    // [self setUpTabBar];
@@ -64,9 +66,27 @@
     [self applyFonts];
     
 }
+-(void)changePage:(UIPageControl *)sender{
+    
+    /*CGFloat pageWidth = self.scrollView.frame.size.width;
+    int page = floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    self.pageControl.currentPage = page;*/
+    
+    int page = sender.currentPage;
+    CGRect frame = self.scrollView.frame;
+    frame.origin.x = frame.size.width * page;
+    frame.origin.y = 0;
+    [self.scrollView scrollRectToVisible:frame animated:YES];
+}
 
 -(void)viewWillAppear:(BOOL)animated{
     
+    /*CGFloat pageWidth = self.scrollView.frame.size.width;
+    int page = floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    self.pageControl.currentPage = page;*/
+
+    
+    //self.pageControl setCurrentPage:<#(NSInteger)#>
     
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:) name:@"refreshView" object:nil];

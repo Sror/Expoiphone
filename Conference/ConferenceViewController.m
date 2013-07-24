@@ -114,9 +114,30 @@
 
 -(void)showExpoRegistrationView{
     
-    ExpoRegViewController * expiew = [[ExpoRegViewController alloc] initWithNibName:@"ExpoRegViewController" bundle:nil];
+    ExpoRegViewController * expiew = [[ExpoRegViewController alloc] init];
+    [expiew.navigationController.navigationBar setHidden:YES];
     
-    [self.navigationController pushFadeViewController:expiew];
+    
+    
+    CQMFloatingController *floatingController = [CQMFloatingController sharedFloatingController];
+	
+	// 3. Show floating controller with specified content
+	//UIViewController *rootViewController = [[[UIApplication sharedApplication] keyWindow] rootViewController];
+	[floatingController showInView:self.view
+		 withContentViewController:expiew
+						  animated:YES];
+    /*[self.navigationController pushFadeViewController:expiew];*/
+    
+    //[self.view addSubview:self.regScrollView];
+    
+  //  self.regScrollView
+    
+   // UILabel *myla;
+    
+    //[self.view addSubview:self.];
+    
+  //  [self.regScrollView setHidden:YE]
+    
     
 }
 
@@ -162,4 +183,8 @@
  
 
 
+- (void)viewDidUnload {
+   // [self setRegScrollView:nil];
+    [super viewDidUnload];
+}
 @end
