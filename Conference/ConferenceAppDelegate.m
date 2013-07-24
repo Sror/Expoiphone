@@ -135,7 +135,7 @@
     [self.dragView addSubview:self.imgDragView];
     
     UILabel *labelLang= [[UILabel alloc] initWithFrame:CGRectMake(10, 25, 120, 22)];
-    [labelLang setText:@"Change Language"];
+    [labelLang setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"changeLanguage"]];
     labelLang .font = [UIFont fontWithName:@"Eagle-Light" size:12.0];
     [labelLang setBackgroundColor:[UIColor clearColor]];
     [self.dragView addSubview:labelLang];

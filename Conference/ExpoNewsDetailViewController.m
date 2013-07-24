@@ -98,7 +98,7 @@
     
     UIButton *bt = [UIButton buttonWithType:UIButtonTypeCustom];
     [bt setBackgroundColor:[UIColor clearColor]];
-    [bt setTitle:@"Gallery" forState:UIControlStateNormal];
+    [bt setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"gallery"] forState:UIControlStateNormal];
     [bt.layer setCornerRadius:4.0f];
     [bt.layer setMasksToBounds:YES];
     [bt.layer setBorderWidth:1.0f];
@@ -343,6 +343,8 @@
 
 -(void)applyLanguage{
     
+    
+    [self.homeLabel setText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"home"]];
     
     if (fromCommonView) {
         [self.navigationItem setTitleView:[self titleForDetailView]];

@@ -348,7 +348,7 @@
         ActionStringCancelBlock cancel = ^(ActionSheetStringPicker *picker) {
         };
         
-        [ActionSheetStringPicker showPickerWithTitle:@"Select a Value" rows:self.eventTypeArray initialSelection:0 doneBlock:done cancelBlock:cancel origin:sender];
+        [ActionSheetStringPicker showPickerWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"selectavalue"] rows:self.eventTypeArray initialSelection:0 doneBlock:done cancelBlock:cancel origin:sender];
     }
     
 }

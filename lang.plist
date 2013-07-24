@@ -155,7 +155,7 @@
 			<key>ar</key>
 			<string>استمارة التسجيل</string>
 			<key>en</key>
-			<string>Subscription Form</string>
+			<string>Registration Form</string>
 		</dict>
 		<key>brochure</key>
 		<dict>
@@ -631,7 +631,7 @@
 			<key>ar</key>
 			<string>لم يتم العثور على كتيبات</string>
 			<key>en</key>
-			<string>No brochures found</string>
+			<string>No Brochures Available</string>
 		</dict>
 		<key>addedToCalendar</key>
 		<dict>
@@ -769,23 +769,121 @@
 		<key>email</key>
 		<dict>
 			<key>ar</key>
-			<string>E-mail</string>
+			<string>البريد الإلكتروني</string>
 			<key>en</key>
 			<string>E-mail</string>
 		</dict>
 		<key>floormap</key>
 		<dict>
 			<key>ar</key>
-			<string>Floor map</string>
+			<string>خريطة الطابق</string>
 			<key>en</key>
 			<string>Floor map</string>
 		</dict>
 		<key>mobile</key>
 		<dict>
 			<key>ar</key>
-			<string>Mobile Number</string>
+			<string>رقم الهاتف النقال</string>
 			<key>en</key>
 			<string>Mobile Number</string>
+		</dict>
+		<key>male</key>
+		<dict>
+			<key>ar</key>
+			<string>ذكر</string>
+			<key>en</key>
+			<string>male</string>
+		</dict>
+		<key>female</key>
+		<dict>
+			<key>ar</key>
+			<string>أنثى</string>
+			<key>en</key>
+			<string>female</string>
+		</dict>
+		<key>saving</key>
+		<dict>
+			<key>ar</key>
+			<string>إنقاذ</string>
+			<key>en</key>
+			<string>saving</string>
+		</dict>
+		<key>selectavalue</key>
+		<dict>
+			<key>ar</key>
+			<string>تحديد قيمة</string>
+			<key>en</key>
+			<string>Select a Value</string>
+		</dict>
+		<key>sharjahcentre</key>
+		<dict>
+			<key>ar</key>
+			<string>مركز إكسبو الشارقة</string>
+			<key>en</key>
+			<string>Sharjah Expo Centre</string>
+		</dict>
+		<key>enterValidEmail</key>
+		<dict>
+			<key>ar</key>
+			<string>إدخال معرف بريد إلكتروني صحيح</string>
+			<key>en</key>
+			<string>Enter a valid email id</string>
+		</dict>
+		<key>changeLanguage</key>
+		<dict>
+			<key>ar</key>
+			<string>تغيير اللغة</string>
+			<key>en</key>
+			<string>Change Language</string>
+		</dict>
+		<key>edit</key>
+		<dict>
+			<key>ar</key>
+			<string>تعديل</string>
+			<key>en</key>
+			<string>Edit</string>
+		</dict>
+		<key>gallery</key>
+		<dict>
+			<key>ar</key>
+			<string>رواق</string>
+			<key>en</key>
+			<string>Gallery</string>
+		</dict>
+		<key>logout</key>
+		<dict>
+			<key>ar</key>
+			<string>تسجيل الخروج</string>
+			<key>en</key>
+			<string>Logout</string>
+		</dict>
+		<key>msgCancelled</key>
+		<dict>
+			<key>ar</key>
+			<string>رسالة إلغاء</string>
+			<key>en</key>
+			<string>Message Cancelled</string>
+		</dict>
+		<key>msgSaved</key>
+		<dict>
+			<key>ar</key>
+			<string>حفظ رسالة</string>
+			<key>en</key>
+			<string>Message Saved</string>
+		</dict>
+		<key>msgSent</key>
+		<dict>
+			<key>ar</key>
+			<string>أرسلت رسالة</string>
+			<key>en</key>
+			<string>Message Sent</string>
+		</dict>
+		<key>msgnotSent</key>
+		<dict>
+			<key>ar</key>
+			<string>لم يتم إرسال الرسالة</string>
+			<key>en</key>
+			<string>Message Not Send</string>
 		</dict>
 	</dict>
 </array>

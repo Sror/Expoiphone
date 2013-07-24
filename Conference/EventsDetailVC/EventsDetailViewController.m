@@ -884,7 +884,7 @@
             if([TWTweetComposeViewController canSendTweet])
             {
                 TWTweetComposeViewController *tweetSheet = [[TWTweetComposeViewController alloc] init];
-                [tweetSheet setInitialText:@"Expo Centre Sharjah"];
+                [tweetSheet setInitialText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sharjahcentre"]];
                 // [tweetSheet addImage:[UIImage imageWithContentsOfFile:[thumbPath stringByAppendingPathComponent:[NSString stringWithFormat:@"img.jpg"]]]];
                 
                 [tweetSheet addImage:[UIImage imageNamed:@"logo.jpg"]];
@@ -915,7 +915,7 @@
             {
                 // you can show alert here
                 // [self.HUD hide:YES];
-                UIAlertView *twitAlert = [[UIAlertView alloc]initWithTitle:@"SharjahExpoCentre" message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"addTwitAcc"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
+                UIAlertView *twitAlert = [[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sharjahcentre"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"addTwitAcc"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
                 [twitAlert show];
             }
         }
@@ -1044,7 +1044,7 @@
             
             //  message.text = 
             
-            message = @"Message cancelled";
+            message = [[ConferenceHelper SharedHelper] getLanguageForAKey:@"msgCancelled"];
             
            // [self dismissModalViewControllerAnimated:YES];
             
@@ -1053,27 +1053,27 @@
         case MFMailComposeResultSaved:
             
             //message.text = @”Result: saved”;
-            message = @"Message saved";
+            message = [[ConferenceHelper SharedHelper] getLanguageForAKey:@"msgSaved"];
             
             break;
             
         case MFMailComposeResultSent:
             
             // message.text = @”Result: sent”;
-            message = @"Message sent";
+            message = [[ConferenceHelper SharedHelper] getLanguageForAKey:@"msgSent"];
             
             break;
             
         case MFMailComposeResultFailed:
             
             // message.text = @”Result: cancelled”;
-            message = @"Message canceled";
+            message = [[ConferenceHelper SharedHelper] getLanguageForAKey:@"msgCancelled"];
             
             break;
             
         default:
             
-            message = @"Message not sent";
+            message = [[ConferenceHelper SharedHelper] getLanguageForAKey:@"msgnotSent"];
             // message.text = @”Result: not sent”;
             
             break;

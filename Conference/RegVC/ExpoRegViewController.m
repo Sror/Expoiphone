@@ -188,7 +188,7 @@
         
         [self doneEditing];
         
-        UIAlertView *al = [[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sex"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"selectGender"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"cancel"] otherButtonTitles:@"Male",@"Female", nil];
+        UIAlertView *al = [[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sex"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"selectGender"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"cancel"] otherButtonTitles:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"male"],[[ConferenceHelper SharedHelper] getLanguageForAKey:@"female"], nil];
         al.tag = 10;
         [al show];
         
@@ -261,7 +261,7 @@
         ActionStringCancelBlock cancel = ^(ActionSheetStringPicker *picker) {
         };
         
-        [ActionSheetStringPicker showPickerWithTitle:@"Select a Value" rows:self.industrialArray initialSelection:0 doneBlock:done cancelBlock:cancel origin:sender];
+        [ActionSheetStringPicker showPickerWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"selectavalue"] rows:self.industrialArray initialSelection:0 doneBlock:done cancelBlock:cancel origin:sender];
     }
 
 }
@@ -401,7 +401,7 @@
         [userDic setValue:@"" forKey:@"username"];
         [userDic setValue:@"" forKey:@"password"];
 
-        [ApplicationDelegate.HUD setLabelText:@"Saving"];
+        [ApplicationDelegate.HUD setLabelText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"saving"]];
         [ApplicationDelegate.HUD show:YES];
         [self.navigationController.navigationBar setUserInteractionEnabled:NO];
         

@@ -153,7 +153,7 @@
             if([TWTweetComposeViewController canSendTweet])
             {
                 TWTweetComposeViewController *tweetSheet = [[TWTweetComposeViewController alloc] init];
-                [tweetSheet setInitialText:@"Expo Centre Sharjah"];
+                [tweetSheet setInitialText:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sharjahcentre"]];
                 // [tweetSheet addImage:[UIImage imageWithContentsOfFile:[thumbPath stringByAppendingPathComponent:[NSString stringWithFormat:@"img.jpg"]]]];
                 
                 [tweetSheet addImage:[UIImage imageNamed:@"logo.jpg"]];
@@ -187,7 +187,7 @@
                /* UIAlertView *twitAlert = [[UIAlertView alloc]initWithTitle:@"SharjahExpoCentre" message:@"Please add one Twitter account to your settings and try again" delegate:self cancelButtonTitle:@"oK" otherButtonTitles:nil, nil];
                 [twitAlert show];*/
                 // [self.HUD hide:YES];
-                UIAlertView *twitAlert = [[UIAlertView alloc]initWithTitle:@"SharjahExpoCentre" message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"addTwitAcc"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
+                UIAlertView *twitAlert = [[UIAlertView alloc]initWithTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"sharjahcentre"] message:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"addTwitAcc"] delegate:self cancelButtonTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"ok"] otherButtonTitles:nil, nil];
                 [twitAlert show];
             }
         }

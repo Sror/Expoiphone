@@ -128,7 +128,7 @@
     [titleHeaderView addSubview:ribImgView];
     
     button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setTitle:@"Edit" forState:UIControlStateNormal];
+    [button setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"edit"] forState:UIControlStateNormal];
     
     [button.layer setCornerRadius:4.0f];
     [button.layer setMasksToBounds:YES];
@@ -428,7 +428,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 		[self.favTableView setEditing:NO animated:NO];
 		[ self.favTableView reloadData];
         UIButton *buton=(UIButton *)sender;
-        [buton setTitle:@"Edit" forState:UIButtonTypeCustom];
+        [buton setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"edit"] forState:UIButtonTypeCustom];
         //[buton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         //[sender setTitle:@"Edit"];
 		//[self.navigationItem.rightBarButtonItem setTitle:@"Edit"];
@@ -440,7 +440,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 		[self.favTableView setEditing:YES animated:YES];
 		[self.favTableView reloadData];
         UIButton *buton=(UIButton *)sender;
-        [buton setTitle:@"Done" forState:UIButtonTypeCustom];
+        [buton setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"done"] forState:UIButtonTypeCustom];
         //[buton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 		//[self.navigationItem.rightBarButtonItem setTitle:@"Done"];
 		//[self.navigationItem.rightBarButtonItem setStyle:UIBarButtonItemStyleDone];
