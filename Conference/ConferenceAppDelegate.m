@@ -280,6 +280,29 @@
     }
 }
 
+-(void)singleTap{
+    
+    if (!_dragged) {
+        _dragged=YES;
+        [self.navController.view addSubview:self.dragView];
+        [UIView animateWithDuration:0.7 animations:^{
+            [self.dragView setAlpha:1.0];
+            [self.dragView setFrame:CGRectMake(2.73, 54, 311, 62)];
+        } completion:^(BOOL finished) {
+        }];
+    }else{
+        _dragged=NO;
+        [UIView animateWithDuration:0.7 animations:^{
+            [self.dragView setFrame:CGRectMake(2.73, 0, 311, 62)];
+            [self.dragView setAlpha:0.0];
+        } completion:^(BOOL finished) {
+            [self.dragView removeFromSuperview];
+            [ApplicationDelegate set_dragged:NO];
+        }];
+        
+    }
+    
+}
 
 - (void)dragBtnAction:(UIPanGestureRecognizer *)rec
 {
@@ -426,6 +449,10 @@
     UIPanGestureRecognizer *panBtn= [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(dragBtnAction:)];
     [dragBtn addGestureRecognizer:panBtn];
     [titleHeaderView addSubview:dragBtn];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(singleTap)];
+    tap.numberOfTapsRequired = 1;
+    [dragBtn addGestureRecognizer:tap];
 
     
     switch (self.langBool) {
@@ -478,6 +505,11 @@
     dragBtn.backgroundColor = [UIColor clearColor];
     UIPanGestureRecognizer *panBtn= [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(dragBtnAction:)];
     [dragBtn addGestureRecognizer:panBtn];
+    
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(singleTap)];
+    tap.numberOfTapsRequired = 1;
+    [dragBtn addGestureRecognizer:tap];
     
     UILabel *titleView;
     titleView = [[UILabel alloc] init];
@@ -539,6 +571,12 @@
     dragBtn.backgroundColor = [UIColor clearColor];
     UIPanGestureRecognizer *panBtn= [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(dragBtnAction:)];
     [dragBtn addGestureRecognizer:panBtn];
+    
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(singleTap)];
+    tap.numberOfTapsRequired = 1;
+    [dragBtn addGestureRecognizer:tap];
+    
     UILabel *titleView;
     titleView = [[UILabel alloc] init];
     titleView.backgroundColor = [UIColor clearColor];

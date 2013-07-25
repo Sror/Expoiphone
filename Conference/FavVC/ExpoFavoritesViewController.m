@@ -158,6 +158,10 @@
     UIPanGestureRecognizer *panBtn= [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(dragBtnAction:)];
     [dragBtn addGestureRecognizer:panBtn];
     [titleHeaderView addSubview:dragBtn];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(singleTap)];
+    tap.numberOfTapsRequired = 1;
+    [dragBtn addGestureRecognizer:tap];
 
     
     switch (ApplicationDelegate.langBool) {

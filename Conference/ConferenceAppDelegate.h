@@ -83,6 +83,7 @@ extern NSString *const FBSessionStateChangedNotification;
 
 -(void)removeDraggerFromCurrentView;
 - (void)dragBtnAction:(UIPanGestureRecognizer *)rec;
+-(void)singleTap;
 
 - (void) hideTabBar:(UITabBarController *) tabbarcontroller;
 - (void) showTabBar:(UITabBarController *) tabbarcontroller;
