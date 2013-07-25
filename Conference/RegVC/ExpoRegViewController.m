@@ -104,11 +104,11 @@
     
     
     if (fromView) {
-        [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"regForm"]]];
+        [self.navigationItem setTitleView:[ApplicationDelegate setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"subcForm"]]];
     }
          else{
     // [self.navigationItem setTitleView:[ApplicationDelegate setTitleForViews:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"regForm"]]];
-             [self.navigationItem setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"regForm"]];
+             [self.navigationItem setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"subcForm"]];
              [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)]];
              [self.navigationController.navigationBar setHidden:NO];
          }

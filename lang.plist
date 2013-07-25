@@ -157,6 +157,13 @@
 			<key>en</key>
 			<string>Registration Form</string>
 		</dict>
+		<key>subcForm</key>
+		<dict>
+			<key>ar</key>
+			<string>استمارة الاشتراك</string>
+			<key>en</key>
+			<string>Subscription form</string>
+		</dict>
 		<key>brochure</key>
 		<dict>
 			<key>ar</key>
@@ -419,14 +426,14 @@
 		<key>staffLogin</key>
 		<dict>
 			<key>ar</key>
-			<string>Staff Login</string>
+			<string>دخول الموظفين</string>
 			<key>en</key>
 			<string>Staff Login</string>
 		</dict>
 		<key>event_Reg</key>
 		<dict>
 			<key>ar</key>
-			<string>Event Registration</string>
+			<string>تسجيل الحدث</string>
 			<key>en</key>
 			<string>Event Registration</string>
 		</dict>
