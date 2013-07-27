@@ -86,8 +86,8 @@
             [self.scrollView setHidden:NO];
             [self.fbBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"fb"] forState:UIControlStateNormal];
             [self.ytBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"youTube"] forState:UIControlStateNormal];
-            [self.twtBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"instagram"] forState:UIControlStateNormal];
-            [self.igBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"twitter"] forState:UIControlStateNormal];
+            [self.igBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"instagram"] forState:UIControlStateNormal];
+            [self.twtBtn setTitle:[[ConferenceHelper SharedHelper] getLanguageForAKey:@"twitter"] forState:UIControlStateNormal];
         }
             break;
         case LANG_ARABIC:{
